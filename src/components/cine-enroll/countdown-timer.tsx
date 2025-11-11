@@ -3,7 +3,13 @@
 import { useState, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const deadline = new Date('2024-11-20T00:00:00Z');
+const getDeadline = () => {
+  const deadline = new Date();
+  deadline.setDate(deadline.getDate() + 20);
+  return deadline;
+}
+
+const deadline = getDeadline();
 
 const calculateTimeLeft = () => {
   const difference = +deadline - +new Date();

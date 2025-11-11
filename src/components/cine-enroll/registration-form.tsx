@@ -177,9 +177,9 @@ export default function RegistrationForm() {
               Partie 3 : Modalités et Urgence
             </h2>
             <div className="text-center space-y-4">
-              <p className="text-lg">Le tarif préférentiel de <strong className="font-bold text-primary text-xl">30 000 FDJ</strong> est valable jusqu'au 20 novembre.</p>
+              <p className="text-lg">Le tarif préférentiel de <strong className="font-bold text-primary text-xl">30 000 FDJ</strong> est valable pour une durée limitée.</p>
               <CountdownTimer />
-              <p className="text-muted-foreground">Après cette date, le tarif passera à 40 000 FDJ.</p>
+              <p className="text-muted-foreground">Après cette période, le tarif passera à 40 000 FDJ.</p>
             </div>
           </section>
 
@@ -244,5 +244,3 @@ export default function RegistrationForm() {
     </>
   );
 }
-
-    
