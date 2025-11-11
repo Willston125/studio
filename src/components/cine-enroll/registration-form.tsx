@@ -192,9 +192,10 @@ export default function RegistrationForm() {
               Partie 4 : Le Défi Final
             </h2>
             <div className="text-center py-8">
-              <p className="font-headline text-4xl md:text-5xl font-extrabold text-primary-foreground" style={{ textShadow: '0 0 5px hsl(var(--primary-foreground)), 0 0 15px hsl(var(--primary)), 0 0 25px hsl(var(--primary))' }}>
-                Le meilleur film gagne 200 000 FDJ !
-              </p>
+              <div className="font-headline text-4xl md:text-5xl font-extrabold text-primary-foreground flex flex-col items-center" style={{ textShadow: '0 0 5px hsl(var(--primary-foreground)), 0 0 15px hsl(var(--primary)), 0 0 25px hsl(var(--primary))' }}>
+                <span>Le meilleur film gagne</span>
+                <span>200 000 FDJ !</span>
+              </div>
             </div>
             <ExpectationsField />
 
