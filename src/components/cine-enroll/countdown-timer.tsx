@@ -50,32 +50,38 @@ export default function CountdownTimer() {
   if (!isMounted) {
     return (
         <div className="flex justify-center gap-4">
-            <Skeleton className="h-20 w-20 rounded-md" />
-            <Skeleton className="h-20 w-20 rounded-md" />
-            <Skeleton className="h-20 w-20 rounded-md" />
-            <Skeleton className="h-20 w-20 rounded-md" />
+            <Skeleton className="h-12 w-48 rounded-md" />
         </div>
     );
   }
 
-  const timerComponents = Object.entries(timeLeft).map(([interval, value]) => {
-    const labels: { [key: string]: string } = {
-        days: 'Jours',
-        hours: 'Heures',
-        minutes: 'Minutes',
-        seconds: 'Secondes',
-    }
-    return (
-      <div key={interval} className="flex flex-col items-center justify-center bg-background/50 p-4 rounded-lg w-24 h-24 border border-border">
-        <span className="text-4xl font-bold font-mono text-primary">{String(value).padStart(2, '0')}</span>
-        <span className="text-xs uppercase tracking-widest text-muted-foreground">{labels[interval]}</span>
-      </div>
-    );
-  });
+  const { days, hours, minutes, seconds } = timeLeft;
+  
+  if (!days && !hours && !minutes && !seconds) {
+    return <span className="text-xl font-bold font-mono text-primary">Le temps est écoulé !</span>;
+  }
 
   return (
-    <div className="flex justify-center gap-2 md:gap-4">
-      {timerComponents.length ? timerComponents : <span>Le temps est écoulé !</span>}
+    <div className="flex justify-center items-center gap-2 font-mono text-primary">
+        <div className="flex flex-col items-center">
+            <span className="text-4xl font-bold">{String(days).padStart(2, '0')}</span>
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">Jours</span>
+        </div>
+        <span className="text-4xl font-bold -translate-y-2">:</span>
+        <div className="flex flex-col items-center">
+            <span className="text-4xl font-bold">{String(hours).padStart(2, '0')}</span>
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">Heures</span>
+        </div>
+        <span className="text-4xl font-bold -translate-y-2">:</span>
+        <div className="flex flex-col items-center">
+            <span className="text-4xl font-bold">{String(minutes).padStart(2, '0')}</span>
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">Minutes</span>
+        </div>
+        <span className="text-4xl font-bold -translate-y-2">:</span>
+        <div className="flex flex-col items-center">
+            <span className="text-4xl font-bold">{String(seconds).padStart(2, '0')}</span>
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">Secondes</span>
+        </div>
     </div>
   );
 }

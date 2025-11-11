@@ -26,7 +26,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
-import PhotoGallery from "./photo-gallery";
 import CountdownTimer from "./countdown-timer";
 import ExpectationsField from "./expectations-field";
 
@@ -179,14 +178,11 @@ export default function RegistrationForm() {
             <div className="text-center space-y-4">
               <p className="text-lg">Le tarif préférentiel de <strong className="font-bold text-primary text-xl">30 000 FDJ</strong> est valable pour une durée limitée.</p>
               <CountdownTimer />
-              <p className="text-muted-foreground">Après cette période, le tarif passera à 40 000 FDJ.</p>
             </div>
           </section>
 
-          <PhotoGallery />
-
           {/* Section 4: Le Défi Final + Engagement */}
-          <section className="space-y-8">
+          <section className="space-y-8 pt-12">
             <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
               <Award className="text-primary" />
               Partie 4 : Le Défi Final
