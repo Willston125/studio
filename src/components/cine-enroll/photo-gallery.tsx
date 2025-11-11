@@ -10,7 +10,6 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
 import {
   Dialog,
@@ -20,26 +19,10 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 
 export default function PhotoGallery() {
-  const [api, setApi] = React.useState<CarouselApi>()
-
-  React.useEffect(() => {
-    if (!api) {
-      return
-    }
- 
-    const autoplay = api.plugins().autoplay
-    if (autoplay) {
-        // You can access the autoplay API here
-    }
-
-  }, [api])
-
-
   return (
     <section className="py-8">
       <h2 className="text-center text-2xl font-headline mb-8">Galerie</h2>
       <Carousel
-        setApi={setApi}
         plugins={[
           Autoplay({
             delay: 5000,
