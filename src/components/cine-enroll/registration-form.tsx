@@ -92,7 +92,7 @@ export default function RegistrationForm() {
           COURS DE CINÉMA
         </p>
         <div className="mt-4 text-sm text-muted-foreground space-y-1">
-          <p>Sess. 1 mois – 2 fois/semaine – 4h</p>
+          <p>Session: 1 mois - 2 fois / semaine - 4h</p>
           <p>Écriture de scénario – Découpage technique – Réalisation – Montage</p>
         </div>
       </header>
