@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Award, Clapperboard, Film, RadioTower, User, PenSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import Image from "next/image";
 
 import type { RegistrationSchema } from "@/lib/schema";
 import { registrationSchema } from "@/lib/schema";
@@ -85,6 +86,9 @@ export default function RegistrationForm() {
   return (
     <>
       <header className="text-center p-8 md:p-12 border-b border-border/50">
+        <div className="flex justify-center mb-4">
+            <Image src="/logo.png" alt="CineEnroll Logo" width={120} height={120} />
+        </div>
         <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight">
           FICHE D’INSCRIPTION
         </h1>
@@ -240,3 +244,5 @@ export default function RegistrationForm() {
     </>
   );
 }
+
+    
