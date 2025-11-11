@@ -10,29 +10,42 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import {
   Dialog,
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function PhotoGallery() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [api, setApi] = React.useState<CarouselApi>()
 
   React.useEffect(() => {
-    if (!emblaApi) return;
-    const autoplay = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 5000);
-    return () => clearInterval(autoplay);
-  }, [emblaApi]);
+    if (!api) {
+      return
+    }
+ 
+    const autoplay = api.plugins().autoplay
+    if (autoplay) {
+        // You can access the autoplay API here
+    }
+
+  }, [api])
+
 
   return (
     <section className="py-8">
       <h2 className="text-center text-2xl font-headline mb-8">Galerie</h2>
       <Carousel
+        setApi={setApi}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+            stopOnInteraction: true,
+          }),
+        ]}
         opts={{
           align: "start",
           loop: true,
