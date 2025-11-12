@@ -287,7 +287,7 @@ export default function RegistrationForm() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                 <FormField name="date_jour" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel>Date du jour</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></div></FormItem>
+                  <FormItem><FormLabel>Date du jour</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                 )} />
                 <FormField name="signature" control={form.control} render={({ field }) => (
                   <FormItem><FormLabel>Signature (Nom complet)</FormLabel><FormControl><Input placeholder="Votre nom complet" {...field} /></FormControl><FormMessage /></FormItem>
