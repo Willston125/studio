@@ -40,7 +40,7 @@ const equipmentOptions = [
 
 export default function RegistrationForm() {
   const { toast } = useToast();
-  const [isSubmitting, startTransition] = React.useTransition();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const form = useForm<RegistrationSchema>({
     resolver: zodResolver(registrationSchema),
@@ -66,22 +66,31 @@ export default function RegistrationForm() {
   const isSubmitDisabled = !watchEngagements.every(Boolean) || isSubmitting;
 
   function onSubmit(data: RegistrationSchema) {
-    startTransition(async () => {
-      const result = await submitRegistrationAction(data);
-      if (result.success) {
-        toast({
-          title: "Succès",
-          description: result.message,
-        });
-        form.reset();
-      } else {
-        toast({
-          title: "Erreur",
-          description: result.message,
-          variant: "destructive",
-        });
-      }
-    });
+    setIsSubmitting(true);
+    try {
+      const nom = data.nom;
+      const prenom = data.prenom;
+      const message = `Bonjour, je m'appelle ${prenom} ${nom}. Je souhaite m'inscrire à cette formation au prix actuel de 30 000 FDJ, merci de me garder une place`;
+      const whatsappUrl = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
+      
+      window.open(whatsappUrl, '_blank');
+      
+      toast({
+        title: "Redirection vers WhatsApp",
+        description: "Veuillez envoyer le message pré-rempli pour finaliser votre pré-inscription.",
+      });
+
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -94,7 +103,7 @@ export default function RegistrationForm() {
           fill={true}
           style={{objectFit: 'cover'}}
           className="blur-sm scale-110"
-          data-ai-hint="film projector"
+          data-ai-hint="film set"
         />
         <div className="relative z-20">
           <div className="flex justify-center mb-4">
@@ -119,7 +128,7 @@ export default function RegistrationForm() {
           {/* Section 1: Informations Personnelles */}
           <section className="space-y-6">
             <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <User className="text-primary" />
+              <Film className="text-primary" />
               Partie 1 : Informations Personnelles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -149,7 +158,7 @@ export default function RegistrationForm() {
           {/* Section 2: Votre Expérience */}
           <section className="space-y-6">
             <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <Film className="text-primary" />
+              <Video className="text-primary" />
               Partie 2 : Votre Expérience
             </h2>
             <FormField name="niveau" control={form.control} render={({ field }) => (
@@ -243,7 +252,7 @@ export default function RegistrationForm() {
               className="w-full md:w-auto font-bold text-lg tracking-wider transition-all duration-300 transform hover:scale-105 bg-[linear-gradient(90deg,#b30000,#ff1a1a)] text-white shadow-[0_0_15px_rgba(255,0,0,0.4)] hover:shadow-[0_0_25px_rgba(255,0,0,0.7)]"
               disabled={isSubmitDisabled}
             >
-              {isSubmitting ? 'Soumission en cours...' : 'Soumettre mon inscription'}
+              {isSubmitting ? 'Redirection...' : 'Pré-inscrire via WhatsApp'}
             </Button>
           </div>
         </form>
