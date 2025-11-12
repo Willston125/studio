@@ -3,11 +3,11 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Masterclass Cinéma - Djibouti',
-  description: 'Devenez réalisateur pro. Inscrivez-vous maintenant !',
+  title: 'Masterclass Cinéma Djibouti - Inscriptions Ouvertes',
+  description: 'Apprenez à réaliser vos propres films. Scénario, Tournage, Montage. Places limitées ! Cliquez ici pour vous inscrire.',
   openGraph: {
-    title: 'Masterclass Cinéma - Djibouti',
-    description: 'Devenez réalisateur pro. Inscrivez-vous maintenant !',
+    title: 'Masterclass Cinéma Djibouti - Inscriptions Ouvertes',
+    description: 'Apprenez à réaliser vos propres films. Scénario, Tournage, Montage. Places limitées ! Cliquez ici pour vous inscrire.',
     images: ['/affiche.jpg'],
   },
 };
