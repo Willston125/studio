@@ -142,9 +142,23 @@ export default function RegistrationForm() {
   function onSubmit(data: RegistrationSchema) {
     setIsSubmitting(true);
     try {
-      const nom = data.nom;
-      const prenom = data.prenom;
-      const message = `Bonjour, je m'appelle ${prenom} ${nom}. Je souhaite m'inscrire à cette formation au prix actuel de 30 000 FDJ, merci de me garder une place`;
+      const { nom, prenom, date_naissance, email, telephone, profession, niveau, materiel, logiciels, attentes } = data;
+      
+      const intro = `Bonjour, je m'appelle ${prenom} ${nom}. Je souhaite m'inscrire à cette formation au prix actuel de 30 000 FDJ, merci de me garder une place.`;
+
+      const details = [
+        `\n\n--- RÉSUMÉ DE L'INSCRIPTION ---`,
+        `- Date de naissance: ${date_naissance}`,
+        `- Email: ${email}`,
+        `- Téléphone: ${telephone}`,
+        `- Profession: ${profession}`,
+        `- Niveau: ${niveau}`,
+        `- Matériel: ${materiel.join(', ') || 'Non spécifié'}`,
+        `- Logiciels: ${logiciels || 'Non spécifié'}`,
+        `- Attentes: ${attentes}`
+      ].join('\n');
+
+      const message = intro + details;
       const whatsappUrl = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
       
       window.open(whatsappUrl, '_blank');
@@ -345,7 +359,7 @@ export default function RegistrationForm() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                 <FormField name="date_jour" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel>Date du jour</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Date du jour</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></div></FormItem>
                 )} />
                 <FormField name="signature" control={form.control} render={({ field }) => (
                   <FormItem><FormLabel>Signature (Nom complet)</FormLabel><FormControl><Input placeholder="Votre nom complet" {...field} /></FormControl><FormMessage /></FormItem>
@@ -374,3 +388,5 @@ export default function RegistrationForm() {
     </>
   );
 }
+
+    
