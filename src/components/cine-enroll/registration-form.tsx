@@ -60,38 +60,57 @@ export default function RegistrationForm() {
       date_jour: new Date().toLocaleDateString("fr-FR"),
       signature: "",
     },
-    mode: 'onChange' // Important pour la mise à jour en direct
+    mode: 'onChange'
   });
   
   const watchedFields = form.watch();
 
   React.useEffect(() => {
     const calculateProgress = () => {
-      const result = registrationSchema.safeParse(watchedFields);
-      let validFields = 0;
-      const totalFields = Object.keys(registrationSchema.shape).length;
+      const data = watchedFields;
+      let completedSections = 0;
+      const totalSections = 4;
 
-      if (result.success) {
-        validFields = totalFields;
-      } else {
-        const validatedFields = new Set();
-        // Vérifier les champs valides qui ne sont pas dans l'erreur
-        for (const key in watchedFields) {
-            if (Object.prototype.hasOwnProperty.call(watchedFields, key)) {
-                // @ts-ignore
-                const fieldSchema = registrationSchema.shape[key];
-                if (fieldSchema) {
-                    const parsed = fieldSchema.safeParse(watchedFields[key as keyof RegistrationSchema]);
-                    if (parsed.success) {
-                        validatedFields.add(key);
-                    }
-                }
-            }
-        }
-        validFields = validatedFields.size;
+      // Section 1: Informations Personnelles
+      const section1Fields: (keyof RegistrationSchema)[] = ['nom', 'prenom', 'date_naissance', 'email', 'telephone', 'profession'];
+      const isSection1Complete = section1Fields.every(field => {
+        const fieldSchema = registrationSchema.shape[field];
+        return fieldSchema.safeParse(data[field]).success;
+      });
+      if (isSection1Complete) completedSections++;
+      
+      // Section 2: Votre Expérience
+      const section2Fields: (keyof RegistrationSchema)[] = ['niveau', 'materiel'];
+      const isSection2Complete = section2Fields.every(field => {
+        const fieldSchema = registrationSchema.shape[field];
+        return fieldSchema.safeParse(data[field]).success;
+      });
+      if (isSection2Complete) completedSections++;
+
+      // Section 3: is always considered "complete" as it's informational
+      // For a better user experience, we can consider it complete after section 2 is done.
+      if (isSection2Complete) {
+          completedSections++;
       }
 
-      setProgress((validFields / totalFields) * 100);
+
+      // Section 4: Engagement
+      const section4Fields: (keyof RegistrationSchema)[] = ['attentes', 'engagement1', 'engagement2', 'engagement3', 'date_jour', 'signature'];
+      const isSection4Complete = section4Fields.every(field => {
+        const fieldSchema = registrationSchema.shape[field];
+        return fieldSchema.safeParse(data[field]).success;
+      });
+      if (isSection4Complete) completedSections++;
+
+      // Let's adjust logic: If section 1 and 2 are not complete, section 3 shouldn't count.
+      if (!isSection1Complete || !isSection2Complete) {
+          if (isSection2Complete == false && completedSections > 1) {
+             completedSections = 1;
+          }
+      }
+
+
+      setProgress((completedSections / totalSections) * 100);
     };
 
     calculateProgress();
