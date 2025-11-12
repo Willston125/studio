@@ -81,7 +81,7 @@ export default function PhotoGallery() {
                         width={800}
                         height={600}
                         data-ai-hint={img.imageHint}
-                        className="object-cover w-full h-full"
+                        className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
                       />
                     </div>
                   </DialogTrigger>
