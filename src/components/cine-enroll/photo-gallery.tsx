@@ -30,6 +30,24 @@ const images = [
     alt: "Session de montage",
     description: "Session de montage",
     imageHint: "editing session"
+  },
+  {
+    src: "/galerie3.png",
+    alt: "Équipe de tournage en action",
+    description: "Équipe de tournage en action",
+    imageHint: "film crew"
+  },
+  {
+    src: "/galerie4.png",
+    alt: "Réalisateur donnant des instructions",
+    description: "Réalisateur donnant des instructions",
+    imageHint: "director instructions"
+  },
+  {
+    src: "/galerie5.png",
+    alt: "Clap de cinéma",
+    description: "Clap de cinéma",
+    imageHint: "movie clapper"
   }
 ];
 
