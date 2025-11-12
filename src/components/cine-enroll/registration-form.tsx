@@ -112,7 +112,15 @@ export default function RegistrationForm() {
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
-            <div className="text-center">
+            <div className="text-center relative">
+                <div className="flex justify-center gap-4 mb-4">
+                    <div className="bg-yellow-500/10 border border-yellow-400 text-yellow-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.3)]">
+                        Premium
+                    </div>
+                    <div className="bg-yellow-500/10 border border-yellow-400 text-yellow-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.3)]">
+                        Exclusif
+                    </div>
+                </div>
                 <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                     FICHE D’INSCRIPTION
                 </h1>
@@ -265,5 +273,3 @@ export default function RegistrationForm() {
     </>
   );
 }
-
-    
