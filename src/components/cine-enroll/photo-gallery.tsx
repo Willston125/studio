@@ -67,8 +67,8 @@ export default function PhotoGallery() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden sm:flex" />
-        <CarouselNext className="hidden sm:flex" />
+        <CarouselPrevious className="hidden sm:flex" type="button" />
+        <CarouselNext className="hidden sm:flex" type="button" />
       </Carousel>
     </section>
   );
