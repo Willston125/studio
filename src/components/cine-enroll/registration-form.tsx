@@ -28,6 +28,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import CountdownTimer from "./countdown-timer";
 import ExpectationsField from "./expectations-field";
+import PhotoGallery from "./photo-gallery";
 
 const equipmentOptions = [
   { id: "smartphone", label: "Smartphone" },
@@ -130,6 +131,8 @@ export default function RegistrationForm() {
               )} />
             </div>
           </section>
+
+          <PhotoGallery />
 
           {/* Section 2: Votre Expérience */}
           <section className="space-y-6">
