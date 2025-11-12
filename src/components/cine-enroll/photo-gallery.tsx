@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 import {
   Carousel,
@@ -19,7 +18,20 @@ import {
 } from "@/components/ui/dialog";
 import Autoplay from "embla-carousel-autoplay";
 
-const images = PlaceHolderImages;
+const images = [
+  {
+    src: "/galerie1.png",
+    alt: "Formation pratique caméra",
+    description: "Formation pratique caméra",
+    imageHint: "film training"
+  },
+  {
+    src: "/galerie2.png",
+    alt: "Session de montage",
+    description: "Session de montage",
+    imageHint: "editing session"
+  }
+];
 
 export default function PhotoGallery() {
   return (
@@ -46,8 +58,8 @@ export default function PhotoGallery() {
                   <DialogTrigger asChild>
                     <div className="aspect-video w-full rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
                       <Image
-                        src={img.imageUrl}
-                        alt={img.description}
+                        src={img.src}
+                        alt={img.alt}
                         width={800}
                         height={600}
                         data-ai-hint={img.imageHint}
@@ -58,8 +70,8 @@ export default function PhotoGallery() {
                   <DialogContent className="max-w-4xl p-2 bg-transparent border-none shadow-none">
                     <DialogTitle className="sr-only">{img.description}</DialogTitle>
                      <Image
-                        src={img.imageUrl}
-                        alt={img.description}
+                        src={img.src}
+                        alt={img.alt}
                         width={1200}
                         height={800}
                         data-ai-hint={img.imageHint}
