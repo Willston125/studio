@@ -169,12 +169,12 @@ export default function RegistrationForm() {
 
   return (
     <>
-      <header className="relative w-full h-64 md:h-80 border-b border-border/50 flex items-center justify-center overflow-hidden">
+      <header className="group relative w-full h-64 md:h-80 border-b border-border/50 flex items-center justify-center overflow-hidden">
         <Image
           src="/galerie1.png"
           alt="Bannière de la masterclass de cinéma"
           fill
-          className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+          className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
           data-ai-hint="film training"
           priority
         />
@@ -374,5 +374,3 @@ export default function RegistrationForm() {
     </>
   );
 }
-
-    
