@@ -3,8 +3,13 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'CineEnroll - Inscription',
-  description: "Formulaire d'inscription pour le cours 'La Magie du Cinéma'",
+  title: 'Masterclass Cinéma - Djibouti',
+  description: 'Devenez réalisateur pro. Inscrivez-vous maintenant !',
+  openGraph: {
+    title: 'Masterclass Cinéma - Djibouti',
+    description: 'Devenez réalisateur pro. Inscrivez-vous maintenant !',
+    images: ['/affiche.jpg'],
+  },
 };
 
 export default function RootLayout({
