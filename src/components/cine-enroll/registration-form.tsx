@@ -112,12 +112,17 @@ export default function RegistrationForm() {
 
       // Section 3: Modalités (considérée complète après la section 2, car elle ne contient pas de champs)
       if (isSection2Complete) {
+          // This section is considered complete when section 2 is, as it has no inputs itself.
           completedSections++;
       }
 
       // Section 4: Engagement
       const section4Fields: (keyof RegistrationSchema)[] = ['attentes', 'engagement1', 'engagement2', 'engagement3', 'date_jour', 'signature'];
       const isSection4Complete = section4Fields.every(field => {
+        // For checkboxes, just check they are true.
+        if (['engagement1', 'engagement2', 'engagement3'].includes(field)) {
+          return data[field] === true;
+        }
         const fieldSchema = registrationSchema.shape[field];
         return fieldSchema.safeParse(data[field]).success;
       });
@@ -166,11 +171,11 @@ export default function RegistrationForm() {
     <>
       <header className="relative w-full h-64 md:h-80 border-b border-border/50 flex items-center justify-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1580746353679-aa5dee1ac3e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmaWxtJTIwc2V0fGVufDB8fHx8MTc2Mjg1Njc5MXww&ixlib=rb-4.1.0&q=80&w=1080"
+          src="/galerie1.png"
           alt="Bannière de la masterclass de cinéma"
           fill
           className="object-cover w-full h-full grayscale"
-          data-ai-hint="film set"
+          data-ai-hint="film training"
           priority
         />
         <div className="absolute inset-0 bg-black/50" />
@@ -369,3 +374,5 @@ export default function RegistrationForm() {
     </>
   );
 }
+
+    
