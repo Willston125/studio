@@ -89,10 +89,10 @@ export default function RegistrationForm() {
       <header className="relative text-center p-8 md:p-12 border-b border-border/50 overflow-hidden">
         <div className="absolute inset-0 bg-black/50 z-10" />
         <Image 
-          src="https://images.unsplash.com/photo-1574717024633-4522c3084a14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmaWxtJTIwcHJvamVjdG9yfGVufDB8fHx8MTc2Mjg0MDk4NHww&ixlib=rb-4.1.0&q=80&w=1080"
+          src="/galerie1.png"
           alt="Bannière cinéma"
-          layout="fill"
-          objectFit="cover"
+          fill={true}
+          style={{objectFit: 'cover'}}
           className="blur-sm scale-110"
           data-ai-hint="film projector"
         />
