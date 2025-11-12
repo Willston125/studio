@@ -99,7 +99,7 @@ export default function RegistrationForm() {
         <iframe
           className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2"
           style={{ minWidth: '177.78vh', minHeight: '100vw' }}
-          src="https://www.youtube.com/embed/1bep0NEFvZ0?autoplay=1&mute=1&loop=1&playlist=1bep0NEFvZ0&controls=0&showinfo=0&modestbranding=1&rel=0"
+          src="https://www.youtube.com/embed/1bep0NEFvZ0?start=103&autoplay=1&mute=1&loop=1&playlist=1bep0NEFvZ0&controls=0&showinfo=0&modestbranding=1&rel=0"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
