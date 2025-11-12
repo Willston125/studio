@@ -90,7 +90,7 @@ export default function RegistrationForm() {
 
   React.useEffect(() => {
     const calculateProgress = () => {
-      const data = watchedFields;
+      const data = form.getValues();
       let completedSections = 0;
       const totalSections = 4;
 
@@ -110,7 +110,7 @@ export default function RegistrationForm() {
       });
       if (isSection2Complete) completedSections++;
 
-      // Section 3: Modalités (considered complete after section 2)
+      // Section 3: Modalités (considérée complète après la section 2, car elle ne contient pas de champs)
       if (isSection2Complete) {
           completedSections++;
       }
@@ -126,8 +126,9 @@ export default function RegistrationForm() {
       setProgress((completedSections / totalSections) * 100);
     };
 
-    calculateProgress();
-  }, [watchedFields]);
+    const subscription = form.watch(() => calculateProgress());
+    return () => subscription.unsubscribe();
+  }, [form]);
 
 
   const watchEngagements = form.watch(["engagement1", "engagement2", "engagement3"]);
@@ -163,16 +164,24 @@ export default function RegistrationForm() {
 
   return (
     <>
-      <header className="relative w-full overflow-hidden h-[56.25vw] max-h-[70vh] border-b border-border/50">
-        <iframe
-          className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2"
-          style={{ minWidth: '177.78vh', minHeight: '100vw' }}
-          src="https://www.youtube.com/embed/z2pC23gA-f8?autoplay=1&mute=1&loop=1&playlist=z2pC23gA-f8&controls=0&showinfo=0&modestbranding=1&rel=0"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+      <header className="relative w-full h-64 md:h-80 border-b border-border/50 flex items-center justify-center overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1580746353679-aa5dee1ac3e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmaWxtJTIwc2V0fGVufDB8fHx8MTc2Mjg1Njc5MXww&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Bannière de la masterclass de cinéma"
+          fill
+          className="object-cover w-full h-full grayscale"
+          data-ai-hint="film set"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 w-48 h-48 md:w-64 md:h-64">
+          <Image
+            src="/logo_cineworld.png"
+            alt="Logo Cineworld"
+            fill
+            className="object-contain"
+          />
+        </div>
       </header>
       
       <Form {...form}>
