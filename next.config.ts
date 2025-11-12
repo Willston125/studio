@@ -30,6 +30,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  env: {
+    // This is the base URL of your site. It will be used for Open Graph images.
+    // Replace this with your actual production URL when you deploy.
+    NEXT_PUBLIC_SITE_URL: process.env.NODE_ENV === 'production'
+        ? 'https://your-production-domain.com' // TODO: Replace with your domain
+        : 'http://localhost:9002',
+  },
 };
 
 export default nextConfig;
