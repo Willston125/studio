@@ -98,7 +98,7 @@ export default function RegistrationForm() {
         />
         <div className="relative z-20">
           <div className="flex justify-center mb-4">
-              <Image src="/logo.png" alt="CineEnroll Logo" width={120} height={120} />
+              <Image src="/logo_cineworld.png"alt="CineEnroll Logo" width={120} height={120} />
           </div>
           <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
             FICHE D’INSCRIPTION
