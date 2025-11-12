@@ -174,7 +174,7 @@ export default function RegistrationForm() {
           src="/galerie1.png"
           alt="Bannière de la masterclass de cinéma"
           fill
-          className="object-cover w-full h-full grayscale"
+          className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
           data-ai-hint="film training"
           priority
         />
