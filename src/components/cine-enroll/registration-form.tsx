@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Award, Film, RadioTower, User, PenSquare } from "lucide-react";
+import { Award, Film, RadioTower, User, PenSquare, BookOpen, Camera, Users, Scissors } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 
@@ -35,6 +35,29 @@ const equipmentOptions = [
   { id: "camera", label: "Appareil photo / Caméra simple" },
   { id: "dslr", label: "DSLR / Mirrorless" },
   { id: "professional", label: "Matériel professionnel" },
+];
+
+const programItems = [
+    {
+        icon: BookOpen,
+        title: "Scénario & Storyboard",
+        description: "Apprenez à structurer vos idées, écrire un script captivant et le visualiser plan par plan.",
+    },
+    {
+        icon: Camera,
+        title: "Techniques de Caméra & Lumière",
+        description: "Maîtrisez les angles, les mouvements de caméra et l'art de sculpter la lumière pour créer l'ambiance parfaite.",
+    },
+    {
+        icon: Users,
+        title: "Direction d'Acteurs",
+        description: "Sachez communiquer votre vision aux comédiens et en tirer des performances authentiques et puissantes.",
+    },
+    {
+        icon: Scissors,
+        title: "Montage Pro & Colorimétrie",
+        description: "Donnez du rythme à votre film et sublimez vos images grâce au montage et à l'étalonnage des couleurs.",
+    },
 ];
 
 export default function RegistrationForm() {
@@ -205,6 +228,27 @@ export default function RegistrationForm() {
           </section>
 
           <PhotoGallery />
+          
+          {/* Section: Programme de la Formation */}
+          <section className="space-y-8 bg-card/80 p-6 md:p-8 rounded-xl border border-border/50">
+            <h2 className="text-center text-2xl md:text-3xl font-headline text-foreground">
+              Programme de la Formation
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {programItems.map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                        <div key={index} className="flex flex-col items-center text-center p-4 rounded-lg bg-background/50 transition-all duration-300 hover:bg-background hover:shadow-lg hover:shadow-primary/10">
+                            <div className="p-4 bg-primary/10 rounded-full mb-4 border border-primary/20">
+                                <Icon className="w-8 h-8 text-primary" />
+                            </div>
+                            <h3 className="font-headline text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                            <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                    );
+                })}
+            </div>
+          </section>
 
           {/* Section 2: Votre Expérience */}
           <section className="space-y-6">
