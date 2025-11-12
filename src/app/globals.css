@@ -138,40 +138,39 @@
   }
 
   .film-strip {
-    height: 60px;
+    height: 40px;
     background-color: #1a1a1a;
-    border: 2px solid #333;
+    border: 1px solid #333;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 4px 0;
+    padding: 3px 0;
     border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.5);
   }
 
   .film-strip-sprockets {
-    height: 8px;
+    height: 6px;
     background-image: repeating-linear-gradient(
       90deg,
       #1a1a1a,
-      #1a1a1a 8px,
-      transparent 8px,
-      transparent 12px
+      #1a1a1a 6px,
+      transparent 6px,
+      transparent 10px
     );
-    background-size: 20px 8px;
+    background-size: 16px 6px;
     animation: film-sprocket-scroll 2s linear infinite;
   }
   
   @keyframes film-sprocket-scroll {
     from { background-position-x: 0; }
-    to { background-position-x: -20px; }
+    to { background-position-x: -16px; }
   }
-
 
   .film-strip-track {
     flex-grow: 1;
     background-color: #333;
-    margin: 4px 10px;
+    margin: 2px 8px;
     border-radius: 2px;
     overflow: hidden;
   }

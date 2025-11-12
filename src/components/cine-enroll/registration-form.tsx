@@ -87,12 +87,10 @@ export default function RegistrationForm() {
       });
       if (isSection2Complete) completedSections++;
 
-      // Section 3: is always considered "complete" as it's informational
-      // For a better user experience, we can consider it complete after section 2 is done.
+      // Section 3: Modalités (considered complete after section 2)
       if (isSection2Complete) {
           completedSections++;
       }
-
 
       // Section 4: Engagement
       const section4Fields: (keyof RegistrationSchema)[] = ['attentes', 'engagement1', 'engagement2', 'engagement3', 'date_jour', 'signature'];
@@ -101,15 +99,7 @@ export default function RegistrationForm() {
         return fieldSchema.safeParse(data[field]).success;
       });
       if (isSection4Complete) completedSections++;
-
-      // Let's adjust logic: If section 1 and 2 are not complete, section 3 shouldn't count.
-      if (!isSection1Complete || !isSection2Complete) {
-          if (isSection2Complete == false && completedSections > 1) {
-             completedSections = 1;
-          }
-      }
-
-
+      
       setProgress((completedSections / totalSections) * 100);
     };
 
@@ -160,9 +150,6 @@ export default function RegistrationForm() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          
-        </div>
       </header>
       
       <Form {...form}>
@@ -271,7 +258,7 @@ export default function RegistrationForm() {
 
           {/* Section 4: Le Défi Final + Engagement */}
           <section className="space-y-8 pt-12">
-            <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
+            <h2 className="flex items-center gap-3 text-2xl font-headline textforeground">
               <Award className="text-primary" />
               Partie 4 : Le Défi Final
             </h2>
@@ -300,7 +287,7 @@ export default function RegistrationForm() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                 <FormField name="date_jour" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel>Date du jour</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Date du jour</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></div></FormItem>
                 )} />
                 <FormField name="signature" control={form.control} render={({ field }) => (
                   <FormItem><FormLabel>Signature (Nom complet)</FormLabel><FormControl><Input placeholder="Votre nom complet" {...field} /></FormControl><FormMessage /></FormItem>
