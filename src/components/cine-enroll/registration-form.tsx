@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Award, Clapperboard, Film, Video, User, PenSquare } from "lucide-react";
+import { Award, Clapperboard, Film, User, PenSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 
@@ -260,7 +260,7 @@ export default function RegistrationForm() {
       <footer className="text-center p-8 border-t border-border/50 text-sm text-muted-foreground space-y-2">
           <p>Formateur: Ali William</p>
           <p>Contact: <a href="mailto:cineworlddjibouti@outlook.fr" className="hover:text-primary">cineworlddjibouti@outlook.fr</a></p>
-          <p className="font-headline text-base text-foreground/80 mt-4 italic">"LE CINEMA C'EST #QUEDUBON3"</p>
+          <p className="font-headline text-base text-foreground/80 mt-4 italic">"LE CINEMA C'EST #QUEDUBON"</p>
       </footer>
     </>
   );
