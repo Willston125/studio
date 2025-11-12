@@ -20,35 +20,15 @@ import Autoplay from "embla-carousel-autoplay";
 
 const images = [
     {
-        src: "https://images.unsplash.com/photo-1578644463322-97814c457d3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmaWxtJTIwdHJhaW5pbmd8ZW58MHx8fHwxNzYyODY1MzM2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+        src: "/galerie/galerie1.jpg",
         alt: "Formation pratique caméra",
         hint: "camera training"
     },
     {
-        src: "https://images.unsplash.com/photo-1518049362265-d5b2a6467637?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmaWxtJTIwZWRpdGluZ3xlbnwwfHx8fDE3NjI4NjUzODZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        src: "/galerie/galerie2.jpg",
         alt: "Session de montage",
         hint: "film editing"
     },
-    {
-      "src": "https://images.unsplash.com/photo-1512390225428-a9d51c817f94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx2aW50YWdlJTIwY2FtZXJhfGVufDB8fHx8MTc2MjgzODc0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "alt": "A close-up shot of a vintage film camera.",
-      "hint": "vintage camera"
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1580746353679-aa5dee1ac3e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmaWxtJTIwc2V0fGVufDB8fHx8MTc2Mjg1Njc5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "alt": "A bustling film set with crew and equipment.",
-      "hint": "film set"
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1598620616655-7fce1a6fdf87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY3JlZW53cml0aW5nJTIwbm90ZWJvb2t8ZW58MHx8fHwxNzYyODY0MTI2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "alt": "A person writing a screenplay in a notebook.",
-      "hint": "screenwriting notebook"
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1542204165-65bf26472b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmlsbSUyMHJlZWx8ZW58MHx8fHwxNzYyODM4ODM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "alt": "A classic film reel on a white background.",
-      "hint": "film reel"
-    }
 ]
 
 export default function PhotoGallery() {
