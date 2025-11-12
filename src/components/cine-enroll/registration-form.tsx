@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Award, Clapperboard, Film, RadioTower, User, PenSquare, Video } from "lucide-react";
+import { Award, Clapperboard, Film, Video, User, PenSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 
@@ -119,7 +119,7 @@ export default function RegistrationForm() {
           {/* Section 1: Informations Personnelles */}
           <section className="space-y-6">
             <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <Clapperboard className="text-primary" />
+              <User className="text-primary" />
               Partie 1 : Informations Personnelles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -187,7 +187,7 @@ export default function RegistrationForm() {
           {/* Section 3: Modalités et Urgence */}
           <section className="space-y-6 bg-card p-6 rounded-lg border border-primary/50 shadow-lg">
              <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <Video className="text-primary" />
+              <Clapperboard className="text-primary" />
               Partie 3 : Modalités et Urgence
             </h2>
             <div className="text-center space-y-4">
@@ -202,10 +202,10 @@ export default function RegistrationForm() {
               <Award className="text-primary" />
               Partie 4 : Le Défi Final
             </h2>
-            <div className="text-center py-8">
-              <div className="font-headline text-4xl md:text-5xl font-extrabold text-primary-foreground flex flex-col items-center" style={{ textShadow: '0 0 5px hsl(var(--primary-foreground)), 0 0 15px hsl(var(--primary)), 0 0 25px hsl(var(--primary))' }}>
+            <div className="text-center py-8 prize-section rounded-lg">
+              <div className="font-headline text-5xl md:text-6xl font-black flex flex-col items-center prize-text">
                 <span>Le meilleur film gagne</span>
-                <span>200 000 FDJ !</span>
+                <span className="mt-2">200 000 FDJ !</span>
               </div>
             </div>
             <ExpectationsField />
