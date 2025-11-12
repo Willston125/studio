@@ -85,19 +85,30 @@ export default function RegistrationForm() {
 
   return (
     <>
-      <header className="text-center p-8 md:p-12 border-b border-border/50">
-        <div className="flex justify-center mb-4">
-            <Image src="/logo.png" alt="CineEnroll Logo" width={120} height={120} />
-        </div>
-        <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight">
-          FICHE D’INSCRIPTION
-        </h1>
-        <p className="font-headline text-2xl text-primary mt-2">
-          COURS DE CINÉMA
-        </p>
-        <div className="mt-4 text-sm text-muted-foreground space-y-1">
-          <p>Session: 1 mois - 2 fois / semaine - 4h</p>
-          <p>Écriture de scénario – Découpage technique – Réalisation – Montage</p>
+      <header className="relative text-center p-8 md:p-12 border-b border-border/50 overflow-hidden">
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <Image 
+          src="https://images.unsplash.com/photo-1574717024633-4522c3084a14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmaWxtJTIwcHJvamVjdG9yfGVufDB8fHx8MTc2Mjg0MDk4NHww&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Bannière cinéma"
+          layout="fill"
+          objectFit="cover"
+          className="blur-sm scale-110"
+          data-ai-hint="film projector"
+        />
+        <div className="relative z-20">
+          <div className="flex justify-center mb-4">
+              <Image src="/logo.png" alt="CineEnroll Logo" width={120} height={120} />
+          </div>
+          <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+            FICHE D’INSCRIPTION
+          </h1>
+          <p className="font-headline text-2xl text-primary mt-2" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+            COURS DE CINÉMA
+          </p>
+          <div className="mt-4 text-sm text-white/80 space-y-1">
+            <p>Session: 1 mois - 2 fois / semaine - 4h</p>
+            <p>Écriture de scénario – Découpage technique – Réalisation – Montage</p>
+          </div>
         </div>
       </header>
       
