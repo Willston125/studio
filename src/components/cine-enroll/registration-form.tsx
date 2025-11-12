@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Award, Clapperboard, Film, RadioTower, User, PenSquare } from "lucide-react";
+import { Award, Clapperboard, Film, RadioTower, User, PenSquare, Video } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 
@@ -119,7 +119,7 @@ export default function RegistrationForm() {
           {/* Section 1: Informations Personnelles */}
           <section className="space-y-6">
             <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <User className="text-primary" />
+              <Clapperboard className="text-primary" />
               Partie 1 : Informations Personnelles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -187,7 +187,7 @@ export default function RegistrationForm() {
           {/* Section 3: Modalités et Urgence */}
           <section className="space-y-6 bg-card p-6 rounded-lg border border-primary/50 shadow-lg">
              <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <RadioTower className="text-primary" />
+              <Video className="text-primary" />
               Partie 3 : Modalités et Urgence
             </h2>
             <div className="text-center space-y-4">
