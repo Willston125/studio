@@ -42,6 +42,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
+  h2 {
+    color: #e50914; /* rouge cinéma */
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+  }
+
   body::after {
     content: "";
     position: fixed;
