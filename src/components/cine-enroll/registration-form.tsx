@@ -29,6 +29,7 @@ import { Textarea } from "@/components/ui/textarea";
 import CountdownTimer from "./countdown-timer";
 import ExpectationsField from "./expectations-field";
 import PhotoGallery from "./photo-gallery";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 const equipmentOptions = [
   { id: "smartphone", label: "Smartphone" },
@@ -239,7 +240,7 @@ export default function RegistrationForm() {
             <Button 
               type="submit" 
               size="lg" 
-              className="w-full md:w-auto font-bold text-lg tracking-wider transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_20px_theme(colors.primary.DEFAULT)]"
+              className="w-full md:w-auto font-bold text-lg tracking-wider transition-all duration-300 transform hover:scale-105 bg-[linear-gradient(90deg,#b30000,#ff1a1a)] text-white shadow-[0_0_15px_rgba(255,0,0,0.4)] hover:shadow-[0_0_25px_rgba(255,0,0,0.7)]"
               disabled={isSubmitDisabled}
             >
               {isSubmitting ? 'Soumission en cours...' : 'Soumettre mon inscription'}
