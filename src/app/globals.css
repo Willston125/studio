@@ -183,6 +183,29 @@
     transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     border-radius: 2px;
   }
-}
 
-    
+  /* Countdown Timer Styles */
+  .countdown-unit svg {
+    transform: rotate(-90deg);
+  }
+  
+  .countdown-progress {
+    transition: stroke-dashoffset 0.3s linear;
+    text-shadow: 0 0 5px hsl(var(--primary) / 0.5);
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      text-shadow: 0 0 5px hsl(var(--primary) / 0.5);
+    }
+    50% {
+      transform: scale(1.05);
+      text-shadow: 0 0 15px hsl(var(--primary) / 0.8);
+    }
+  }
+
+  .pulse-second {
+    animation: pulse 1s infinite;
+  }
+}
