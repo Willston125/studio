@@ -128,7 +128,7 @@ export default function RegistrationForm() {
           {/* Section 1: Informations Personnelles */}
           <section className="space-y-6">
             <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <Film className="text-primary" />
+              <User className="text-primary" />
               Partie 1 : Informations Personnelles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -158,7 +158,7 @@ export default function RegistrationForm() {
           {/* Section 2: Votre Expérience */}
           <section className="space-y-6">
             <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <Video className="text-primary" />
+              <Film className="text-primary" />
               Partie 2 : Votre Expérience
             </h2>
             <FormField name="niveau" control={form.control} render={({ field }) => (
@@ -258,9 +258,9 @@ export default function RegistrationForm() {
         </form>
       </Form>
       <footer className="text-center p-8 border-t border-border/50 text-sm text-muted-foreground space-y-2">
-          <p>Formateur: Jean-Luc Cinéaste</p>
-          <p>Contact: <a href="mailto:impactali@gmail.com" className="hover:text-primary">impactali@gmail.com</a></p>
-          <p className="font-headline text-base text-foreground/80 mt-4 italic">"Là où les rêves prennent vie."</p>
+          <p>Formateur: Ali William</p>
+          <p>Contact: <a href="mailto:cineworlddjibouti@outlook.fr" className="hover:text-primary">cineworlddjibouti@outlook.fr</a></p>
+          <p className="font-headline text-base text-foreground/80 mt-4 italic">"LE CINEMA C'EST #QUEDUBON3"</p>
       </footer>
     </>
   );
