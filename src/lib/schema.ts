@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-const equipmentOptions = ["smartphone", "camera", "dslr", "professional"];
-
 export const registrationSchema = z.object({
   nom: z.string().min(1, { message: "Le nom est obligatoire." }),
   prenom: z.string().min(1, { message: "Le prénom est obligatoire." }),
@@ -14,7 +12,7 @@ export const registrationSchema = z.object({
     required_error: "Veuillez sélectionner votre niveau." 
   }),
   
-  materiel: z.array(z.string()).refine((value) => value.length > 0, {
+  materiel: z.array(z.string()).refine((value) => value.some(v => v), {
     message: "Vous devez sélectionner au moins un équipement.",
   }),
 
@@ -31,3 +29,5 @@ export const registrationSchema = z.object({
 });
 
 export type RegistrationSchema = z.infer<typeof registrationSchema>;
+
+    

@@ -9,7 +9,6 @@ import Image from "next/image";
 
 import type { RegistrationSchema } from "@/lib/schema";
 import { registrationSchema } from "@/lib/schema";
-import { submitRegistrationAction } from "@/app/actions";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -29,7 +28,7 @@ import { Textarea } from "@/components/ui/textarea";
 import CountdownTimer from "./countdown-timer";
 import ExpectationsField from "./expectations-field";
 import PhotoGallery from "./photo-gallery";
-import { DialogTitle } from "@radix-ui/react-dialog";
+import FilmStripProgressBar from "./film-strip-progress-bar";
 
 const equipmentOptions = [
   { id: "smartphone", label: "Smartphone" },
@@ -41,6 +40,7 @@ const equipmentOptions = [
 export default function RegistrationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [progress, setProgress] = React.useState(0);
 
   const form = useForm<RegistrationSchema>({
     resolver: zodResolver(registrationSchema),
@@ -60,7 +60,43 @@ export default function RegistrationForm() {
       date_jour: new Date().toLocaleDateString("fr-FR"),
       signature: "",
     },
+    mode: 'onChange' // Important pour la mise à jour en direct
   });
+  
+  const watchedFields = form.watch();
+
+  React.useEffect(() => {
+    const calculateProgress = () => {
+      const result = registrationSchema.safeParse(watchedFields);
+      let validFields = 0;
+      const totalFields = Object.keys(registrationSchema.shape).length;
+
+      if (result.success) {
+        validFields = totalFields;
+      } else {
+        const validatedFields = new Set();
+        // Vérifier les champs valides qui ne sont pas dans l'erreur
+        for (const key in watchedFields) {
+            if (Object.prototype.hasOwnProperty.call(watchedFields, key)) {
+                // @ts-ignore
+                const fieldSchema = registrationSchema.shape[key];
+                if (fieldSchema) {
+                    const parsed = fieldSchema.safeParse(watchedFields[key as keyof RegistrationSchema]);
+                    if (parsed.success) {
+                        validatedFields.add(key);
+                    }
+                }
+            }
+        }
+        validFields = validatedFields.size;
+      }
+
+      setProgress((validFields / totalFields) * 100);
+    };
+
+    calculateProgress();
+  }, [watchedFields]);
+
 
   const watchEngagements = form.watch(["engagement1", "engagement2", "engagement3"]);
   const isSubmitDisabled = !watchEngagements.every(Boolean) || isSubmitting;
@@ -113,7 +149,8 @@ export default function RegistrationForm() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
             <div className="text-center relative">
-                <div className="flex justify-center gap-4 mb-4">
+                <FilmStripProgressBar progress={progress} />
+                <div className="flex justify-center gap-4 mb-4 mt-8">
                     <div className="bg-yellow-500/10 border border-yellow-400 text-yellow-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.3)]">
                         Premium
                     </div>
@@ -187,7 +224,7 @@ export default function RegistrationForm() {
                     <FormField key={item.id} control={form.control} name="materiel" render={({ field }) => (
                       <FormItem key={item.id} className="flex flex-row items-start space-x-3 space-y-0">
                         <FormControl><Checkbox checked={field.value?.includes(item.id)} onCheckedChange={(checked) => {
-                          return checked ? field.onChange([...field.value, item.id]) : field.onChange(field.value?.filter((value) => value !== item.id));
+                          return checked ? field.onChange([...(field.value || []), item.id]) : field.onChange(field.value?.filter((value) => value !== item.id));
                         }} /></FormControl>
                         <FormLabel className="font-normal">{item.label}</FormLabel>
                       </FormItem>
@@ -273,3 +310,5 @@ export default function RegistrationForm() {
     </>
   );
 }
+
+    
