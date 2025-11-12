@@ -106,12 +106,7 @@ export default function RegistrationForm() {
           allowFullScreen
         ></iframe>
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <h1 
-            className="text-white font-headline text-5xl md:text-7xl lg:text-8xl font-bold" 
-            style={{ textShadow: '0 4px 15px rgba(0,0,0,0.8)' }}
-          >
-            MBAYE TRAMBWÉ
-          </h1>
+          
         </div>
       </header>
       
@@ -270,5 +265,3 @@ export default function RegistrationForm() {
     </>
   );
 }
-
-    
