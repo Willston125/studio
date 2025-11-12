@@ -14,6 +14,7 @@ import {
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Autoplay from "embla-carousel-autoplay";
@@ -53,6 +54,7 @@ export default function PhotoGallery() {
                     </div>
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl p-2 bg-transparent border-none shadow-none">
+                    <DialogTitle className="sr-only">{img.description}</DialogTitle>
                      <Image
                         src={img.imageUrl}
                         alt={img.description}
