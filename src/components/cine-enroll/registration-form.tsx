@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Award, Clapperboard, Film, User, PenSquare } from "lucide-react";
+import { Award, Film, RadioTower, User, PenSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
 
@@ -95,35 +95,40 @@ export default function RegistrationForm() {
 
   return (
     <>
-      <header className="relative text-center p-8 md:p-12 border-b border-border/50 overflow-hidden">
-        <div className="absolute inset-0 bg-black/50 z-10" />
-        <Image 
-          src="/galerie1.png"
-          alt="Bannière cinéma"
-          fill={true}
-          style={{objectFit: 'cover'}}
-          className="blur-sm scale-110"
-          data-ai-hint="film set"
-        />
-        <div className="relative z-20">
-          <div className="flex justify-center mb-4">
-              <Image src="/logo_cineworld.png"alt="CineEnroll Logo" width={120} height={120} />
-          </div>
-          <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-            FICHE D’INSCRIPTION
+      <header className="relative w-full overflow-hidden h-[56.25vw] max-h-[70vh] border-b border-border/50">
+        <iframe
+          className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2"
+          style={{ minWidth: '177.78vh', minHeight: '100vw' }}
+          src="https://www.youtube.com/embed/1bep0NEFvZ0?autoplay=1&mute=1&loop=1&playlist=1bep0NEFvZ0&controls=0&showinfo=0&modestbranding=1&rel=0"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+          <h1 
+            className="text-white font-headline text-5xl md:text-7xl lg:text-8xl font-bold" 
+            style={{ textShadow: '0 4px 15px rgba(0,0,0,0.8)' }}
+          >
+            MBAYE TRAMBWÉ
           </h1>
-          <p className="font-headline text-2xl text-primary mt-2" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
-            COURS DE CINÉMA
-          </p>
-          <div className="mt-4 text-sm text-white/80 space-y-1">
-            <p>Session: 1 mois - 2 fois / semaine - 4h</p>
-            <p>Écriture de scénario – Découpage technique – Réalisation – Montage</p>
-          </div>
         </div>
       </header>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
+            <div className="text-center">
+                <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                    FICHE D’INSCRIPTION
+                </h1>
+                <p className="font-headline text-2xl text-primary mt-2" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+                    COURS DE CINÉMA
+                </p>
+                <div className="mt-4 text-sm text-white/80 space-y-1">
+                    <p>Session: 1 mois - 2 fois / semaine - 4h</p>
+                    <p>Écriture de scénario – Découpage technique – Réalisation – Montage</p>
+                </div>
+            </div>
 
           {/* Section 1: Informations Personnelles */}
           <section className="space-y-6">
@@ -196,7 +201,7 @@ export default function RegistrationForm() {
           {/* Section 3: Modalités et Urgence */}
           <section className="space-y-6 bg-card p-6 rounded-lg border border-primary/50 shadow-lg">
              <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
-              <Clapperboard className="text-primary" />
+              <RadioTower className="text-primary" />
               Partie 3 : Modalités et Urgence
             </h2>
             <div className="text-center space-y-4">
@@ -265,3 +270,5 @@ export default function RegistrationForm() {
     </>
   );
 }
+
+    
