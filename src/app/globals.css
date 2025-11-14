@@ -148,4 +148,28 @@
     animation: fadeInUp 0.6s ease-out;
     animation-fill-mode: both;
   }
+
+  /* Effet machine à écrire */
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blinkCursor {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #D4AF37; }
+  }
+
+  .typewriter-text {
+    overflow: hidden;
+    border-right: 2px solid #D4AF37;
+    white-space: nowrap;
+    animation: 
+      typewriter 3s steps(40) 1s both,
+      blinkCursor 0.8s steps(40) infinite;
+  }
 }
