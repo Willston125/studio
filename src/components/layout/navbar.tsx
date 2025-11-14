@@ -3,6 +3,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, Clapperboard, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -34,11 +35,17 @@ export default function Navbar() {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Left: Logo/Brand */}
-          <Link href="/" className="flex items-center gap-2 text-xl font-bold text-white">
-            <Clapperboard className="text-primary h-7 w-7" />
-            <span className="font-headline tracking-wider uppercase">CINEWORLD</span>
+          <Link href="/" className="flex items-center gap-2">
+            <Image 
+              src="/logo_cineworld.png"
+              alt="Cineworld Logo"
+              width={180}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Center: Navigation Links (Desktop) */}
