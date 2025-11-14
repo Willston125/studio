@@ -4,6 +4,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import ProgramSection from "./program-section";
 
 interface HeroSectionProps {
   onScrollToForm: () => void;
@@ -11,7 +12,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onScrollToForm }: HeroSectionProps) {
   return (
-    <section className="relative h-[90vh] md:h-screen w-full flex flex-col justify-center text-white">
+    <section className="relative h-screen w-full flex items-center text-white overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -23,13 +24,13 @@ export default function HeroSection({ onScrollToForm }: HeroSectionProps) {
           priority
         />
         {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent opacity-80" />
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4 max-w-4xl">
-        <div className="flex flex-col items-start space-y-4 md:space-y-6">
+      <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
+        <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg">
           
           <div className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm shadow-[0_0_15px_hsl(var(--primary)_/_0.4)]">
             Masterclass Exclusive
@@ -70,6 +71,11 @@ export default function HeroSection({ onScrollToForm }: HeroSectionProps) {
             Commencer l'aventure
           </Button>
         </div>
+      </div>
+      
+      {/* Program Section Overlay */}
+      <div className="absolute bottom-0 right-0 z-20 w-full lg:w-3/5 p-4">
+        <ProgramSection />
       </div>
     </section>
   );

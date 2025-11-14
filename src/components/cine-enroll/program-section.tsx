@@ -41,12 +41,12 @@ const programItems = [
 
 export default function ProgramSection() {
   return (
-    <section className="container mx-auto px-4 py-12 md:py-20">
-      <h2 className="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-8 text-white text-center">Un Programme Complet</h2>
+    <section className="container mx-auto px-4 py-6 md:py-8 rounded-xl bg-black/20 backdrop-blur-sm">
+      <h2 className="text-xl md:text-2xl font-headline font-bold tracking-tight mb-4 text-white">Un Programme Complet</h2>
       <Carousel
         opts={{
           align: "start",
-          loop: true,
+          loop: false,
         }}
         className="w-full"
       >
@@ -54,7 +54,7 @@ export default function ProgramSection() {
           {programItems.map((item, index) => (
             <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
               <div className="p-1">
-                <Card className="overflow-hidden border-2 border-neutral-800 hover:border-primary transition-all duration-300 group bg-neutral-900/50 backdrop-blur-sm rounded-lg hover:shadow-primary/20 hover:shadow-lg">
+                <Card className="overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 group bg-neutral-900/50 rounded-lg">
                   <CardContent className="relative aspect-[2/3] p-0">
                     <Image
                       src={item.imageSrc}
@@ -63,9 +63,9 @@ export default function ProgramSection() {
                       data-ai-hint={item.imageHint}
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-3 w-full">
-                      <h3 className="text-md font-bold text-white leading-tight truncate">{item.title}</h3>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-2 w-full">
+                      <h3 className="text-sm font-bold text-white leading-tight truncate">{item.title}</h3>
                     </div>
                   </CardContent>
                 </Card>
@@ -73,8 +73,6 @@ export default function ProgramSection() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden sm:flex" />
-        <CarouselNext className="hidden sm:flex" />
       </Carousel>
     </section>
   );
