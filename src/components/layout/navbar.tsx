@@ -38,14 +38,14 @@ export default function Navbar() {
           {/* Left: Logo/Brand */}
           <Link href="/" className="flex items-center gap-2 text-xl font-bold text-white">
             <Clapperboard className="text-primary h-7 w-7" />
-            <span className="font-headline tracking-wider">CINEWORLD</span>
+            <span className="font-headline tracking-wider uppercase">CINEWORLD</span>
           </Link>
 
           {/* Center: Navigation Links (Desktop) */}
           <nav className="hidden md:flex items-center gap-2 rounded-full bg-black/30 p-1 border border-white/10">
             {navLinks.map((link, index) => (
               <Link key={`${link.label}-${index}`} href={link.href} className={cn(
-                "text-sm font-medium text-neutral-300 hover:text-white transition-colors px-4 py-1.5 rounded-full",
+                "text-sm font-medium text-neutral-300 hover:text-white transition-colors px-4 py-1.5 rounded-full font-body",
                 index === 0 ? "bg-neutral-700/80 text-white" : ""
               )}>
                 {link.label}
@@ -59,7 +59,7 @@ export default function Navbar() {
               <Search className="h-5 w-5" />
               <span className="sr-only">Rechercher</span>
             </Button>
-            <Button asChild className="bg-white text-black hover:bg-white/90 rounded-md text-sm font-semibold">
+            <Button asChild className="bg-white text-black hover:bg-white/90 rounded-md text-sm font-semibold font-body">
               <Link href="/inscription">S'inscrire</Link>
             </Button>
           </div>
@@ -79,7 +79,7 @@ export default function Navbar() {
         <div className="md:hidden bg-black/90 backdrop-blur-xl absolute top-16 left-0 w-full">
           <nav className="flex flex-col items-center gap-4 p-8">
             {navLinks.map((link, index) => (
-              <Link key={`${link.label}-${index}-mobile`} href={link.href} className="text-lg font-medium text-neutral-200 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <Link key={`${link.label}-${index}-mobile`} href={link.href} className="text-lg font-medium text-neutral-200 hover:text-white transition-colors font-body" onClick={() => setIsMenuOpen(false)}>
                 {link.label}
               </Link>
             ))}
@@ -88,7 +88,7 @@ export default function Navbar() {
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Rechercher</span>
               </Button>
-              <Button asChild className="bg-white text-black hover:bg-white/90 rounded-md text-sm font-semibold">
+              <Button asChild className="bg-white text-black hover:bg-white/90 rounded-md text-sm font-semibold font-body">
                 <Link href="/inscription">S'inscrire</Link>
               </Button>
             </div>

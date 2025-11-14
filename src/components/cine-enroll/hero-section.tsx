@@ -33,15 +33,15 @@ export default function HeroSection() {
             ACADÉMIE DE CINÉMA
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-headline font-black tracking-tight text-white leading-tight" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+          <h1 className="text-7xl font-headline font-black tracking-wide text-white leading-tight" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
             Devenez Réalisateur
           </h1>
 
-          <p className="text-lg md:text-xl text-neutral-200 max-w-2xl">
+          <p className="text-lg md:text-xl text-neutral-200 max-w-2xl font-body">
             Apprenez à écrire, tourner et monter votre propre court-métrage à Djibouti. Une formation intensive pour transformer votre passion en compétence.
           </p>
 
-          <div className="flex items-center gap-4 text-sm text-neutral-300">
+          <div className="flex items-center gap-4 text-sm text-neutral-300 font-body">
             <span>Action</span>
             <span className="h-1 w-1 bg-neutral-500 rounded-full" />
             <span>Drame</span>
@@ -57,13 +57,13 @@ export default function HeroSection() {
                 <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                 <Star className="w-5 h-5 text-yellow-400/80 fill-yellow-400/80" />
             </div>
-            <span className="font-semibold text-lg">4.8 (12 Avis)</span>
+            <span className="font-semibold text-lg font-body">4.8 (12 Avis)</span>
           </div>
 
           <Button 
             asChild
             size="lg"
-            className="mt-4 bg-primary text-primary-foreground h-14 px-8 text-lg font-bold rounded-md hover:bg-primary/90 transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30"
+            className="mt-4 bg-primary text-primary-foreground h-14 px-8 text-lg font-bold rounded-md hover:bg-primary/90 transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30 font-body"
           >
             <Link href="/inscription">Découvrir nos formations</Link>
           </Button>
