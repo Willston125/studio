@@ -226,7 +226,7 @@ export default function RegistrationForm() {
                     LE GRAND PRIX :<br/>200 000 FDJ !
                 </h3>
                 <p className="font-body text-gray-300">
-                    ET AUSSI : Un Ordinateur Portable (2e Prix) & Un Téléphone Portable (3e Prix)
+                    ET AUSSI : Un Ordinateur Portable (2e Prix) &amp; Un Téléphone Portable (3e Prix)
                 </p>
             </div>
 
@@ -237,7 +237,7 @@ export default function RegistrationForm() {
 
            {/* Section 4: Tarifs et Engagement */}
             <div className="space-y-8 rounded-2xl bg-black/20 p-6">
-                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Tarif & Engagement</h2>
+                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Tarif &amp; Engagement</h2>
                 <div className="text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
                     <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
                     <div className="flex items-baseline gap-3 my-1">
