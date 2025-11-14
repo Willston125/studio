@@ -3,7 +3,6 @@ import { z } from 'zod';
 export const registrationSchema = z.object({
   nom: z.string().min(1, { message: "Le nom est obligatoire." }),
   prenom: z.string().min(1, { message: "Le prénom est obligatoire." }),
-  date_naissance: z.string().min(1, { message: "La date de naissance est obligatoire." }),
   email: z.string().email({ message: "L'adresse e-mail n'est pas valide." }),
   telephone: z.string().min(1, { message: "Le numéro de téléphone est obligatoire." }),
   profession: z.string().min(1, { message: "La profession est obligatoire." }),
@@ -25,9 +24,6 @@ export const registrationSchema = z.object({
   engagement3: z.literal(true, { errorMap: () => ({ message: "Vous devez accepter cet engagement." }) }),
   
   date_jour: z.string().min(1, { message: "La date est obligatoire." }),
-  signature: z.string().min(1, { message: "La signature est obligatoire." }),
 });
 
 export type RegistrationSchema = z.infer<typeof registrationSchema>;
-
-    

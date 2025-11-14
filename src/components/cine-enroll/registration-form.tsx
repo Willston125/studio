@@ -4,6 +4,7 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
+import Image from 'next/image';
 
 import type { RegistrationSchema } from "@/lib/schema";
 import { registrationSchema } from "@/lib/schema";
@@ -20,7 +21,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Textarea } from "@/components/ui/textarea";
+import { Smartphone, Camera, Video, Computer } from 'lucide-react';
+import ExpectationsField from "./expectations-field";
+import { Separator } from "@/components/ui/separator";
+
+const materialOptions = [
+    { id: 'smartphone', label: 'Smartphone', icon: Smartphone },
+    { id: 'dslr', label: 'Appareil Photo (DSLR/Mirrorless)', icon: Camera },
+    { id: 'camera', label: 'Caméra Vidéo', icon: Video },
+    { id: 'ordinateur', label: 'Ordinateur pour montage', icon: Computer },
+];
 
 export default function RegistrationForm() {
   const { toast } = useToast();
@@ -31,7 +41,6 @@ export default function RegistrationForm() {
     defaultValues: {
       nom: "",
       prenom: "",
-      date_naissance: "",
       email: "",
       telephone: "",
       profession: "",
@@ -42,7 +51,6 @@ export default function RegistrationForm() {
       engagement2: false,
       engagement3: false,
       date_jour: new Date().toLocaleDateString("fr-FR", { year: 'numeric', month: '2-digit', day: '2-digit' }),
-      signature: "",
     },
     mode: 'onChange'
   });
@@ -64,7 +72,7 @@ export default function RegistrationForm() {
       ].join('\n');
 
       const message = intro + details;
-      const whatsappUrl = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/253775556344?text=${encodeURIComponent(message)}`;
       
       window.open(whatsappUrl, '_blank');
       
@@ -87,74 +95,178 @@ export default function RegistrationForm() {
   }
 
   return (
-    <div className="bg-white text-gray-900 rounded-3xl shadow-2xl p-8 md:p-12">
-      <header className="text-center mb-10">
-        <h1 className="font-headline text-5xl md:text-6xl font-bold tracking-tight">
-            Bienvenue !
-        </h1>
-        <p className="font-body text-lg text-gray-600 mt-2">
-            Créez votre compte pour rejoindre l'Académie.
-        </p>
-      </header>
-      
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            
-          <div className="grid grid-cols-1 gap-6">
-            <FormField name="nom" control={form.control} render={({ field }) => (
-              <FormItem><FormLabel>Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
-            )} />
-            <FormField name="prenom" control={form.control} render={({ field }) => (
-              <FormItem><FormLabel>Prénom</FormLabel><FormControl><Input placeholder="Arnaud" {...field} /></FormControl><FormMessage /></FormItem>
-            )} />
-             <FormField name="email" control={form.control} render={({ field }) => (
-              <FormItem><FormLabel>Adresse mail</FormLabel><FormControl><Input placeholder="votre@email.com" type="email" {...field} /></FormControl><FormMessage /></FormItem>
-            )} />
-             <FormField name="telephone" control={form.control} render={({ field }) => (
-              <FormItem><FormLabel>Téléphone</FormLabel><FormControl><Input placeholder="+253 XX XX XX XX" type="tel" {...field} /></FormControl><FormMessage /></FormItem>
-            )} />
-          </div>
-
-          <FormField name="niveau" control={form.control} render={({ field }) => (
-              <FormItem className="space-y-3 pt-4">
-                <FormLabel>Votre niveau en réalisation</FormLabel>
-                <FormControl>
-                  <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col sm:flex-row gap-4 pt-2">
-                    <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="debutant" /></FormControl><FormLabel className="font-normal text-gray-700">Débutant(e)</FormLabel></FormItem>
-                    <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="intermediaire" /></FormControl><FormLabel className="font-normal text-gray-700">Intermédiaire</FormLabel></FormItem>
-                    <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="avance" /></FormControl><FormLabel className="font-normal text-gray-700">Avancé(e)</FormLabel></FormItem>
-                  </RadioGroup>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-
-          <div className="space-y-4 pt-4">
-            <h3 className="text-sm font-medium text-gray-800">Engagement</h3>
-            <FormField name="engagement1" control={form.control} render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je confirme avoir lu et accepté les conditions de participation.</FormLabel><FormMessage /></div></FormItem>
-            )} />
-            <FormField name="engagement2" control={form.control} render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je m'engage à être présent(e) à toutes les sessions du cours.</FormLabel><FormMessage /></div></FormItem>
-            )} />
-             <FormField name="engagement3" control={form.control} render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je comprends que le paiement est non-remboursable.</FormLabel><FormMessage /></div></FormItem>
-              )} />
-          </div>
-
-          <div className="flex flex-col items-center pt-6 space-y-4">
-            <Button 
-              type="submit" 
-              size="lg" 
-              className="w-full font-bold text-lg rounded-full bg-primary text-primary-foreground h-14"
-              disabled={isSubmitDisabled}
-            >
-              {isSubmitting ? 'Redirection...' : "S'inscrire via WhatsApp"}
-            </Button>
-            <p className="text-sm text-gray-500">
-                Vous avez déjà un compte ? <a href="#" className="font-semibold text-primary hover:underline">Connectez-vous !</a>
+    <div className="bg-white/90 backdrop-blur-sm text-gray-900 rounded-3xl shadow-2xl overflow-hidden">
+        <header className="text-center p-8 md:p-12 border-b border-gray-200">
+            <Image 
+                src="/logo_cineworld.png"
+                alt="Cineworld Académie Logo"
+                width={300}
+                height={70}
+                className="mx-auto mb-4"
+            />
+            <h1 className="font-headline text-5xl md:text-6xl font-bold tracking-tight text-gray-900">
+                Bienvenue !
+            </h1>
+            <p className="font-body text-lg text-gray-600 mt-2">
+                Rejoignez l'Académie Cineworld et donnez vie à vos projets cinématographiques.
             </p>
+        </header>
+
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-8 md:p-12">
+            
+          {/* Section 1: Informations Personnelles */}
+          <div className="space-y-6">
+              <h2 className="text-2xl font-bold text-gray-900 font-headline tracking-wider">VOS INFORMATIONS</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField name="nom" control={form.control} render={({ field }) => (
+                  <FormItem><FormLabel className="text-gray-800">Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                  <FormField name="prenom" control={form.control} render={({ field }) => (
+                  <FormItem><FormLabel className="text-gray-800">Prénom</FormLabel><FormControl><Input placeholder="Arnaud" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                  <FormField name="email" control={form.control} render={({ field }) => (
+                  <FormItem><FormLabel className="text-gray-800">Adresse mail</FormLabel><FormControl><Input placeholder="votre@email.com" type="email" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                  <FormField name="telephone" control={form.control} render={({ field }) => (
+                  <FormItem><FormLabel className="text-gray-800">Téléphone</FormLabel><FormControl><Input placeholder="+253 XX XX XX XX" type="tel" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                   <FormField name="profession" control={form.control} render={({ field }) => (
+                  <FormItem className="md:col-span-2"><FormLabel className="text-gray-800">Profession / Occupation</FormLabel><FormControl><Input placeholder="Ex: Étudiant, Photographe, ..." {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+              </div>
           </div>
+          
+          <Separator className="bg-gray-200" />
+          
+          {/* Section 2: Expérience */}
+          <div className="space-y-6">
+              <h2 className="text-2xl font-bold text-gray-900 font-headline tracking-wider">VOTRE EXPÉRIENCE</h2>
+              <FormField name="niveau" control={form.control} render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-gray-800">Votre niveau en réalisation</FormLabel>
+                    <FormControl>
+                      <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col sm:flex-row gap-4 pt-2">
+                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="debutant" /></FormControl><FormLabel className="font-normal text-gray-700">Débutant(e)</FormLabel></FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="intermediaire" /></FormControl><FormLabel className="font-normal text-gray-700">Intermédiaire</FormLabel></FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="avance" /></FormControl><FormLabel className="font-normal text-gray-700">Avancé(e)</FormLabel></FormItem>
+                      </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+
+              <FormField
+                control={form.control}
+                name="materiel"
+                render={() => (
+                    <FormItem>
+                        <div className="mb-4">
+                            <FormLabel className="text-gray-800">Matériel que vous possédez</FormLabel>
+                            <FormMessage />
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {materialOptions.map((item) => (
+                            <FormField
+                            key={item.id}
+                            control={form.control}
+                            name="materiel"
+                            render={({ field }) => {
+                                const Icon = item.icon;
+                                return (
+                                <FormItem
+                                    key={item.id}
+                                    className="border border-gray-200 rounded-full p-3 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 has-[:checked]:bg-primary/10 has-[:checked]:border-primary"
+                                >
+                                    <FormControl>
+                                    <Checkbox
+                                        className="sr-only"
+                                        checked={field.value?.includes(item.id)}
+                                        onCheckedChange={(checked) => {
+                                        return checked
+                                            ? field.onChange([...(field.value || []), item.id])
+                                            : field.onChange(
+                                                field.value?.filter(
+                                                (value) => value !== item.id
+                                                )
+                                            )
+                                        }}
+                                    />
+                                    </FormControl>
+                                    <Icon className="w-8 h-8 text-primary" />
+                                    <FormLabel className="font-normal text-center text-xs text-gray-700 cursor-pointer">
+                                        {item.label}
+                                    </FormLabel>
+                                </FormItem>
+                                )
+                            }}
+                            />
+                        ))}
+                        </div>
+                    </FormItem>
+                )}
+                />
+          </div>
+
+          <Separator className="bg-gray-200" />
+
+           {/* Section 3: Attentes */}
+           <div className="space-y-6">
+                <h2 className="text-2xl font-bold text-gray-900 font-headline tracking-wider">VOS ATTENTES</h2>
+                <ExpectationsField />
+           </div>
+
+           <Separator className="bg-gray-200" />
+           
+           {/* Section 4: Tarifs et Engagement */}
+            <div className="space-y-6 rounded-2xl bg-primary/5 p-6">
+                <h2 className="text-2xl font-bold text-gray-900 font-headline tracking-wider">TARIF & ENGAGEMENT</h2>
+                <div className="text-center bg-white rounded-2xl p-6">
+                    <p className="text-sm font-medium text-gray-500">Tarif Session 2025</p>
+                    <p className="text-2xl font-bold text-gray-400 line-through">40 000 FDJ</p>
+                    <p className="text-5xl font-extrabold text-primary">30 000 FDJ</p>
+                </div>
+                <div className="space-y-4 pt-4">
+                    <FormField name="engagement1" control={form.control} render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je confirme avoir lu et accepté les conditions de participation.</FormLabel><FormMessage /></div></FormItem>
+                    )} />
+                    <FormField name="engagement2" control={form.control} render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je m'engage à être présent(e) à toutes les sessions du cours.</FormLabel><FormMessage /></div></FormItem>
+                    )} />
+                    <FormField name="engagement3" control={form.control} render={({ field }) => (
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je comprends que le paiement est non-remboursable.</FormLabel><FormMessage /></div></FormItem>
+                    )} />
+                </div>
+            </div>
+
+            <Separator className="bg-gray-200" />
+            
+            {/* Section 5: Soumission */}
+            <div className="space-y-4">
+                 <FormField name="date_jour" control={form.control} render={({ field }) => (
+                    <FormItem className="flex items-center gap-4">
+                        <FormLabel className="text-gray-800 whitespace-nowrap">Fait à Djibouti, le :</FormLabel>
+                        <FormControl>
+                            <Input {...field} readOnly className="font-bold text-center bg-gray-100" />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )} />
+
+                <div className="flex flex-col items-center pt-6 space-y-4">
+                    <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full font-bold text-lg rounded-full bg-primary text-primary-foreground h-14"
+                    disabled={isSubmitDisabled}
+                    >
+                    {isSubmitting ? 'Redirection...' : "S'inscrire via WhatsApp"}
+                    </Button>
+                    <p className="text-sm text-gray-500">
+                        Vous avez déjà un compte ? <a href="#" className="font-semibold text-primary hover:underline">Connectez-vous !</a>
+                    </p>
+                </div>
+            </div>
         </form>
       </Form>
     </div>

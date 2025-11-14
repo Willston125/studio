@@ -51,7 +51,7 @@ export default function ExpectationsField() {
         name="attentes"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="text-lg">
+            <FormLabel className="text-gray-800">
               Quelles sont vos attentes pour ce cours ?
             </FormLabel>
             <FormControl>
@@ -61,15 +61,15 @@ export default function ExpectationsField() {
                 {...field}
               />
             </FormControl>
-            <FormDescription>
-              Soyez aussi précis que possible, cela nous aidera à personnaliser votre expérience. (3 lignes min.)
+            <FormDescription className="text-gray-500">
+              Soyez aussi précis que possible, cela nous aidera à personnaliser votre expérience. (50 caractères min.)
             </FormDescription>
             <FormMessage />
           </FormItem>
         )}
       />
       <div className="flex flex-col items-start gap-4">
-        <Button type="button" variant="outline" size="sm" onClick={handleGenerateTip} disabled={isLoading}>
+        <Button type="button" variant="outline" size="sm" onClick={handleGenerateTip} disabled={isLoading} className="bg-white/50 text-black">
             {isLoading ? (
                 <>
                     <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
@@ -78,7 +78,7 @@ export default function ExpectationsField() {
             ) : (
                 <>
                     <Lightbulb className="mr-2 h-4 w-4" />
-                    Besoin d'inspiration ? Obtenez un conseil de l'IA
+                    Besoin d'inspiration ?
                 </>
             )}
         </Button>
@@ -87,10 +87,10 @@ export default function ExpectationsField() {
           {isLoading && <p className="text-sm text-muted-foreground flex items-center"><LoaderCircle className="mr-2 h-4 w-4 animate-spin" /> Un instant...</p>}
           {error && <Alert variant="destructive"><AlertDescription>{error}</AlertDescription></Alert>}
           {tip && (
-            <Alert className="border-primary/30">
+            <Alert className="border-primary/30 bg-primary/10">
               <Lightbulb className="h-4 w-4 text-primary" />
               <AlertTitle className="font-bold text-primary">Conseil de l'IA</AlertTitle>
-              <AlertDescription>{tip}</AlertDescription>
+              <AlertDescription className="text-gray-800">{tip}</AlertDescription>
             </Alert>
           )}
         </div>
