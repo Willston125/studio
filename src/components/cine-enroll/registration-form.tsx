@@ -35,12 +35,6 @@ const materialOptions = [
     { id: 'ordinateur', label: 'Ordinateur pour montage', icon: Computer },
 ];
 
-const prizeItems = [
-    { icon: Award, text: '1er Prix : 200 000 FDJ' },
-    { icon: Laptop, text: '2ème Prix : Ordinateur Portable' },
-    { icon: Smartphone, text: '3ème Prix : Téléphone Portable' },
-];
-
 export default function RegistrationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -235,18 +229,10 @@ export default function RegistrationForm() {
 
             {/* Golden Ticket Section */}
             <div className="space-y-6 rounded-2xl border-2 border-amber-500/50 bg-amber-500/5 p-8 text-center shadow-lg shadow-amber-500/10">
-                <h3 className="font-headline text-3xl uppercase tracking-wider text-amber-500">Tentez de Gagner l'un de nos 3 Prix !</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 font-body text-gray-300">
-                    {prizeItems.map((prize, index) => {
-                        const Icon = prize.icon;
-                        return (
-                            <div key={index} className="flex flex-col items-center gap-2">
-                                <Icon className="w-10 h-10 text-amber-500" />
-                                <span className="font-semibold">{prize.text}</span>
-                            </div>
-                        );
-                    })}
-                </div>
+                <h3 className="font-headline text-7xl uppercase tracking-wider text-amber-500">LE GRAND PRIX : 200 000 FDJ !</h3>
+                <p className="font-body text-gray-300">
+                    ET AUSSI : Un Ordinateur Portable (2e Prix) & Un Téléphone Portable (3e Prix)
+                </p>
             </div>
            
            <div className="space-y-6 rounded-2xl bg-black/20 p-6 text-center">
@@ -258,11 +244,11 @@ export default function RegistrationForm() {
            {/* Section 4: Tarifs et Engagement */}
             <div className="space-y-8 rounded-2xl bg-black/20 p-6">
                 <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">TARIF & ENGAGEMENT</h2>
-                <div className="text-center bg-black/30 rounded-lg p-8 flex flex-col items-center">
-                    <p className="text-lg font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
-                    <div className="flex items-center gap-4 my-2">
-                        <p className="font-headline text-7xl font-extrabold text-amber-500">30 000 FDJ</p>
-                        <div className="bg-amber-500 text-black font-bold text-sm px-3 py-1 rounded-full whitespace-nowrap">
+                <div className="text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
+                    <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
+                    <div className="flex items-baseline gap-3 my-1">
+                        <p className="font-headline text-5xl font-extrabold text-amber-500">30 000 FDJ</p>
+                        <div className="bg-amber-500 text-black font-bold text-xs px-2 py-0.5 rounded-full whitespace-nowrap">
                             VOUS ÉCONOMISEZ 10 000 FDJ !
                         </div>
                     </div>
@@ -313,3 +299,5 @@ export default function RegistrationForm() {
     </div>
   );
 }
+
+    
