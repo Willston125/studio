@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -74,14 +75,14 @@ export default function PhotoGallery() {
               <div className="p-1">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <div className="aspect-video w-full rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
+                    <div className="group aspect-video w-full rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
                       <Image
                         src={img.src}
                         alt={img.alt}
                         width={800}
                         height={600}
                         data-ai-hint={img.imageHint}
-                        className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
+                        className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:shadow-[0_10px_40px_rgba(229,9,20,0.5)]"
                       />
                     </div>
                   </DialogTrigger>
@@ -107,5 +108,3 @@ export default function PhotoGallery() {
     </section>
   );
 }
-
-    
