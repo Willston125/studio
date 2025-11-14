@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ["'Poppins'", 'sans-serif'],
-        headline: ["'Cinzel'", 'serif'],
+        body: ["'Montserrat'", 'sans-serif'],
+        headline: ["'Bebas Neue'", 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
