@@ -11,8 +11,8 @@ import { cn } from '@/lib/utils';
 const navLinks = [
   { href: '/', label: 'Accueil' },
   { href: '#', label: 'Formations' },
-  { href: '#', label: 'Nos Films' },
-  { href: '#', label: 'Contact' },
+  { href: '#', 'label': 'Nos Films' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -53,7 +53,7 @@ export default function Navbar() {
             {navLinks.map((link, index) => (
               <Link key={`${link.label}-${index}`} href={link.href} className={cn(
                 "text-sm font-medium text-neutral-300 hover:text-white transition-colors px-4 py-1.5 rounded-full font-body",
-                index === 0 ? "bg-neutral-700/80 text-white" : ""
+                link.href === '/' ? "bg-neutral-700/80 text-white" : ""
               )}>
                 {link.label}
               </Link>
