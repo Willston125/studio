@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -103,7 +104,7 @@ export default function RegistrationForm() {
       <header className="text-center p-8 md:p-12 border-b border-white/20">
         <h1 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma Djibouti</h1>
         <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
-            Rejoignez notre formation exclusive et devenez réalisateur.
+            Rejoignez notre formation exclusive
         </p>
       </header>
 
