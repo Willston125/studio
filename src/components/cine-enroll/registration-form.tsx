@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -21,7 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Smartphone, Camera, Video, Computer } from 'lucide-react';
+import { Smartphone, Camera, Video, Computer, Award, Laptop } from 'lucide-react';
 import ExpectationsField from "./expectations-field";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -32,6 +33,12 @@ const materialOptions = [
     { id: 'dslr', label: 'Appareil Photo (DSLR/Mirrorless)', icon: Camera },
     { id: 'camera', label: 'Caméra Vidéo', icon: Video },
     { id: 'ordinateur', label: 'Ordinateur pour montage', icon: Computer },
+];
+
+const prizeItems = [
+    { icon: Award, text: '1er Prix : 200 000 FDJ' },
+    { icon: Laptop, text: '2ème Prix : Ordinateur Portable' },
+    { icon: Smartphone, text: '3ème Prix : Téléphone Portable' },
 ];
 
 export default function RegistrationForm() {
@@ -175,7 +182,6 @@ export default function RegistrationForm() {
                                 const isChecked = field.value?.includes(item.id) ?? false;
                                 return (
                                 <FormItem
-                                    key={item.id}
                                     className={cn(
                                         "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300",
                                         isChecked && "bg-amber-500/10 border-amber-500"
@@ -230,6 +236,22 @@ export default function RegistrationForm() {
                 <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre à 30 000 FDJ expire dans :</h3>
                 <CountdownTimer />
            </div>
+           
+           {/* Golden Ticket Section */}
+            <div className="space-y-6 rounded-2xl border-2 border-amber-500/50 bg-amber-500/5 p-8 text-center shadow-lg shadow-amber-500/10">
+                <h3 className="font-headline text-3xl uppercase tracking-wider text-amber-500">Tentez de Gagner l'un de nos 3 Prix !</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 font-body text-gray-300">
+                    {prizeItems.map((prize, index) => {
+                        const Icon = prize.icon;
+                        return (
+                            <div key={index} className="flex flex-col items-center gap-2">
+                                <Icon className="w-10 h-10 text-amber-500" />
+                                <span className="font-semibold">{prize.text}</span>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
 
            {/* Section 4: Tarifs et Engagement */}
             <div className="space-y-8 rounded-2xl bg-black/20 p-6">
@@ -285,3 +307,5 @@ export default function RegistrationForm() {
     </div>
   );
 }
+
+    
