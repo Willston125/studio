@@ -153,7 +153,7 @@ export default function RegistrationForm() {
             
           {/* Section 1: Informations Personnelles */}
           <section className="space-y-6">
-            <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
+            <h2 className="flex items-center gap-3 text-2xl font-headline">
               <User className="text-primary" />
               Partie 1 : Informations Personnelles
             </h2>
@@ -181,7 +181,7 @@ export default function RegistrationForm() {
 
           {/* Section 2: Votre Expérience */}
           <section className="space-y-6">
-            <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
+            <h2 className="flex items-center gap-3 text-2xl font-headline">
               <Film className="text-primary" />
               Partie 2 : Votre Expérience
             </h2>
@@ -220,7 +220,7 @@ export default function RegistrationForm() {
 
           {/* Section 3: Modalités et Urgence */}
           <section className="space-y-6 bg-card/80 p-6 rounded-lg border border-primary/50 shadow-lg shadow-primary/10">
-             <h2 className="flex items-center justify-center gap-3 text-2xl font-headline text-foreground">
+             <h2 className="flex items-center justify-center gap-3 text-2xl font-headline">
               <RadioTower className="text-primary animate-pulse" />
               Offre à Durée Limitée
             </h2>
@@ -233,7 +233,7 @@ export default function RegistrationForm() {
 
           {/* Section 4: Le Défi Final + Engagement */}
           <section className="space-y-8 pt-6">
-            <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
+            <h2 className="flex items-center gap-3 text-2xl font-headline">
               <Award className="text-primary" />
               Partie 3 : Le Défi Final
             </h2>
@@ -246,7 +246,7 @@ export default function RegistrationForm() {
             <ExpectationsField />
 
             <div className="space-y-6 pt-6 border-t border-border/50">
-              <h3 className="flex items-center gap-3 text-xl font-headline text-foreground">
+              <h3 className="flex items-center gap-3 text-xl font-headline">
                 <PenSquare className="text-primary"/>
                 Engagement et Signature
               </h3>
@@ -291,3 +291,5 @@ export default function RegistrationForm() {
     </>
   );
 }
+
+    

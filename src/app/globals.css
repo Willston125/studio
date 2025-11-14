@@ -48,8 +48,8 @@
   }
 
   h2 {
-    color: #e50914; /* rouge cinéma */
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.4);
   }
 
   body::after {
@@ -212,3 +212,5 @@
     animation: pulse 1s infinite;
   }
 }
+
+    
