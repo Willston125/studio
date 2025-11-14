@@ -29,7 +29,7 @@ export default function HeroSection() {
       <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
         <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg">
           
-          <div className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm shadow-[0_0_15px_hsl(var(--primary)_/_0.4)]">
+          <div className="bg-yellow-400 text-black text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm shadow-[0_0_20px_rgba(250,204,21,0.5)]">
             ACADÉMIE DE CINÉMA
           </div>
 
