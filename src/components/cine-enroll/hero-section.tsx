@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/mon-image-sombre.jpg"
+          src="/hero.jpg"
           alt="Filmmaker composing a shot"
           fill
           className="object-cover"
