@@ -24,6 +24,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Smartphone, Camera, Video, Computer } from 'lucide-react';
 import ExpectationsField from "./expectations-field";
 import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 const materialOptions = [
     { id: 'smartphone', label: 'Smartphone', icon: Smartphone },
@@ -173,6 +174,7 @@ export default function RegistrationForm() {
                                 const isChecked = field.value?.includes(item.id) ?? false;
                                 return (
                                 <FormItem
+                                    key={item.id}
                                     className={cn(
                                         "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300",
                                         isChecked && "bg-amber-500/10 border-amber-500"
@@ -278,5 +280,3 @@ export default function RegistrationForm() {
     </div>
   );
 }
-
-    
