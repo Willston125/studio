@@ -166,7 +166,7 @@ export default function RegistrationForm() {
                     <FormItem><FormLabel>Ville (Optionnel)</FormLabel><FormControl><Input placeholder="Djibouti" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="quartier" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Quartier (Optionnel)</FormLabel><FormControl><Input placeholder="Héron" {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>Quartier (Optionnel)</FormLabel><FormControl><Input placeholder="Héron" {...field} /></FormControl><FormMessage /></Form-Item>
                   )} />
               </div>
           </div>
@@ -275,7 +275,7 @@ export default function RegistrationForm() {
 
            <div className="form-section space-y-8 rounded-2xl bg-black/20 p-6">
                 <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Tarif &amp; Engagement</h2>
-                <div className="text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
+                <div className="special-price text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
                     <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
                     <div className="flex items-baseline gap-3 my-1">
                         <p className="font-headline text-5xl font-extrabold text-primary">30 000 FDJ</p>

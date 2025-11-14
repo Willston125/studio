@@ -188,4 +188,39 @@
     color: white;
     box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
   }
+
+  @keyframes priceGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+    }
+  }
+
+  .special-price {
+    animation: priceGlow 2s ease-in-out infinite;
+    position: relative;
+    border-radius: 0.5rem;
+  }
+
+  .special-price::before {
+    content: '🔥 OFFRE SPÉCIALE';
+    position: absolute;
+    top: -15px;
+    right: -25px;
+    background: #ff4444;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    animation: bounce 1s infinite alternate;
+    transform: rotate(10deg);
+  }
+
+  @keyframes bounce {
+    from { transform: translateY(0) rotate(10deg); }
+    to { transform: translateY(-5px) rotate(10deg); }
+  }
 }
