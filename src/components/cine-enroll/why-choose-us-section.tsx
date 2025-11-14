@@ -1,53 +1,103 @@
+"use client";
 
-import { Camera, Users, BookOpen } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React, { useEffect, useRef } from 'react';
+import { Camera, Zap, Globe } from 'lucide-react';
 
-const features = [
-  {
-    icon: <Camera className="w-10 h-10 text-amber-500" />,
-    title: "Matériel Pro",
-    description: "Accès à des caméras cinéma (Sony FX, Blackmagic) pour un rendu professionnel.",
-  },
-  {
-    icon: <BookOpen className="w-10 h-10 text-amber-500" />,
-    title: "Pratique Intensive",
-    description: "La formation est axée à 80% sur la pratique sur le terrain pour une maîtrise rapide.",
-  },
-  {
-    icon: <Users className="w-10 h-10 text-amber-500" />,
-    title: "Réseau",
-    description: "Intégrez une communauté de passionnés et de professionnels du cinéma à Djibouti.",
-  },
-];
+const WhyChooseUsSection = () => {
+    const sectionRef = useRef<HTMLDivElement>(null);
 
-export default function WhyChooseUsSection() {
-  return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold text-white">
-            Pourquoi choisir <span className="text-amber-500">Cineworld</span> ?
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Nous offrons bien plus qu'une simple formation. C'est une immersion complète dans le monde du cinéma.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="bg-card/50 border-border/50 text-center flex flex-col items-center p-6 transition-all duration-300 ease-in-out hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-500/20 hover:-translate-y-2.5 hover:scale-105">
-              <CardHeader className="p-0 mb-4">
-                {feature.icon}
-              </CardHeader>
-              <CardContent className="p-0 flex-grow flex flex-col">
-                <CardTitle className="text-xl font-headline mb-2 text-foreground">{feature.title}</CardTitle>
-                <p className="text-muted-foreground text-sm flex-grow">
-                  {feature.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+    useEffect(() => {
+        const spotlights = sectionRef.current?.querySelectorAll('.spotlight');
+
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!spotlights) return;
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            spotlights.forEach(spotlight => {
+                (spotlight as HTMLElement).style.transform = `translate(${x * 20 - 10}px, ${y * 20 - 10}px)`;
+            });
+        };
+
+        document.addEventListener('mousemove', handleMouseMove);
+
+        const featureCards = sectionRef.current?.querySelectorAll('.feature-card');
+        if (featureCards) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        (entry.target as HTMLElement).style.animationPlayState = 'running';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            featureCards.forEach(card => {
+                observer.observe(card);
+            });
+
+            return () => {
+                document.removeEventListener('mousemove', handleMouseMove);
+                featureCards.forEach(card => {
+                    observer.unobserve(card);
+                });
+            };
+        }
+        
+        return () => {
+             document.removeEventListener('mousemove', handleMouseMove);
+        }
+
+    }, []);
+
+    return (
+        <>
+            <div className="film-grain"></div>
+            <section className="why-section" ref={sectionRef}>
+                <div className="focus-lines"></div>
+                
+                <div className="spotlight spotlight-1"></div>
+                <div className="spotlight spotlight-2"></div>
+                
+                <div className="section-header">
+                    <span className="section-pre-title font-body">L'Excellence Cinématographique</span>
+                    <h2 className="section-title font-headline">POURQUOI CHOISIR CINEWORLD ?</h2>
+                    <p className="section-subtitle font-body">
+                        Nous offrons bien plus qu'une simple formation. C'est une immersion complète 
+                        dans l'univers du cinéma, où la passion rencontre l'expertise technique.
+                    </p>
+                </div>
+                
+                <div className="features-grid">
+                    <div className="feature-card">
+                        <div className="feature-icon"><Camera size={36} /></div>
+                        <h3 className="feature-title font-headline">MATÉRIEL PROFESSIONNEL</h3>
+                        <p className="feature-description font-body">
+                            Accès à un parc complet de caméras cinéma (Sony FX, Blackmagic, RED) 
+                            et d'équipements professionnels pour un rendu qualité Hollywood.
+                        </p>
+                    </div>
+                    
+                    <div className="feature-card">
+                        <div className="feature-icon"><Zap size={36} /></div>
+                        <h3 className="feature-title font-headline">PRATIQUE INTENSIVE</h3>
+                        <p className="feature-description font-body">
+                            La formation est axée à 80% sur la pratique terrain avec des projets réels 
+                            pour une maîtrise rapide et une expérience concrète.
+                        </p>
+                    </div>
+                    
+                    <div className="feature-card">
+                        <div className="feature-icon"><Globe size={36} /></div>
+                        <h3 className="feature-title font-headline">RÉSEAU PROFESSIONNEL</h3>
+                        <p className="feature-description font-body">
+                            Intégrez une communauté exclusive de passionnés et de professionnels 
+                            du cinéma à Djibouti et développez votre réseau dans l'industrie.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </>
+    );
+};
+
+export default WhyChooseUsSection;
