@@ -22,8 +22,8 @@ export default function HeroSection() {
           priority
         />
         {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
       </div>
 
       {/* Main Content */}
@@ -66,7 +66,7 @@ export default function HeroSection() {
             size="lg"
             className={cn(
               "mt-4 h-14 px-8 text-lg font-bold rounded-md transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30 font-body",
-              "btn-inscription bg-amber-500 text-black hover:bg-amber-400"
+              "btn-inscription"
               )}
           >
             <Link href="/inscription">Découvrir nos formations</Link>
