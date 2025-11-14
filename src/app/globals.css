@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -162,5 +163,29 @@
     animation: 
       typewriter 3s steps(40) 1s 1 both,
       blinkCursor 750ms steps(40) infinite;
+  }
+
+  @keyframes countdownPulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+    }
+  }
+
+  .countdown-number {
+    animation: countdownPulse 2s infinite;
+    display: inline-block;
+    border-radius: 0.5rem;
+  }
+
+  .countdown-number.final-hour {
+    animation: countdownPulse 1s infinite;
+    background: #ff4444;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
   }
 }
