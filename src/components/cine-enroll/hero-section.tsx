@@ -29,7 +29,7 @@ export default function HeroSection() {
       <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
         <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg">
           
-          <div className="bg-yellow-400 text-black text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm shadow-[0_0_20px_rgba(250,204,21,0.5)]">
+          <div className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm shadow-[0_0_20px_hsl(var(--primary-foreground))]">
             ACADÉMIE DE CINÉMA
           </div>
 
@@ -51,11 +51,11 @@ export default function HeroSection() {
 
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-0.5">
-                <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                <Star className="w-5 h-5 text-yellow-400/80 fill-yellow-400/80" />
+                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+                <Star className="w-5 h-5 text-amber-400/80 fill-amber-400/80" />
             </div>
             <span className="font-semibold text-lg font-body">4.8 (12 Avis)</span>
           </div>
@@ -63,7 +63,7 @@ export default function HeroSection() {
           <Button 
             asChild
             size="lg"
-            className="mt-4 bg-primary text-primary-foreground h-14 px-8 text-lg font-bold rounded-md hover:bg-primary/90 transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30 font-body"
+            className="mt-4 h-14 px-8 text-lg font-bold rounded-md hover:bg-primary/90 transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30 font-body"
           >
             <Link href="/inscription">Découvrir nos formations</Link>
           </Button>

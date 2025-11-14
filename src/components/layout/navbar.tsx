@@ -66,7 +66,7 @@ export default function Navbar() {
               <Search className="h-5 w-5" />
               <span className="sr-only">Rechercher</span>
             </Button>
-            <Button asChild className="bg-white text-black hover:bg-white/90 rounded-md text-sm font-semibold font-body">
+            <Button asChild className="rounded-md text-sm font-semibold font-body">
               <Link href="/inscription">S'inscrire</Link>
             </Button>
           </div>
@@ -95,7 +95,7 @@ export default function Navbar() {
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Rechercher</span>
               </Button>
-              <Button asChild className="bg-white text-black hover:bg-white/90 rounded-md text-sm font-semibold font-body">
+              <Button asChild className="rounded-md text-sm font-semibold font-body">
                 <Link href="/inscription">S'inscrire</Link>
               </Button>
             </div>

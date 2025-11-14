@@ -74,17 +74,17 @@ export default function CountdownTimer() {
   const { days, hours, minutes, seconds } = timeLeft;
   
   if (!days && !hours && !minutes && !seconds) {
-    return <span className="text-xl font-bold font-headline text-amber-500">L'offre a expiré !</span>;
+    return <span className="text-xl font-bold font-headline text-primary">L'offre a expiré !</span>;
   }
 
   return (
     <div className="flex justify-center items-start gap-4 md:gap-8">
         <TimeUnit value={days} label="Jours" />
-        <span className="text-5xl md:text-6xl font-headline text-amber-500/50">:</span>
+        <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
         <TimeUnit value={hours} label="Heures" />
-        <span className="text-5xl md:text-6xl font-headline text-amber-500/50">:</span>
+        <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
         <TimeUnit value={minutes} label="Minutes" />
-        <span className="text-5xl md:text-6xl font-headline text-amber-500/50">:</span>
+        <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
         <TimeUnit value={seconds} label="Secondes" />
     </div>
   );

@@ -52,7 +52,7 @@ export default function ProgramSection() {
           {programItems.map((item, index) => (
             <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
               <div className="p-1">
-                <Card className="overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 group bg-neutral-900/50 rounded-lg">
+                <Card className="overflow-hidden border-2 border-transparent hover:border-amber-500 transition-all duration-300 group bg-neutral-900/50 rounded-lg">
                   <CardContent className="relative aspect-[2/3] p-0">
                     <Image
                       src={item.imageSrc}

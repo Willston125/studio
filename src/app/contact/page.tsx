@@ -28,19 +28,19 @@ export default function ContactPage() {
           
           {/* Colonne de gauche : Infos */}
           <div className="space-y-8">
-            <h1 className="font-headline text-5xl md:text-7xl uppercase text-primary">
+            <h1 className="font-headline text-5xl md:text-7xl uppercase text-amber-500">
               Prenez Contact
             </h1>
             <p className="font-body text-lg text-muted-foreground">
               Une question sur nos formations ? Un projet de film ? Nous sommes à votre écoute.
             </p>
             <div className="space-y-4 font-body">
-              <a href="https://wa.me/25377556344" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors">
-                <Phone className="w-6 h-6 text-primary" />
+              <a href="https://wa.me/25377556344" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-foreground hover:text-amber-500 transition-colors">
+                <Phone className="w-6 h-6 text-amber-500" />
                 <span>+253 77 55 63 44</span>
               </a>
-              <a href="mailto:cineworlddjibouti@outlook.fr" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors">
-                <Mail className="w-6 h-6 text-primary" />
+              <a href="mailto:cineworlddjibouti@outlook.fr" className="flex items-center gap-4 text-foreground hover:text-amber-500 transition-colors">
+                <Mail className="w-6 h-6 text-amber-500" />
                 <span>cineworlddjibouti@outlook.fr</span>
               </a>
             </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
             <Button 
               type="submit" 
               size="lg"
-              className="w-full font-headline text-xl tracking-wider rounded-md bg-primary text-primary-foreground h-14 hover:bg-primary/90 shadow-lg shadow-primary/20"
+              className="w-full font-headline text-xl tracking-wider rounded-md h-14 hover:bg-primary/90 shadow-lg shadow-primary/20"
             >
               Envoyer le Message
             </Button>

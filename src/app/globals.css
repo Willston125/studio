@@ -13,8 +13,8 @@
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 39 91% 55%; /* Or / Ambre */
-    --primary-foreground: 0 0% 5%; /* Noir pour contraste */
+    --primary: 0 84% 37%; /* Rouge Bordeaux/Marron */
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
@@ -23,14 +23,14 @@
     --muted-foreground: 0 0% 60%;
 
     --accent: 0 0% 15%;
-    --accent-foreground: 39 91% 55%;
+    --accent-foreground: 0 84% 37%; /* Rouge Bordeaux pour accent */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 100% / 0.2; /* Blanc avec 20% d'opacité */
     --input: 0 0% 100% / 0.05; /* Blanc avec 5% d'opacité */
-    --ring: 39 91% 55%; /* Or / Ambre */
+    --ring: 39 91% 55%; /* Or / Ambre pour le focus */
 
     --radius: 0.5rem;
   }
