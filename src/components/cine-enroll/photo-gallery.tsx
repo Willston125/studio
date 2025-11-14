@@ -18,6 +18,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Autoplay from "embla-carousel-autoplay";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const images = [
   {
@@ -53,6 +54,30 @@ const images = [
 ];
 
 export default function PhotoGallery() {
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+      <section className="py-8">
+        <h2 className="text-center text-2xl font-headline mb-8">Galerie</h2>
+        <div className="flex justify-center -ml-4">
+          {[...Array(3)].map((_, index) => (
+            <div key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 w-full">
+              <div className="p-1">
+                 <Skeleton className="aspect-video w-full" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+
   return (
     <section className="py-8">
       <h2 className="text-center text-2xl font-headline mb-8">Galerie</h2>
