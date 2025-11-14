@@ -14,9 +14,9 @@ export default function InscriptionPage() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0 hero-section-overlay" />
       </div>
-      <main className="relative z-10 w-full max-w-4xl">
+      <main className="relative z-10 w-full max-w-4xl py-12">
         <RegistrationForm />
       </main>
     </div>

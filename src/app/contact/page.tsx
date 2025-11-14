@@ -83,7 +83,7 @@ export default function ContactPage() {
             <Button 
               type="submit" 
               size="lg"
-              className="w-full font-headline text-xl tracking-wider rounded-md h-14 hover:bg-primary/90 shadow-lg shadow-primary/20"
+              className="btn-primary w-full text-xl h-14"
             >
               Envoyer le Message
             </Button>

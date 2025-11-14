@@ -68,16 +68,6 @@ export default function RegistrationForm() {
 
   React.useEffect(() => {
     const calculateProgress = () => {
-      const filledFields = Object.values(form.getValues()).filter(value => {
-        if (Array.isArray(value)) return value.length > 0;
-        if (typeof value === 'boolean') return value === true;
-        return value !== "" && value !== undefined && value !== null;
-      }).length;
-      
-      // We manually check engagements because they are grouped.
-      const engagementCount = (form.getValues().engagement1 ? 1 : 0) + (form.getValues().engagement2 ? 1 : 0) + (form.getValues().engagement3 ? 1 : 0);
-      
-      // Refined count:
       let validFields = 0;
       if (form.getValues().nom) validFields++;
       if (form.getValues().prenom) validFields++;
@@ -86,11 +76,12 @@ export default function RegistrationForm() {
       if (form.getValues().niveau) validFields++;
       if (form.getValues().materiel && form.getValues().materiel.length > 0) validFields++;
       if (form.getValues().attentes && form.getValues().attentes.length >= 50) validFields++;
-      validFields += engagementCount;
-       if (form.getValues().date_jour) validFields++;
+      if(form.getValues().engagement1) validFields++;
+      if(form.getValues().engagement2) validFields++;
+      if(form.getValues().engagement3) validFields++;
+      if (form.getValues().date_jour) validFields++;
 
 
-      // We count the 3 engagements as 3 fields, and the rest as individual fields
       const totalRequiredFields = 7 + 3; // 7 main fields + 3 engagements
       setProgress((validFields / totalRequiredFields) * 100);
     };
@@ -142,7 +133,7 @@ export default function RegistrationForm() {
   return (
     <div className="bg-black/70 backdrop-blur-md text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
       <header className="text-center p-8 md:p-12 border-b border-white/20">
-        <h1 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma Djibouti</h1>
+        <h1 className="text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma Djibouti</h1>
         <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
             Rejoignez notre formation exclusive
         </p>
@@ -153,8 +144,7 @@ export default function RegistrationForm() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
             
-          {/* Section 1: Informations Personnelles */}
-          <div className="space-y-8 form-section">
+          <div className="form-section space-y-8">
               <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Informations Personnelles</h2>
               <div className="grid grid-cols-1 gap-8">
                   <FormField name="nom" control={form.control} render={({ field }) => (
@@ -183,8 +173,7 @@ export default function RegistrationForm() {
           
           <Separator className="bg-white/20" />
           
-          {/* Section 2: Expérience */}
-          <div className="space-y-8 form-section">
+          <div className="form-section space-y-8">
               <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Votre Expérience</h2>
               <FormField name="niveau" control={form.control} render={({ field }) => (
                   <FormItem className="space-y-4">
@@ -263,16 +252,14 @@ export default function RegistrationForm() {
 
           <Separator className="bg-white/20" />
 
-           {/* Section 3: Attentes */}
-           <div className="space-y-8 form-section">
+           <div className="form-section space-y-8">
                 <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Attentes</h2>
                 <ExpectationsField />
            </div>
            
            <Separator className="bg-white/20" />
 
-            {/* Golden Ticket Section */}
-            <div className="space-y-6 rounded-2xl border-2 border-amber-500/50 bg-amber-500/5 p-8 text-center shadow-lg shadow-amber-500/10 form-section">
+            <div className="form-section space-y-6 rounded-2xl border-2 border-amber-500/50 bg-amber-500/5 p-8 text-center shadow-lg shadow-amber-500/10">
                 <h3 className="font-headline text-7xl uppercase tracking-wider text-amber-500">
                     LE GRAND PRIX :<br/>200 000 FDJ !
                 </h3>
@@ -281,13 +268,12 @@ export default function RegistrationForm() {
                 </p>
             </div>
 
-            <div className="space-y-6 rounded-2xl bg-black/20 p-6 text-center form-section">
+            <div className="form-section space-y-6 rounded-2xl bg-black/20 p-6 text-center">
                 <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre à 30 000 FDJ expire dans :</h3>
                 <CountdownTimer />
             </div>
 
-           {/* Section 4: Tarifs et Engagement */}
-            <div className="space-y-8 rounded-2xl bg-black/20 p-6 form-section">
+           <div className="form-section space-y-8 rounded-2xl bg-black/20 p-6">
                 <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Tarif &amp; Engagement</h2>
                 <div className="text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
                     <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
@@ -313,8 +299,7 @@ export default function RegistrationForm() {
 
             <Separator className="bg-white/20" />
             
-            {/* Section 5: Soumission */}
-            <div className="space-y-4 form-section">
+            <div className="form-section space-y-4">
                  <FormField name="date_jour" control={form.control} render={({ field }) => (
                     <FormItem className="flex items-center gap-4">
                         <FormLabel className="whitespace-nowrap">Fait à Djibouti, le :</FormLabel>
@@ -328,8 +313,7 @@ export default function RegistrationForm() {
                 <div className="flex flex-col items-center pt-6 space-y-4">
                     <Button 
                     type="submit" 
-                    size="lg" 
-                    className="w-full font-headline text-2xl tracking-wider rounded-md text-primary-foreground h-16 bg-primary text-primary-foreground hover:bg-primary/90 btn-inscription"
+                    className="btn-primary w-full text-2xl h-16"
                     disabled={isSubmitDisabled}
                     >
                     {isSubmitting ? 'Redirection...' : "S'inscrire via WhatsApp"}
@@ -344,5 +328,3 @@ export default function RegistrationForm() {
     </div>
   );
 }
-
-    

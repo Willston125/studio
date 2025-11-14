@@ -31,7 +31,7 @@ export default function HeroSection() {
           }}
         />
         {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20" />
+        <div className="absolute inset-0 hero-section-overlay" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
       </div>
 
@@ -77,10 +77,7 @@ export default function HeroSection() {
           <Button 
             asChild
             size="lg"
-            className={cn(
-              "mt-4 h-14 px-8 text-lg font-bold rounded-md transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30 font-body",
-              "btn-inscription"
-              )}
+            className="btn-primary mt-4 h-14 px-8 text-lg"
           >
             <Link href="/inscription">Découvrir nos formations</Link>
           </Button>

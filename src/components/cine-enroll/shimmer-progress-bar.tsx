@@ -6,7 +6,7 @@ interface ShimmerProgressBarProps {
 
 export default function ShimmerProgressBar({ progress }: ShimmerProgressBarProps) {
   return (
-    <div className="progress-bar">
+    <div className="progress-bar mx-8 md:mx-12">
       <div
         className="progress-fill"
         style={{ width: `${progress}%` }}
@@ -14,5 +14,3 @@ export default function ShimmerProgressBar({ progress }: ShimmerProgressBarProps
     </div>
   );
 }
-
-    
