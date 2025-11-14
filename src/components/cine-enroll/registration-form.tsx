@@ -177,17 +177,7 @@ export default function RegistrationForm() {
                                 return (
                                 <FormItem
                                     key={item.id}
-                                    className={cn(
-                                        "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300",
-                                        isChecked && "bg-amber-500/10 border-amber-500"
-                                    )}
                                 >
-                                  <FormLabel htmlFor={item.id} className="w-full h-full flex flex-col items-center justify-center gap-2 cursor-pointer">
-                                    <Icon className="w-8 h-8 text-amber-500" />
-                                    <span className="font-normal text-center text-xs">
-                                        {item.label}
-                                    </span>
-                                  </FormLabel>
                                   <FormControl>
                                     <Checkbox
                                         id={item.id}
@@ -204,8 +194,18 @@ export default function RegistrationForm() {
                                           }
                                           field.onChange(newValue);
                                         }}
+                                        className="sr-only"
                                     />
                                     </FormControl>
+                                  <FormLabel htmlFor={item.id} className={cn(
+                                        "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300",
+                                        isChecked && "bg-amber-500/10 border-amber-500"
+                                    )}>
+                                    <Icon className="w-8 h-8 text-amber-500" />
+                                    <span className="font-normal text-center text-xs">
+                                        {item.label}
+                                    </span>
+                                  </FormLabel>
                                 </FormItem>
                                 )
                             }}
@@ -236,12 +236,11 @@ export default function RegistrationForm() {
                     ET AUSSI : Un Ordinateur Portable (2e Prix) & Un Téléphone Portable (3e Prix)
                 </p>
             </div>
-           
-           <div className="space-y-6 rounded-2xl bg-black/20 p-6 text-center">
+
+            <div className="space-y-6 rounded-2xl bg-black/20 p-6 text-center">
                 <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre à 30 000 FDJ expire dans :</h3>
                 <CountdownTimer />
-           </div>
-           
+            </div>
 
            {/* Section 4: Tarifs et Engagement */}
             <div className="space-y-8 rounded-2xl bg-black/20 p-6">
@@ -286,7 +285,7 @@ export default function RegistrationForm() {
                     <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full font-headline text-2xl tracking-wider rounded-md text-primary-foreground h-16 hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-primary/30"
+                    className="w-full font-headline text-2xl tracking-wider rounded-md text-primary-foreground h-16 bg-amber-500 text-black hover:bg-amber-400 btn-inscription"
                     disabled={isSubmitDisabled}
                     >
                     {isSubmitting ? 'Redirection...' : "S'inscrire via WhatsApp"}

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import ProgramSection from "./program-section";
+import { cn } from "@/lib/utils";
 
 export default function HeroSection() {
   return (
@@ -63,7 +64,10 @@ export default function HeroSection() {
           <Button 
             asChild
             size="lg"
-            className="mt-4 h-14 px-8 text-lg font-bold rounded-md hover:bg-primary/90 transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30 font-body"
+            className={cn(
+              "mt-4 h-14 px-8 text-lg font-bold rounded-md transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30 font-body",
+              "btn-inscription bg-amber-500 text-black hover:bg-amber-400"
+              )}
           >
             <Link href="/inscription">Découvrir nos formations</Link>
           </Button>
