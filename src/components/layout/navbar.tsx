@@ -43,8 +43,8 @@ export default function Navbar() {
 
           {/* Center: Navigation Links (Desktop) */}
           <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-sm font-medium text-neutral-300 hover:text-white transition-colors">
+            {navLinks.map((link, index) => (
+              <Link key={`${link.label}-${index}`} href={link.href} className="text-sm font-medium text-neutral-300 hover:text-white transition-colors">
                 {link.label}
               </Link>
             ))}
@@ -75,8 +75,8 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-black/90 backdrop-blur-xl absolute top-16 left-0 w-full">
           <nav className="flex flex-col items-center gap-4 p-8">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-lg font-medium text-neutral-200 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>
+            {navLinks.map((link, index) => (
+              <Link key={`${link.label}-${index}-mobile`} href={link.href} className="text-lg font-medium text-neutral-200 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>
                 {link.label}
               </Link>
             ))}
