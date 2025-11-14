@@ -100,16 +100,10 @@ export default function RegistrationForm() {
   return (
     <div className="bg-black/70 backdrop-blur-md text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
         <header className="text-center p-8 md:p-12 border-b border-white/20">
-            <Image 
-                src="/logo_cineworld.png"
-                alt="Cineworld Académie Logo"
-                width={300}
-                height={70}
-                className="mx-auto mb-4"
-            />
-            <h1 className="font-body text-xl text-gray-400 mt-4 max-w-2xl mx-auto">
-                Rejoignez l'Académie Cineworld et donnez vie à vos projets cinématographiques.
-            </h1>
+            <h1 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma Djibouti</h1>
+            <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
+                Rejoignez notre formation exclusive et devenez réalisateur.
+            </p>
         </header>
 
       <Form {...form}>
@@ -117,7 +111,7 @@ export default function RegistrationForm() {
             
           {/* Section 1: Informations Personnelles */}
           <div className="space-y-8">
-              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">VOS INFORMATIONS</h2>
+              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Informations</h2>
               <div className="grid grid-cols-1 gap-8">
                   <FormField name="nom" control={form.control} render={({ field }) => (
                   <FormItem><FormLabel>Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
@@ -141,7 +135,7 @@ export default function RegistrationForm() {
           
           {/* Section 2: Expérience */}
           <div className="space-y-8">
-              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">VOTRE EXPÉRIENCE</h2>
+              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Votre Expérience</h2>
               <FormField name="niveau" control={form.control} render={({ field }) => (
                   <FormItem className="space-y-4">
                     <FormLabel>Votre niveau en réalisation</FormLabel>
@@ -221,7 +215,7 @@ export default function RegistrationForm() {
 
            {/* Section 3: Attentes */}
            <div className="space-y-8">
-                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">VOS ATTENTES</h2>
+                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Attentes</h2>
                 <ExpectationsField />
            </div>
            
@@ -244,7 +238,7 @@ export default function RegistrationForm() {
 
            {/* Section 4: Tarifs et Engagement */}
             <div className="space-y-8 rounded-2xl bg-black/20 p-6">
-                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">TARIF & ENGAGEMENT</h2>
+                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Tarif & Engagement</h2>
                 <div className="text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
                     <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
                     <div className="flex items-baseline gap-3 my-1">
