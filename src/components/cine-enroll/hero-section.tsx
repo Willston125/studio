@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star, Play } from "lucide-react";
+import ProgramSection from "./program-section";
 
 interface HeroSectionProps {
   onScrollToForm: () => void;
@@ -10,7 +11,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onScrollToForm }: HeroSectionProps) {
   return (
-    <section className="relative h-screen w-full flex items-center">
+    <section className="relative h-screen w-full flex flex-col justify-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -22,11 +23,12 @@ export default function HeroSection({ onScrollToForm }: HeroSectionProps) {
           priority
         />
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-white max-w-2xl">
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-4 text-white max-w-2xl flex-grow flex flex-col justify-center">
         <div className="flex flex-col items-start space-y-4 md:space-y-6">
           <div className="bg-yellow-400 text-black text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm">
             Masterclass
@@ -69,6 +71,11 @@ export default function HeroSection({ onScrollToForm }: HeroSectionProps) {
             Commencer l'aventure
           </Button>
         </div>
+      </div>
+
+      {/* Program Section Overlay */}
+      <div className="relative z-10 w-full pb-8 md:pb-12">
+        <ProgramSection />
       </div>
     </section>
   );

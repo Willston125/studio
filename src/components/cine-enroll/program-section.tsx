@@ -44,20 +44,19 @@ const programItems = [
 
 export default function ProgramSection() {
   return (
-    <section className="container mx-auto px-4 py-12 md:py-20">
-      <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Au Programme</h2>
+    <section className="container mx-auto px-4">
+      <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Au Programme</h2>
       <Carousel
         opts={{
           align: "start",
-          loop: true,
         }}
         className="w-full"
       >
         <CarouselContent className="-ml-4">
           {programItems.map((item, index) => (
-            <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/4">
+            <CarouselItem key={index} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
               <div className="p-1">
-                <Card className="overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 group">
+                <Card className="overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 group bg-neutral-800">
                   <CardContent className="relative aspect-[2/3] p-0">
                     <Image
                       src={item.imageSrc}
@@ -68,8 +67,7 @@ export default function ProgramSection() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     <div className="absolute bottom-0 left-0 p-4">
-                      <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                      <p className="text-sm text-neutral-300">{item.description}</p>
+                      <h3 className="text-lg font-bold text-white leading-tight">{item.title}</h3>
                     </div>
                   </CardContent>
                 </Card>
@@ -77,8 +75,6 @@ export default function ProgramSection() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden sm:flex" />
-        <CarouselNext className="hidden sm:flex" />
       </Carousel>
     </section>
   );
