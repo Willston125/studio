@@ -229,7 +229,9 @@ export default function RegistrationForm() {
 
             {/* Golden Ticket Section */}
             <div className="space-y-6 rounded-2xl border-2 border-amber-500/50 bg-amber-500/5 p-8 text-center shadow-lg shadow-amber-500/10">
-                <h3 className="font-headline text-7xl uppercase tracking-wider text-amber-500">LE GRAND PRIX : 200 000 FDJ !</h3>
+                <h3 className="font-headline text-7xl uppercase tracking-wider text-amber-500">
+                    LE GRAND PRIX :<br/>200 000 FDJ !
+                </h3>
                 <p className="font-body text-gray-300">
                     ET AUSSI : Un Ordinateur Portable (2e Prix) & Un Téléphone Portable (3e Prix)
                 </p>
@@ -255,13 +257,13 @@ export default function RegistrationForm() {
                 </div>
                 <div className="space-y-4 pt-4">
                     <FormField name="engagement1" control={form.control} render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal">Je confirme avoir lu et accepté les conditions de participation.</FormLabel><FormMessage /></div></FormItem>
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="font-normal">Je confirme avoir lu et accepté les conditions de participation.</FormLabel><FormMessage /></div></FormItem>
                     )} />
                     <FormField name="engagement2" control={form.control} render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal">Je m'engage à être présent(e) à toutes les sessions du cours.</FormLabel><FormMessage /></div></FormItem>
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="font-normal">Je m'engage à être présent(e) à toutes les sessions du cours.</FormLabel><FormMessage /></div></FormItem>
                     )} />
                     <FormField name="engagement3" control={form.control} render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal">Je comprends que le paiement est non-remboursable.</FormLabel><FormMessage /></div></FormItem>
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="font-normal">Je comprends que le paiement est non-remboursable.</FormLabel><FormMessage /></div></FormItem>
                     )} />
                 </div>
             </div>
@@ -299,5 +301,3 @@ export default function RegistrationForm() {
     </div>
   );
 }
-
-    
