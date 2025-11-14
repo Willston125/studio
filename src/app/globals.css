@@ -120,4 +120,30 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
   }
+
+  /* Barre de progression */
+  .progress-bar {
+      height: 4px;
+      background: #333;
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 20px auto;
+      width: calc(100% - 4rem);
+  }
+
+  .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #D4AF37, #FFD700);
+      width: 0%;
+      transition: width 0.5s ease;
+      animation: shimmer 2s infinite;
+      background-size: 400px 100%;
+  }
+
+  @keyframes shimmer {
+      0% { background-position: -200px 0; }
+      100% { background-position: 200px 0; }
+  }
 }
+
+    

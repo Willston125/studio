@@ -27,6 +27,7 @@ import { Smartphone, Camera, Video, Computer, Award, Laptop } from 'lucide-react
 import ExpectationsField from './expectations-field';
 import { Separator } from '@/components/ui/separator';
 import CountdownTimer from './countdown-timer';
+import ShimmerProgressBar from './shimmer-progress-bar';
 
 const materialOptions = [
     { id: 'smartphone', label: 'Smartphone', icon: Smartphone },
@@ -35,9 +36,12 @@ const materialOptions = [
     { id: 'ordinateur', label: 'Ordinateur pour montage', icon: Computer },
 ];
 
+const totalFields = 11; // nom, prenom, email, telephone, niveau, materiel, attentes, engagement1, engagement2, engagement3, date_jour
+
 export default function RegistrationForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [progress, setProgress] = React.useState(0);
 
   const form = useForm<RegistrationSchema>({
     resolver: zodResolver(registrationSchema),
@@ -59,6 +63,42 @@ export default function RegistrationForm() {
     },
     mode: 'onChange'
   });
+
+  const formValues = form.watch();
+
+  React.useEffect(() => {
+    const calculateProgress = () => {
+      const filledFields = Object.values(form.getValues()).filter(value => {
+        if (Array.isArray(value)) return value.length > 0;
+        if (typeof value === 'boolean') return value === true;
+        return value !== "" && value !== undefined && value !== null;
+      }).length;
+      
+      // We manually check engagements because they are grouped.
+      const engagementCount = (form.getValues().engagement1 ? 1 : 0) + (form.getValues().engagement2 ? 1 : 0) + (form.getValues().engagement3 ? 1 : 0);
+      
+      // Refined count:
+      let validFields = 0;
+      if (form.getValues().nom) validFields++;
+      if (form.getValues().prenom) validFields++;
+      if (form.getValues().email && !form.formState.errors.email) validFields++;
+      if (form.getValues().telephone) validFields++;
+      if (form.getValues().niveau) validFields++;
+      if (form.getValues().materiel && form.getValues().materiel.length > 0) validFields++;
+      if (form.getValues().attentes && form.getValues().attentes.length >= 50) validFields++;
+      validFields += engagementCount;
+       if (form.getValues().date_jour) validFields++;
+
+
+      // We count the 3 engagements as 3 fields, and the rest as individual fields
+      const totalRequiredFields = 7 + 3; // 7 main fields + 3 engagements
+      setProgress((validFields / totalRequiredFields) * 100);
+    };
+
+    const subscription = form.watch(calculateProgress);
+    return () => subscription.unsubscribe();
+  }, [form]);
+
 
   const watchEngagements = form.watch(["engagement1", "engagement2", "engagement3"]);
   const isSubmitDisabled = !watchEngagements.every(Boolean) || isSubmitting;
@@ -107,6 +147,8 @@ export default function RegistrationForm() {
             Rejoignez notre formation exclusive
         </p>
       </header>
+
+      <ShimmerProgressBar progress={progress} />
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
@@ -302,3 +344,5 @@ export default function RegistrationForm() {
     </div>
   );
 }
+
+    
