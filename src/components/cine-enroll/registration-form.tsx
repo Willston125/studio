@@ -45,7 +45,9 @@ export default function RegistrationForm() {
       prenom: "",
       email: "",
       telephone: "",
-      profession: "",
+      adresse: "",
+      ville: "",
+      quartier: "",
       materiel: [],
       logiciels: "",
       attentes: "",
@@ -98,35 +100,41 @@ export default function RegistrationForm() {
 
   return (
     <div className="bg-black/70 backdrop-blur-md text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
-        <header className="text-center p-8 md:p-12 border-b border-white/20">
-            <h1 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma Djibouti</h1>
-            <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
-                Rejoignez notre formation exclusive et devenez réalisateur.
-            </p>
-        </header>
+      <header className="text-center p-8 md:p-12 border-b border-white/20">
+        <h1 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma Djibouti</h1>
+        <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
+            Rejoignez notre formation exclusive et devenez réalisateur.
+        </p>
+      </header>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
             
           {/* Section 1: Informations Personnelles */}
           <div className="space-y-8">
-              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Informations</h2>
+              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Informations Personnelles</h2>
               <div className="grid grid-cols-1 gap-8">
                   <FormField name="nom" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel>Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="prenom" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel>Prénom</FormLabel><FormControl><Input placeholder="Arnaud" {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>Prénom</FormLabel><FormControl><Input placeholder="Arnaud" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="email" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel>Adresse mail</FormLabel><FormControl><Input placeholder="votre@email.com" type="email" {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>Adresse mail</FormLabel><FormControl><Input placeholder="votre@email.com" type="email" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="telephone" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel>Téléphone</FormLabel><FormControl><Input placeholder="+253 XX XX XX XX" type="tel" {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>Téléphone</FormLabel><FormControl><Input placeholder="+253 XX XX XX XX" type="tel" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
-                   <FormField name="profession" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel>Profession / Occupation</FormLabel><FormControl><Input placeholder="Ex: Étudiant, Photographe, ..." {...field} /></FormControl><FormMessage /></FormItem>
-                )} />
+                  <FormField name="adresse" control={form.control} render={({ field }) => (
+                    <FormItem><FormLabel>Adresse (Optionnel)</FormLabel><FormControl><Input placeholder="Ex: 123 Rue de la République" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                  <FormField name="ville" control={form.control} render={({ field }) => (
+                    <FormItem><FormLabel>Ville (Optionnel)</FormLabel><FormControl><Input placeholder="Djibouti" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                  <FormField name="quartier" control={form.control} render={({ field }) => (
+                    <FormItem><FormLabel>Quartier (Optionnel)</FormLabel><FormControl><Input placeholder="Héron" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
               </div>
           </div>
           
@@ -241,8 +249,8 @@ export default function RegistrationForm() {
                 <div className="text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
                     <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
                     <div className="flex items-baseline gap-3 my-1">
-                        <p className="font-headline text-5xl font-extrabold text-amber-500">30 000 FDJ</p>
-                        <div className="bg-amber-500 text-black font-bold text-xs px-2 py-0.5 rounded-full whitespace-nowrap">
+                        <p className="font-headline text-5xl font-extrabold text-primary">30 000 FDJ</p>
+                        <div className="bg-primary text-primary-foreground font-bold text-xs px-2 py-0.5 rounded-full whitespace-nowrap">
                             VOUS ÉCONOMISEZ 10 000 FDJ !
                         </div>
                     </div>
@@ -278,7 +286,7 @@ export default function RegistrationForm() {
                     <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full font-headline text-2xl tracking-wider rounded-md text-primary-foreground h-16 bg-amber-500 text-black hover:bg-amber-400 btn-inscription"
+                    className="w-full font-headline text-2xl tracking-wider rounded-md text-primary-foreground h-16 bg-primary text-primary-foreground hover:bg-primary/90 btn-inscription"
                     disabled={isSubmitDisabled}
                     >
                     {isSubmitting ? 'Redirection...' : "S'inscrire via WhatsApp"}
