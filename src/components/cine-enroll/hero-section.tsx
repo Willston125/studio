@@ -14,7 +14,7 @@ export default function HeroSection() {
       aria-label="Section principale de la formation cinéma"
       className="relative h-screen w-full flex items-center text-white overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image with Parallax Effect */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero.jpg"
@@ -23,6 +23,12 @@ export default function HeroSection() {
           className="object-cover"
           data-ai-hint="filmmaker cinematic"
           priority
+          style={{
+            backgroundAttachment: 'fixed',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}
         />
         {/* Overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20" />
