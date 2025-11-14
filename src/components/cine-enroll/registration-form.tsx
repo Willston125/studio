@@ -25,6 +25,7 @@ import { Smartphone, Camera, Video, Computer } from 'lucide-react';
 import ExpectationsField from "./expectations-field";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import CountdownTimer from "./countdown-timer";
 
 const materialOptions = [
     { id: 'smartphone', label: 'Smartphone', icon: Smartphone },
@@ -189,7 +190,6 @@ export default function RegistrationForm() {
                                   <FormControl>
                                     <Checkbox
                                         id={item.id}
-                                        className="sr-only"
                                         checked={isChecked}
                                         onCheckedChange={(checked) => {
                                           const newValue = field.value ? [...field.value] : [];
@@ -226,6 +226,11 @@ export default function RegistrationForm() {
 
            <Separator className="bg-white/20" />
            
+           <div className="space-y-6 rounded-2xl bg-black/20 p-6 text-center">
+                <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre à 30 000 FDJ expire dans :</h3>
+                <CountdownTimer />
+           </div>
+
            {/* Section 4: Tarifs et Engagement */}
             <div className="space-y-8 rounded-2xl bg-black/20 p-6">
                 <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">TARIF & ENGAGEMENT</h2>
