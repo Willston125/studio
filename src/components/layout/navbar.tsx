@@ -30,7 +30,7 @@ export default function Navbar() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-black/80 backdrop-blur-lg border-b border-neutral-800' : 'bg-transparent border-b border-transparent'
+        isScrolled ? 'bg-black/80 backdrop-blur-lg border-b border-neutral-800' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto px-4">
@@ -38,25 +38,28 @@ export default function Navbar() {
           {/* Left: Logo/Brand */}
           <Link href="/" className="flex items-center gap-2 text-xl font-bold text-white">
             <Clapperboard className="text-primary h-7 w-7" />
-            <span>CINEWORLD</span>
+            <span className="font-headline tracking-wider">CINEWORLD</span>
           </Link>
 
           {/* Center: Navigation Links (Desktop) */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-2 rounded-full bg-black/30 p-1 border border-white/10">
             {navLinks.map((link, index) => (
-              <Link key={`${link.label}-${index}`} href={link.href} className="text-sm font-medium text-neutral-300 hover:text-white transition-colors">
+              <Link key={`${link.label}-${index}`} href={link.href} className={cn(
+                "text-sm font-medium text-neutral-300 hover:text-white transition-colors px-4 py-1.5 rounded-full",
+                index === 0 ? "bg-neutral-700/80 text-white" : ""
+              )}>
                 {link.label}
               </Link>
             ))}
           </nav>
 
           {/* Right: Actions (Desktop) */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-neutral-300 hover:text-white hover:bg-white/10">
+          <div className="hidden md:flex items-center gap-2">
+            <Button variant="ghost" size="icon" className="text-neutral-300 hover:text-white hover:bg-white/10 rounded-full">
               <Search className="h-5 w-5" />
               <span className="sr-only">Rechercher</span>
             </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md text-sm font-semibold">
+            <Button className="bg-white text-black hover:bg-white/90 rounded-md text-sm font-semibold">
               S'inscrire
             </Button>
           </div>
@@ -81,11 +84,11 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="flex items-center gap-4 mt-4">
-               <Button variant="ghost" size="icon" className="text-neutral-300 hover:text-white hover:bg-white/10">
+               <Button variant="ghost" size="icon" className="text-neutral-300 hover:text-white hover:bg-white/10 rounded-full">
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Rechercher</span>
               </Button>
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md text-sm font-semibold">
+              <Button className="bg-white text-black hover:bg-white/90 rounded-md text-sm font-semibold">
                 S'inscrire
               </Button>
             </div>
