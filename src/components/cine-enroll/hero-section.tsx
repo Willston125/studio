@@ -30,7 +30,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg">
           
           <div className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm shadow-[0_0_15px_hsl(var(--primary)_/_0.4)]">
-            Masterclass Exclusive
+            ACADÉMIE DE CINÉMA
           </div>
 
           <h1 className="text-5xl md:text-7xl font-headline font-black tracking-tight text-white leading-tight" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
@@ -65,7 +65,7 @@ export default function HeroSection() {
             size="lg"
             className="mt-4 bg-primary text-primary-foreground h-14 px-8 text-lg font-bold rounded-md hover:bg-primary/90 transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30"
           >
-            <Link href="/inscription">Commencer l'aventure</Link>
+            <Link href="/inscription">Découvrir nos formations</Link>
           </Button>
         </div>
       </div>
