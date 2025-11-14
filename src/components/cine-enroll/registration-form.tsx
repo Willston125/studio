@@ -112,7 +112,7 @@ export default function RegistrationForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
             
           {/* Section 1: Informations Personnelles */}
-          <div className="space-y-8">
+          <div className="space-y-8 form-section">
               <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Informations Personnelles</h2>
               <div className="grid grid-cols-1 gap-8">
                   <FormField name="nom" control={form.control} render={({ field }) => (
@@ -142,7 +142,7 @@ export default function RegistrationForm() {
           <Separator className="bg-white/20" />
           
           {/* Section 2: Expérience */}
-          <div className="space-y-8">
+          <div className="space-y-8 form-section">
               <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Votre Expérience</h2>
               <FormField name="niveau" control={form.control} render={({ field }) => (
                   <FormItem className="space-y-4">
@@ -222,7 +222,7 @@ export default function RegistrationForm() {
           <Separator className="bg-white/20" />
 
            {/* Section 3: Attentes */}
-           <div className="space-y-8">
+           <div className="space-y-8 form-section">
                 <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Attentes</h2>
                 <ExpectationsField />
            </div>
@@ -230,7 +230,7 @@ export default function RegistrationForm() {
            <Separator className="bg-white/20" />
 
             {/* Golden Ticket Section */}
-            <div className="space-y-6 rounded-2xl border-2 border-amber-500/50 bg-amber-500/5 p-8 text-center shadow-lg shadow-amber-500/10">
+            <div className="space-y-6 rounded-2xl border-2 border-amber-500/50 bg-amber-500/5 p-8 text-center shadow-lg shadow-amber-500/10 form-section">
                 <h3 className="font-headline text-7xl uppercase tracking-wider text-amber-500">
                     LE GRAND PRIX :<br/>200 000 FDJ !
                 </h3>
@@ -239,13 +239,13 @@ export default function RegistrationForm() {
                 </p>
             </div>
 
-            <div className="space-y-6 rounded-2xl bg-black/20 p-6 text-center">
+            <div className="space-y-6 rounded-2xl bg-black/20 p-6 text-center form-section">
                 <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre à 30 000 FDJ expire dans :</h3>
                 <CountdownTimer />
             </div>
 
            {/* Section 4: Tarifs et Engagement */}
-            <div className="space-y-8 rounded-2xl bg-black/20 p-6">
+            <div className="space-y-8 rounded-2xl bg-black/20 p-6 form-section">
                 <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Tarif &amp; Engagement</h2>
                 <div className="text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
                     <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
@@ -272,7 +272,7 @@ export default function RegistrationForm() {
             <Separator className="bg-white/20" />
             
             {/* Section 5: Soumission */}
-            <div className="space-y-4">
+            <div className="space-y-4 form-section">
                  <FormField name="date_jour" control={form.control} render={({ field }) => (
                     <FormItem className="flex items-center gap-4">
                         <FormLabel className="whitespace-nowrap">Fait à Djibouti, le :</FormLabel>
