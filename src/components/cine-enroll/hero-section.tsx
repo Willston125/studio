@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://picsum.photos/seed/filmmaker/1920/1080"
+          src="/mon-image-sombre.jpg"
           alt="Filmmaker composing a shot"
           fill
           className="object-cover"
