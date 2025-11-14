@@ -21,8 +21,8 @@ export default function HeroSection() {
           priority
         />
         {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent opacity-90" />
       </div>
 
       {/* Main Content */}
@@ -33,7 +33,7 @@ export default function HeroSection() {
             ACADÉMIE DE CINÉMA
           </div>
 
-          <h1 className="text-7xl font-headline font-black tracking-wide text-white leading-tight" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+          <h1 className="text-8xl font-headline font-black tracking-wide text-white leading-tight" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
             Devenez Réalisateur
           </h1>
 
