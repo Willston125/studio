@@ -2,15 +2,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import ProgramSection from "./program-section";
 
-interface HeroSectionProps {
-  onScrollToForm: () => void;
-}
-
-export default function HeroSection({ onScrollToForm }: HeroSectionProps) {
+export default function HeroSection() {
   return (
     <section className="relative h-screen w-full flex items-center text-white overflow-hidden">
       {/* Background Image */}
@@ -64,11 +61,11 @@ export default function HeroSection({ onScrollToForm }: HeroSectionProps) {
           </div>
 
           <Button 
-            onClick={onScrollToForm}
+            asChild
             size="lg"
             className="mt-4 bg-primary text-primary-foreground h-14 px-8 text-lg font-bold rounded-md hover:bg-primary/90 transition-transform duration-200 hover:scale-105 shadow-lg shadow-primary/30"
           >
-            Commencer l'aventure
+            <Link href="/inscription">Commencer l'aventure</Link>
           </Button>
         </div>
       </div>
