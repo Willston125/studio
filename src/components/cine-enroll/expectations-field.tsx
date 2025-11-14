@@ -51,7 +51,7 @@ export default function ExpectationsField() {
         name="attentes"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="text-gray-800">
+            <FormLabel>
               Quelles sont vos attentes pour ce cours ?
             </FormLabel>
             <FormControl>
@@ -61,7 +61,7 @@ export default function ExpectationsField() {
                 {...field}
               />
             </FormControl>
-            <FormDescription className="text-gray-500">
+            <FormDescription>
               Soyez aussi précis que possible, cela nous aidera à personnaliser votre expérience. (50 caractères min.)
             </FormDescription>
             <FormMessage />
@@ -69,7 +69,7 @@ export default function ExpectationsField() {
         )}
       />
       <div className="flex flex-col items-start gap-4">
-        <Button type="button" variant="outline" size="sm" onClick={handleGenerateTip} disabled={isLoading} className="bg-white/50 text-black">
+        <Button type="button" variant="outline" size="sm" onClick={handleGenerateTip} disabled={isLoading}>
             {isLoading ? (
                 <>
                     <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
@@ -90,7 +90,7 @@ export default function ExpectationsField() {
             <Alert className="border-primary/30 bg-primary/10">
               <Lightbulb className="h-4 w-4 text-primary" />
               <AlertTitle className="font-bold text-primary">Conseil de l'IA</AlertTitle>
-              <AlertDescription className="text-gray-800">{tip}</AlertDescription>
+              <AlertDescription className="text-foreground/80">{tip}</AlertDescription>
             </Alert>
           )}
         </div>

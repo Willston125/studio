@@ -95,8 +95,8 @@ export default function RegistrationForm() {
   }
 
   return (
-    <div className="bg-white/90 backdrop-blur-sm text-gray-900 rounded-3xl shadow-2xl overflow-hidden">
-        <header className="text-center p-8 md:p-12 border-b border-gray-200">
+    <div className="bg-black/70 backdrop-blur-md text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+        <header className="text-center p-8 md:p-12 border-b border-white/20">
             <Image 
                 src="/logo_cineworld.png"
                 alt="Cineworld Académie Logo"
@@ -104,52 +104,49 @@ export default function RegistrationForm() {
                 height={70}
                 className="mx-auto mb-4"
             />
-            <h1 className="font-headline text-5xl md:text-6xl font-bold tracking-tight text-gray-900">
-                Bienvenue !
-            </h1>
-            <p className="font-body text-lg text-gray-600 mt-2">
+            <h1 className="font-body text-xl text-gray-400 mt-4 max-w-2xl mx-auto">
                 Rejoignez l'Académie Cineworld et donnez vie à vos projets cinématographiques.
-            </p>
+            </h1>
         </header>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-8 md:p-12">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
             
           {/* Section 1: Informations Personnelles */}
-          <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900 font-headline tracking-wider">VOS INFORMATIONS</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-8">
+              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">VOS INFORMATIONS</h2>
+              <div className="grid grid-cols-1 gap-8">
                   <FormField name="nom" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel className="text-gray-800">Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="prenom" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel className="text-gray-800">Prénom</FormLabel><FormControl><Input placeholder="Arnaud" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Prénom</FormLabel><FormControl><Input placeholder="Arnaud" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="email" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel className="text-gray-800">Adresse mail</FormLabel><FormControl><Input placeholder="votre@email.com" type="email" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Adresse mail</FormLabel><FormControl><Input placeholder="votre@email.com" type="email" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="telephone" control={form.control} render={({ field }) => (
-                  <FormItem><FormLabel className="text-gray-800">Téléphone</FormLabel><FormControl><Input placeholder="+253 XX XX XX XX" type="tel" {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Téléphone</FormLabel><FormControl><Input placeholder="+253 XX XX XX XX" type="tel" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                    <FormField name="profession" control={form.control} render={({ field }) => (
-                  <FormItem className="md:col-span-2"><FormLabel className="text-gray-800">Profession / Occupation</FormLabel><FormControl><Input placeholder="Ex: Étudiant, Photographe, ..." {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormItem><FormLabel>Profession / Occupation</FormLabel><FormControl><Input placeholder="Ex: Étudiant, Photographe, ..." {...field} /></FormControl><FormMessage /></FormItem>
                 )} />
               </div>
           </div>
           
-          <Separator className="bg-gray-200" />
+          <Separator className="bg-white/20" />
           
           {/* Section 2: Expérience */}
-          <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900 font-headline tracking-wider">VOTRE EXPÉRIENCE</h2>
+          <div className="space-y-8">
+              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">VOTRE EXPÉRIENCE</h2>
               <FormField name="niveau" control={form.control} render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-800">Votre niveau en réalisation</FormLabel>
+                  <FormItem className="space-y-4">
+                    <FormLabel>Votre niveau en réalisation</FormLabel>
                     <FormControl>
                       <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col sm:flex-row gap-4 pt-2">
-                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="debutant" /></FormControl><FormLabel className="font-normal text-gray-700">Débutant(e)</FormLabel></FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="intermediaire" /></FormControl><FormLabel className="font-normal text-gray-700">Intermédiaire</FormLabel></FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="avance" /></FormControl><FormLabel className="font-normal text-gray-700">Avancé(e)</FormLabel></FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="debutant" /></FormControl><FormLabel className="font-normal">Débutant(e)</FormLabel></FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="intermediaire" /></FormControl><FormLabel className="font-normal">Intermédiaire</FormLabel></FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="avance" /></FormControl><FormLabel className="font-normal">Avancé(e)</FormLabel></FormItem>
                       </RadioGroup>
                     </FormControl>
                     <FormMessage />
@@ -162,7 +159,7 @@ export default function RegistrationForm() {
                 render={() => (
                     <FormItem>
                         <div className="mb-4">
-                            <FormLabel className="text-gray-800">Matériel que vous possédez</FormLabel>
+                            <FormLabel>Matériel que vous possédez</FormLabel>
                             <FormMessage />
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -176,7 +173,7 @@ export default function RegistrationForm() {
                                 return (
                                 <FormItem
                                     key={item.id}
-                                    className="border border-gray-200 rounded-full p-3 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 has-[:checked]:bg-primary/10 has-[:checked]:border-primary"
+                                    className="border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 has-[:checked]:bg-amber-500/10 has-[:checked]:border-amber-500"
                                 >
                                     <FormControl>
                                     <Checkbox
@@ -193,8 +190,8 @@ export default function RegistrationForm() {
                                         }}
                                     />
                                     </FormControl>
-                                    <Icon className="w-8 h-8 text-primary" />
-                                    <FormLabel className="font-normal text-center text-xs text-gray-700 cursor-pointer">
+                                    <Icon className="w-8 h-8 text-amber-500" />
+                                    <FormLabel className="font-normal text-center text-xs cursor-pointer">
                                         {item.label}
                                     </FormLabel>
                                 </FormItem>
@@ -208,46 +205,46 @@ export default function RegistrationForm() {
                 />
           </div>
 
-          <Separator className="bg-gray-200" />
+          <Separator className="bg-white/20" />
 
            {/* Section 3: Attentes */}
-           <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-gray-900 font-headline tracking-wider">VOS ATTENTES</h2>
+           <div className="space-y-8">
+                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">VOS ATTENTES</h2>
                 <ExpectationsField />
            </div>
 
-           <Separator className="bg-gray-200" />
+           <Separator className="bg-white/20" />
            
            {/* Section 4: Tarifs et Engagement */}
-            <div className="space-y-6 rounded-2xl bg-primary/5 p-6">
-                <h2 className="text-2xl font-bold text-gray-900 font-headline tracking-wider">TARIF & ENGAGEMENT</h2>
-                <div className="text-center bg-white rounded-2xl p-6">
-                    <p className="text-sm font-medium text-gray-500">Tarif Session 2025</p>
-                    <p className="text-2xl font-bold text-gray-400 line-through">40 000 FDJ</p>
-                    <p className="text-5xl font-extrabold text-primary">30 000 FDJ</p>
+            <div className="space-y-8 rounded-2xl bg-black/20 p-6">
+                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">TARIF & ENGAGEMENT</h2>
+                <div className="text-center bg-black/30 rounded-lg p-6">
+                    <p className="text-sm font-medium text-gray-400">Tarif Session 2025</p>
+                    <p className="text-2xl font-bold text-gray-500 line-through">40 000 FDJ</p>
+                    <p className="text-5xl font-extrabold text-amber-500">30 000 FDJ</p>
                 </div>
                 <div className="space-y-4 pt-4">
                     <FormField name="engagement1" control={form.control} render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je confirme avoir lu et accepté les conditions de participation.</FormLabel><FormMessage /></div></FormItem>
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal">Je confirme avoir lu et accepté les conditions de participation.</FormLabel><FormMessage /></div></FormItem>
                     )} />
                     <FormField name="engagement2" control={form.control} render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je m'engage à être présent(e) à toutes les sessions du cours.</FormLabel><FormMessage /></div></FormItem>
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal">Je m'engage à être présent(e) à toutes les sessions du cours.</FormLabel><FormMessage /></div></FormItem>
                     )} />
                     <FormField name="engagement3" control={form.control} render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal text-gray-600">Je comprends que le paiement est non-remboursable.</FormLabel><FormMessage /></div></FormItem>
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="text-sm font-normal">Je comprends que le paiement est non-remboursable.</FormLabel><FormMessage /></div></FormItem>
                     )} />
                 </div>
             </div>
 
-            <Separator className="bg-gray-200" />
+            <Separator className="bg-white/20" />
             
             {/* Section 5: Soumission */}
             <div className="space-y-4">
                  <FormField name="date_jour" control={form.control} render={({ field }) => (
                     <FormItem className="flex items-center gap-4">
-                        <FormLabel className="text-gray-800 whitespace-nowrap">Fait à Djibouti, le :</FormLabel>
+                        <FormLabel className="whitespace-nowrap">Fait à Djibouti, le :</FormLabel>
                         <FormControl>
-                            <Input {...field} readOnly className="font-bold text-center bg-gray-100" />
+                            <Input {...field} readOnly className="font-bold text-center bg-black/20 border-none" />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -257,13 +254,13 @@ export default function RegistrationForm() {
                     <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full font-bold text-lg rounded-full bg-primary text-primary-foreground h-14"
+                    className="w-full font-headline text-2xl tracking-wider rounded-md bg-amber-500 text-black h-16 hover:bg-amber-400 shadow-lg shadow-amber-500/20 hover:shadow-amber-400/30"
                     disabled={isSubmitDisabled}
                     >
                     {isSubmitting ? 'Redirection...' : "S'inscrire via WhatsApp"}
                     </Button>
                     <p className="text-sm text-gray-500">
-                        Vous avez déjà un compte ? <a href="#" className="font-semibold text-primary hover:underline">Connectez-vous !</a>
+                        Vous avez déjà un compte ? <a href="#" className="font-semibold text-amber-500 hover:underline">Connectez-vous !</a>
                     </p>
                 </div>
             </div>

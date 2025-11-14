@@ -1,12 +1,22 @@
 
 'use client';
 
+import Image from 'next/image';
 import RegistrationForm from '@/components/cine-enroll/registration-form';
 
 export default function InscriptionPage() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4">
-      <main className="w-full max-w-4xl">
+    <div className="relative min-h-screen w-full flex items-center justify-center p-4 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/hero.jpg"
+          alt="Ambiance cinéma"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/90" />
+      </div>
+      <main className="relative z-10 w-full max-w-4xl">
         <RegistrationForm />
       </main>
     </div>
