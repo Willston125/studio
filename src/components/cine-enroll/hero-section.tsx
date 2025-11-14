@@ -10,12 +10,15 @@ import { cn } from "@/lib/utils";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen w-full flex items-center text-white overflow-hidden">
+    <section 
+      aria-label="Section principale de la formation cinéma"
+      className="relative h-screen w-full flex items-center text-white overflow-hidden"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero.jpg"
-          alt="Filmmaker composing a shot"
+          alt="Un réalisateur de film concentré, cadrant une scène avec une caméra professionnelle sur un plateau de tournage."
           fill
           className="object-cover"
           data-ai-hint="filmmaker cinematic"
@@ -34,7 +37,11 @@ export default function HeroSection() {
             ACADÉMIE DE CINÉMA
           </div>
 
-          <h1 className="text-8xl font-headline font-black tracking-wide text-white leading-tight" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+          <h1 
+            tabIndex={0}
+            className="text-8xl font-headline font-black tracking-wide text-white leading-tight" 
+            style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}
+          >
             Devenez Réalisateur
           </h1>
 
