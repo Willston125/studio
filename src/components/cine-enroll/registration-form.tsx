@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Award, Film, RadioTower, User, PenSquare, BookOpen, Camera, Users, Scissors } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import Image from "next/image";
 
 import type { RegistrationSchema } from "@/lib/schema";
 import { registrationSchema } from "@/lib/schema";
@@ -183,50 +182,31 @@ export default function RegistrationForm() {
 
   return (
     <>
-      <header className="group relative w-full h-64 md:h-80 border-b border-border/50 flex items-center justify-center overflow-hidden">
-        <Image
-          src="/galerie1.png"
-          alt="Bannière de la masterclass de cinéma"
-          fill
-          className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
-          data-ai-hint="film training"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 w-48 h-48 md:w-64 md:h-64">
-          <Image
-            src="/logo_cineworld.png"
-            alt="Logo Cineworld"
-            fill
-            className="object-contain"
-          />
+      <header className="text-center relative pt-8">
+        <FilmStripProgressBar progress={progress} />
+        <div className="flex justify-center gap-4 mb-4 mt-8">
+            <div className="bg-yellow-500/10 border border-yellow-400 text-yellow-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.3)]">
+                Premium
+            </div>
+            <div className="bg-yellow-500/10 border border-yellow-400 text-yellow-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.3)]">
+                Exclusif
+            </div>
+        </div>
+        <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+            FICHE D’INSCRIPTION
+        </h1>
+        <p className="font-headline text-2xl text-primary mt-2" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+            COURS DE CINÉMA
+        </p>
+        <div className="mt-4 text-sm text-white/80 space-y-1">
+            <p>Session: 1 mois - 2 fois / semaine - 4h</p>
+            <p>Écriture de scénario – Découpage technique – Réalisation – Montage</p>
         </div>
       </header>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
-            <div className="text-center relative">
-                <FilmStripProgressBar progress={progress} />
-                <div className="flex justify-center gap-4 mb-4 mt-8">
-                    <div className="bg-yellow-500/10 border border-yellow-400 text-yellow-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.3)]">
-                        Premium
-                    </div>
-                    <div className="bg-yellow-500/10 border border-yellow-400 text-yellow-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.3)]">
-                        Exclusif
-                    </div>
-                </div>
-                <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-                    FICHE D’INSCRIPTION
-                </h1>
-                <p className="font-headline text-2xl text-primary mt-2" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
-                    COURS DE CINÉMA
-                </p>
-                <div className="mt-4 text-sm text-white/80 space-y-1">
-                    <p>Session: 1 mois - 2 fois / semaine - 4h</p>
-                    <p>Écriture de scénario – Découpage technique – Réalisation – Montage</p>
-                </div>
-            </div>
-
+            
           {/* Section 1: Informations Personnelles */}
           <section className="space-y-6">
             <h2 className="flex items-center gap-3 text-2xl font-headline text-foreground">
@@ -388,5 +368,3 @@ export default function RegistrationForm() {
     </>
   );
 }
-
-    
