@@ -13,8 +13,8 @@
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 0 100% 27%; /* Rouge Bordeaux/Marron (#8B0000) */
-    --primary-foreground: 0 0% 98%;
+    --primary: 39 91% 55%; /* Or / Ambre */
+    --primary-foreground: 0 0% 10%;
 
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
@@ -23,7 +23,7 @@
     --muted-foreground: 0 0% 60%;
 
     --accent: 0 0% 15%;
-    --accent-foreground: 0 100% 27%; /* Rouge Bordeaux pour accent */
+    --accent-foreground: 39 91% 55%; /* Or / Ambre pour accent */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -53,16 +53,6 @@
 
   body, p, span, div, a, label, input, textarea, button, select {
     @apply font-body;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('https://www.transparenttextures.com/patterns/subtle-grain.png');
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 9999;
   }
 }
 
@@ -161,15 +151,16 @@
 
   @keyframes blinkCursor {
     0%, 100% { border-color: transparent; }
-    50% { border-color: #D4AF37; }
+    50% { border-color: hsl(var(--primary)); }
   }
 
   .typewriter-text {
+    display: inline-block;
     overflow: hidden;
-    border-right: 2px solid #D4AF37;
+    border-right: 4px solid hsl(var(--primary));
     white-space: nowrap;
     animation: 
-      typewriter 3s steps(40) 1s both,
-      blinkCursor 0.8s steps(40) infinite;
+      typewriter 3s steps(40) 1s 1 both,
+      blinkCursor 750ms steps(40) infinite;
   }
 }
