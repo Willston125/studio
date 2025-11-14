@@ -100,4 +100,24 @@
   form > .form-section:nth-child(8) { animation-delay: 0.5s; }
   form > .form-section:nth-child(9) { animation-delay: 0.6s; }
   form > .form-section:nth-child(11) { animation-delay: 0.7s; }
+
+  /* Animation du timer */
+  .countdown-timer {
+      animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+  }
+
+  .time-unit {
+      display: inline-block;
+      animation: bounce 1s infinite;
+  }
+
+  @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+  }
 }

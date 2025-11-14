@@ -33,9 +33,12 @@ const calculateTimeLeft = () => {
   return timeLeft;
 };
 
-const TimeUnit = ({ value, label }: { value: number, label: string }) => {
+const TimeUnit = ({ value, label, delay }: { value: number, label: string, delay: string }) => {
     return (
-        <div className="flex flex-col items-center">
+        <div 
+            className="flex flex-col items-center time-unit"
+            style={{ animationDelay: delay }}
+        >
             <span className="text-5xl md:text-6xl font-headline text-amber-500 tracking-wider">
                 {String(value).padStart(2, '0')}
             </span>
@@ -78,14 +81,14 @@ export default function CountdownTimer() {
   }
 
   return (
-    <div className="flex justify-center items-start gap-4 md:gap-8">
-        <TimeUnit value={days} label="Jours" />
+    <div className="flex justify-center items-start gap-4 md:gap-8 countdown-timer">
+        <TimeUnit value={days} label="Jours" delay="0s" />
         <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={hours} label="Heures" />
+        <TimeUnit value={hours} label="Heures" delay="0.2s" />
         <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={minutes} label="Minutes" />
+        <TimeUnit value={minutes} label="Minutes" delay="0.4s" />
         <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={seconds} label="Secondes" />
+        <TimeUnit value={seconds} label="Secondes" delay="0.6s" />
     </div>
   );
 }
