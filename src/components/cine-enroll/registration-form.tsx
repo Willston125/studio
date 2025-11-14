@@ -72,7 +72,7 @@ export default function RegistrationForm() {
       ].join('\n');
 
       const message = intro + details;
-      const whatsappUrl = `https://wa.me/253775556344?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/2537755556344?text=${encodeURIComponent(message)}`;
       
       window.open(whatsappUrl, '_blank');
       
@@ -170,30 +170,39 @@ export default function RegistrationForm() {
                             name="materiel"
                             render={({ field }) => {
                                 const Icon = item.icon;
+                                const isChecked = field.value?.includes(item.id) ?? false;
                                 return (
                                 <FormItem
-                                    key={item.id}
-                                    className="border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 has-[:checked]:bg-amber-500/10 has-[:checked]:border-amber-500"
+                                    className={cn(
+                                        "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300",
+                                        isChecked && "bg-amber-500/10 border-amber-500"
+                                    )}
                                 >
-                                    <FormControl>
+                                  <FormLabel htmlFor={item.id} className="w-full h-full flex flex-col items-center justify-center gap-2 cursor-pointer">
+                                    <Icon className="w-8 h-8 text-amber-500" />
+                                    <span className="font-normal text-center text-xs">
+                                        {item.label}
+                                    </span>
+                                  </FormLabel>
+                                  <FormControl>
                                     <Checkbox
+                                        id={item.id}
                                         className="sr-only"
-                                        checked={field.value?.includes(item.id)}
+                                        checked={isChecked}
                                         onCheckedChange={(checked) => {
-                                        return checked
-                                            ? field.onChange([...(field.value || []), item.id])
-                                            : field.onChange(
-                                                field.value?.filter(
-                                                (value) => value !== item.id
-                                                )
-                                            )
+                                          const newValue = field.value ? [...field.value] : [];
+                                          if (checked) {
+                                            newValue.push(item.id);
+                                          } else {
+                                            const index = newValue.indexOf(item.id);
+                                            if (index > -1) {
+                                              newValue.splice(index, 1);
+                                            }
+                                          }
+                                          field.onChange(newValue);
                                         }}
                                     />
                                     </FormControl>
-                                    <Icon className="w-8 h-8 text-amber-500" />
-                                    <FormLabel className="font-normal text-center text-xs cursor-pointer">
-                                        {item.label}
-                                    </FormLabel>
                                 </FormItem>
                                 )
                             }}
@@ -269,3 +278,5 @@ export default function RegistrationForm() {
     </div>
   );
 }
+
+    
