@@ -182,6 +182,7 @@ export default function RegistrationForm() {
                                 const isChecked = field.value?.includes(item.id) ?? false;
                                 return (
                                 <FormItem
+                                    key={item.id}
                                     className={cn(
                                         "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300",
                                         isChecked && "bg-amber-500/10 border-amber-500"
@@ -256,11 +257,15 @@ export default function RegistrationForm() {
 
            {/* Section 4: Tarifs et Engagement */}
             <div className="space-y-8 rounded-2xl bg-black/20 p-6">
-                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">TARIF & ENGAGEMENT</h2>
-                <div className="text-center bg-black/30 rounded-lg p-6">
-                    <p className="text-sm font-medium text-gray-400">Tarif Session 2025</p>
-                    <p className="text-2xl font-bold text-gray-500 line-through">40 000 FDJ</p>
-                    <p className="text-5xl font-extrabold text-amber-500">30 000 FDJ</p>
+                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">TARIF & ENGAGEMENT</h2>
+                <div className="text-center bg-black/30 rounded-lg p-8 flex flex-col items-center">
+                    <p className="text-lg font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
+                    <div className="flex items-center gap-4 my-2">
+                        <p className="font-headline text-7xl font-extrabold text-amber-500">30 000 FDJ</p>
+                        <div className="bg-amber-500 text-black font-bold text-sm px-3 py-1 rounded-full whitespace-nowrap">
+                            VOUS ÉCONOMISEZ 10 000 FDJ !
+                        </div>
+                    </div>
                 </div>
                 <div className="space-y-4 pt-4">
                     <FormField name="engagement1" control={form.control} render={({ field }) => (
