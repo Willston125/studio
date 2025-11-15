@@ -17,7 +17,7 @@ export default function HeroSection() {
       {/* Background Image with Parallax Effect */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.jpg"
+          src="/hero-fond.jpeg"
           alt="Un réalisateur de film concentré, cadrant une scène avec une caméra professionnelle sur un plateau de tournage."
           fill
           className="object-cover"
