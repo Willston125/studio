@@ -20,9 +20,7 @@ export default function HeroSection() {
           
           {/* Colonne de Gauche : Contenu Texte */}
           <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg">
-            <div className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm shadow-[0_0_20px_hsl(var(--primary-foreground))]">
-              ACADÉMIE DE CINÉMA
-            </div>
+            
 
             <h1 
               tabIndex={0}
