@@ -90,15 +90,10 @@ export default function InscriptionPage() {
         <div className="absolute inset-0 hero-section-overlay" />
       </div>
       <main className="relative z-10 w-full max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-10 lg:gap-12">
+        <div className="flex flex-col-reverse lg:flex-row lg:gap-12">
             
-            {/* Colonne de Gauche : Formulaire */}
-            <div className="lg:col-span-6">
-                <RegistrationForm form={form} onSubmit={onSubmit} />
-            </div>
-
-            {/* Colonne de Droite : Sidebar de Conversion */}
-            <div className="lg:col-span-4 mt-12 lg:mt-0">
+            {/* Colonne de Droite (devient la 2e sur mobile): Sidebar de Conversion */}
+            <div className="w-full lg:w-4/12 mt-12 lg:mt-0">
                 <div className="sticky top-28 space-y-8">
                     <RegistrationSidebar
                       isSubmitDisabled={isSubmitDisabled}
@@ -107,6 +102,12 @@ export default function InscriptionPage() {
                     />
                 </div>
             </div>
+
+            {/* Colonne de Gauche (devient la 1ere sur mobile): Formulaire */}
+            <div className="w-full lg:w-8/12">
+                <RegistrationForm form={form} onSubmit={onSubmit} />
+            </div>
+
         </div>
       </main>
     </div>
