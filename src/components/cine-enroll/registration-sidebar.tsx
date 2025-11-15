@@ -55,11 +55,26 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
             {/* Tarif */}
             <div className="special-price p-8 text-center">
                 <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
-                <div className="flex items-baseline justify-center gap-3 my-1">
-                    <p className="font-headline text-6xl font-extrabold text-primary">30 000 FDJ</p>
-                    <div className="bg-primary text-primary-foreground font-bold text-xs px-2 py-0.5 rounded-full whitespace-nowrap">
-                        -25%
-                    </div>
+                <div className="relative inline-block my-2">
+                  <div className="font-headline text-5xl font-bold text-primary relative z-10">
+                    30 000 FDJ
+                  </div>
+                  <div 
+                    className="
+                      absolute -top-4 -right-9 z-20 
+                      bg-red-600 text-white text-xs font-black
+                      py-1.5 px-3 rounded-full 
+                      uppercase tracking-wider
+                      border-4 border-red-200
+                      "
+                    style={{
+                        transform: 'rotate(12deg)',
+                        animation: 'attentionGrabber 2s infinite',
+                        boxShadow: '0 6px 15px rgba(220, 38, 38, 0.5)'
+                    }}
+                  >
+                    -25% 🔥
+                  </div>
                 </div>
                 <p className="font-body font-bold text-primary">ÉCONOMISEZ 10 000 FDJ !</p>
             </div>
@@ -92,3 +107,5 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
         </div>
     );
 }
+
+    
