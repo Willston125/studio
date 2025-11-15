@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
-  { href: '/inscription', 'label': 'Inscription' },
+  { href: '/inscription', label: 'Inscription' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -40,8 +40,8 @@ export default function Navbar() {
               src="/logo_cineworld.png"
               alt="Cineworld Logo"
               width={360}
-              height={80}
-              className="h-[80px] w-auto"
+              height={90}
+              className="h-[90px] w-auto"
               priority
             />
           </Link>
