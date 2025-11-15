@@ -2,7 +2,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Check, Lock } from 'lucide-react';
+import { Check, Lock, Trophy, Laptop, Smartphone } from 'lucide-react';
 import CountdownTimer from './countdown-timer';
 
 interface RegistrationSidebarProps {
@@ -23,16 +23,22 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
             </div>
 
             {/* Grand Prix */}
-            <div className="p-8 text-center space-y-4 bg-amber-900/10">
-                 <h3 className="font-headline text-5xl md:text-6xl uppercase tracking-wider text-amber-400">
+            <div className="p-8 text-center space-y-2 bg-amber-900/10">
+                 <h3 className="font-headline text-5xl md:text-6xl uppercase tracking-wider text-amber-400" style={{textShadow: '0 0 10px hsl(var(--primary))'}}>
                     Le Grand Prix
                 </h3>
-                <p className="font-headline text-7xl font-bold text-white">
+                <p className="font-headline text-7xl font-bold text-white" style={{textShadow: '0 0 15px hsl(var(--primary))'}}>
                     200 000 FDJ
                 </p>
-                <p className="font-body text-gray-300 !mt-2">
-                    ET AUSSI : Un Ordinateur Portable (2e Prix) &amp; Un Smartphone (3e Prix)
-                </p>
+                <div className="pt-4 space-y-3">
+                    <p className="font-body text-gray-300 !mt-2 text-lg">
+                        ET AUSSI POUR LES MEILLEURS FILMS :
+                    </p>
+                    <div className="flex justify-center items-center gap-6 font-body text-gray-400">
+                        <div className='flex items-center gap-2'><Laptop size={20} /><span>PC Portable (2e)</span></div>
+                        <div className='flex items-center gap-2'><Smartphone size={20} /><span>Smartphone (3e)</span></div>
+                    </div>
+                </div>
             </div>
 
             {/* Tarif */}
@@ -48,10 +54,10 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
             </div>
 
             {/* Garantie */}
-            <div className="p-6 space-y-2 text-sm text-gray-300 bg-black/20">
-                <div className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-500" />
-                    <span className="font-semibold">Garantie de Satisfaction</span>
+            <div className="p-6 space-y-2 text-sm text-gray-300 bg-black/20 border-t-2 border-amber-500/50">
+                <div className="flex items-center gap-2 font-bold text-amber-500">
+                    <Check className="w-5 h-5" />
+                    <span>GARANTIE DE SATISFACTION</span>
                 </div>
                 <p className="text-xs text-gray-400 pl-7">
                     Si la formation ne répond pas à vos attentes après le premier jour, nous vous remboursons intégralement.
@@ -66,7 +72,7 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
                     disabled={isSubmitDisabled}
                     onClick={onSubmit}
                     >
-                    {isSubmitting ? 'Redirection...' : "🎬 Rejoindre la Masterclass"}
+                    🎬 {isSubmitting ? 'Redirection...' : "Rejoindre la Masterclass"}
                 </Button>
                 <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
                     <Lock className="w-3 h-3" /> Vos informations sont utilisées uniquement pour l'inscription.
@@ -78,3 +84,5 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
         </div>
     );
 }
+
+    
