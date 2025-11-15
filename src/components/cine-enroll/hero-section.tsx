@@ -10,12 +10,21 @@ export default function HeroSection() {
   return (
     <section 
       aria-label="Section principale de la formation cinéma"
-      className="relative w-full flex flex-col justify-center bg-background text-white overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/hero-fond.png')" }}
+      className="relative w-full flex flex-col justify-center text-white overflow-hidden"
     >
-      <div className="absolute inset-0 bg-black/60 z-0"></div>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute z-0 w-full h-full object-cover"
+        src="/cinema-bg.mp4"
+      >
+        Votre navigateur ne supporte pas la lecture de vidéos.
+      </video>
+      <div className="absolute inset-0 bg-black/70 z-10"></div>
 
-      <div className="container mx-auto px-4 flex-grow flex items-center relative z-10 pt-36 pb-12 md:pt-32">
+      <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-36 pb-12 md:pt-32">
         <div className="grid md:grid-cols-2 gap-8 w-full">
           
           {/* Colonne de Gauche : Contenu Texte */}
@@ -70,5 +79,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
-    
