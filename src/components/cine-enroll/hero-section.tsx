@@ -70,7 +70,7 @@ export default function HeroSection() {
       </div>
       
       {/* Program Section Overlay */}
-      <div className="relative z-10 w-full lg:w-3/5 p-4 self-center lg:self-end">
+      <div className="relative z-10 w-full lg:w-3/5 p-4 self-center lg:self-end lg:-mb-16">
         <ProgramSection />
       </div>
     </section>
