@@ -10,12 +10,12 @@ export default function HeroSection() {
   return (
     <section 
       aria-label="Section principale de la formation cinéma"
-      className="relative min-h-screen w-full flex flex-col justify-center bg-background text-white overflow-hidden pt-32 bg-cover bg-center"
+      className="relative min-h-screen w-full flex flex-col justify-center bg-background text-white overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: "url('/hero-fond.png')" }}
     >
       <div className="absolute inset-0 bg-black/60 z-0"></div>
 
-      <div className="container mx-auto px-4 flex-grow flex items-center relative z-10">
+      <div className="container mx-auto px-4 flex-grow flex items-center relative z-10 pt-32">
         <div className="grid md:grid-cols-2 gap-8 w-full">
           
           {/* Colonne de Gauche : Contenu Texte */}
