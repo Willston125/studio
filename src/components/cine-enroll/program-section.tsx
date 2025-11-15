@@ -32,7 +32,7 @@ const programItems = [
   },
     {
     title: "La boussole digital",
-    imageSrc: "https://picsum.photos/seed/actors/400/600",
+    imageSrc: "/affiche5.png",
     imageHint: "director actor",
   },
 ];
