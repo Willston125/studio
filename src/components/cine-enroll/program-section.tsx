@@ -31,7 +31,7 @@ const programItems = [
     imageHint: "movie premiere",
   },
     {
-    title: "Direction d'acteurs",
+    title: "La boussole digital",
     imageSrc: "https://picsum.photos/seed/actors/400/600",
     imageHint: "director actor",
   },
