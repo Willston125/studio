@@ -79,7 +79,7 @@ export default function InscriptionPage() {
 
 
   return (
-    <div className="relative w-full flex items-start justify-center p-4 pt-48 md:p-8 overflow-x-hidden">
+    <div className="relative w-full flex items-start justify-center p-4 md:p-8 pt-32 overflow-x-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero.jpg"
@@ -94,7 +94,7 @@ export default function InscriptionPage() {
             
             {/* Colonne de Droite (devient la 2e sur mobile): Sidebar de Conversion */}
             <div className="w-full lg:w-4/12 mt-12 lg:mt-0">
-                <div className="sticky top-28 space-y-8">
+                <div className="space-y-8">
                     <RegistrationSidebar
                       isSubmitDisabled={isSubmitDisabled}
                       isSubmitting={isSubmitting}
@@ -113,5 +113,3 @@ export default function InscriptionPage() {
     </div>
   );
 }
-
-    
