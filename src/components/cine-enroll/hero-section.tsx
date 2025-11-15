@@ -26,7 +26,7 @@ export default function HeroSection() {
         />
         {/* Overlays */}
         <div className="absolute inset-0 hero-section-overlay" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/30 to-transparent" />
       </div>
 
       {/* Main Content */}
