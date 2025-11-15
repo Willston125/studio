@@ -63,7 +63,7 @@ export default function CountdownTimer() {
 
   if (!isMounted) {
     return (
-        <div className="countdown-grid">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-sm mx-auto">
             <Skeleton className="h-24 w-full" />
             <Skeleton className="h-24 w-full" />
             <Skeleton className="h-24 w-full" />
@@ -80,7 +80,7 @@ export default function CountdownTimer() {
 
   return (
     <div className="countdown-container">
-      <div className="countdown-grid">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-sm mx-auto">
         <TimeUnit value={days} label="JOURS" />
         <TimeUnit value={hours} label="HEURES" />
         <TimeUnit value={minutes} label="MINUTES" />

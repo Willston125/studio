@@ -178,17 +178,8 @@
     }
   }
 
-  /* Compte à rebours corrigé */
   .countdown-container {
     text-align: center;
-  }
-
-  .countdown-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    max-width: 400px;
-    margin: 0 auto;
   }
 
   .countdown-unit {
