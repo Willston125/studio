@@ -15,7 +15,7 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 bg-black/60 z-0"></div>
 
-      <div className="container mx-auto px-4 flex-grow flex items-center relative z-10">
+      <div className="container mx-auto px-4 flex-grow flex items-center relative z-10 pt-24 md:pt-0">
         <div className="grid md:grid-cols-2 gap-8 items-center w-full">
           
           {/* Colonne de Gauche : Contenu Texte */}
