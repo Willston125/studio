@@ -11,12 +11,12 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const programItems = [
   {
-    title: "Mbayé Trambbwé",
+    title: "Mbayé Trambwé",
     imageSrc: "/affiche2.png",
     imageHint: "screenwriting notebook",
   },
   {
-    title: "L'aude des aveugle",
+    title: "L'aube des aveugles",
     imageSrc: "/affiche4.png",
     imageHint: "film camera",
   },
