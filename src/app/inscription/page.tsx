@@ -55,7 +55,7 @@ export default function InscriptionPage() {
       ].join('\n');
 
       const message = intro + details;
-      const whatsappUrl = `https://wa.me/2537755556344?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
       
       window.open(whatsappUrl, '_blank');
       
