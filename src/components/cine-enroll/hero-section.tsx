@@ -10,7 +10,7 @@ export default function HeroSection() {
   return (
     <section 
       aria-label="Section principale de la formation cinéma"
-      className="relative min-h-screen w-full flex flex-col justify-center bg-background text-white overflow-hidden bg-cover bg-center"
+      className="relative w-full flex flex-col justify-center bg-background text-white overflow-hidden bg-cover bg-center min-h-[auto] md:min-h-screen"
       style={{ backgroundImage: "url('/hero-fond.png')" }}
     >
       <div className="absolute inset-0 bg-black/60 z-0"></div>
@@ -70,3 +70,5 @@ export default function HeroSection() {
     </section>
   );
 }
+
+    

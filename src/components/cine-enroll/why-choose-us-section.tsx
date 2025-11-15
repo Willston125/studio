@@ -54,7 +54,7 @@ const WhyChooseUsSection = () => {
     return (
         <>
             <div className="film-grain"></div>
-            <section className="why-section" ref={sectionRef}>
+            <section className="why-section min-h-[auto]" ref={sectionRef}>
                 <div className="focus-lines"></div>
                 
                 <div className="spotlight spotlight-1"></div>
@@ -103,3 +103,5 @@ const WhyChooseUsSection = () => {
 };
 
 export default WhyChooseUsSection;
+
+    

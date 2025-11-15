@@ -62,15 +62,6 @@
   body, p, span, div, a, label, input, textarea, button, select {
     @apply font-body;
   }
-
-  h1 { @apply mb-[15px]; }
-  h2 { @apply mb-[20px] leading-tight; }
-  h3 { @apply mb-[15px] leading-snug; }
-  h4 { @apply mb-[10px] leading-snug; }
-  p { @apply mb-[20px] leading-relaxed; }
-  ul, ol { @apply mb-[25px]; }
-  li { @apply mb-[8px] leading-normal; }
-  hr { @apply my-[40px] border-0 h-px bg-amber-500/20; }
 }
 
 @layer components {
@@ -139,7 +130,6 @@
       background: #333; /* Fond gris sombre */
       border-radius: 2px;
       overflow: hidden;
-      margin: 20px 0;
   }
   .progress-fill {
       height: 100%;
@@ -190,7 +180,6 @@
   /* Compte à rebours corrigé */
   .countdown-container {
     text-align: center;
-    margin: 30px 0;
   }
 
   .countdown-grid {
@@ -269,7 +258,6 @@
 }
 
 .why-section {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -511,6 +499,9 @@
 
 
 
+
+
+    
 
 
     
