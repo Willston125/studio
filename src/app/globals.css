@@ -71,33 +71,33 @@
 
   /* === BOUTON NÉON PREMIUM === */
   .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      position: relative;
-      background: linear-gradient(135deg, #6B4DE6, #8B6BFF);
-      padding: 20px 50px;
-      border-radius: 15px;
-      color: white;
-      font-weight: bold;
-      box-shadow: 0 6px 20px rgba(107, 77, 230, 0.4);
-      transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, #6B4DE6, #8B6BFF);
+    padding: 20px 50px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 6px 20px rgba(107, 77, 230, 0.4);
+    transition: all 0.3s ease;
   }
 
   .btn-primary:hover,
   .btn-primary:focus {
-      transform: translateY(-2px) scale(1.02);
-      color: #fff;
-      box-shadow: 0 8px 30px rgba(107, 77, 230, 0.6);
+    transform: translateY(-2px) scale(1.02);
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(107, 77, 230, 0.6);
   }
 
   .btn-primary:active {
-      transform: translateY(0) scale(1);
-      box-shadow: 0 4px 15px rgba(107, 77, 230, 0.5);
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 15px rgba(107, 77, 230, 0.5);
   }
 
 
@@ -457,4 +457,5 @@
     
 
     
+
 
