@@ -37,10 +37,10 @@ const calculateTimeLeft = () => {
 const TimeUnit = ({ value, label }: { value: number, label: string }) => {
     return (
         <div className="countdown-unit">
-            <span className="countdown-number">
+            <span className="countdown-number text-4xl lg:text-5xl">
                 {String(value).padStart(2, '0')}
             </span>
-            <span className="countdown-label text-xs lg:text-sm">
+            <span className="countdown-label text-xs">
                 {label}
             </span>
         </div>
