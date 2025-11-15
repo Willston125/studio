@@ -26,7 +26,7 @@ const programItems = [
     imageHint: "editing suite",
   },
   {
-    title: "Diffusion",
+    title: "Code 2",
     imageSrc: "https://picsum.photos/seed/diffusion/400/600",
     imageHint: "movie premiere",
   },
