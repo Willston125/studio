@@ -55,7 +55,7 @@ export default function HeroSection() {
 
             <Button 
               asChild
-              className="btn-primary mt-4"
+              className="btn-primary mt-4 lg:text-xl px-10 py-6"
             >
               <Link href="/inscription">Découvrir nos formations</Link>
             </Button>
