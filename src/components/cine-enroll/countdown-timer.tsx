@@ -36,11 +36,11 @@ const calculateTimeLeft = () => {
 
 const TimeUnit = ({ value, label }: { value: number, label: string }) => {
     return (
-        <div className="flex flex-col items-center">
-            <span className="text-5xl md:text-6xl font-headline text-amber-500 tracking-wider countdown-number">
+        <div className="countdown-unit">
+            <span className="countdown-number">
                 {String(value).padStart(2, '0')}
             </span>
-            <span className="text-xs font-body text-gray-300 uppercase tracking-widest mt-1">
+            <span className="countdown-label">
                 {label}
             </span>
         </div>
@@ -63,11 +63,11 @@ export default function CountdownTimer() {
 
   if (!isMounted) {
     return (
-        <div className="flex justify-center gap-4 md:gap-8">
-            <Skeleton className="h-24 w-20" />
-            <Skeleton className="h-24 w-20" />
-            <Skeleton className="h-24 w-20" />
-            <Skeleton className="h-24 w-20" />
+        <div className="countdown-grid">
+            <Skeleton className="h-24 w-full" />
+            <Skeleton className="h-24 w-full" />
+            <Skeleton className="h-24 w-full" />
+            <Skeleton className="h-24 w-full" />
         </div>
     );
   }
@@ -79,14 +79,13 @@ export default function CountdownTimer() {
   }
 
   return (
-    <div className="flex justify-center items-start gap-4 md:gap-8">
-        <TimeUnit value={days} label="Jours" />
-        <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={hours} label="Heures" />
-        <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={minutes} label="Minutes" />
-        <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={seconds} label="Secondes" />
+    <div className="countdown-container">
+      <div className="countdown-grid">
+        <TimeUnit value={days} label="JOURS" />
+        <TimeUnit value={hours} label="HEURES" />
+        <TimeUnit value={-minutes} label="MINUTES" />
+        <TimeUnit value={seconds} label="SECONDES" />
+      </div>
     </div>
   );
 }
