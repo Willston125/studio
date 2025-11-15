@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
-  { href: '/inscription', label: 'Inscription' },
+  { href: '/inscription', label: 'Inscription formation' },
   { href: '/contact', label: 'Contact' },
 ];
 
