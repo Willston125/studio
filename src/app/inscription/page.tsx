@@ -79,7 +79,7 @@ export default function InscriptionPage() {
 
 
   return (
-    <div className="relative w-full flex items-start justify-center p-4 md:p-8 pt-32 overflow-x-hidden">
+    <div className="relative w-full min-h-screen overflow-x-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero.jpg"
@@ -89,8 +89,8 @@ export default function InscriptionPage() {
         />
         <div className="absolute inset-0 hero-section-overlay" />
       </div>
-      <main className="relative z-10 w-full max-w-7xl mx-auto">
-        <div className="flex flex-col-reverse lg:flex-row lg:gap-12">
+      <main className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 py-24 sm:py-32">
+        <div className="flex flex-col-reverse lg:flex-row lg:gap-12 lg:items-start">
             
             {/* Colonne de Droite (devient la 2e sur mobile): Sidebar de Conversion */}
             <div className="w-full lg:w-4/12 mt-12 lg:mt-0">
