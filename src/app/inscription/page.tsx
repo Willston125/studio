@@ -79,7 +79,7 @@ export default function InscriptionPage() {
 
 
   return (
-    <div className="relative w-full flex items-start justify-center p-4 pt-36 md:p-8 overflow-x-hidden">
+    <div className="relative w-full flex items-start justify-center p-4 pt-48 md:p-8 overflow-x-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero.jpg"
