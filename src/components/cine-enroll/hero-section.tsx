@@ -23,7 +23,7 @@ export default function HeroSection() {
             
             <h1 
               tabIndex={0}
-              className="text-8xl font-headline font-black tracking-wide text-white leading-none" 
+              className="text-8xl font-headline font-black tracking-wide text-white leading-tight" 
               style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}
             >
               Devenez Réalisateur
