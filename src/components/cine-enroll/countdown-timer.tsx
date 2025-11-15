@@ -81,10 +81,10 @@ export default function CountdownTimer() {
   return (
     <div className="countdown-container">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-sm mx-auto">
-        <TimeUnit value={days} label="JOURS" />
-        <TimeUnit value={hours} label="HEURES" />
-        <TimeUnit value={minutes} label="MINUTES" />
-        <TimeUnit value={seconds} label="SECONDES" />
+        <TimeUnit value={days} label="JRS" />
+        <TimeUnit value={hours} label="HRS" />
+        <TimeUnit value={minutes} label="MIN" />
+        <TimeUnit value={seconds} label="SEC" />
       </div>
     </div>
   );
