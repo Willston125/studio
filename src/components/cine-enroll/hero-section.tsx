@@ -23,12 +23,6 @@ export default function HeroSection() {
           className="object-cover"
           data-ai-hint="filmmaker cinematic"
           priority
-          style={{
-            backgroundAttachment: 'fixed',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-          }}
         />
         {/* Overlays */}
         <div className="absolute inset-0 hero-section-overlay" />

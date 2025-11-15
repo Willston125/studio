@@ -8,13 +8,13 @@ import WhyChooseUsSection from '@/components/cine-enroll/why-choose-us-section';
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-background">
       <HeroSection />
       <main className="container mx-auto px-4 py-8 md:py-16 space-y-20 md:space-y-24">
         <WhyChooseUsSection />
         <PhotoGallery />
         <TestimonialsSection />
       </main>
-    </>
+    </div>
   );
 }
