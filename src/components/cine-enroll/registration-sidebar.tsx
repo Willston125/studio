@@ -2,7 +2,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Check, Lock, Trophy, Laptop, Smartphone } from 'lucide-react';
+import { Check, Lock, Laptop, Smartphone } from 'lucide-react';
 import CountdownTimer from './countdown-timer';
 
 interface RegistrationSidebarProps {
@@ -23,23 +23,34 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
             </div>
 
             {/* Grand Prix */}
-            <div className="p-8 text-center space-y-2 bg-amber-900/10">
+            <div className="p-8 text-center space-y-4 bg-amber-900/10">
                  <h3 className="font-headline text-5xl md:text-6xl uppercase tracking-wider text-amber-400" style={{textShadow: '0 0 10px hsl(var(--primary))'}}>
                     Le Grand Prix
                 </h3>
                 <p className="font-headline text-7xl font-bold text-white" style={{textShadow: '0 0 15px hsl(var(--primary))'}}>
                     200 000 FDJ
                 </p>
-                <div className="pt-4 space-y-3">
-                    <p className="font-body text-gray-300 !mt-2 text-lg">
+                <div className="pt-4 space-y-4">
+                    <p className="font-body text-gray-300 text-lg">
                         ET AUSSI POUR LES MEILLEURS FILMS :
                     </p>
-                    <div className="flex justify-center items-center gap-6 font-body text-gray-400">
-                        <div className='flex items-center gap-2'><Laptop size={20} /><span>PC Portable (2e)</span></div>
-                        <div className='flex items-center gap-2'><Smartphone size={20} /><span>Smartphone (3e)</span></div>
+                    <div className="grid grid-cols-2 gap-4 text-center font-body text-gray-300">
+                        {/* 2nd Prize */}
+                        <div className="flex flex-col items-center gap-2">
+                           <Laptop size={40} className="text-amber-500" />
+                           <span className="font-semibold">PC Portable</span>
+                           <span className="text-sm text-gray-400">(2e Prix)</span>
+                        </div>
+                        {/* 3rd Prize */}
+                        <div className="flex flex-col items-center gap-2">
+                           <Smartphone size={40} className="text-amber-500" />
+                           <span className="font-semibold">Smartphone</span>
+                           <span className="text-sm text-gray-400">(3e Prix)</span>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
             {/* Tarif */}
             <div className="special-price p-8 text-center">
@@ -81,5 +92,3 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
         </div>
     );
 }
-
-    
