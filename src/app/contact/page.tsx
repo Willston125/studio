@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -82,8 +83,7 @@ export default function ContactPage() {
             </div>
             <Button 
               type="submit" 
-              size="lg"
-              className="btn-primary w-full text-xl h-14"
+              className="btn-primary w-full"
             >
               Envoyer le Message
             </Button>

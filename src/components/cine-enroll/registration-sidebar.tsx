@@ -62,7 +62,7 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
             <div className="p-6 space-y-4">
                 <Button
                     type="submit"
-                    className="btn-primary w-full text-xl h-16"
+                    className="btn-primary w-full"
                     disabled={isSubmitDisabled}
                     onClick={onSubmit}
                     >

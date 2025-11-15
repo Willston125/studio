@@ -66,7 +66,7 @@ export default function Navbar() {
               <Search className="h-5 w-5" />
               <span className="sr-only">Rechercher</span>
             </Button>
-            <Button asChild className="btn-primary text-sm px-6 py-2.5">
+            <Button asChild className="btn-primary">
               <Link href="/inscription">S'inscrire</Link>
             </Button>
           </div>
@@ -95,7 +95,7 @@ export default function Navbar() {
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Rechercher</span>
               </Button>
-              <Button asChild className="btn-primary text-sm px-6 py-2.5">
+              <Button asChild className="btn-primary">
                 <Link href="/inscription">S'inscrire</Link>
               </Button>
             </div>
