@@ -66,7 +66,7 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
                     disabled={isSubmitDisabled}
                     onClick={onSubmit}
                     >
-                    {isSubmitting ? 'Redirection...' : "🎬 Rejoindre la Masterclass"}
+                    {isSubmitting ? 'Redirection...' : "Rejoindre la Masterclass"}
                 </Button>
                 <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
                     <Lock className="w-3 h-3" /> Vos informations sont utilisées uniquement pour l'inscription.
@@ -78,5 +78,6 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
         </div>
     );
 }
+
 
 
