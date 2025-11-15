@@ -11,13 +11,13 @@ export default function Home() {
     <div className="bg-background">
       <HeroSection />
       <main>
-        <div className="section-spacing">
+        <div className="my-24">
           <WhyChooseUsSection />
         </div>
-        <div className="container mx-auto px-4 section-spacing">
+        <div className="container mx-auto px-4 my-24">
             <PhotoGallery />
         </div>
-        <div className="generous-spacing">
+        <div className="my-24">
           <TestimonialsSection />
         </div>
       </main>
