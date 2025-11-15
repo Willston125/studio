@@ -7,10 +7,13 @@ const WhyChooseUsSection = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const spotlights = sectionRef.current?.querySelectorAll('.spotlight');
+        const sectionElement = sectionRef.current;
+        if (!sectionElement) return;
+
+        const spotlights = sectionElement.querySelectorAll('.spotlight');
+        const featureCards = sectionElement.querySelectorAll('.feature-card');
 
         const handleMouseMove = (e: MouseEvent) => {
-            if (!spotlights) return;
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;
 
@@ -19,34 +22,26 @@ const WhyChooseUsSection = () => {
             });
         };
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    (entry.target as HTMLElement).style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        featureCards.forEach(card => {
+            observer.observe(card);
+        });
+
         document.addEventListener('mousemove', handleMouseMove);
 
-        const featureCards = sectionRef.current?.querySelectorAll('.feature-card');
-        if (featureCards) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        (entry.target as HTMLElement).style.animationPlayState = 'running';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            featureCards.forEach(card => {
-                observer.observe(card);
-            });
-
-            return () => {
-                document.removeEventListener('mousemove', handleMouseMove);
-                featureCards.forEach(card => {
-                    observer.unobserve(card);
-                });
-            };
-        }
-        
         return () => {
-             document.removeEventListener('mousemove', handleMouseMove);
-        }
-
+            document.removeEventListener('mousemove', handleMouseMove);
+            featureCards.forEach(card => {
+                observer.unobserve(card);
+            });
+        };
     }, []);
 
     return (
