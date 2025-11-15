@@ -74,8 +74,7 @@ const WhyChooseUsSection = () => {
                         <div className="feature-icon"><Camera size={36} /></div>
                         <h3 className="feature-title font-headline">ACCOMPAGNEMENT</h3>
                         <p className="feature-description font-body">
-                            Accès à un parc complet de caméras cinéma (Sony FX, Blackmagic, RED) 
-                            et d'équipements professionnels pour un rendu qualité Hollywood.
+                            Ensemble, avec notre dévouement, nous vous accompagnons pour produire vos contenus cinématographiques avec les bonnes bases de vos œuvres.
                         </p>
                     </div>
                     
