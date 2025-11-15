@@ -40,7 +40,7 @@ const TimeUnit = ({ value, label }: { value: number, label: string }) => {
             <span className="countdown-number">
                 {String(value).padStart(2, '0')}
             </span>
-            <span className="countdown-label">
+            <span className="countdown-label text-xs lg:text-sm">
                 {label}
             </span>
         </div>
