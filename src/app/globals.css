@@ -150,25 +150,17 @@
   @keyframes countdownPulse {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 0 0 rgba(212, 175, 55, 0.4);
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
     }
     50% {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+      transform: scale(1.03);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
     }
   }
 
   .countdown-number {
-    animation: countdownPulse 2s infinite;
+    animation: countdownPulse 2.5s infinite ease-in-out;
     display: inline-block;
-    border-radius: 0.5rem;
-  }
-
-  .countdown-number.final-hour {
-    animation: countdownPulse 1s infinite;
-    background: #ff4444;
-    color: white;
-    box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
   }
 
   @keyframes priceGlow {

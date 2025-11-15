@@ -35,16 +35,10 @@ const calculateTimeLeft = () => {
   return timeLeft;
 };
 
-const TimeUnit = ({ value, label, delay, isFinalHour = false }: { value: number, label: string, delay: string, isFinalHour?: boolean }) => {
+const TimeUnit = ({ value, label }: { value: number, label: string }) => {
     return (
-        <div 
-            className="flex flex-col items-center"
-            style={{ animationDelay: delay }}
-        >
-            <span className={cn(
-                "text-5xl md:text-6xl font-headline text-amber-500 tracking-wider countdown-number",
-                isFinalHour && "final-hour"
-            )}>
+        <div className="flex flex-col items-center">
+            <span className="text-5xl md:text-6xl font-headline text-amber-500 tracking-wider countdown-number">
                 {String(value).padStart(2, '0')}
             </span>
             <span className="text-xs font-body text-gray-300 uppercase tracking-widest mt-1">
@@ -80,7 +74,6 @@ export default function CountdownTimer() {
   }
 
   const { days, hours, minutes, seconds } = timeLeft;
-  const isFinalHour = days === 0 && hours === 0;
   
   if (!days && !hours && !minutes && !seconds) {
     return <span className="text-xl font-bold font-headline text-primary">L'offre a expiré !</span>;
@@ -88,13 +81,13 @@ export default function CountdownTimer() {
 
   return (
     <div className="flex justify-center items-start gap-4 md:gap-8">
-        <TimeUnit value={days} label="Jours" delay="0s" />
+        <TimeUnit value={days} label="Jours" />
         <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={hours} label="Heures" delay="0.2s" />
+        <TimeUnit value={hours} label="Heures" />
         <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={minutes} label="Minutes" delay="0.4s" isFinalHour={isFinalHour} />
+        <TimeUnit value={minutes} label="Minutes" />
         <span className="text-5xl md:text-6xl font-headline text-primary/50">:</span>
-        <TimeUnit value={seconds} label="Secondes" delay="0.6s" isFinalHour={isFinalHour} />
+        <TimeUnit value={seconds} label="Secondes" />
     </div>
   );
 }
