@@ -16,12 +16,11 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/60 z-0"></div>
 
       <div className="container mx-auto px-4 flex-grow flex items-center relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 items-center w-full">
+        <div className="grid md:grid-cols-2 gap-8 w-full">
           
           {/* Colonne de Gauche : Contenu Texte */}
-          <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg">
+          <div className="flex flex-col h-full items-start space-y-4 md:space-y-6 max-w-lg">
             
-
             <h1 
               tabIndex={0}
               className="text-8xl font-headline font-black tracking-wide text-white leading-none" 
@@ -55,16 +54,16 @@ export default function HeroSection() {
 
             <Button 
               asChild
-              className="btn-primary mt-4 lg:text-xl px-10 py-6"
+              className="btn-primary mt-auto lg:text-xl px-10 py-6"
             >
               <Link href="/inscription">Découvrir nos formations</Link>
             </Button>
           </div>
 
           {/* Colonne de Droite : Vide pour l'équilibre */}
-          <div className="relative h-full w-full hidden md:flex items-center justify-center">
+          <div className="relative h-full w-full hidden md:flex flex-col">
              {/* Program Section Overlay */}
-            <div className="w-full lg:w-4/5 p-4">
+            <div className="w-full lg:w-4/5 p-4 mt-auto">
                 <ProgramSection />
             </div>
           </div>
