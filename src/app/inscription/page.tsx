@@ -92,7 +92,7 @@ export default function InscriptionPage() {
       <main className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 py-24 sm:py-32">
         <div className="flex flex-col-reverse lg:flex-row lg:gap-12 lg:items-start">
             
-            {/* Colonne de Droite (devient la 2e sur mobile): Sidebar de Conversion */}
+            {/* Colonne de Droite (devient la 1ere sur mobile): Sidebar de Conversion */}
             <div className="w-full lg:w-4/12 mt-12 lg:mt-0">
                 <div className="space-y-8">
                     <RegistrationSidebar
@@ -103,7 +103,7 @@ export default function InscriptionPage() {
                 </div>
             </div>
 
-            {/* Colonne de Gauche (devient la 1ere sur mobile): Formulaire */}
+            {/* Colonne de Gauche (devient la 2e sur mobile): Formulaire */}
             <div className="w-full lg:w-8/12">
                 <RegistrationForm form={form} onSubmit={onSubmit} />
             </div>

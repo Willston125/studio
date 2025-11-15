@@ -10,12 +10,12 @@ export default function HeroSection() {
   return (
     <section 
       aria-label="Section principale de la formation cinéma"
-      className="relative w-full flex flex-col justify-center bg-background text-white overflow-hidden bg-cover bg-center min-h-[auto] md:min-h-screen"
+      className="relative w-full flex flex-col justify-center bg-background text-white overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: "url('/hero-fond.png')" }}
     >
       <div className="absolute inset-0 bg-black/60 z-0"></div>
 
-      <div className="container mx-auto px-4 flex-grow flex items-center relative z-10 pt-32">
+      <div className="container mx-auto px-4 flex-grow flex items-center relative z-10 pt-36 pb-12 md:pt-32">
         <div className="grid md:grid-cols-2 gap-8 w-full">
           
           {/* Colonne de Gauche : Contenu Texte */}
@@ -23,7 +23,7 @@ export default function HeroSection() {
             
             <h1 
               tabIndex={0}
-              className="text-8xl font-headline font-black tracking-wide text-white leading-tight" 
+              className="text-6xl md:text-8xl font-headline font-black tracking-wide text-white leading-tight" 
               style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}
             >
               Devenez Réalisateur
