@@ -59,7 +59,7 @@ export default function HeroSection() {
           {/* Colonne de Droite : Vide pour l'équilibre */}
           <div className="relative h-full w-full hidden md:flex flex-col">
              {/* Program Section Overlay */}
-            <div className="w-full lg:w-full p-4 mt-auto">
+            <div className="w-full lg:w-full p-4 mt-auto overflow-visible">
                 <ProgramSection />
             </div>
           </div>
