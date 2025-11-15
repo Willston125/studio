@@ -54,7 +54,7 @@ const WhyChooseUsSection = () => {
     return (
         <>
             <div className="film-grain"></div>
-            <section className="why-section min-h-[auto]" ref={sectionRef}>
+            <section className="why-section" ref={sectionRef}>
                 <div className="focus-lines"></div>
                 
                 <div className="spotlight spotlight-1"></div>
@@ -72,7 +72,7 @@ const WhyChooseUsSection = () => {
                 <div className="features-grid">
                     <div className="feature-card">
                         <div className="feature-icon"><Camera size={36} /></div>
-                        <h3 className="feature-title font-headline">MATÉRIEL PROFESSIONNEL</h3>
+                        <h3 className="feature-title font-headline">ACCOMPAGNEMENT</h3>
                         <p className="feature-description font-body">
                             Accès à un parc complet de caméras cinéma (Sony FX, Blackmagic, RED) 
                             et d'équipements professionnels pour un rendu qualité Hollywood.
@@ -103,5 +103,3 @@ const WhyChooseUsSection = () => {
 };
 
 export default WhyChooseUsSection;
-
-    
