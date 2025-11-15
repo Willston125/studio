@@ -48,9 +48,9 @@ export default function ProgramSection() {
         }}
         className="w-full"
       >
-        <CarouselContent className="-ml-2 md:-ml-4">
+        <CarouselContent className="-ml-4 md:-ml-6">
           {programItems.map((item, index) => (
-            <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+            <CarouselItem key={index} className="pl-4 md:pl-6 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/4">
               <div className="p-1">
                 <Card className="overflow-hidden border-2 border-transparent hover:border-amber-500 transition-all duration-300 group bg-neutral-900/50 rounded-lg">
                   <CardContent className="relative aspect-[2/3] p-0">
@@ -62,8 +62,8 @@ export default function ProgramSection() {
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-2 w-full">
-                      <h3 className="text-sm font-bold text-white leading-tight truncate">{item.title}</h3>
+                    <div className="absolute bottom-0 left-0 p-2 md:p-3 w-full">
+                      <h3 className="text-sm md:text-base font-bold text-white leading-tight truncate">{item.title}</h3>
                     </div>
                   </CardContent>
                 </Card>
