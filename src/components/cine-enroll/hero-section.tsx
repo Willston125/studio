@@ -1,6 +1,7 @@
 
 "use client";
 
+import Image from "next/image";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
@@ -12,16 +13,27 @@ export default function HeroSection() {
       aria-label="Section principale de la formation cinéma"
       className="relative w-full flex flex-col justify-center text-white overflow-hidden"
     >
+      {/* Video for Desktop */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute z-0 w-full h-full object-cover"
+        className="absolute z-0 w-full h-full object-cover hidden md:block"
         src="/cinema-bg.mp4"
       >
         Votre navigateur ne supporte pas la lecture de vidéos.
       </video>
+      
+      {/* Image for Mobile */}
+      <Image
+        src="/hero.jpg"
+        alt="Arrière-plan cinéma"
+        fill
+        className="absolute z-0 w-full h-full object-cover block md:hidden"
+        priority
+      />
+
       <div className="absolute inset-0 bg-black/70 z-10"></div>
 
       <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-36 pb-12 md:pt-32">
