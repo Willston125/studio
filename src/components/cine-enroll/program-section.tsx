@@ -11,17 +11,17 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const programItems = [
   {
-    title: "Scénario",
+    title: "Mbayé Trambbwé",
     imageSrc: "https://picsum.photos/seed/scenario/400/600",
     imageHint: "screenwriting notebook",
   },
   {
-    title: "Tournage",
+    title: "L'aude des aveugle",
     imageSrc: "https://picsum.photos/seed/tournage/400/600",
     imageHint: "film camera",
   },
   {
-    title: "Montage",
+    title: "Code 1",
     imageSrc: "https://picsum.photos/seed/montage/400/600",
     imageHint: "editing suite",
   },
