@@ -8,11 +8,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:9002';
 const imageUrl = `${siteUrl}/affiche.jpg`;
 
 export const metadata: Metadata = {
-  title: 'Masterclass Cinéma Djibouti - Inscriptions Ouvertes',
-  description: 'Apprenez à réaliser vos propres films. Scénario, Tournage, Montage. Places limitées ! Cliquez ici pour vous inscrire.',
+  title: 'Formation Cinéma - Inscriptions Ouvertes',
+  description: 'Apprenez à réaliser, jouer et monter comme des professionnels. Places limitées !',
   openGraph: {
-    title: 'Masterclass Cinéma Djibouti - Inscriptions Ouvertes',
-    description: 'Apprenez à réaliser vos propres films. Scénario, Tournage, Montage. Places limitées ! Cliquez ici pour vous inscrire.',
+    title: 'Formation Cinéma - Inscriptions Ouvertes',
+    description: 'Apprenez à réaliser, jouer et monter comme des professionnels. Places limitées !',
     images: [
       {
         url: imageUrl,
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: siteUrl,
-    siteName: 'Masterclass Cinéma Djibouti',
+    siteName: 'Cineworld Djibouti',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Masterclass Cinéma Djibouti - Inscriptions Ouvertes',
-    description: 'Apprenez à réaliser vos propres films. Scénario, Tournage, Montage. Places limitées !',
+    title: 'Formation Cinéma - Inscriptions Ouvertes',
+    description: 'Apprenez à réaliser, jouer et monter comme des professionnels. Places limitées !',
     images: [imageUrl],
   },
 };
