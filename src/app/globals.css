@@ -69,6 +69,21 @@
     background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.6));
   }
 
+  /* === NOUVELLE SECTION HERO AVEC FUSION === */
+  .hero-image-container {
+    mask-image: linear-gradient(to left, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
+  }
+
+  /* Sur mobile, on enlève le masque pour que l'image soit entière */
+  @media (max-width: 768px) {
+    .hero-image-container {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+
+
   /* === BOUTON NÉON PREMIUM === */
   .btn-primary {
     display: inline-flex;
@@ -470,3 +485,4 @@
 
 
     
+
