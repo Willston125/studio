@@ -10,12 +10,16 @@ export default function Home() {
   return (
     <div className="bg-background">
       <HeroSection />
-      <main className="space-y-20 md:space-y-24">
-        <WhyChooseUsSection />
-        <div className="container mx-auto px-4">
+      <main>
+        <div className="section-spacing">
+          <WhyChooseUsSection />
+        </div>
+        <div className="container mx-auto px-4 section-spacing">
             <PhotoGallery />
         </div>
-        <TestimonialsSection />
+        <div className="generous-spacing">
+          <TestimonialsSection />
+        </div>
       </main>
     </div>
   );
