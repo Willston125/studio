@@ -77,9 +77,6 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
                 <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
                     <Lock className="w-3 h-3" /> Vos informations sont utilisées uniquement pour l'inscription.
                 </p>
-                 <p className="text-sm text-gray-500 text-center">
-                    Déjà inscrit ? <a href="#" className="font-semibold text-amber-500 hover:underline">Connectez-vous</a>
-                </p>
             </div>
         </div>
     );
