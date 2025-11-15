@@ -83,7 +83,7 @@ export default function CountdownTimer() {
       <div className="countdown-grid">
         <TimeUnit value={days} label="JOURS" />
         <TimeUnit value={hours} label="HEURES" />
-        <TimeUnit value={-minutes} label="MINUTES" />
+        <TimeUnit value={minutes} label="MINUTES" />
         <TimeUnit value={seconds} label="SECONDES" />
       </div>
     </div>
