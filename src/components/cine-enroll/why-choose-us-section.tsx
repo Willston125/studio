@@ -1,12 +1,19 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Camera, Zap, Globe } from 'lucide-react';
 
 const WhyChooseUsSection = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isMounted) return;
+
         const sectionElement = sectionRef.current;
         if (!sectionElement) return;
 
@@ -42,7 +49,7 @@ const WhyChooseUsSection = () => {
                 observer.unobserve(card);
             });
         };
-    }, []);
+    }, [isMounted]);
 
     return (
         <>
