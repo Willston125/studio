@@ -60,19 +60,14 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
 
             {/* Submit Button & Security Note */}
             <div className="p-6 space-y-4">
-                 <div className="relative w-full">
-                    <div className="absolute -top-3 -right-3 bg-[#ff4444] text-white px-3 py-1 rounded-full text-xs font-bold z-10 animate-bounce">
-                        POPULAIRE
-                    </div>
-                    <Button 
-                        type="submit" 
-                        className="btn-primary w-full text-xl h-16"
-                        disabled={isSubmitDisabled}
-                        onClick={onSubmit}
-                        >
-                        {isSubmitting ? 'Redirection...' : "Rejoindre la Masterclass"}
-                    </Button>
-                </div>
+                <Button 
+                    type="submit" 
+                    className="btn-primary w-full text-xl h-16"
+                    disabled={isSubmitDisabled}
+                    onClick={onSubmit}
+                    >
+                    {isSubmitting ? 'Redirection...' : "Rejoindre la Masterclass"}
+                </Button>
                 <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
                     <Lock className="w-3 h-3" /> Vos informations sont utilisées uniquement pour l'inscription.
                 </p>
