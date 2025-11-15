@@ -40,7 +40,7 @@ const programItems = [
 export default function ProgramSection() {
   return (
     <section className="container mx-auto px-4 py-6 md:py-8 rounded-xl bg-black/20 backdrop-blur-sm">
-      <h2 className="text-xl md:text-2xl font-headline font-bold tracking-tight mb-4 text-white">Nos projets réalisé</h2>
+      <h2 className="text-xl md:text-2xl font-headline font-bold tracking-wide mb-4 text-white">Nos projets réalisé</h2>
       <Carousel
         opts={{
           align: "start",
