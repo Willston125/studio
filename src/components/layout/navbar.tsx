@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
-  { href: '#', 'label': 'Nos Films' },
+  { href: '/inscription', 'label': 'Inscription' },
   { href: '/contact', label: 'Contact' },
 ];
 
