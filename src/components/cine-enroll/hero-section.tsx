@@ -1,7 +1,6 @@
 
 "use client";
 
-import Image from "next/image";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
@@ -11,13 +10,16 @@ export default function HeroSection() {
   return (
     <section 
       aria-label="Section principale de la formation cinéma"
-      className="relative min-h-screen w-full flex flex-col justify-center bg-background text-white overflow-hidden pt-24 md:pt-0"
+      className="relative min-h-screen w-full flex flex-col justify-center bg-background text-white overflow-hidden pt-24 md:pt-0 bg-cover bg-center"
+      style={{ backgroundImage: "url('/hero-fond.png')" }}
     >
-      <div className="container mx-auto px-4 flex-grow flex items-center">
+      <div className="absolute inset-0 bg-black/60 z-0"></div>
+
+      <div className="container mx-auto px-4 flex-grow flex items-center relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center w-full">
           
           {/* Colonne de Gauche : Contenu Texte */}
-          <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg z-10">
+          <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg">
             <div className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm shadow-[0_0_20px_hsl(var(--primary-foreground))]">
               ACADÉMIE DE CINÉMA
             </div>
@@ -61,26 +63,16 @@ export default function HeroSection() {
             </Button>
           </div>
 
-          {/* Colonne de Droite : Image */}
-          <div className="relative h-full w-full flex items-center justify-center order-first md:order-last">
-            <div className="hero-image-container">
-              <Image
-                src="/hero-fond.png"
-                alt="Un réalisateur de film concentré, cadrant une scène avec une caméra professionnelle sur un plateau de tournage."
-                width={700}
-                height={900}
-                className="object-contain w-full h-auto max-h-[80vh] "
-                data-ai-hint="filmmaker cinematic"
-                priority
-              />
-            </div>
+          {/* Colonne de Droite : Vide pour l'équilibre */}
+          <div className="relative h-full w-full hidden md:flex items-center justify-center">
+            {/* Vide */}
           </div>
 
         </div>
       </div>
       
       {/* Program Section Overlay */}
-      <div className="relative z-20 w-full lg:w-3/5 p-4 self-center lg:self-end">
+      <div className="relative z-10 w-full lg:w-3/5 p-4 self-center lg:self-end">
         <ProgramSection />
       </div>
     </section>
