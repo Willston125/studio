@@ -147,31 +147,6 @@
     animation-fill-mode: both;
   }
 
-  /* Effet machine à écrire */
-  @keyframes typewriter {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-
-  @keyframes blinkCursor {
-    0%, 100% { border-color: transparent; }
-    50% { border-color: hsl(var(--primary)); }
-  }
-
-  .typewriter-text {
-    display: inline-block;
-    overflow: hidden;
-    border-right: 4px solid hsl(var(--primary));
-    white-space: nowrap;
-    animation: 
-      typewriter 3s steps(40) 1s 1 both,
-      blinkCursor 750ms steps(40) infinite;
-  }
-
   @keyframes countdownPulse {
     0%, 100% {
       transform: scale(1);
