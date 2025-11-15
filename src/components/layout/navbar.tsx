@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -41,9 +40,9 @@ export default function Navbar() {
             <Image 
               src="/logo_cineworld.png"
               alt="Cineworld Logo"
-              width={270}
-              height={60}
-              className="h-[60px] w-auto"
+              width={360}
+              height={80}
+              className="h-[80px] w-auto"
               priority
             />
           </Link>
@@ -105,5 +104,3 @@ export default function Navbar() {
     </header>
   );
 }
-
-    
