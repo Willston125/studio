@@ -33,12 +33,8 @@ export default function HeroSection() {
               Apprenez à écrire, tourner et monter votre propre court-métrage à Djibouti. Une formation intensive pour transformer votre passion en compétence.
             </p>
 
-            <div className="flex items-center gap-4 text-sm text-neutral-300 font-body">
-              <span>Action</span>
-              <span className="h-1 w-1 bg-neutral-500 rounded-full" />
-              <span>Drame</span>
-              <span className="h-1 w-1 bg-neutral-500 rounded-full" />
-              <span>Documentaire</span>
+            <div className="font-body font-bold uppercase tracking-wider text-amber-400">
+              100% PRATIQUE
             </div>
 
             <div className="flex items-center gap-2">
