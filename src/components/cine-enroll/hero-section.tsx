@@ -27,7 +27,7 @@ export default function HeroSection() {
       
       {/* Image for Mobile */}
       <Image
-        src="/hero.jpg"
+        src="/hero-fond.png"
         alt="Arrière-plan cinéma"
         fill
         className="absolute z-0 w-full h-full object-cover block md:hidden"
