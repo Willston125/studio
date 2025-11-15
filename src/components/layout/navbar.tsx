@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Clapperboard, Menu, X } from 'lucide-react';
+import { Clapperboard, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -60,10 +60,6 @@ export default function Navbar() {
 
           {/* Right: Actions (Desktop) */}
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="text-neutral-300 hover:text-white hover:bg-white/10 rounded-full">
-              <Search className="h-5 w-5" />
-              <span className="sr-only">Rechercher</span>
-            </Button>
             <Button asChild className="btn-primary">
               <Link href="/inscription">S'inscrire</Link>
             </Button>
@@ -89,10 +85,6 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="flex items-center gap-4 mt-4">
-               <Button variant="ghost" size="icon" className="text-neutral-300 hover:text-white hover:bg-white/10 rounded-full">
-                <Search className="h-5 w-5" />
-                <span className="sr-only">Rechercher</span>
-              </Button>
               <Button asChild className="btn-primary">
                 <Link href="/inscription">S'inscrire</Link>
               </Button>
