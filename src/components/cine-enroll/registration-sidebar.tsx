@@ -60,13 +60,13 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
 
             {/* Submit Button & Security Note */}
             <div className="p-6 space-y-4">
-                <Button 
-                    type="submit" 
+                <Button
+                    type="submit"
                     className="btn-primary w-full text-xl h-16"
                     disabled={isSubmitDisabled}
                     onClick={onSubmit}
                     >
-                    {isSubmitting ? 'Redirection...' : "Rejoindre la Masterclass"}
+                    {isSubmitting ? 'Redirection...' : "🎬 Rejoindre la Masterclass"}
                 </Button>
                 <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
                     <Lock className="w-3 h-3" /> Vos informations sont utilisées uniquement pour l'inscription.
