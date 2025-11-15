@@ -63,16 +63,15 @@ export default function HeroSection() {
 
           {/* Colonne de Droite : Vide pour l'équilibre */}
           <div className="relative h-full w-full hidden md:flex items-center justify-center">
-            {/* Vide */}
+             {/* Program Section Overlay */}
+            <div className="absolute z-10 w-full lg:w-4/5 p-4 self-center -bottom-16">
+                <ProgramSection />
+            </div>
           </div>
 
         </div>
       </div>
       
-      {/* Program Section Overlay */}
-      <div className="relative z-10 w-full lg:w-3/5 p-4 self-center lg:self-end lg:-mb-16">
-        <ProgramSection />
-      </div>
     </section>
   );
 }
