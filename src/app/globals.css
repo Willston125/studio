@@ -69,51 +69,50 @@
     background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9));
   }
 
-  /* === BOUTON SHIMMER (Scintillant) === */
+  /* === BOUTON NÉON PREMIUM === */
   .btn-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
-      color: #000000;
+      background: linear-gradient(145deg, var(--or-clair), var(--or-cinema));
+      color: #1a1000;
       padding: 18px 40px;
       font-size: 1.3rem;
       font-weight: 700;
       text-decoration: none;
-      border: none;
       border-radius: 12px;
+      border: 1px solid var(--or-clair);
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
       text-align: center;
       position: relative;
-      overflow: hidden;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+      transition: all 0.3s ease;
+      box-shadow: 
+          0 0 5px var(--or-clair),
+          0 0 15px var(--or-clair),
+          0 0 25px var(--or-clair),
+          inset 0 0 10px rgba(255, 215, 0, 0.5);
   }
-  .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-      background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+
+  .btn-primary:hover,
+  .btn-primary:focus {
+      transform: translateY(-2px) scale(1.02);
+      color: #000;
+      box-shadow: 
+          0 0 10px var(--or-clair),
+          0 0 30px var(--or-clair),
+          0 0 60px var(--or-cinema),
+          inset 0 0 15px rgba(255, 215, 0, 0.7);
   }
+
   .btn-primary:active {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+      transform: translateY(0) scale(1);
+      box-shadow: 
+          0 0 5px var(--or-clair),
+          0 0 15px var(--or-clair),
+          inset 0 0 10px rgba(255, 215, 0, 0.5);
   }
-  .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, 
-          transparent, 
-          rgba(255, 255, 255, 0.4), 
-          transparent);
-      transition: left 0.5s;
-  }
-  .btn-primary:hover::before {
-      left: 100%;
-  }
+
 
   /* === BARRE DE PROGRESSION SCINTILLANTE === */
   .progress-bar {
@@ -467,5 +466,7 @@
         padding: 30px 20px;
     }
 }
+
+    
 
     
