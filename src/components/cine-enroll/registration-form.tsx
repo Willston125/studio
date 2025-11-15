@@ -2,16 +2,11 @@
 'use client';
 
 import * as React from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useToast } from '@/hooks/use-toast';
-import Image from 'next/image';
+import type { UseFormReturn } from 'react-hook-form';
 
 import type { RegistrationSchema } from '@/lib/schema';
-import { registrationSchema } from '@/lib/schema';
 import { cn } from '@/lib/utils';
 
-import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -23,10 +18,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Smartphone, Camera, Video, Computer, Award, Laptop } from 'lucide-react';
+import { Smartphone, Camera, Video, Computer } from 'lucide-react';
 import ExpectationsField from './expectations-field';
 import { Separator } from '@/components/ui/separator';
-import CountdownTimer from './countdown-timer';
 import ShimmerProgressBar from './shimmer-progress-bar';
 
 const materialOptions = [
@@ -36,106 +30,46 @@ const materialOptions = [
     { id: 'ordinateur', label: 'Ordinateur pour montage', icon: Computer },
 ];
 
-const totalFields = 11; // nom, prenom, email, telephone, niveau, materiel, attentes, engagement1, engagement2, engagement3, date_jour
+interface RegistrationFormProps {
+  form: UseFormReturn<RegistrationSchema>;
+  onSubmit: (data: RegistrationSchema) => void;
+}
 
-export default function RegistrationForm() {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
+export default function RegistrationForm({ form, onSubmit }: RegistrationFormProps) {
   const [progress, setProgress] = React.useState(0);
 
-  const form = useForm<RegistrationSchema>({
-    resolver: zodResolver(registrationSchema),
-    defaultValues: {
-      nom: "",
-      prenom: "",
-      email: "",
-      telephone: "",
-      adresse: "",
-      ville: "",
-      quartier: "",
-      materiel: [],
-      logiciels: "",
-      attentes: "",
-      engagement1: false,
-      engagement2: false,
-      engagement3: false,
-      date_jour: new Date().toLocaleDateString("fr-FR", { year: 'numeric', month: '2-digit', day: '2-digit' }),
-    },
-    mode: 'onChange'
-  });
-
-  const formValues = form.watch();
-
   React.useEffect(() => {
-    const calculateProgress = () => {
-      let validFields = 0;
-      if (form.getValues().nom) validFields++;
-      if (form.getValues().prenom) validFields++;
-      if (form.getValues().email && !form.formState.errors.email) validFields++;
-      if (form.getValues().telephone) validFields++;
-      if (form.getValues().niveau) validFields++;
-      if (form.getValues().materiel && form.getValues().materiel.length > 0) validFields++;
-      if (form.getValues().attentes && form.getValues().attentes.length >= 50) validFields++;
-      if(form.getValues().engagement1) validFields++;
-      if(form.getValues().engagement2) validFields++;
-      if(form.getValues().engagement3) validFields++;
-      if (form.getValues().date_jour) validFields++;
+    const calculateProgress = (values: RegistrationSchema) => {
+        let validFields = 0;
+        const totalRequiredFields = 7 + 3; // 7 main fields + 3 engagements
 
-
-      const totalRequiredFields = 7 + 3; // 7 main fields + 3 engagements
-      setProgress((validFields / totalRequiredFields) * 100);
+        if (values.nom) validFields++;
+        if (values.prenom) validFields++;
+        if (values.email && !form.formState.errors.email) validFields++;
+        if (values.telephone) validFields++;
+        if (values.niveau) validFields++;
+        if (values.materiel && values.materiel.length > 0) validFields++;
+        if (values.attentes && values.attentes.length >= 50) validFields++;
+        if (values.engagement1) validFields++;
+        if (values.engagement2) validFields++;
+        if (values.engagement3) validFields++;
+        
+        // We don't count date_jour as it's pre-filled
+        
+        const calculatedProgress = (validFields / totalRequiredFields) * 100;
+        setProgress(calculatedProgress);
     };
 
     const subscription = form.watch(calculateProgress);
     return () => subscription.unsubscribe();
   }, [form]);
 
-
-  const watchEngagements = form.watch(["engagement1", "engagement2", "engagement3"]);
-  const isSubmitDisabled = !watchEngagements.every(Boolean) || isSubmitting;
-
-  function onSubmit(data: RegistrationSchema) {
-    setIsSubmitting(true);
-    try {
-      const { nom, prenom, email, niveau } = data;
-      
-      const intro = `Bonjour, je m'appelle ${prenom} ${nom}. Je souhaite m'inscrire à l'Académie Cineworld.`;
-
-      const details = [
-        `\n\n--- RÉSUMÉ ---`,
-        `- Email: ${email}`,
-        `- Niveau: ${niveau || 'Non spécifié'}`,
-      ].join('\n');
-
-      const message = intro + details;
-      const whatsappUrl = `https://wa.me/2537755556344?text=${encodeURIComponent(message)}`;
-      
-      window.open(whatsappUrl, '_blank');
-      
-      toast({
-        title: "Redirection vers WhatsApp",
-        description: "Veuillez envoyer le message pré-rempli pour finaliser votre pré-inscription.",
-      });
-
-      form.reset();
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
   return (
     <div className="bg-black/70 backdrop-blur-md text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
       <header className="text-center p-8 md:p-12 border-b border-white/20">
-        <h1 className="text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma Djibouti</h1>
+        <h1 className="text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma</h1>
         <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
-            Rejoignez notre formation exclusive
+            Remplissez les champs ci-dessous pour réserver votre place.
         </p>
       </header>
 
@@ -145,8 +79,8 @@ export default function RegistrationForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
             
           <div className="form-section space-y-8">
-              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Informations Personnelles</h2>
-              <div className="grid grid-cols-1 gap-8">
+              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Informations</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
                   <FormField name="nom" control={form.control} render={({ field }) => (
                     <FormItem><FormLabel>Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
@@ -166,7 +100,7 @@ export default function RegistrationForm() {
                     <FormItem><FormLabel>Ville (Optionnel)</FormLabel><FormControl><Input placeholder="Djibouti" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="quartier" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Quartier (Optionnel)</FormLabel><FormControl><Input placeholder="Héron" {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem className="md:col-span-2"><FormLabel>Quartier (Optionnel)</FormLabel><FormControl><Input placeholder="Héron" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
               </div>
           </div>
@@ -179,7 +113,7 @@ export default function RegistrationForm() {
                   <FormItem className="space-y-4">
                     <FormLabel>Votre niveau en réalisation</FormLabel>
                     <FormControl>
-                      <RadioGroup onValuechange={field.onChange} defaultValue={field.value} className="flex flex-col sm:flex-row gap-4 pt-2">
+                      <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col sm:flex-row gap-4 pt-2">
                         <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="debutant" /></FormControl><FormLabel className="font-normal">Débutant(e)</FormLabel></FormItem>
                         <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="intermediaire" /></FormControl><FormLabel className="font-normal">Intermédiaire</FormLabel></FormItem>
                         <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="avance" /></FormControl><FormLabel className="font-normal">Avancé(e)</FormLabel></FormItem>
@@ -208,9 +142,7 @@ export default function RegistrationForm() {
                                 const Icon = item.icon;
                                 const isChecked = field.value?.includes(item.id) ?? false;
                                 return (
-                                <FormItem
-                                    key={item.id}
-                                >
+                                <FormItem key={item.id} >
                                   <FormControl>
                                     <Checkbox
                                         id={item.id}
@@ -231,8 +163,8 @@ export default function RegistrationForm() {
                                     />
                                     </FormControl>
                                   <FormLabel htmlFor={item.id} className={cn(
-                                        "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300",
-                                        isChecked && "bg-amber-500/10 border-amber-500"
+                                        "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 h-full",
+                                        isChecked && "bg-amber-500/10 border-amber-500 ring-2 ring-amber-500"
                                     )}>
                                     <Icon className="w-8 h-8 text-amber-500" />
                                     <span className="font-normal text-center text-xs">
@@ -259,31 +191,8 @@ export default function RegistrationForm() {
            
            <Separator className="bg-white/20" />
 
-            <div className="form-section space-y-6 rounded-2xl border-2 border-amber-500/50 bg-amber-500/5 p-8 text-center shadow-lg shadow-amber-500/10">
-                <h3 className="font-headline text-7xl uppercase tracking-wider text-amber-500">
-                    LE GRAND PRIX :<br/>200 000 FDJ !
-                </h3>
-                <p className="font-body text-gray-300">
-                    ET AUSSI : Un Ordinateur Portable (2e Prix) &amp; Un Téléphone Portable (3e Prix)
-                </p>
-            </div>
-
-            <div className="form-section space-y-6 rounded-2xl bg-black/20 p-6 text-center">
-                <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre à 30 000 FDJ expire dans :</h3>
-                <CountdownTimer />
-            </div>
-
            <div className="form-section space-y-8 rounded-2xl bg-black/20 p-6">
-                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Tarif &amp; Engagement</h2>
-                <div className="special-price text-center bg-black/30 rounded-lg p-6 flex flex-col items-center">
-                    <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
-                    <div className="flex items-baseline gap-3 my-1">
-                        <p className="font-headline text-5xl font-extrabold text-primary">30 000 FDJ</p>
-                        <div className="bg-primary text-primary-foreground font-bold text-xs px-2 py-0.5 rounded-full whitespace-nowrap">
-                            VOUS ÉCONOMISEZ 10 000 FDJ !
-                        </div>
-                    </div>
-                </div>
+                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Engagement</h2>
                 <div className="space-y-4 pt-4">
                     <FormField name="engagement1" control={form.control} render={({ field }) => (
                     <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="font-normal">Je confirme avoir lu et accepté les conditions de participation.</FormLabel><FormMessage /></div></FormItem>
@@ -309,24 +218,13 @@ export default function RegistrationForm() {
                         <FormMessage />
                     </FormItem>
                 )} />
-
-                <div className="flex flex-col items-center pt-6 space-y-4">
-                    <Button 
-                    type="submit" 
-                    className="btn-primary w-full text-2xl h-16"
-                    disabled={isSubmitDisabled}
-                    >
-                    {isSubmitting ? 'Redirection...' : "S'inscrire via WhatsApp"}
-                    </Button>
-                    <p className="text-sm text-gray-500">
-                        Vous avez déjà un compte ? <a href="#" className="font-semibold text-amber-500 hover:underline">Connectez-vous !</a>
-                    </p>
-                </div>
             </div>
+            
+            {/* The submit button is now in the sidebar */}
+            <button type="submit" className="hidden" />
+
         </form>
       </Form>
     </div>
   );
 }
-
-    
