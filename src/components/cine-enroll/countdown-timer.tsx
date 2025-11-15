@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
-import { cn } from '@/lib/utils';
 
 // Set the deadline to December 3, 2025, 23:59:59 Djibouti time (UTC+3)
 const getDeadline = () => {
