@@ -16,7 +16,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/60 z-0"></div>
 
       <div className="container mx-auto px-4 flex-grow flex items-center relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 items-center w-full">
+        <div className="grid md:grid-cols-2 gap-8 items-end w-full">
           
           {/* Colonne de Gauche : Contenu Texte */}
           <div className="flex flex-col items-start space-y-4 md:space-y-6 max-w-lg">
@@ -64,7 +64,7 @@ export default function HeroSection() {
           {/* Colonne de Droite : Vide pour l'équilibre */}
           <div className="relative h-full w-full hidden md:flex items-center justify-center">
              {/* Program Section Overlay */}
-            <div className="w-full lg:w-4/5 p-4 self-center -mt-24">
+            <div className="w-full lg:w-4/5 p-4 self-center">
                 <ProgramSection />
             </div>
           </div>
