@@ -1,3 +1,4 @@
+
 import { z } from 'zod';
 
 export const registrationSchema = z.object({
@@ -8,6 +9,7 @@ export const registrationSchema = z.object({
   adresse: z.string().optional(),
   ville: z.string().optional(),
   quartier: z.string().optional(),
+  photo: z.any().optional(),
   
   niveau: z.enum(['debutant', 'intermediaire', 'avance'], { 
     required_error: "Veuillez sélectionner votre niveau." 

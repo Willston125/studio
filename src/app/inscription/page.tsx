@@ -74,6 +74,8 @@ export default function InscriptionPage() {
         `- Matériel : ${materiel.join(', ') || 'Aucun'}`,
         `\n*VOS ATTENTES :*`,
         `- ${attentes}`,
+        `\n\n---`,
+        `\nNote: J'ai bien rempli le formulaire. J'enverrai ma photo d'identité immédiatement dans ce fil de discussion.`
       ].filter(Boolean).join('\n');
 
       const message = intro + details;

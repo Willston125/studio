@@ -100,8 +100,26 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
                     <FormItem><FormLabel>Ville (Optionnel)</FormLabel><FormControl><Input placeholder="Djibouti" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                   <FormField name="quartier" control={form.control} render={({ field }) => (
-                    <FormItem className="md:col-span-2"><FormLabel>Quartier (Optionnel)</FormLabel><FormControl><Input placeholder="Héron" {...field} /></FormControl><FormMessage /></FormItem>
+                    <FormItem><FormLabel>Quartier (Optionnel)</FormLabel><FormControl><Input placeholder="Héron" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
+                   <FormField
+                    control={form.control}
+                    name="photo"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Photo d'identité (Pour Dossier)</FormLabel>
+                        <FormControl>
+                           <Input 
+                              type="file" 
+                              accept="image/*"
+                              className="pt-3"
+                              onChange={(e) => field.onChange(e.target.files)} // react-hook-form needs this for file inputs
+                           />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
               </div>
           </div>
           
