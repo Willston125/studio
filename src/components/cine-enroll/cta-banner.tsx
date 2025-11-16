@@ -58,8 +58,7 @@ export default function CtaBanner({ className }: { className?: string }) {
 
   return (
     <section className={cn("cta-flottante", className)}>
-      <Link href="/inscription" legacyBehavior>
-        <a className="block">
+      <Link href="/inscription" className="block">
           <div className="cta-bandeau pulse" ref={ctaBandeauRef}>
               <div className="film-strip"></div>
               <div className="film-strip bottom"></div>
@@ -81,7 +80,6 @@ export default function CtaBanner({ className }: { className?: string }) {
                   <Film size={48} />
               </div>
           </div>
-        </a>
       </Link>
     </section>
   );
