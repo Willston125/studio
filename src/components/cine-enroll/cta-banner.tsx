@@ -1,21 +1,88 @@
 
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { Film } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-export default function CtaBanner() {
+export default function CtaBanner({ className }: { className?: string }) {
+  const starsContainerRef = useRef<HTMLDivElement>(null);
+  const ctaBandeauRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // --- Create sparkling stars ---
+    const starsContainer = starsContainerRef.current;
+    if (starsContainer) {
+      // Clear existing stars if any
+      starsContainer.innerHTML = '';
+      const starCount = 30;
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const size = Math.random() * 3 + 1;
+        const delay = Math.random() * 3;
+        
+        star.style.left = `${left}%`;
+        star.style.top = `${top}%`;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.animationDelay = `${delay}s`;
+        
+        starsContainer.appendChild(star);
+      }
+    }
+
+    // --- Hover animation ---
+    const ctaBandeau = ctaBandeauRef.current;
+    if (ctaBandeau) {
+      const handleMouseEnter = () => {
+        ctaBandeau.style.transform = 'translateY(-5px) scale(1.01)';
+      };
+      const handleMouseLeave = () => {
+        ctaBandeau.style.transform = 'translateY(0) scale(1)';
+      };
+      
+      ctaBandeau.addEventListener('mouseenter', handleMouseEnter);
+      ctaBandeau.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        ctaBandeau.removeEventListener('mouseenter', handleMouseEnter);
+        ctaBandeau.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+  }, []);
+
   return (
-    <Link href="/inscription" className="block bg-destructive hover:bg-destructive/90 transition-colors">
-      <div className="container mx-auto px-4 py-6 text-center animate-pulse">
-        <div className="font-headline text-primary uppercase">
-          <h2 className="text-2xl md:text-4xl tracking-wider">
-            Le festival arrive ! Gagnez le grand prix de 200 000 FDJ !
-          </h2>
-          <p className="text-md md:text-xl font-body text-primary/80 mt-1">
-            Formez-vous du 1er au 20 Décembre 2025 et faites votre film.
-          </p>
-        </div>
-      </div>
-    </Link>
+    <section className={cn("cta-flottante", className)}>
+      <Link href="/inscription" legacyBehavior>
+        <a className="block">
+          <div className="cta-bandeau pulse" ref={ctaBandeauRef}>
+              <div className="film-strip"></div>
+              <div className="film-strip bottom"></div>
+              
+              <div className="cta-spotlights">
+                  <div className="cta-spotlight"></div>
+                  <div className="cta-spotlight"></div>
+                  <div className="cta-spotlight"></div>
+              </div>
+              
+              <div className="stars" ref={starsContainerRef}></div>
+              
+              <div className="cta-content">
+                  <div className="cta-titre">LE FESTIVAL ARRIVE ! GAGNEZ LE GRAND PRIX DE 200 000 FJD !</div>
+                  <div className="cta-sous-titre">Formez-vous du 1er au 20 Décembre 2025 et faites votre film.</div>
+              </div>
+              
+              <div className="clapperboard">
+                  <Film size={48} />
+              </div>
+          </div>
+        </a>
+      </Link>
+    </section>
   );
 }
