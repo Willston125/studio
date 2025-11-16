@@ -67,7 +67,7 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
   return (
     <div className="bg-black/70 backdrop-blur-md text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
       <header className="text-center p-8 md:p-12 border-b border-white/20">
-        <h1 className="text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">Inscription - Masterclass Cinéma</h1>
+        <h1 className="text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">INSCRIPTION - FORMATION CINEMATOGRAPHIE</h1>
         <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
             Remplissez les champs ci-dessous pour réserver votre place.
         </p>
