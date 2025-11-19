@@ -1,83 +1,48 @@
-
 'use client';
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Film } from 'lucide-react';
+import { Clapperboard } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function CtaBanner({ className }: { className?: string }) {
-  const starsContainerRef = useRef<HTMLDivElement>(null);
-  const ctaBandeauRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // --- Create sparkling stars ---
-    const starsContainer = starsContainerRef.current;
-    if (starsContainer) {
-      // Clear existing stars if any
-      starsContainer.innerHTML = '';
-      const starCount = 30;
-      for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        
-        const left = Math.random() * 100;
-        const top = Math.random() * 100;
-        const size = Math.random() * 3 + 1;
-        const delay = Math.random() * 3;
-        
-        star.style.left = `${left}%`;
-        star.style.top = `${top}%`;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.animationDelay = `${delay}s`;
-        
-        starsContainer.appendChild(star);
-      }
-    }
-
-    // --- Hover animation ---
-    const ctaBandeau = ctaBandeauRef.current;
-    if (ctaBandeau) {
-      const handleMouseEnter = () => {
-        ctaBandeau.style.transform = 'translateY(-5px) scale(1.01)';
-      };
-      const handleMouseLeave = () => {
-        ctaBandeau.style.transform = 'translateY(0) scale(1)';
-      };
-      
-      ctaBandeau.addEventListener('mouseenter', handleMouseEnter);
-      ctaBandeau.addEventListener('mouseleave', handleMouseLeave);
-
-      return () => {
-        ctaBandeau.removeEventListener('mouseenter', handleMouseEnter);
-        ctaBandeau.removeEventListener('mouseleave', handleMouseLeave);
-      };
-    }
-  }, []);
-
+  
   return (
-    <section className={cn("cta-flottante", className)}>
-      <Link href="/inscription" className="block">
-          <div className="cta-bandeau pulse" ref={ctaBandeauRef}>
-              
-              <div className="cta-spotlights">
-                  <div className="cta-spotlight"></div>
-                  <div className="cta-spotlight"></div>
-                  <div className="cta-spotlight"></div>
+    <section className={cn("relative my-20 py-10", className)}>
+       <Link href="/inscription" className="block group">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="relative">
+            
+            {/* --- Decorative element sticking out --- */}
+            <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20 group-hover:scale-110 transition-transform duration-300">
+               <Clapperboard size={100} className="text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]" strokeWidth={1.5} />
+            </div>
+
+            {/* --- Main Red Banner --- */}
+            <div className="bg-red-700/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border-2 border-red-500 transition-all duration-300 group-hover:shadow-[0_0_40px_rgba(239,68,68,0.7)]">
+              <div 
+                className="absolute inset-0 bg-repeat" 
+                style={{backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`, zIndex: 1}}
+              />
+              <div className="relative text-center text-white py-12 px-6 z-10">
+                <h2 className="font-headline text-6xl md:text-8xl lg:text-9xl tracking-wider text-shadow-lg">
+                  LE FESTIVAL ARRIVE !
+                </h2>
+                <p className="font-headline text-3xl md:text-4xl text-amber-300 tracking-wider mt-2" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.5)'}}>
+                  GAGNEZ 200 000 FDJ
+                </p>
               </div>
-              
-              <div className="stars" ref={starsContainerRef}></div>
-              
-              <div className="cta-content">
-                  <div className="cta-titre">LE FESTIVAL ARRIVE ! GAGNEZ LE GRAND PRIX DE 200 000 FJD !</div>
-                  <div className="cta-sous-titre">Formez-vous du 1er au 20 Décembre 2025 et faites votre film.</div>
-              </div>
-              
-              <div className="clapperboard">
-                  <Film size={48} />
-              </div>
+            </div>
+            
+            {/* --- Bottom film strip element --- */}
+            <div className="absolute -bottom-4 left-0 right-0 h-8 bg-zinc-800 flex items-center justify-between px-2 rounded-b-lg shadow-inner-strong z-0">
+                <div className="flex h-4 w-full bg-zinc-900/50 rounded-sm">
+                    <div className="film-perforations"></div>
+                </div>
+            </div>
+
           </div>
+        </div>
       </Link>
     </section>
   );
