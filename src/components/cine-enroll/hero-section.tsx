@@ -6,8 +6,40 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import ProgramSection from "./program-section";
+import { useEffect } from "react";
 
 export default function HeroSection() {
+    useEffect(() => {
+    const particleContainer = document.querySelector('.hero-particles');
+    if (!particleContainer) return;
+    
+    // Clear existing particles
+    particleContainer.innerHTML = '';
+
+    const particleCount = 30;
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const size = Math.random() * 3 + 1;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 10;
+        const duration = Math.random() * 5 + 5;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Custom property for horizontal drift
+        const xEnd = (Math.random() - 0.5) * 100;
+        particle.style.setProperty('--x-end', `${xEnd}px`);
+        
+        particleContainer.appendChild(particle);
+    }
+  }, []);
+
   return (
     <section 
       aria-label="Section principale de la formation cinéma"
@@ -35,6 +67,12 @@ export default function HeroSection() {
       />
 
       <div className="absolute inset-0 bg-black/60 z-10"></div>
+      
+      {/* Festival Effects */}
+      <div className="hero-spotlight left"></div>
+      <div className="hero-spotlight right"></div>
+      <div className="hero-particles"></div>
+
 
       <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-36 pb-20 md:pt-32">
         <div className="grid md:grid-cols-2 gap-8 w-full">
@@ -42,6 +80,12 @@ export default function HeroSection() {
           {/* Colonne de Gauche : Contenu Texte */}
           <div className="flex flex-col h-full items-start space-y-4 md:space-y-6 max-w-lg">
             
+            <div className="laurel-badge">
+              <img src="/laurel-left.svg" alt="Laurier gauche" className="laurel-icon" />
+              <span>Académie Cineworld</span>
+              <img src="/laurel-right.svg" alt="Laurier droit" className="laurel-icon" />
+            </div>
+
             <h1 
               tabIndex={0}
               className="text-6xl md:text-8xl font-headline font-black tracking-wide text-white leading-tight" 
@@ -53,10 +97,6 @@ export default function HeroSection() {
             <p className="text-lg md:text-xl text-neutral-200 max-w-2xl font-body">
               Apprenez à écrire, tourner et monter votre propre court-métrage à Djibouti. Une formation intensive pour transformer votre passion en compétence.
             </p>
-
-            <div className="font-body font-bold uppercase tracking-wider text-amber-400">
-              100% PRATIQUE
-            </div>
 
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-0.5">
