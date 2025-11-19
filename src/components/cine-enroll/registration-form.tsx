@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -65,7 +64,7 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
   }, [form]);
 
   return (
-    <div className="bg-black/70 backdrop-blur-md text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+    <div className="bg-black/60 backdrop-blur-xl text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/10">
       <header className="text-center p-8 md:p-12 border-b border-white/20">
         <h1 className="text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">INSCRIPTION - FORMATION CINEMATOGRAPHIE</h1>
         <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
@@ -182,6 +181,7 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
                                     </FormControl>
                                   <FormLabel htmlFor={item.id} className={cn(
                                         "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 h-full",
+                                        "hover:bg-amber-500/10 hover:border-amber-500",
                                         isChecked && "bg-amber-500/10 border-amber-500 ring-2 ring-amber-500"
                                     )}>
                                     <Icon className="w-8 h-8 text-amber-500" />

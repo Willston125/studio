@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -13,7 +12,7 @@ interface RegistrationSidebarProps {
 
 export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDisabled }: RegistrationSidebarProps) {
     return (
-        <div className="bg-black/70 backdrop-blur-md text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/20 divide-y divide-white/20">
+        <div className="bg-gradient-to-b from-black via-gray-900/50 to-black text-gray-300 rounded-3xl shadow-[0_0_30px_rgba(212,175,55,0.15)] overflow-hidden border border-amber-500/50 divide-y divide-amber-500/20">
             {/* Countdown */}
             <div className="p-6 text-center">
                 <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre expire dans :</h3>
@@ -80,7 +79,7 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
             </div>
 
             {/* Garantie */}
-            <div className="p-6 space-y-2 text-sm text-gray-300 bg-black/20 border-t-2 border-amber-500/50">
+            <div className="p-6 space-y-2 text-sm text-gray-300 bg-black/20">
                 <div className="flex items-center gap-2 font-bold text-amber-500">
                     <Check className="w-5 h-5" />
                     <span>GARANTIE DE SATISFACTION</span>
@@ -107,5 +106,3 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
         </div>
     );
 }
-
-    
