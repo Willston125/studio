@@ -62,11 +62,11 @@ export default function HeroSection() {
         src="/hero-fond.png"
         alt="Arrière-plan cinéma"
         fill
-        className="absolute z-0 w-full h-full object-cover block md:hidden"
+        className="absolute z-0 w-full h-full object-cover object-center block md:hidden"
         priority
       />
 
-      <div className="absolute inset-0 bg-black/60 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent z-10"></div>
       
       {/* Festival Effects */}
       <div className="hero-spotlight left"></div>
