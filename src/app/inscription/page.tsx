@@ -57,7 +57,7 @@ export default function InscriptionPage() {
         attentes 
       } = data;
       
-      const intro = `Bonjour, je m'appelle ${prenom} ${nom}. Je souhaite m'inscrire à cette formation au prix actuel de 30 000 FDJ, merci de me garder une place.`;
+      const intro = `Bonjour, je m'appelle ${prenom} ${nom}. Je souhaite m'inscrire à cette formation au prix actuel de 20 000 FDJ, merci de me garder une place.`;
 
       const details = [
         `\n\n--- RÉSUMÉ DE MON INSCRIPTION ---`,

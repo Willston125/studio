@@ -57,7 +57,7 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
                 <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
                 <div className="relative inline-block my-2">
                   <div className="font-headline text-5xl font-bold text-primary relative z-10">
-                    30 000 FDJ
+                    20 000 FDJ
                   </div>
                   <div 
                     className="
@@ -73,10 +73,10 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
                         boxShadow: '0 6px 15px rgba(220, 38, 38, 0.5)'
                     }}
                   >
-                    -25% 🔥
+                    -50% 🔥
                   </div>
                 </div>
-                <p className="font-body font-bold text-primary">ÉCONOMISEZ 10 000 FDJ !</p>
+                <p className="font-body font-bold text-primary">ÉCONOMISEZ 20 000 FDJ !</p>
             </div>
 
             {/* Garantie */}
