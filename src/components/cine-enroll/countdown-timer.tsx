@@ -4,10 +4,10 @@
 import { useState, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
-// Set the deadline to December 3, 2025, 23:59:59 Djibouti time (UTC+3)
+// Set the deadline to December 20, 2025, 00:00:00 Djibouti time (UTC+3)
 const getDeadline = () => {
   // EAT is UTC+3
-  const targetDate = new Date('2025-12-03T23:59:59+03:00');
+  const targetDate = new Date('2025-12-20T00:00:00+03:00');
   return targetDate;
 }
 
