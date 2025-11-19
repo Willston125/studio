@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
@@ -51,6 +52,12 @@ export default function RootLayout({
         {children}
         <Footer />
         <Toaster />
+        <div 
+          className="fixed inset-0 pointer-events-none z-[100]"
+          style={{
+            background: 'radial-gradient(circle at center, transparent 60%, black 150%)'
+          }}
+        />
       </body>
     </html>
   );
