@@ -2,6 +2,7 @@
 "use client";
 
 import { Star } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -45,7 +46,11 @@ export default function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-black/70 backdrop-blur-md border border-white/20 rounded-xl shadow-lg p-8 flex flex-col items-center text-center"
+              className={cn(
+                "flex flex-col items-center text-center p-8 rounded-xl",
+                "bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl",
+                "transition-all duration-300 hover:border-amber-500/50 hover:-translate-y-0.5"
+              )}
             >
               <Rating rating={testimonial.rating} />
               <p className="font-body text-gray-300 my-6 flex-grow">
