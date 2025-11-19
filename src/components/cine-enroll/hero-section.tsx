@@ -81,9 +81,7 @@ export default function HeroSection() {
           <div className="flex flex-col h-full items-start space-y-4 md:space-y-6 max-w-lg">
             
             <div className="laurel-badge">
-              <img src="/laurel-left.svg" alt="Laurier gauche" className="laurel-icon" />
-              <span>Académie Cineworld</span>
-              <img src="/laurel-right.svg" alt="Laurier droit" className="laurel-icon" />
+              <span>🏆 Académie Cineworld</span>
             </div>
 
             <h1 
