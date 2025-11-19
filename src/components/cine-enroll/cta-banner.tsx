@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -68,8 +69,8 @@ export default function CtaBanner({ className }: { className?: string }) {
       <div className="container mx-auto px-4 relative z-20 text-center">
         
         <h2 
-          className="font-serif text-2xl md:text-3xl text-amber-400 tracking-wider"
-          style={{ fontFamily: "'Garamond', serif", textShadow: '0 2px 10px rgba(255, 215, 0, 0.5)'}}
+          className="font-headline text-5xl md:text-7xl text-amber-500/80 tracking-widest"
+          style={{ textShadow: '0 2px 10px rgba(255, 215, 0, 0.3)'}}
         >
           LE FESTIVAL ARRIVE !
         </h2>
