@@ -60,13 +60,13 @@ export default function ProgramSection() {
               <div className="p-1">
                 <Link href={item.youtubeUrl} target="_blank" rel="noopener noreferrer" className="block group">
                   <Card className="overflow-hidden border-2 border-transparent hover:border-amber-500 transition-all duration-300 bg-neutral-900/50 rounded-lg">
-                    <CardContent className="relative aspect-[2/3] p-0">
+                    <CardContent className="relative aspect-[2/3] p-0 overflow-hidden">
                       <Image
                         src={item.imageSrc}
                         alt={item.title}
                         fill
                         data-ai-hint={item.imageHint}
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                        className="object-cover w-full h-full transition-transform duration-500 ease-out group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                       <div className="absolute bottom-0 left-0 p-2 md:p-3 w-full">
