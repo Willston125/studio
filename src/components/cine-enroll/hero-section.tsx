@@ -74,7 +74,7 @@ export default function HeroSection() {
       <div className="hero-particles"></div>
 
 
-      <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-36 pb-20 md:pt-32">
+      <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-36 pb-20 md:pb-20">
         <div className="grid md:grid-cols-2 gap-8 w-full">
           
           {/* Colonne de Gauche : Contenu Texte */}
@@ -86,10 +86,10 @@ export default function HeroSection() {
 
             <h1 
               tabIndex={0}
-              className="text-5xl md:text-7xl font-headline font-black tracking-wide text-white leading-tight" 
+              className="text-5xl md:text-6xl font-headline font-black tracking-wide text-white leading-tight" 
               style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}
             >
-              DEVENEZ CINÉASTE ET MONTEUR PROFESSIONNEL
+              DEVENEZ CINÉASTE <br /> ET MONTEUR PROFESSIONNEL
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-200 max-w-2xl font-body">
