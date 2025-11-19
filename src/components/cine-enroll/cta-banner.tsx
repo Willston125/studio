@@ -1,9 +1,9 @@
+
 'use client';
 
-import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Clapperboard } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export default function CtaBanner({ className }: { className?: string }) {
   
@@ -13,9 +13,15 @@ export default function CtaBanner({ className }: { className?: string }) {
         <div className="container mx-auto px-4 relative z-10">
           <div className="relative">
             
-            {/* --- Decorative element sticking out --- */}
-            <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20 group-hover:scale-110 transition-transform duration-300">
-               <Clapperboard size={100} className="text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]" strokeWidth={1.5} />
+            {/* --- Decorative Clap Image --- */}
+            <div className="absolute -top-12 -right-4 md:-top-16 md:right-0 z-20 group-hover:scale-110 transition-transform duration-300 transform -rotate-12">
+               <Image 
+                src="/clap.png"
+                alt="Clap de cinéma"
+                width={160}
+                height={160}
+                className="w-28 h-28 md:w-40 md:h-40 drop-shadow-2xl"
+               />
             </div>
 
             {/* --- Main Red Banner --- */}
