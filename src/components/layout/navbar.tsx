@@ -33,15 +33,15 @@ export default function Navbar() {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-28">
           {/* Left: Logo/Brand */}
           <Link href="/" className="flex items-center gap-2">
             <Image 
               src="/logo_cineworld.png"
               alt="Cineworld Logo"
-              width={180}
-              height={45}
-              className="h-16 md:h-20 w-auto"
+              width={240}
+              height={60}
+              className="h-20 md:h-24 w-auto object-contain"
               priority
             />
           </Link>
@@ -77,7 +77,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/90 backdrop-blur-xl absolute top-24 left-0 w-full">
+        <div className="md:hidden bg-black/90 backdrop-blur-xl absolute top-28 left-0 w-full">
           <nav className="flex flex-col items-center gap-4 p-8">
             {navLinks.map((link, index) => (
               <Link key={`${link.label}-${index}-mobile`} href={link.href} className="text-lg font-medium text-neutral-200 hover:text-white transition-colors font-body" onClick={() => setIsMenuOpen(false)}>
