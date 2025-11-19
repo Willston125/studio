@@ -86,10 +86,10 @@ export default function HeroSection() {
 
             <h1 
               tabIndex={0}
-              className="text-6xl md:text-8xl font-headline font-black tracking-wide text-white leading-tight" 
+              className="text-5xl md:text-7xl font-headline font-black tracking-wide text-white leading-tight" 
               style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}
             >
-              Devenez Réalisateur
+              DEVENEZ CINÉASTE ET MONTEUR PROFESSIONNEL
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-200 max-w-2xl font-body">
