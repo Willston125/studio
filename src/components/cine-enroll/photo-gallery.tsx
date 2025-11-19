@@ -11,12 +11,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import Autoplay from "embla-carousel-autoplay";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -98,31 +92,16 @@ export default function PhotoGallery() {
           {images.map((img, index) => (
             <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
               <div className="p-1">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <div className="group aspect-video w-full rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105">
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        width={800}
-                        height={600}
-                        data-ai-hint={img.imageHint}
-                        className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:shadow-[0_10px_40px_rgba(229,9,20,0.5)]"
-                      />
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl p-2 bg-transparent border-none shadow-none">
-                    <DialogTitle className="sr-only">{img.description}</DialogTitle>
-                     <Image
-                        src={img.src}
-                        alt={img.alt}
-                        width={1200}
-                        height={800}
-                        data-ai-hint={img.imageHint}
-                        className="object-contain w-full h-full rounded-lg"
-                      />
-                  </DialogContent>
-                </Dialog>
+                <div className="group aspect-video w-full rounded-lg overflow-hidden cursor-pointer">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={800}
+                    height={600}
+                    data-ai-hint={img.imageHint}
+                    className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-110"
+                  />
+                </div>
               </div>
             </CarouselItem>
           ))}
