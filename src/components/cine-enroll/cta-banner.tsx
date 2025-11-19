@@ -60,8 +60,6 @@ export default function CtaBanner({ className }: { className?: string }) {
     <section className={cn("cta-flottante", className)}>
       <Link href="/inscription" className="block">
           <div className="cta-bandeau pulse" ref={ctaBandeauRef}>
-              <div className="film-strip"></div>
-              <div className="film-strip bottom"></div>
               
               <div className="cta-spotlights">
                   <div className="cta-spotlight"></div>

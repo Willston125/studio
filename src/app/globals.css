@@ -643,27 +643,6 @@
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.film-strip {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: repeating-linear-gradient(
-        90deg,
-        #000 0px,
-        #000 10px,
-        #FFD700 10px,
-        #FFD700 20px
-    );
-    opacity: 0.7;
-}
-
-.film-strip.bottom {
-    top: auto;
-    bottom: 0;
-}
-
 .clapperboard {
     position: absolute;
     top: 50%;
