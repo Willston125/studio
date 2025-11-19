@@ -39,9 +39,9 @@ export default function Navbar() {
             <Image 
               src="/logo_cineworld.png"
               alt="Cineworld Logo"
-              width={360}
-              height={90}
-              className="h-[90px] w-auto"
+              width={180}
+              height={45}
+              className="h-12 md:h-16 w-auto"
               priority
             />
           </Link>
