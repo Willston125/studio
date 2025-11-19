@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const testimonials = [
   {
     rating: 5,
-    text: "Une formation qui a dépassé toutes mes attentes. J'ai appris plus en 2 semaines qu'en 2 ans en autodidacte. Le matériel pro fait vraiment la différence.",
+    text: "Une formation qui a dépassé toutes mes attentes. J'ai appris plus en 2 semaines qu'en 2 ans en autodidacte.",
     author: "Fatouma A.",
   },
   {
