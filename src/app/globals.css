@@ -48,6 +48,9 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply text-foreground;
     background: linear-gradient(to bottom, #111, #000);
@@ -587,3 +590,5 @@
     opacity: 0;
   }
 }
+
+    

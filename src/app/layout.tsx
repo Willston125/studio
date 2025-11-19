@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
+import BackToTopButton from '@/components/layout/back-to-top-button';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:9002';
 const imageUrl = `${siteUrl}/affiche.jpg`;
@@ -52,6 +53,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Toaster />
+        <BackToTopButton />
         <div 
           className="fixed inset-0 pointer-events-none z-[100]"
           style={{
@@ -62,3 +64,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    
