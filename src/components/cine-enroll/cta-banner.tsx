@@ -2,97 +2,64 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import React, { useEffect } from 'react';
-
-const PalaceFacade = () => (
-  <svg
-    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-auto text-amber-500/10"
-    width="1400"
-    height="150"
-    viewBox="0 0 1400 150"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="xMidYMax slice"
-  >
-    <path
-      d="M700 50L750 150H650L700 50Z"
-      fill="currentColor"
-    />
-    <path
-      d="M0 150V120L50 100L100 120V150H0Z M100 120L150 100L200 120V150H100V120Z M200 120L250 100L300 120V150H200V120Z M300 120L350 100L400 120V150H300V120Z M400 120L450 100L500 120V150H400V120Z M500 120L550 100L600 120V150H500V120Z M600 120L650 100L700 120"
-      fill="currentColor"
-    />
-    <path
-      d="M1400 150V120L1350 100L1300 120V150H1400Z M1300 120L1250 100L1200 120V150H1300V120Z M1200 120L1150 100L1100 120V150H1200V120Z M1100 120L1050 100L1000 120V150H1100V120Z M1000 120L950 100L900 120V150H1000V120Z M900 120L850 100L800 120V150H900V120Z M800 120L750 100L700 120"
-      fill="currentColor"
-    />
-  </svg>
-);
-
+import { Clapperboard } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '../ui/button';
 
 export default function CtaBanner({ className }: { className?: string }) {
-
-  useEffect(() => {
-    const particleContainer = document.querySelector('.particle-container');
-    if (!particleContainer) return;
-    
-    particleContainer.innerHTML = '';
-
-    const particleCount = 50; 
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle-gold');
-        
-        const size = Math.random() * 2 + 0.5;
-        const left = Math.random() * 100;
-        const delay = Math.random() * 15;
-        const duration = Math.random() * 10 + 10;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${left}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.animationDuration = `${duration}s`;
-        
-        const xEnd = (Math.random() - 0.5) * 50;
-        particle.style.setProperty('--x-end', `${xEnd}px`);
-        
-        particleContainer.appendChild(particle);
-    }
-  }, []);
-
   return (
-    <section className={cn("relative my-20 py-20 overflow-hidden", className)}>
-       <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-950/50 to-black z-0"></div>
-       <div className="particle-container absolute inset-0 z-10 pointer-events-none"></div>
-
-      <div className="container mx-auto px-4 relative z-20 text-center">
+    <section 
+      className={cn(
+        "relative my-20 overflow-hidden", 
+        "bg-gradient-to-br from-red-600 via-red-800 to-black",
+        "border-y-4 border-yellow-400",
+        className
+      )}
+    >
+      {/* Subtle background pattern */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-20 text-center py-12 md:py-16">
         
         <h2 
-          className="font-headline text-5xl md:text-7xl text-amber-500/80 tracking-widest"
-          style={{ textShadow: '0 2px 10px rgba(255, 215, 0, 0.3)'}}
+          className="font-headline text-5xl md:text-7xl lg:text-8xl text-white tracking-widest uppercase"
+          style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)'}}
         >
-          LE FESTIVAL ARRIVE !
+          Le Festival Arrive
         </h2>
 
-        <div className="my-4 md:my-6">
+        <div className="my-4">
           <p 
-            className="font-serif font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-amber-300 leading-none"
-            style={{ fontFamily: "'Playfair Display', serif", textShadow: '0 4px 20px rgba(255, 215, 0, 0.6)'}}
+            className="font-headline text-3xl md:text-4xl lg:text-5xl text-amber-300 tracking-wider"
+            style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}
           >
-            <span className="text-4xl md:text-5xl lg:text-6xl font-normal block mb-2 text-amber-200/80">GAGNEZ</span>
-            200 000 FDJ
+            Gagnez 200 000 FDJ
           </p>
         </div>
 
-        <p className="font-sans text-base md:text-lg text-white/80 tracking-widest uppercase">
-          Vivez la magie du 7ème art
-        </p>
+        <div className="mt-8 space-y-6">
+          <div>
+            <p className="font-body font-bold text-white text-lg">
+              📅 Date limite d'inscription : 15 Décembre 2025
+            </p>
+            <p className="font-body italic text-amber-200/90 text-sm mt-2">
+              ⚠️ Concours réservé exclusivement aux participants de la formation.
+            </p>
+          </div>
+
+          <Button asChild size="lg" className="btn-primary font-headline text-2xl px-12 py-8 rounded-xl">
+             <Link href="/inscription">
+                Je veux participer
+             </Link>
+          </Button>
+        </div>
 
       </div>
-      
-      <PalaceFacade />
-
     </section>
   );
 }
