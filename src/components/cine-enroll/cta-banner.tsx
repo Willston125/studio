@@ -28,7 +28,7 @@ export default function CtaBanner({ className }: { className?: string }) {
                 <h2 className="font-headline text-6xl md:text-8xl lg:text-9xl tracking-wider text-shadow-lg">
                   LE FESTIVAL ARRIVE !
                 </h2>
-                <p className="font-headline text-3xl md:text-4xl text-amber-300 tracking-wider mt-2" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.5)'}}>
+                <p className="font-headline text-4xl md:text-5xl text-amber-300 tracking-wider mt-2" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.5)'}}>
                   GAGNEZ 200 000 FDJ
                 </p>
               </div>
