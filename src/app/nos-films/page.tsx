@@ -67,31 +67,31 @@ export default function NosFilmsPage() {
                         priority
                     />
                     {/* Gradients - Enhanced for better text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 via-40% to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
                 </div>
 
                 {/* Content - Aligned Bottom Left */}
-                <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 lg:p-16 z-10 pb-24 md:pb-32">
+                <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 lg:p-16 z-10 pb-12 md:pb-32">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
-                        className="max-w-3xl space-y-6"
+                        className="max-w-3xl space-y-4 md:space-y-6"
                     >
                         {/* Title */}
-                        <h1 className="text-7xl md:text-9xl font-headline font-black leading-[0.85] text-white drop-shadow-2xl tracking-tight">
+                        <h1 className="text-5xl md:text-9xl font-headline font-black leading-[0.9] text-white drop-shadow-2xl tracking-tight">
                             MBAYE <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">TRAMBWÉ</span>
                         </h1>
 
                         {/* Metadata Row */}
-                        <div className="flex flex-wrap items-center gap-4 text-sm md:text-base font-medium text-gray-200">
+                        <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-base font-medium text-gray-200">
                             <div className="flex items-center text-amber-500 gap-1">
-                                <Star fill="currentColor" className="w-4 h-4" />
-                                <Star fill="currentColor" className="w-4 h-4" />
-                                <Star fill="currentColor" className="w-4 h-4" />
-                                <Star fill="currentColor" className="w-4 h-4" />
-                                <Star fill="currentColor" className="w-4 h-4" />
+                                <Star className="w-3 h-3 md:w-4 md:h-4 fill-current" />
+                                <Star className="w-3 h-3 md:w-4 md:h-4 fill-current" />
+                                <Star className="w-3 h-3 md:w-4 md:h-4 fill-current" />
+                                <Star className="w-3 h-3 md:w-4 md:h-4 fill-current" />
+                                <Star className="w-3 h-3 md:w-4 md:h-4 fill-current" />
                             </div>
                             <span className="text-white font-bold">4.9</span>
                             <span className="text-gray-500">|</span>
@@ -99,31 +99,31 @@ export default function NosFilmsPage() {
                             <span className="text-gray-500">|</span>
                             <span>14 min</span>
                             <span className="text-gray-500">|</span>
-                            <span className="border border-gray-500/50 bg-white/5 px-2 py-0.5 rounded text-xs tracking-wider">DRAME SOCIAL</span>
+                            <span className="border border-gray-500/50 bg-white/5 px-2 py-0.5 rounded text-[10px] md:text-xs tracking-wider">DRAME SOCIAL</span>
                             <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded ml-2">TOP 1</span>
                         </div>
 
                         {/* Description */}
-                        <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl drop-shadow-md">
+                        <p className="text-base md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl drop-shadow-md line-clamp-3 md:line-clamp-none">
                             Une plongée saisissante dans la réalité djiboutienne. Entre tradition et modernité, suivez le parcours bouleversant d'une jeunesse en quête de repères.
                         </p>
 
                         {/* Buttons Row */}
-                        <div className="flex flex-wrap items-center gap-4 pt-6">
+                        <div className="flex flex-wrap items-center gap-3 md:gap-4 pt-4 md:pt-6">
                             <Button
                                 asChild
-                                className="bg-white text-black hover:bg-gray-200 font-bold text-lg px-8 py-7 rounded flex items-center gap-3 transition-all transform hover:scale-105"
+                                className="bg-white text-black hover:bg-gray-200 font-bold text-base md:text-lg px-6 py-6 md:px-8 md:py-7 rounded flex items-center gap-2 md:gap-3 transition-all transform hover:scale-105"
                             >
                                 <Link href="https://www.youtube.com/watch?v=1bep0NEFvZ0&t=103s" target="_blank">
-                                    <Play fill="currentColor" className="w-7 h-7" />
+                                    <Play fill="currentColor" className="w-5 h-5 md:w-7 md:h-7" />
                                     Lecture
                                 </Link>
                             </Button>
 
                             <Button
-                                className="bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 font-bold text-lg px-8 py-7 rounded flex items-center gap-3 transition-all"
+                                className="bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 font-bold text-base md:text-lg px-6 py-6 md:px-8 md:py-7 rounded flex items-center gap-2 md:gap-3 transition-all"
                             >
-                                <Plus className="w-7 h-7" />
+                                <Plus className="w-5 h-5 md:w-7 md:h-7" />
                                 Ma Liste
                             </Button>
                         </div>
@@ -132,12 +132,12 @@ export default function NosFilmsPage() {
             </section>
 
             {/* 3. SECTION LISTE (Tendances Actuelles) */}
-            <section className="px-8 md:px-12 lg:px-16 pb-32 relative z-10 -mt-20">
-                <h2 className="text-2xl md:text-3xl font-headline font-bold text-white mb-8 drop-shadow-lg flex items-center gap-3">
-                    TENDANCES ACTUELLES <span className="text-amber-500 text-4xl">.</span>
+            <section className="px-6 md:px-12 lg:px-16 pb-24 md:pb-32 relative z-10 mt-0 md:-mt-20">
+                <h2 className="text-xl md:text-3xl font-headline font-bold text-white mb-6 md:mb-8 drop-shadow-lg flex items-center gap-2 md:gap-3">
+                    TENDANCES ACTUELLES <span className="text-amber-500 text-3xl md:text-4xl">.</span>
                 </h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                     {films.map((film, index) => (
                         <motion.div
                             key={film.id}
