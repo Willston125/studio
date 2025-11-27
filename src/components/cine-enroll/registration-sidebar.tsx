@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Check, Lock, Laptop, Smartphone } from 'lucide-react';
 import CountdownTimer from './countdown-timer';
@@ -13,6 +14,25 @@ interface RegistrationSidebarProps {
 export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDisabled }: RegistrationSidebarProps) {
     return (
         <div className="bg-gradient-to-b from-black via-gray-900/50 to-black text-gray-300 rounded-3xl shadow-[0_0_30px_rgba(212,175,55,0.15)] overflow-hidden border border-amber-500/50 divide-y divide-amber-500/20">
+
+            {/* TRAINER CARD (Added as requested) */}
+            <div className="p-8 text-center bg-black/40">
+                <div className="relative w-32 h-32 mx-auto mb-4">
+                    <Image
+                        src="/formateur.png"
+                        alt="Ali William"
+                        fill
+                        className="object-cover rounded-full border-2 border-amber-500 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
+                    />
+                </div>
+                <h3 className="font-headline text-3xl text-amber-500 tracking-wide mb-1">
+                    ALI WILLIAM
+                </h3>
+                <p className="font-body text-sm text-gray-300 font-medium uppercase tracking-wider">
+                    Votre Formateur & Réalisateur
+                </p>
+            </div>
+
             {/* Countdown */}
             <div className="p-6 text-center">
                 <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre expire dans :</h3>
@@ -23,10 +43,10 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
 
             {/* Grand Prix */}
             <div className="p-8 text-center space-y-4 bg-amber-900/10">
-                 <h3 className="font-headline text-5xl md:text-6xl uppercase tracking-wider text-amber-400" style={{textShadow: '0 0 10px hsl(var(--primary))'}}>
+                <h3 className="font-headline text-5xl md:text-6xl uppercase tracking-wider text-amber-400" style={{ textShadow: '0 0 10px hsl(var(--primary))' }}>
                     Le Grand Prix
                 </h3>
-                <p className="font-headline text-7xl font-bold text-white" style={{textShadow: '0 0 15px hsl(var(--primary))'}}>
+                <p className="font-headline text-7xl font-bold text-white" style={{ textShadow: '0 0 15px hsl(var(--primary))' }}>
                     200 000 FDJ
                 </p>
                 <div className="pt-4 space-y-4">
@@ -36,15 +56,15 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
                     <div className="grid grid-cols-2 gap-4 text-center font-body text-gray-300">
                         {/* 2nd Prize */}
                         <div className="flex flex-col items-center gap-2">
-                           <Laptop size={40} className="text-amber-500" />
-                           <span className="font-semibold">PC Portable</span>
-                           <span className="text-sm text-gray-400">(2e Prix)</span>
+                            <Laptop size={40} className="text-amber-500" />
+                            <span className="font-semibold">PC Portable</span>
+                            <span className="text-sm text-gray-400">(2e Prix)</span>
                         </div>
                         {/* 3rd Prize */}
                         <div className="flex flex-col items-center gap-2">
-                           <Smartphone size={40} className="text-amber-500" />
-                           <span className="font-semibold">Smartphone</span>
-                           <span className="text-sm text-gray-400">(3e Prix)</span>
+                            <Smartphone size={40} className="text-amber-500" />
+                            <span className="font-semibold">Smartphone</span>
+                            <span className="text-sm text-gray-400">(3e Prix)</span>
                         </div>
                     </div>
                 </div>
@@ -55,25 +75,25 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
             <div className="special-price p-8 text-center">
                 <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 40 000 FDJ</p>
                 <div className="relative inline-block my-2">
-                  <div className="font-headline text-5xl font-bold text-primary relative z-10">
-                    20 000 FDJ
-                  </div>
-                  <div 
-                    className="
+                    <div className="font-headline text-5xl font-bold text-primary relative z-10">
+                        20 000 FDJ
+                    </div>
+                    <div
+                        className="
                       absolute -top-4 -right-9 z-20 
                       bg-red-600 text-white text-xs font-black
                       py-1.5 px-3 rounded-full 
                       uppercase tracking-wider
                       border-4 border-red-200
                       "
-                    style={{
-                        transform: 'rotate(12deg)',
-                        animation: 'attentionGrabber 2s infinite',
-                        boxShadow: '0 6px 15px rgba(220, 38, 38, 0.5)'
-                    }}
-                  >
-                    -50% 🔥
-                  </div>
+                        style={{
+                            transform: 'rotate(12deg)',
+                            animation: 'attentionGrabber 2s infinite',
+                            boxShadow: '0 6px 15px rgba(220, 38, 38, 0.5)'
+                        }}
+                    >
+                        -50% 🔥
+                    </div>
                 </div>
                 <p className="font-body font-bold text-primary">ÉCONOMISEZ 20 000 FDJ !</p>
             </div>
@@ -96,7 +116,7 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
                     className="btn-primary w-full"
                     disabled={isSubmitDisabled}
                     onClick={onSubmit}
-                    >
+                >
                     🎬 {isSubmitting ? 'Redirection...' : "M'inscrire à la formation"}
                 </Button>
                 <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
