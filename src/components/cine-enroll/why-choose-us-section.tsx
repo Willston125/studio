@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Camera, Zap, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
 const WhyChooseUsSection = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -29,25 +31,10 @@ const WhyChooseUsSection = () => {
             });
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    (entry.target as HTMLElement).style.animationPlayState = 'running';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        featureCards.forEach(card => {
-            observer.observe(card);
-        });
-
         document.addEventListener('mousemove', handleMouseMove);
 
         return () => {
             document.removeEventListener('mousemove', handleMouseMove);
-            featureCards.forEach(card => {
-                observer.unobserve(card);
-            });
         };
     }, [isMounted]);
 
@@ -56,45 +43,84 @@ const WhyChooseUsSection = () => {
             <div className="film-grain"></div>
             <section className="why-section" ref={sectionRef}>
                 <div className="focus-lines"></div>
-                
+
                 <div className="spotlight spotlight-1"></div>
                 <div className="spotlight spotlight-2"></div>
-                
+
                 <div className="section-header">
-                    <span className="section-pre-title font-body">L'Excellence Cinématographique</span>
-                    <h2 className="section-title font-headline">POURQUOI CHOISIR CINEWORLD ?</h2>
-                    <p className="section-subtitle font-body">
-                        Nous offrons bien plus qu'une simple formation. C'est une immersion complète 
-                        dans l'univers du cinéma, où la passion rencontre l'expertise technique.
-                    </p>
+                    <ScrollReveal width="100%">
+                        <span className="section-pre-title font-body block text-center">L'Excellence Cinématographique</span>
+                    </ScrollReveal>
+                    <ScrollReveal width="100%" delay={0.4}>
+                        <h2 className="section-title font-headline text-center">POURQUOI CHOISIR CINEWORLD ?</h2>
+                    </ScrollReveal>
+                    <ScrollReveal width="100%" delay={0.6}>
+                        <p className="section-subtitle font-body text-center">
+                            Nous offrons bien plus qu'une simple formation. C'est une immersion complète
+                            dans l'univers du cinéma, où la passion rencontre l'expertise technique.
+                        </p>
+                    </ScrollReveal>
                 </div>
-                
+
                 <div className="features-grid">
-                    <div className="feature-card">
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        whileHover={{
+                            y: -8,
+                            borderColor: "rgba(212, 175, 55, 0.8)",
+                            boxShadow: "0 10px 30px -10px rgba(212, 175, 55, 0.3)"
+                        }}
+                        className="feature-card"
+                    >
                         <div className="feature-icon"><Camera size={36} /></div>
                         <h3 className="feature-title font-headline">ACCOMPAGNEMENT</h3>
                         <p className="feature-description font-body">
                             Ensemble, avec notre dévouement, nous vous accompagnons pour produire vos contenus cinématographiques avec les bonnes bases de vos œuvres.
                         </p>
-                    </div>
-                    
-                    <div className="feature-card">
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        whileHover={{
+                            y: -8,
+                            borderColor: "rgba(212, 175, 55, 0.8)",
+                            boxShadow: "0 10px 30px -10px rgba(212, 175, 55, 0.3)"
+                        }}
+                        className="feature-card"
+                    >
                         <div className="feature-icon"><Zap size={36} /></div>
                         <h3 className="feature-title font-headline">PRATIQUE INTENSIVE</h3>
                         <p className="feature-description font-body">
-                            La formation est axée à 80% sur la pratique terrain avec des projets réels 
+                            La formation est axée à 80% sur la pratique terrain avec des projets réels
                             pour une maîtrise rapide et une expérience concrète.
                         </p>
-                    </div>
-                    
-                    <div className="feature-card">
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        whileHover={{
+                            y: -8,
+                            borderColor: "rgba(212, 175, 55, 0.8)",
+                            boxShadow: "0 10px 30px -10px rgba(212, 175, 55, 0.3)"
+                        }}
+                        className="feature-card"
+                    >
                         <div className="feature-icon"><Globe size={36} /></div>
                         <h3 className="feature-title font-headline">RÉSEAU PROFESSIONNEL</h3>
                         <p className="feature-description font-body">
-                            Intégrez une communauté exclusive de passionnés et de professionnels 
+                            Intégrez une communauté exclusive de passionnés et de professionnels
                             du cinéma à Djibouti et développez votre réseau dans l'industrie.
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </>

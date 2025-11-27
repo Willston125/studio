@@ -3,6 +3,7 @@
 
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const testimonials = [
   {
@@ -37,29 +38,32 @@ export default function TestimonialsSection() {
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase">
-            Ils parlent de nous
-          </h2>
-        </div>
+        <ScrollReveal width="100%">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase">
+              Ils parlent de nous
+            </h2>
+          </div>
+        </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className={cn(
-                "flex flex-col items-center text-center p-8 rounded-xl",
-                "bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl",
-                "transition-all duration-300 hover:border-amber-500/50 hover:-translate-y-0.5"
-              )}
-            >
-              <Rating rating={testimonial.rating} />
-              <p className="font-body text-gray-300 my-6 flex-grow">
-                "{testimonial.text}"
-              </p>
-              <cite className="font-headline text-xl text-amber-500 not-italic">
-                - {testimonial.author} -
-              </cite>
-            </div>
+            <ScrollReveal key={index} width="100%" delay={index * 0.2}>
+              <div
+                className={cn(
+                  "flex flex-col items-center text-center p-8 rounded-xl",
+                  "bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl",
+                  "transition-all duration-300 hover:border-amber-500/50 hover:-translate-y-0.5"
+                )}
+              >
+                <Rating rating={testimonial.rating} />
+                <p className="font-body text-gray-300 my-6 flex-grow">
+                  "{testimonial.text}"
+                </p>
+                <cite className="font-headline text-xl text-amber-500 not-italic">
+                  - {testimonial.author} -
+                </cite>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

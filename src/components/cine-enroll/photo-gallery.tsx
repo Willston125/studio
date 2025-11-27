@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const images = [
   {
@@ -62,7 +63,7 @@ export default function PhotoGallery() {
           {[...Array(3)].map((_, index) => (
             <div key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 w-full">
               <div className="p-1">
-                 <Skeleton className="aspect-video w-full" />
+                <Skeleton className="aspect-video w-full" />
               </div>
             </div>
           ))}
@@ -74,41 +75,43 @@ export default function PhotoGallery() {
 
   return (
     <section className="py-8">
-      <h2 className="text-center text-2xl font-headline mb-8">Galerie</h2>
-      <Carousel
-        plugins={[
-          Autoplay({
-            delay: 2000,
-            stopOnInteraction: true,
-          }),
-        ]}
-        opts={{
-          align: "start",
-          loop: true,
-        }}
-        className="w-full"
-      >
-        <CarouselContent className="-ml-4">
-          {images.map((img, index) => (
-            <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-              <div className="p-1">
-                <div className="group aspect-video w-full rounded-lg overflow-hidden cursor-pointer">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={800}
-                    height={600}
-                    data-ai-hint={img.imageHint}
-                    className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-110"
-                  />
+      <ScrollReveal width="100%">
+        <h2 className="text-center text-2xl font-headline mb-8">Galerie</h2>
+        <Carousel
+          plugins={[
+            Autoplay({
+              delay: 2000,
+              stopOnInteraction: true,
+            }),
+          ]}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {images.map((img, index) => (
+              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="group aspect-video w-full rounded-lg overflow-hidden cursor-pointer">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={800}
+                      height={600}
+                      data-ai-hint={img.imageHint}
+                      className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-110"
+                    />
+                  </div>
                 </div>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="hidden sm:flex" type="button" />
-        <CarouselNext className="hidden sm:flex" type="button" />
-      </Carousel>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden sm:flex" type="button" />
+          <CarouselNext className="hidden sm:flex" type="button" />
+        </Carousel>
+      </ScrollReveal>
     </section>
   );
 }

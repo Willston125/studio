@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
+  { href: '/nos-films', label: 'Mes Films' },
   { href: '/inscription', label: 'Inscription formation' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -36,7 +37,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-28">
           {/* Left: Logo/Brand */}
           <Link href="/" className="flex items-center gap-2">
-            <Image 
+            <Image
               src="/logo_cineworld.png"
               alt="Cineworld Logo"
               width={240}
