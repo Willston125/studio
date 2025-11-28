@@ -3,166 +3,179 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Play, Info, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function FilmsPage() {
     return (
         <>
             <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Oswald:wght@400;700&display=swap');
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-raleway { font-family: 'Raleway', sans-serif; }
       `}</style>
 
-            <div className="min-h-screen bg-[#0a0a0a] text-white font-montserrat overflow-x-hidden">
+            <div className="min-h-screen bg-[#050505] text-white font-raleway overflow-x-hidden selection:bg-[#C5A059] selection:text-black">
 
                 {/* --- NAVIGATION --- */}
-                <nav className="absolute top-0 w-full px-8 py-6 flex justify-between items-center z-50 bg-gradient-to-b from-black/80 to-transparent">
-                    <div className="flex items-center gap-8">
-                        {/* Logo Placeholder if image missing */}
-                        <div className="text-2xl font-oswald font-bold text-[#E50914] tracking-tighter">CINEWORLD</div>
-
-                        <div className="hidden md:flex gap-6 text-sm font-semibold uppercase tracking-wide">
-                            <Link href="/" className="hover:text-[#FFD700] transition-colors">Accueil</Link>
-                            <Link href="/films" className="text-white border-b-2 border-[#E50914] pb-1">Mes Films</Link>
-                            <Link href="/inscription" className="hover:text-[#FFD700] transition-colors">Formation</Link>
-                        </div>
+                <nav className="absolute top-0 w-full px-8 py-8 flex justify-between items-center z-50">
+                    <div className="font-cinzel font-bold text-[#C5A059] text-2xl tracking-widest">CW DJIBOUTI</div>
+                    <div className="flex gap-8 text-sm uppercase tracking-widest font-semibold">
+                        <Link href="/" className="text-white hover:text-[#C5A059] transition-colors">Accueil</Link>
+                        <Link href="/films" className="text-[#C5A059] border-b border-[#C5A059] pb-1">Films</Link>
                     </div>
-                    <Link href="/inscription" className="bg-[#FFD700] text-black px-5 py-2 rounded font-bold uppercase text-sm hover:bg-[#dbb700] transition-colors">
-                        S'inscrire
-                    </Link>
                 </nav>
 
-                {/* --- HERO SECTION (MBAYE TRAMBWÉ) --- */}
-                <section className="relative h-[85vh] w-full flex items-center pl-[5%]">
-
+                {/* --- HERO SECTION --- */}
+                <header className="relative h-[80vh] w-full flex flex-col justify-end items-center text-center pb-20">
                     {/* Background Image */}
                     <div className="absolute inset-0 z-0">
                         <Image
                             src="/mbaye_bg.jpg"
-                            alt="Mbaye Trambwé Background"
+                            alt="Hero Background"
                             fill
                             className="object-cover object-center"
                             priority
                             onError={(e) => {
-                                // Fallback if image missing
                                 e.currentTarget.srcset = "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1000";
                             }}
                         />
-                        {/* Overlays */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10" />
-                        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0a0a0a] to-transparent z-20" />
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-[#050505]/20 z-10" />
                     </div>
 
                     {/* Content */}
-                    <div className="relative z-30 max-w-2xl mt-16">
-                        <h1 className="font-oswald text-6xl md:text-8xl uppercase leading-[0.9] mb-6 text-white drop-shadow-lg">
-                            Mbaye<br />Trambwé
+                    <div className="relative z-20 max-w-3xl px-6">
+                        <h1 className="font-cinzel text-5xl md:text-7xl text-white mb-4 uppercase tracking-wider drop-shadow-2xl">
+                            Une Vision Cinématographique
                         </h1>
-
-                        <div className="flex items-center gap-4 text-sm text-gray-300 mb-6 font-medium">
-                            <span className="text-[#46d369] font-bold">98% Recommandé</span>
-                            <span>2023</span>
-                            <span className="border border-gray-500 px-1 rounded text-xs">HD</span>
-                            <span>Drame Social</span>
-                        </div>
-
-                        <p className="text-lg text-gray-200 mb-8 leading-relaxed max-w-xl drop-shadow-md hidden md:block">
-                            Une plongée saisissante dans la réalité djiboutienne. Entre tradition et modernité, suivez le parcours bouleversant d'une jeunesse en quête de repères.
+                        <p className="text-[#ebd69c] text-lg md:text-xl italic font-light tracking-wide">
+                            Explorez les œuvres qui redéfinissent le récit djiboutien.
                         </p>
-
-                        <div className="flex gap-4">
-                            <a href="#" className="flex items-center gap-2 bg-white text-black px-8 py-3 rounded font-bold text-lg hover:bg-gray-200 transition-colors">
-                                <Play className="fill-black w-6 h-6" /> Lecture
-                            </a>
-                            <button className="flex items-center gap-2 bg-gray-500/70 text-white px-8 py-3 rounded font-bold text-lg hover:bg-gray-500/50 transition-colors backdrop-blur-sm">
-                                <Info className="w-6 h-6" /> Plus d'infos
-                            </button>
-                        </div>
                     </div>
-                </section>
+                </header>
 
-                {/* --- CATALOG SECTION --- */}
-                <section className="relative z-40 px-[5%] pb-20 -mt-10">
-                    <h2 className="font-oswald text-2xl text-gray-200 mb-6 border-l-4 border-[#FFD700] pl-4">
-                        Tendances Actuelles
-                    </h2>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-
-                        {/* MOVIE CARD 1: CODE 2 */}
-                        <MovieCard
-                            title="CODE 2"
-                            year="2025"
-                            genre="16+"
-                            image="/affiche_code2.jpg"
-                            fallbackImage="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=500"
-                        />
-
-                        {/* MOVIE CARD 2: L'AUBE DES AVEUGLES */}
-                        <MovieCard
-                            title="L'AUBE DES AVEUGLES"
-                            year="2025"
-                            genre="Drame"
-                            image="/affiche_aube.jpg"
-                            fallbackImage="https://images.unsplash.com/photo-1478720568477-152d9b164e63?q=80&w=500"
-                        />
-
-                        {/* MOVIE CARD 3: CODE */}
-                        <MovieCard
-                            title="CODE"
-                            year="2020"
-                            genre="Action"
-                            image="/affiche_code1.jpg"
-                            fallbackImage="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=500"
-                        />
-
-                        {/* MOVIE CARD 4: MBAYE TRAMBWÉ */}
-                        <MovieCard
-                            title="MBAYE TRAMBWÉ"
-                            year="2023"
-                            genre="Culte"
-                            image="/affiche_mbaye.jpg"
-                            fallbackImage="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=500"
-                        />
-
+                {/* --- ORNAMENTAL DIVIDER --- */}
+                <div className="flex items-center justify-center gap-6 my-16 opacity-80">
+                    <div className="h-[1px] w-24 bg-[#C5A059] opacity-50"></div>
+                    <div className="text-[#C5A059] font-cinzel text-xl border border-[#C5A059] px-6 py-2 rounded tracking-widest">
+                        FILMOGRAPHIE
                     </div>
-                </section>
+                    <div className="h-[1px] w-24 bg-[#C5A059] opacity-50"></div>
+                </div>
+
+                {/* --- FILM LIST (ZIG-ZAG) --- */}
+                <div className="max-w-6xl mx-auto px-6 pb-24 space-y-24">
+
+                    {/* FILM 1: MBAYE TRAMBWÉ */}
+                    <FilmRow
+                        title="Mbaye Trambwé"
+                        year="2023"
+                        genre="Drame Social"
+                        description="Une plongée saisissante dans la réalité djiboutienne. Entre tradition et modernité, suivez le parcours bouleversant d'une jeunesse en quête de repères face aux défis urbains."
+                        image="/affiche_mbaye.jpg"
+                        fallbackImage="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=500"
+                        link="https://youtu.be/TON_LIEN_ICI"
+                        buttonText="Regarder le film"
+                        reversed={false}
+                    />
+
+                    {/* FILM 2: CODE 2 */}
+                    <FilmRow
+                        title="Code 2 : L'Achèvement"
+                        year="2025"
+                        genre="Action"
+                        description="La suite tant attendue. Ali William revient avec une réalisation plus nerveuse. Une histoire de trahison et de rédemption dans les bas-fonds."
+                        image="/affiche_code2.jpg"
+                        fallbackImage="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=500"
+                        link="https://youtu.be/TON_LIEN_ICI"
+                        buttonText="Voir la bande annonce"
+                        reversed={true}
+                    />
+
+                    {/* FILM 3: L'AUBE DES AVEUGLES */}
+                    <FilmRow
+                        title="L'Aube des Aveugles"
+                        year="2025"
+                        genre="Historique"
+                        description="\" Jusqu'à sauver son peuple\". Une épopée visuelle marquante signée par le groupe OATMOON. Une œuvre qui questionne notre perception de l'histoire."
+                    image="/affiche_aube.jpg"
+                    fallbackImage="https://images.unsplash.com/photo-1478720568477-152d9b164e63?q=80&w=500"
+                    link="https://youtu.be/TON_LIEN_ICI"
+                    buttonText="Découvrir l'œuvre"
+                    reversed={false}
+            />
+
+                </div>
 
             </div>
         </>
     );
 }
 
-// --- SUB COMPONENT: MOVIE CARD ---
-function MovieCard({ title, year, genre, image, fallbackImage }: { title: string, year: string, genre: string, image: string, fallbackImage: string }) {
+// --- SUB COMPONENT: FILM ROW ---
+interface FilmRowProps {
+    title: string;
+    year: string;
+    genre: string;
+    description: string;
+    image: string;
+    fallbackImage: string;
+    link: string;
+    buttonText: string;
+    reversed: boolean;
+}
+
+function FilmRow({ title, year, genre, description, image, fallbackImage, link, buttonText, reversed }: FilmRowProps) {
     return (
-        <div className="group relative bg-[#141414] rounded-md overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:z-50 hover:shadow-2xl hover:shadow-black/50">
-            {/* Poster Wrapper (Aspect Ratio 2:3) */}
-            <div className="relative w-full pt-[150%]">
-                <Image
-                    src={image}
-                    alt={title}
-                    fill
-                    className="object-cover"
-                    onError={(e) => { e.currentTarget.srcset = fallbackImage; }}
-                />
-                {/* Hover Play Overlay */}
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-12 h-12 rounded-full bg-[#E50914] flex items-center justify-center shadow-[0_0_15px_#E50914]">
-                        <Play className="fill-white text-white ml-1 w-6 h-6" />
-                    </div>
+        <div className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-10 lg:gap-16 group`}>
+
+            {/* IMAGE */}
+            <div className="w-full lg:w-1/2 relative overflow-hidden border border-[#C5A059]/30">
+                <div className="relative w-full pt-[60%] lg:pt-[70%]">
+                    <Image
+                        src={image}
+                        alt={title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-75 group-hover:brightness-100"
+                        onError={(e) => { e.currentTarget.srcset = fallbackImage; }}
+                    />
                 </div>
             </div>
 
-            {/* Info */}
-            <div className="p-4">
-                <h3 className="font-oswald text-lg text-white truncate mb-1">{title}</h3>
-                <div className="flex justify-between text-xs text-gray-400 font-medium">
-                    <span>{year}</span>
-                    <span className="border border-gray-600 px-1 rounded text-[10px]">{genre}</span>
+            {/* CONTENT */}
+            <div className="w-full lg:w-1/2 relative p-8 lg:p-12 border border-[#C5A059] bg-gradient-to-b from-transparent to-[#141414]/50">
+
+                {/* Corner Decos */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#C5A059]" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#C5A059]" />
+
+                {/* Badges */}
+                <div className="flex gap-4 mb-6">
+                    <span className="border border-[#C5A059] text-[#C5A059] px-4 py-1 rounded-full text-xs font-cinzel font-bold uppercase tracking-wider">
+                        {genre}
+                    </span>
+                    <span className="border border-[#C5A059] text-[#C5A059] px-4 py-1 rounded-full text-xs font-cinzel font-bold uppercase tracking-wider">
+                        {year}
+                    </span>
                 </div>
+
+                <h2 className="font-cinzel text-3xl lg:text-4xl text-white mb-6 leading-tight">
+                    {title}
+                </h2>
+
+                <p className="text-[#cccccc] text-lg font-light leading-relaxed mb-8">
+                    {description}
+                </p>
+
+                <a
+                    href={link}
+                    target="_blank"
+                    className="inline-flex items-center gap-3 text-[#C5A059] font-semibold uppercase tracking-[0.15em] text-sm group/btn hover:gap-5 transition-all duration-300 border-b border-transparent hover:border-[#C5A059] pb-1"
+                >
+                    {buttonText} <ArrowRight className="w-4 h-4" />
+                </a>
+
             </div>
         </div>
-    )
+    );
 }
