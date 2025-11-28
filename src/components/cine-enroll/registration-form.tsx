@@ -18,10 +18,11 @@ import {
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Smartphone, Camera, Video, Computer } from 'lucide-react';
+import { Smartphone, Camera, Video, Computer, Laptop } from 'lucide-react';
 import ExpectationsField from './expectations-field';
 import { Separator } from '@/components/ui/separator';
 import ShimmerProgressBar from './shimmer-progress-bar';
+import CountdownTimer from './countdown-timer';
 
 const materialOptions = [
   { id: 'smartphone', label: 'Smartphone', icon: Smartphone },
@@ -60,7 +61,6 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
       setProgress(calculatedProgress);
     };
 
-    const subscription = form.watch(calculateProgress);
     return () => subscription.unsubscribe();
   }, [form]);
 
@@ -68,37 +68,84 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
     // 1. CONTENEUR PRINCIPAL (Layout Split Screen)
     <div className="min-h-screen bg-[#050505] text-white flex flex-col lg:flex-row font-sans">
 
-      {/* 2. COLONNE GAUCHE (Le Mentor - Visuel) */}
-      <div className="relative w-full h-[400px] lg:w-2/5 lg:fixed lg:h-full lg:left-0 lg:top-0 z-10 bg-black overflow-hidden border-r border-white/10">
-        <Image
-          src="/formateur.png"
-          alt="Ali William Mentor"
-          fill
-          className="object-cover object-top opacity-90 transition-transform duration-1000 hover:scale-105"
-          priority
-        />
+      {/* 2. COLONNE GAUCHE (Le Mentor & Infos - Style Affiche) */}
+      <div className="relative w-full lg:w-5/12 lg:fixed lg:h-full lg:left-0 lg:top-0 z-10 bg-black overflow-hidden border-r border-white/10 flex flex-col justify-between">
 
-        {/* Overlay Dégradé (Cinéma) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/40 to-transparent lg:via-black/20" />
+        {/* Image de Fond */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/mentor.jpg"
+            alt="Ali William Mentor"
+            fill
+            className="object-cover object-center opacity-80"
+            priority
+          />
+          {/* Overlay Dégradé (Cinéma) - Plus sombre en bas pour le texte */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/30" />
+        </div>
 
-        {/* Texte sur l'image */}
-        <div className="absolute bottom-8 left-6 lg:bottom-16 lg:left-12 z-20">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="h-[1px] w-10 bg-yellow-500 inline-block"></span>
-            <span className="text-yellow-500 font-bold tracking-[0.2em] text-xs uppercase">Votre Formateur</span>
+        {/* CONTENU HAUT : Mentor */}
+        <div className="relative z-20 p-8 lg:p-12 pt-12 lg:pt-16 text-center lg:text-left">
+          <div className="inline-flex items-center gap-3 mb-2 bg-black/50 backdrop-blur-md px-4 py-1 rounded-full border border-yellow-500/30">
+            <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+            <span className="text-yellow-500 font-bold tracking-[0.2em] text-[10px] uppercase">Votre Formateur</span>
           </div>
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-white uppercase leading-none tracking-tight mb-2 drop-shadow-xl font-headline">
-            Ali William
+          <h1 className="text-5xl lg:text-7xl font-extrabold text-white uppercase leading-[0.85] tracking-tight mb-3 drop-shadow-2xl font-headline">
+            Ali <br /> William
           </h1>
-          <p className="text-gray-300 italic text-lg font-light tracking-wide border-l-2 border-yellow-500 pl-4 font-body">
+          <p className="text-gray-300 italic text-lg font-light tracking-wide font-body">
             Réalisateur & Visionnaire
           </p>
+        </div>
+
+        {/* CONTENU BAS : Offre & Prix */}
+        <div className="relative z-20 p-8 lg:p-12 space-y-8 bg-gradient-to-t from-black via-black/90 to-transparent">
+
+          {/* Grand Prix & Lots (Clean Style) */}
+          <div className="space-y-4">
+            <h3 className="text-yellow-500 font-bold tracking-widest uppercase text-xs text-center lg:text-left opacity-80">
+              À Gagner
+            </h3>
+            <div className="flex justify-center lg:justify-start gap-8">
+              <div className="flex flex-col items-center gap-2 group">
+                <Laptop className="w-8 h-8 text-white group-hover:text-yellow-500 transition-colors" />
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">PC Portable</span>
+              </div>
+              <div className="flex flex-col items-center gap-2 group">
+                <Smartphone className="w-8 h-8 text-white group-hover:text-yellow-500 transition-colors" />
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Smartphone</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Compte à Rebours */}
+          <div>
+            <h3 className="text-gray-400 font-bold tracking-widest uppercase text-[10px] mb-2 text-center lg:text-left">
+              L'offre expire dans :
+            </h3>
+            <CountdownTimer />
+          </div>
+
+          {/* Prix */}
+          <div className="flex items-end gap-4 relative">
+            <div>
+              <span className="block text-gray-500 text-sm line-through mb-1 font-medium">40 000 FDJ</span>
+              <span className="block text-5xl lg:text-6xl font-black text-white font-headline tracking-tighter">
+                20 000 <span className="text-yellow-500 text-2xl align-top">FDJ</span>
+              </span>
+            </div>
+            {/* Sticker - Positionné pour ne pas gêner */}
+            <div className="mb-4 bg-red-600 text-white text-xs font-black py-1 px-2 rounded transform rotate-3 shadow-lg border border-red-400 animate-pulse">
+              -50%
+            </div>
+          </div>
+
         </div>
       </div>
 
       {/* 3. COLONNE DROITE (Le Formulaire - Scrollable) */}
-      <div className="w-full lg:w-3/5 lg:ml-auto bg-[#0a0a0a] min-h-screen relative z-20">
-        <div className="max-w-3xl mx-auto px-6 py-12 lg:px-16 lg:py-20">
+      <div className="w-full lg:w-7/12 lg:ml-auto bg-[#0a0a0a] min-h-screen relative z-20">
+        <div className="max-w-3xl mx-auto px-6 py-12 lg:px-20 lg:py-24">
 
           {/* En-tête Formulaire */}
           <div className="mb-12 border-b border-gray-800 pb-8">
@@ -108,17 +155,6 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
             <p className="text-gray-400 font-body">
               Réservez votre place pour l'aventure cinématographique. Remplissez les champs ci-dessous.
             </p>
-
-            {/* Zone Prix / Promo */}
-            <div className="mt-8 p-6 rounded-xl bg-[#111] border border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div>
-                <span className="block text-gray-500 text-sm line-through mb-1">Prix Standard: 40 000 FDJ</span>
-                <span className="block text-3xl font-bold text-white font-headline">20 000 <span className="text-yellow-500 text-lg">FDJ</span></span>
-              </div>
-              <div className="px-4 py-2 bg-yellow-500/10 border border-yellow-500/30 rounded text-yellow-500 text-sm font-bold animate-pulse">
-                OFFRE LIMITÉE : -50%
-              </div>
-            </div>
           </div>
 
           {/* DÉBUT DU FORMULAIRE */}
