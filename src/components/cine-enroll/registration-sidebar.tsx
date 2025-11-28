@@ -15,24 +15,6 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
     return (
         <div className="bg-gradient-to-b from-black via-gray-900/50 to-black text-gray-300 rounded-3xl shadow-[0_0_30px_rgba(212,175,55,0.15)] overflow-hidden border border-amber-500/50 divide-y divide-amber-500/20">
 
-            {/* TRAINER CARD (Added as requested) */}
-            <div className="p-8 text-center bg-black/40">
-                <div className="relative w-32 h-32 mx-auto mb-4">
-                    <Image
-                        src="/formateur.png"
-                        alt="Ali William"
-                        fill
-                        className="object-cover rounded-full border-2 border-amber-500 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
-                    />
-                </div>
-                <h3 className="font-headline text-3xl text-amber-500 tracking-wide mb-1">
-                    ALI WILLIAM
-                </h3>
-                <p className="font-body text-sm text-gray-300 font-medium uppercase tracking-wider">
-                    Votre Formateur & Réalisateur
-                </p>
-            </div>
-
             {/* Countdown */}
             <div className="p-6 text-center">
                 <h3 className="font-headline text-lg uppercase tracking-wider text-gray-300">L'offre expire dans :</h3>
