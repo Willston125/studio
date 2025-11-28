@@ -18,7 +18,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Smartphone, Camera, Video, Computer, Laptop, Clock, CheckCircle, Star, Clapperboard } from 'lucide-react';
+import { Smartphone, Camera, Video, Computer, Laptop, Clock, CheckCircle, Star, Clapperboard, PlayCircle } from 'lucide-react';
 import ExpectationsField from './expectations-field';
 import { Separator } from '@/components/ui/separator';
 import ShimmerProgressBar from './shimmer-progress-bar';
@@ -54,9 +54,9 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
     <div className="min-h-screen bg-[#050505] text-white flex flex-col lg:flex-row font-sans selection:bg-yellow-500 selection:text-black">
 
       {/* =========================================
-          COLONNE GAUCHE : L'AFFICHE DE FILM (FIXE)
+          COLONNE GAUCHE : L'AFFICHE (FIXE 40%)
          ========================================= */}
-      <div className="relative w-full lg:w-[45%] h-[60vh] lg:h-screen lg:fixed lg:left-0 lg:top-0 z-10 overflow-hidden bg-black border-r border-white/10">
+      <div className="relative w-full lg:w-[40%] h-[50vh] lg:h-screen lg:fixed lg:left-0 lg:top-0 z-10 overflow-hidden bg-black border-r border-white/5">
 
         {/* IMAGE DE FOND */}
         <div className="absolute inset-0 z-0">
@@ -64,56 +64,65 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
             src="/mentor.jpg"
             alt="Ali William"
             fill
-            className="object-cover object-top opacity-90 transition-transform duration-[10s] hover:scale-105"
+            className="object-cover object-center opacity-80"
             priority
           />
-          {/* DÉGRADÉ NOIR (Pour lisibilité) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+          {/* DÉGRADÉ NOIR (Overlay) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-transparent" />
         </div>
 
-        {/* CONTENU SUR L'IMAGE (En bas) */}
-        <div className="absolute bottom-0 left-0 w-full p-8 lg:p-12 z-20">
+        {/* CONTENU SUR L'IMAGE */}
+        <div className="absolute inset-0 z-20 flex flex-col justify-between p-8 lg:p-12">
 
-          {/* BADGE FORMATEUR */}
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-[2px] w-12 bg-yellow-500"></span>
-            <span className="text-yellow-500 font-bold tracking-[0.3em] text-xs uppercase glow-text">Masterclass Cinéma</span>
+          {/* HAUT : LOGO / MARQUE */}
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+              <span className="text-white font-black text-lg">C</span>
+            </div>
+            <span className="text-white font-bold tracking-widest uppercase text-sm">CINEWORLD STUDIO</span>
           </div>
 
-          {/* TITRE GEANT */}
-          <h1 className="text-6xl lg:text-7xl font-black text-white uppercase leading-[0.9] mb-2 tracking-tighter font-headline">
-            Ali<br />William
-          </h1>
-          <p className="text-gray-300 text-xl font-light tracking-widest border-l-4 border-yellow-500 pl-4 mb-8 font-body">
-            Réalisateur & Visionnaire
-          </p>
+          {/* MILIEU : NOM DU MENTOR */}
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 text-yellow-500 font-bold tracking-widest text-xs uppercase mb-2">
+              <Star className="w-4 h-4 fill-yellow-500" />
+              <span>Masterclass Exclusive</span>
+            </div>
+            <h1 className="text-6xl lg:text-8xl font-black text-white uppercase leading-[0.85] tracking-tighter drop-shadow-2xl font-headline">
+              Ali<br />William
+            </h1>
+            <p className="text-gray-300 text-lg lg:text-xl font-light tracking-wide mt-4 max-w-md font-body">
+              "Apprenez à voir le monde à travers l'objectif d'un réalisateur visionnaire."
+            </p>
+          </div>
 
-          {/* BLOC PRIX & COMPTEUR (Style Verre dépoli) */}
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl">
-            <div className="flex justify-between items-end border-b border-white/10 pb-4 mb-4">
+          {/* BAS : PRIX & TIMER */}
+          <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6">
+            <div className="flex justify-between items-end mb-4 border-b border-white/10 pb-4">
               <div>
-                <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Prix Lancement</p>
-                <div className="flex items-baseline gap-3">
-                  <span className="text-4xl font-black text-white font-headline">20.000 <span className="text-yellow-500 text-xl">FDJ</span></span>
-                  <span className="text-lg text-gray-500 line-through decoration-red-500 font-body">40.000</span>
+                <p className="text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">Offre Spéciale</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-black text-white font-headline">20 000 <span className="text-yellow-500 text-lg">FDJ</span></span>
+                  <span className="text-sm text-gray-500 line-through decoration-red-500 font-medium font-body">40 000 FDJ</span>
                 </div>
               </div>
-              <div className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded animate-pulse">
-                -50% OFF
+              <div className="bg-red-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg shadow-red-600/20">
+                -50%
               </div>
             </div>
 
             {/* TIMER */}
-            <div className="grid grid-cols-4 gap-2 text-center">
+            <div className="grid grid-cols-4 gap-2">
               {[
-                { val: timeLeft.days, label: 'JRS' },
-                { val: timeLeft.hours, label: 'HRS' },
+                { val: timeLeft.days, label: 'JOURS' },
+                { val: timeLeft.hours, label: 'HEURES' },
                 { val: timeLeft.minutes, label: 'MIN' },
                 { val: timeLeft.seconds, label: 'SEC' }
               ].map((item, i) => (
-                <div key={i} className="bg-black/40 rounded p-2 border border-white/5">
-                  <span className="block text-xl font-bold text-yellow-500 font-mono">{item.val}</span>
-                  <span className="text-[9px] text-gray-400">{item.label}</span>
+                <div key={i} className="text-center">
+                  <span className="block text-xl font-bold text-white font-mono">{item.val.toString().padStart(2, '0')}</span>
+                  <span className="text-[8px] text-gray-500 uppercase tracking-wider">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -122,75 +131,82 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
       </div>
 
       {/* =========================================
-          COLONNE DROITE : LE FORMULAIRE (SCROLL)
+          COLONNE DROITE : LE FORMULAIRE (60%)
          ========================================= */}
-      <div className="w-full lg:w-[55%] lg:ml-auto bg-[#0a0a0a] min-h-screen relative z-0">
-        <div className="max-w-xl mx-auto px-6 py-12 lg:px-16 lg:py-20">
+      <div className="w-full lg:w-[60%] lg:ml-auto bg-[#0a0a0a] min-h-screen relative z-0">
+        <div className="max-w-2xl mx-auto px-6 py-12 lg:px-20 lg:py-24">
 
-          <header className="mb-12">
-            <h2 className="text-4xl font-bold uppercase text-white mb-2 font-headline">Inscription <span className="text-yellow-500">Formation</span></h2>
-            <p className="text-gray-500 font-body">Rejoignez l'élite du cinéma djiboutien.</p>
+          <header className="mb-16">
+            <h2 className="text-3xl lg:text-4xl font-black uppercase text-white mb-4 tracking-tight font-headline">
+              Inscription <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Formation Cinématographie</span>
+            </h2>
+            <p className="text-gray-400 text-lg font-light leading-relaxed font-body">
+              Remplissez ce formulaire pour valider votre pré-inscription. Les places sont limitées pour garantir un suivi personnalisé.
+            </p>
           </header>
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
 
-              {/* ETAPE 1 : IDENTITÉ */}
-              <section className="space-y-6">
-                <h3 className="text-lg font-bold text-white flex items-center gap-2 border-b border-gray-800 pb-2 font-headline">
-                  <span className="text-yellow-500">01.</span> Vos Coordonnées
-                </h3>
+              {/* SECTION 1: INFOS PERSONNELLES */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-8 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 font-bold text-sm border border-yellow-500/20">01</div>
+                  <h3 className="text-xl font-bold text-white uppercase tracking-wide font-headline">Vos Coordonnées</h3>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField name="nom" control={form.control} render={({ field }) => (
-                    <FormItem className="group">
-                      <FormLabel className="text-xs font-bold text-gray-500 uppercase mb-2 block">Nom</FormLabel>
+                    <FormItem>
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">Nom</FormLabel>
                       <FormControl>
-                        <Input placeholder="Votre nom" {...field} className="w-full bg-[#111] border border-[#333] text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700" />
+                        <Input placeholder="VOTRE NOM" {...field} className="w-full bg-[#161616] border border-white/10 text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700 font-medium" />
                       </FormControl>
                       <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )} />
 
                   <FormField name="prenom" control={form.control} render={({ field }) => (
-                    <FormItem className="group">
-                      <FormLabel className="text-xs font-bold text-gray-500 uppercase mb-2 block">Prénom</FormLabel>
+                    <FormItem>
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">Prénom</FormLabel>
                       <FormControl>
-                        <Input placeholder="Votre prénom" {...field} className="w-full bg-[#111] border border-[#333] text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700" />
+                        <Input placeholder="VOTRE PRÉNOM" {...field} className="w-full bg-[#161616] border border-white/10 text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700 font-medium" />
                       </FormControl>
                       <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )} />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField name="email" control={form.control} render={({ field }) => (
-                    <FormItem className="group">
-                      <FormLabel className="text-xs font-bold text-gray-500 uppercase mb-2 block">Email</FormLabel>
+                    <FormItem>
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">Email</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="exemple@email.com" {...field} className="w-full bg-[#111] border border-[#333] text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700" />
+                        <Input type="email" placeholder="exemple@email.com" {...field} className="w-full bg-[#161616] border border-white/10 text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700 font-medium" />
                       </FormControl>
                       <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )} />
 
                   <FormField name="telephone" control={form.control} render={({ field }) => (
-                    <FormItem className="group">
-                      <FormLabel className="text-xs font-bold text-gray-500 uppercase mb-2 block">Téléphone</FormLabel>
+                    <FormItem>
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">Téléphone</FormLabel>
                       <FormControl>
-                        <Input type="tel" placeholder="+253..." {...field} className="w-full bg-[#111] border border-[#333] text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700" />
+                        <Input type="tel" placeholder="+253..." {...field} className="w-full bg-[#161616] border border-white/10 text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700 font-medium" />
                       </FormControl>
                       <FormMessage className="text-red-500 text-xs" />
                     </FormItem>
                   )} />
                 </div>
-              </section>
+              </div>
 
-              {/* ETAPE 2 : NIVEAU */}
-              <section className="space-y-6">
-                <h3 className="text-lg font-bold text-white flex items-center gap-2 border-b border-gray-800 pb-2 font-headline">
-                  <span className="text-yellow-500">02.</span> Votre Niveau
-                </h3>
+              {/* SECTION 2: EXPÉRIENCE */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-8 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 font-bold text-sm border border-yellow-500/20">02</div>
+                  <h3 className="text-xl font-bold text-white uppercase tracking-wide font-headline">Votre Expérience</h3>
+                </div>
+
                 <FormField name="niveau" control={form.control} render={({ field }) => (
                   <FormItem className="space-y-4">
                     <FormControl>
@@ -205,9 +221,9 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
                               <RadioGroupItem value={option.value} className="peer sr-only" />
                             </FormControl>
                             <FormLabel className="cursor-pointer block">
-                              <div className={`p-4 rounded-xl bg-[#111] border transition-all text-center h-full flex flex-col justify-center items-center gap-2 hover:border-gray-500 ${field.value === option.value ? 'border-yellow-500 bg-yellow-500/10' : 'border-[#333]'}`}>
-                                <span className="text-2xl">{option.icon}</span>
-                                <span className={`font-bold ${field.value === option.value ? 'text-white' : 'text-gray-300'}`}>{option.label}</span>
+                              <div className={`p-6 rounded-xl bg-[#161616] border transition-all text-center h-full flex flex-col justify-center items-center gap-3 hover:border-gray-500 hover:bg-[#222] ${field.value === option.value ? 'border-yellow-500 bg-yellow-500/10 ring-1 ring-yellow-500' : 'border-white/10'}`}>
+                                <span className="text-3xl">{option.icon}</span>
+                                <span className={`font-bold uppercase text-sm tracking-wider ${field.value === option.value ? 'text-white' : 'text-gray-400'}`}>{option.label}</span>
                               </div>
                             </FormLabel>
                           </FormItem>
@@ -217,19 +233,21 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
                     <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )} />
-              </section>
+              </div>
 
-              {/* ETAPE 3 : MATERIEL */}
-              <section className="space-y-6">
-                <h3 className="text-lg font-bold text-white flex items-center gap-2 border-b border-gray-800 pb-2 font-headline">
-                  <span className="text-yellow-500">03.</span> Matériel
-                </h3>
+              {/* SECTION 3: MATÉRIEL */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-8 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 font-bold text-sm border border-yellow-500/20">03</div>
+                  <h3 className="text-xl font-bold text-white uppercase tracking-wide font-headline">Matériel</h3>
+                </div>
+
                 <FormField
                   control={form.control}
                   name="materiel"
                   render={() => (
                     <FormItem>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {materialOptions.map((item) => (
                           <FormField
                             key={item.id}
@@ -257,7 +275,7 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
                                       className="peer sr-only"
                                     />
                                   </FormControl>
-                                  <FormLabel className={`cursor-pointer block p-3 rounded-lg bg-[#111] border text-sm font-medium text-center transition-all hover:bg-[#222] ${isChecked ? 'border-yellow-500 text-yellow-500' : 'border-[#333] text-gray-400'}`}>
+                                  <FormLabel className={`cursor-pointer block p-4 rounded-lg bg-[#161616] border text-xs font-bold uppercase tracking-wider text-center transition-all hover:bg-[#222] ${isChecked ? 'border-yellow-500 text-yellow-500 bg-yellow-500/5' : 'border-white/10 text-gray-500'}`}>
                                     {item.label}
                                   </FormLabel>
                                 </FormItem>
@@ -269,52 +287,59 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
                     </FormItem>
                   )}
                 />
-              </section>
+              </div>
 
-              {/* ETAPE 4 : ATTENTES */}
-              <section className="space-y-6">
-                <h3 className="text-lg font-bold text-white flex items-center gap-2 border-b border-gray-800 pb-2 font-headline">
-                  <span className="text-yellow-500">04.</span> Attentes
-                </h3>
+              {/* SECTION 4: ATTENTES */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-8 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 font-bold text-sm border border-yellow-500/20">04</div>
+                  <h3 className="text-xl font-bold text-white uppercase tracking-wide font-headline">Attentes</h3>
+                </div>
+
                 <FormField name="attentes" control={form.control} render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <textarea
                         {...field}
                         rows={4}
-                        className="w-full bg-[#111] border border-[#333] text-white p-4 rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700 resize-none"
+                        className="w-full bg-[#161616] border border-white/10 text-white p-6 rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-700 resize-none font-medium"
                         placeholder="Qu'espérez-vous apprendre durant cette formation ?"
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )} />
-              </section>
+              </div>
 
-              {/* ETAPE 5 : ENGAGEMENT */}
-              <section className="pt-6 border-t border-gray-800">
+              {/* SECTION 5: ENGAGEMENT */}
+              <div className="pt-8 border-t border-white/10">
                 <FormField name="engagement1" control={form.control} render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                  <FormItem className="flex flex-row items-start space-x-4 space-y-0">
                     <FormControl>
-                      <Checkbox checked={field.value} onCheckedChange={field.onChange} className="data-[state=checked]:bg-yellow-500 data-[state=checked]:border-yellow-500 border-gray-600" />
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} className="w-6 h-6 data-[state=checked]:bg-yellow-500 data-[state=checked]:border-yellow-500 border-gray-600 rounded-md" />
                     </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel className="text-sm text-gray-400 hover:text-gray-300 transition-colors font-normal">
-                        Je m'engage à participer activement à la formation et j'accepte les conditions.
+                    <div className="space-y-1 leading-none pt-1">
+                      <FormLabel className="text-sm text-gray-400 hover:text-gray-300 transition-colors font-normal leading-relaxed">
+                        Je m'engage à participer activement à la formation et j'accepte les conditions générales de vente.
                       </FormLabel>
                       <FormMessage className="text-red-500 text-xs" />
                     </div>
                   </FormItem>
                 )} />
-              </section>
+              </div>
 
               {/* BOUTON SUBMIT */}
               <button
                 type="submit"
-                className="w-full py-5 px-8 bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-500 hover:to-yellow-400 text-black font-extrabold text-lg uppercase tracking-widest rounded-full shadow-lg hover:shadow-yellow-500/20 transform hover:-translate-y-1 transition-all duration-300 mt-8"
+                className="w-full py-6 px-8 bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 hover:from-yellow-500 hover:to-yellow-300 text-black font-black text-xl uppercase tracking-widest rounded-lg shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_50px_rgba(234,179,8,0.5)] transform hover:-translate-y-1 transition-all duration-300 mt-8 flex items-center justify-center gap-3 group"
               >
-                Confirmer mon inscription
+                <span>Confirmer mon inscription</span>
+                <PlayCircle className="w-6 h-6 fill-black text-transparent group-hover:scale-110 transition-transform" />
               </button>
+
+              <p className="text-center text-gray-600 text-xs mt-6 font-medium tracking-wide">
+                Paiement sécurisé via Waafi / D-Money à l'étape suivante.
+              </p>
 
             </form>
           </Form>
