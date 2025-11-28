@@ -44,19 +44,19 @@ export default function InscriptionPage() {
   function onSubmit(data: RegistrationSchema) {
     setIsSubmitting(true);
     try {
-      const { 
-        nom, 
-        prenom, 
-        email, 
-        telephone, 
-        adresse, 
-        ville, 
-        quartier, 
-        niveau, 
-        materiel, 
-        attentes 
+      const {
+        nom,
+        prenom,
+        email,
+        telephone,
+        adresse,
+        ville,
+        quartier,
+        niveau,
+        materiel,
+        attentes
       } = data;
-      
+
       const intro = `Bonjour, je m'appelle ${prenom} ${nom}. Je souhaite m'inscrire à cette formation au prix actuel de 20 000 FDJ, merci de me garder une place.`;
 
       const details = [
@@ -80,9 +80,9 @@ export default function InscriptionPage() {
 
       const message = intro + details;
       const whatsappUrl = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
-      
+
       window.open(whatsappUrl, '_blank');
-      
+
       toast({
         title: "Redirection vers WhatsApp",
         description: "Veuillez envoyer le message pré-rempli pour finaliser votre pré-inscription.",
@@ -103,37 +103,55 @@ export default function InscriptionPage() {
 
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden">
-      <div className="absolute inset-0 z-0">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+
+      {/* 1. COLONNE GAUCHE (MENTOR) - 40% */}
+      <div className="relative w-full lg:w-2/5 h-[40vh] lg:h-screen lg:fixed lg:left-0 lg:top-0 z-0">
         <Image
-          src="/hero.jpg"
-          alt="Ambiance cinéma"
+          src="/mentor.jpg"
+          alt="Ali William - Formateur"
           fill
-          className="object-cover"
+          className="object-cover object-top"
+          priority
         />
-        <div className="absolute inset-0 hero-section-overlay" />
+        {/* Overlay Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-transparent lg:via-black/20" />
+
+        {/* Text Content (Bottom Left) */}
+        <div className="absolute bottom-0 left-0 w-full p-8 lg:p-12 z-10 pb-12">
+          <p className="text-amber-500 font-bold tracking-widest uppercase text-sm mb-2">Votre Formateur</p>
+          <h2 className="text-5xl lg:text-7xl font-headline font-black text-white leading-none mb-2">
+            ALI <br /> WILLIAM
+          </h2>
+          <p className="text-gray-300 font-body italic text-lg lg:text-xl font-light">
+            Réalisateur & Visionnaire
+          </p>
+        </div>
       </div>
-      <main className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 py-24 sm:py-32">
-        <div className="flex flex-col-reverse lg:flex-row lg:gap-12">
-            
-            {/* Colonne de Droite (devient la 1ere sur mobile): Sidebar de Conversion */}
-            <div className="w-full lg:w-4/12 mt-12 lg:mt-0">
-                <div className="space-y-8">
-                    <RegistrationSidebar
-                      isSubmitDisabled={isSubmitDisabled}
-                      isSubmitting={isSubmitting}
-                      onSubmit={form.handleSubmit(onSubmit)}
-                    />
-                </div>
+
+      {/* 2. COLONNE DROITE (FORMULAIRE) - 60% */}
+      <div className="w-full lg:w-3/5 lg:ml-auto relative z-10 bg-[#0a0a0a]">
+        <div className="px-4 py-12 md:px-12 lg:px-20 lg:py-24 max-w-4xl mx-auto">
+
+          <div className="flex flex-col-reverse lg:flex-row lg:gap-12">
+            {/* Sidebar (Conversion) */}
+            <div className="w-full lg:w-5/12 mt-12 lg:mt-0">
+              <RegistrationSidebar
+                isSubmitDisabled={isSubmitDisabled}
+                isSubmitting={isSubmitting}
+                onSubmit={form.handleSubmit(onSubmit)}
+              />
             </div>
 
-            {/* Colonne de Gauche (devient la 2e sur mobile): Formulaire */}
-            <div className="w-full lg:w-8/12">
-                <RegistrationForm form={form} onSubmit={onSubmit} />
+            {/* Formulaire */}
+            <div className="w-full lg:w-7/12">
+              <RegistrationForm form={form} onSubmit={onSubmit} />
             </div>
+          </div>
 
         </div>
-      </main>
+      </div>
+
     </div>
   );
 }
