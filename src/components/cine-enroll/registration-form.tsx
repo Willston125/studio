@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Image from 'next/image';
 import type { UseFormReturn } from 'react-hook-form';
 
 import type { RegistrationSchema } from '@/lib/schema';
@@ -23,10 +24,10 @@ import { Separator } from '@/components/ui/separator';
 import ShimmerProgressBar from './shimmer-progress-bar';
 
 const materialOptions = [
-    { id: 'smartphone', label: 'Smartphone', icon: Smartphone },
-    { id: 'dslr', label: 'Appareil Photo (DSLR/Mirrorless)', icon: Camera },
-    { id: 'camera', label: 'Caméra Vidéo', icon: Video },
-    { id: 'ordinateur', label: 'Ordinateur pour montage', icon: Computer },
+  { id: 'smartphone', label: 'Smartphone', icon: Smartphone },
+  { id: 'dslr', label: 'Appareil Photo (DSLR/Mirrorless)', icon: Camera },
+  { id: 'camera', label: 'Caméra Vidéo', icon: Video },
+  { id: 'ordinateur', label: 'Ordinateur pour montage', icon: Computer },
 ];
 
 interface RegistrationFormProps {
@@ -39,24 +40,24 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
 
   React.useEffect(() => {
     const calculateProgress = (values: RegistrationSchema) => {
-        let validFields = 0;
-        const totalRequiredFields = 7 + 3; // 7 main fields + 3 engagements
+      let validFields = 0;
+      const totalRequiredFields = 7 + 3; // 7 main fields + 3 engagements
 
-        if (values.nom) validFields++;
-        if (values.prenom) validFields++;
-        if (values.email && !form.formState.errors.email) validFields++;
-        if (values.telephone) validFields++;
-        if (values.niveau) validFields++;
-        if (values.materiel && values.materiel.length > 0) validFields++;
-        if (values.attentes && values.attentes.length >= 50) validFields++;
-        if (values.engagement1) validFields++;
-        if (values.engagement2) validFields++;
-        if (values.engagement3) validFields++;
-        
-        // We don't count date_jour as it's pre-filled
-        
-        const calculatedProgress = (validFields / totalRequiredFields) * 100;
-        setProgress(calculatedProgress);
+      if (values.nom) validFields++;
+      if (values.prenom) validFields++;
+      if (values.email && !form.formState.errors.email) validFields++;
+      if (values.telephone) validFields++;
+      if (values.niveau) validFields++;
+      if (values.materiel && values.materiel.length > 0) validFields++;
+      if (values.attentes && values.attentes.length >= 50) validFields++;
+      if (values.engagement1) validFields++;
+      if (values.engagement2) validFields++;
+      if (values.engagement3) validFields++;
+
+      // We don't count date_jour as it's pre-filled
+
+      const calculatedProgress = (validFields / totalRequiredFields) * 100;
+      setProgress(calculatedProgress);
     };
 
     const subscription = form.watch(calculateProgress);
@@ -64,185 +65,251 @@ export default function RegistrationForm({ form, onSubmit }: RegistrationFormPro
   }, [form]);
 
   return (
-    <div className="bg-black/60 backdrop-blur-xl text-gray-300 rounded-3xl shadow-2xl overflow-hidden border border-white/10">
-      <header className="text-center p-8 md:p-12 border-b border-white/20">
-        <h1 className="text-4xl font-headline font-bold text-amber-500 uppercase tracking-wider">INSCRIPTION - FORMATION CINEMATOGRAPHIE</h1>
-        <p className="font-body text-lg text-gray-300 mt-2 max-w-2xl mx-auto">
-            Remplissez les champs ci-dessous pour réserver votre place.
-        </p>
-      </header>
+    // 1. CONTENEUR PRINCIPAL (Layout Split Screen)
+    <div className="min-h-screen bg-[#050505] text-white flex flex-col lg:flex-row font-sans">
 
-      <ShimmerProgressBar progress={progress} />
+      {/* 2. COLONNE GAUCHE (Le Mentor - Visuel) */}
+      <div className="relative w-full h-[400px] lg:w-2/5 lg:fixed lg:h-full lg:left-0 lg:top-0 z-10 bg-black overflow-hidden border-r border-white/10">
+        <Image
+          src="/formateur.png"
+          alt="Ali William Mentor"
+          fill
+          className="object-cover object-top opacity-90 transition-transform duration-1000 hover:scale-105"
+          priority
+        />
 
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 p-8 md:p-12">
-            
-          <div className="form-section space-y-8">
-              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Informations</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
-                  <FormField name="nom" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Nom</FormLabel><FormControl><Input placeholder="Dupont" {...field} /></FormControl><FormMessage /></FormItem>
-                  )} />
-                  <FormField name="prenom" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Prénom</FormLabel><FormControl><Input placeholder="Arnaud" {...field} /></FormControl><FormMessage /></FormItem>
-                  )} />
-                  <FormField name="email" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Adresse mail</FormLabel><FormControl><Input placeholder="votre@email.com" type="email" {...field} /></FormControl><FormMessage /></FormItem>
-                  )} />
-                  <FormField name="telephone" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Téléphone</FormLabel><FormControl><Input placeholder="+253 XX XX XX XX" type="tel" {...field} /></FormControl><FormMessage /></FormItem>
-                  )} />
-                  <FormField name="adresse" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Adresse (Optionnel)</FormLabel><FormControl><Input placeholder="Ex: 123 Rue de la République" {...field} /></FormControl><FormMessage /></FormItem>
-                  )} />
-                  <FormField name="ville" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Ville (Optionnel)</FormLabel><FormControl><Input placeholder="Djibouti" {...field} /></FormControl><FormMessage /></FormItem>
-                  )} />
-                  <FormField name="quartier" control={form.control} render={({ field }) => (
-                    <FormItem><FormLabel>Quartier (Optionnel)</FormLabel><FormControl><Input placeholder="Héron" {...field} /></FormControl><FormMessage /></FormItem>
-                  )} />
-                   <FormField
-                    control={form.control}
-                    name="photo"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Photo d'identité (Pour Dossier)</FormLabel>
-                        <FormControl>
-                           <Input 
-                              type="file" 
-                              accept="image/*"
-                              className="pt-3"
-                              onChange={(e) => field.onChange(e.target.files)} // react-hook-form needs this for file inputs
-                           />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-              </div>
+        {/* Overlay Dégradé (Cinéma) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/40 to-transparent lg:via-black/20" />
+
+        {/* Texte sur l'image */}
+        <div className="absolute bottom-8 left-6 lg:bottom-16 lg:left-12 z-20">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="h-[1px] w-10 bg-yellow-500 inline-block"></span>
+            <span className="text-yellow-500 font-bold tracking-[0.2em] text-xs uppercase">Votre Formateur</span>
           </div>
-          
-          <Separator className="bg-white/20" />
-          
-          <div className="form-section space-y-8">
-              <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Votre Expérience</h2>
-              <FormField name="niveau" control={form.control} render={({ field }) => (
+          <h1 className="text-5xl lg:text-7xl font-extrabold text-white uppercase leading-none tracking-tight mb-2 drop-shadow-xl font-headline">
+            Ali William
+          </h1>
+          <p className="text-gray-300 italic text-lg font-light tracking-wide border-l-2 border-yellow-500 pl-4 font-body">
+            Réalisateur & Visionnaire
+          </p>
+        </div>
+      </div>
+
+      {/* 3. COLONNE DROITE (Le Formulaire - Scrollable) */}
+      <div className="w-full lg:w-3/5 lg:ml-auto bg-[#0a0a0a] min-h-screen relative z-20">
+        <div className="max-w-3xl mx-auto px-6 py-12 lg:px-16 lg:py-20">
+
+          {/* En-tête Formulaire */}
+          <div className="mb-12 border-b border-gray-800 pb-8">
+            <h2 className="text-3xl lg:text-4xl font-bold uppercase text-white mb-4 font-headline">
+              Inscription <span className="text-yellow-500">Formation</span>
+            </h2>
+            <p className="text-gray-400 font-body">
+              Réservez votre place pour l'aventure cinématographique. Remplissez les champs ci-dessous.
+            </p>
+
+            {/* Zone Prix / Promo */}
+            <div className="mt-8 p-6 rounded-xl bg-[#111] border border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div>
+                <span className="block text-gray-500 text-sm line-through mb-1">Prix Standard: 40 000 FDJ</span>
+                <span className="block text-3xl font-bold text-white font-headline">20 000 <span className="text-yellow-500 text-lg">FDJ</span></span>
+              </div>
+              <div className="px-4 py-2 bg-yellow-500/10 border border-yellow-500/30 rounded text-yellow-500 text-sm font-bold animate-pulse">
+                OFFRE LIMITÉE : -50%
+              </div>
+            </div>
+          </div>
+
+          {/* DÉBUT DU FORMULAIRE */}
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+
+              {/* SECTION 1: INFORMATIONS PERSONNELLES */}
+              <div className="space-y-6">
+                <h3 className="text-xl font-bold text-white flex items-center gap-2 font-headline">
+                  <span className="text-yellow-500">01.</span> VOS COORDONNÉES
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField name="nom" control={form.control} render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider">Nom</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Votre nom" {...field} className="w-full bg-[#161616] border border-[#333] text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-600" />
+                      </FormControl>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </FormItem>
+                  )} />
+
+                  <FormField name="prenom" control={form.control} render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider">Prénom</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Votre prénom" {...field} className="w-full bg-[#161616] border border-[#333] text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-600" />
+                      </FormControl>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </FormItem>
+                  )} />
+
+                  <FormField name="email" control={form.control} render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider">Email</FormLabel>
+                      <FormControl>
+                        <Input type="email" placeholder="exemple@email.com" {...field} className="w-full bg-[#161616] border border-[#333] text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-600" />
+                      </FormControl>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </FormItem>
+                  )} />
+
+                  <FormField name="telephone" control={form.control} render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider">Téléphone (WhatsApp)</FormLabel>
+                      <FormControl>
+                        <Input type="tel" placeholder="+253..." {...field} className="w-full bg-[#161616] border border-[#333] text-white p-6 h-auto rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-600" />
+                      </FormControl>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </FormItem>
+                  )} />
+                </div>
+              </div>
+
+              {/* SECTION 2: NIVEAU */}
+              <div className="space-y-6 pt-6 border-t border-gray-800">
+                <h3 className="text-xl font-bold text-white flex items-center gap-2 font-headline">
+                  <span className="text-yellow-500">02.</span> VOTRE EXPÉRIENCE
+                </h3>
+
+                <FormField name="niveau" control={form.control} render={({ field }) => (
                   <FormItem className="space-y-4">
-                    <FormLabel>Votre niveau en réalisation</FormLabel>
+                    <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-4">Niveau en réalisation</FormLabel>
                     <FormControl>
-                      <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex flex-col sm:flex-row gap-4 pt-2">
-                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="debutant" /></FormControl><FormLabel className="font-normal">Débutant(e)</FormLabel></FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="intermediaire" /></FormControl><FormLabel className="font-normal">Intermédiaire</FormLabel></FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0"><FormControl><RadioGroupItem value="avance" /></FormControl><FormLabel className="font-normal">Avancé(e)</FormLabel></FormItem>
+                      <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {[
+                          { value: 'debutant', label: 'Débutant', icon: '🌱' },
+                          { value: 'intermediaire', label: 'Intermédiaire', icon: '🎬' },
+                          { value: 'avance', label: 'Avancé', icon: '🚀' }
+                        ].map((option) => (
+                          <FormItem key={option.value} className="space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value={option.value} className="peer sr-only" />
+                            </FormControl>
+                            <FormLabel className="cursor-pointer block">
+                              <div className={`p-4 rounded-xl bg-[#161616] border transition-all text-center h-full flex flex-col justify-center items-center gap-2 hover:border-gray-500 ${field.value === option.value ? 'border-yellow-500 bg-yellow-500/10' : 'border-[#333]'}`}>
+                                <span className="text-2xl">{option.icon}</span>
+                                <span className={`font-bold ${field.value === option.value ? 'text-white' : 'text-gray-300'}`}>{option.label}</span>
+                              </div>
+                            </FormLabel>
+                          </FormItem>
+                        ))}
                       </RadioGroup>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-500 text-xs" />
                   </FormItem>
                 )} />
+              </div>
 
-              <FormField
-                control={form.control}
-                name="materiel"
-                render={() => (
+              {/* SECTION 3: MATÉRIEL */}
+              <div className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="materiel"
+                  render={() => (
                     <FormItem>
-                        <div className="mb-4">
-                            <FormLabel>Matériel que vous possédez</FormLabel>
-                            <FormMessage />
-                        </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider block">Matériel possédé</FormLabel>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         {materialOptions.map((item) => (
-                            <FormField
+                          <FormField
                             key={item.id}
                             control={form.control}
                             name="materiel"
                             render={({ field }) => {
-                                const Icon = item.icon;
-                                const isChecked = field.value?.includes(item.id) ?? false;
-                                return (
-                                <FormItem key={item.id} >
+                              const isChecked = field.value?.includes(item.id) ?? false;
+                              return (
+                                <FormItem key={item.id} className="space-y-0">
                                   <FormControl>
                                     <Checkbox
-                                        id={item.id}
-                                        checked={isChecked}
-                                        onCheckedChange={(checked) => {
-                                          const newValue = field.value ? [...field.value] : [];
-                                          if (checked) {
-                                            newValue.push(item.id);
-                                          } else {
-                                            const index = newValue.indexOf(item.id);
-                                            if (index > -1) {
-                                              newValue.splice(index, 1);
-                                            }
+                                      checked={isChecked}
+                                      onCheckedChange={(checked) => {
+                                        const newValue = field.value ? [...field.value] : [];
+                                        if (checked) {
+                                          newValue.push(item.id);
+                                        } else {
+                                          const index = newValue.indexOf(item.id);
+                                          if (index > -1) {
+                                            newValue.splice(index, 1);
                                           }
-                                          field.onChange(newValue);
-                                        }}
-                                        className="sr-only"
+                                        }
+                                        field.onChange(newValue);
+                                      }}
+                                      className="peer sr-only"
                                     />
-                                    </FormControl>
-                                  <FormLabel htmlFor={item.id} className={cn(
-                                        "border border-white/20 rounded-lg p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 h-full",
-                                        "hover:bg-amber-500/10 hover:border-amber-500",
-                                        isChecked && "bg-amber-500/10 border-amber-500 ring-2 ring-amber-500"
-                                    )}>
-                                    <Icon className="w-8 h-8 text-amber-500" />
-                                    <span className="font-normal text-center text-xs">
-                                        {item.label}
-                                    </span>
+                                  </FormControl>
+                                  <FormLabel className={`cursor-pointer block p-3 rounded-lg bg-[#161616] border text-sm font-medium text-center transition-all hover:bg-[#222] ${isChecked ? 'border-yellow-500 text-yellow-500' : 'border-[#333] text-gray-400'}`}>
+                                    {item.label}
                                   </FormLabel>
                                 </FormItem>
-                                )
+                              )
                             }}
-                            />
+                          />
                         ))}
-                        </div>
+                      </div>
                     </FormItem>
-                )}
+                  )}
                 />
-          </div>
+              </div>
 
-          <Separator className="bg-white/20" />
-
-           <div className="form-section space-y-8">
-                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase">Vos Attentes</h2>
-                <ExpectationsField />
-           </div>
-           
-           <Separator className="bg-white/20" />
-
-           <div className="form-section space-y-8 rounded-2xl bg-black/20 p-6">
-                <h2 className="text-3xl font-bold text-amber-500 font-headline tracking-wider uppercase text-center">Engagement</h2>
-                <div className="space-y-4 pt-4">
-                    <FormField name="engagement1" control={form.control} render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="font-normal">Je confirme avoir lu et accepté les conditions de participation.</FormLabel><FormMessage /></div></FormItem>
-                    )} />
-                    <FormField name="engagement2" control={form.control} render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="font-normal">Je m'engage à être présent(e) à toutes les sessions du cours.</FormLabel><FormMessage /></div></FormItem>
-                    )} />
-                    <FormField name="engagement3" control={form.control} render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="grid gap-1.5 leading-none"><FormLabel className="font-normal">Je comprends que le paiement est non-remboursable.</FormLabel><FormMessage /></div></FormItem>
-                    )} />
-                </div>
-            </div>
-
-            <Separator className="bg-white/20" />
-            
-            <div className="form-section space-y-4">
-                 <FormField name="date_jour" control={form.control} render={({ field }) => (
-                    <FormItem className="flex items-center gap-4">
-                        <FormLabel className="whitespace-nowrap">Fait à Djibouti, le :</FormLabel>
-                        <FormControl>
-                            <Input {...field} readOnly className="font-bold text-center bg-black/20 border-none" />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
+              {/* SECTION 4: ATTENTES */}
+              <div className="space-y-2">
+                <FormField name="attentes" control={form.control} render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-xs font-bold text-gray-500 uppercase tracking-wider">Vos attentes</FormLabel>
+                    <FormControl>
+                      <textarea
+                        {...field}
+                        rows={4}
+                        className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-lg focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 outline-none transition-all placeholder-gray-600 resize-none"
+                        placeholder="Qu'espérez-vous apprendre durant cette formation ?"
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-500 text-xs" />
+                  </FormItem>
                 )} />
-            </div>
-            
-            {/* The submit button is now in the sidebar */}
-            <button type="submit" className="hidden" />
+              </div>
 
-        </form>
-      </Form>
+              {/* SECTION 5: ENGAGEMENT */}
+              <div className="pt-6 border-t border-gray-800">
+                <FormField name="engagement1" control={form.control} render={({ field }) => (
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                    <FormControl>
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} className="data-[state=checked]:bg-yellow-500 data-[state=checked]:border-yellow-500 border-gray-600" />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel className="text-sm text-gray-400 hover:text-gray-300 transition-colors font-normal">
+                        Je m'engage à participer activement à la formation et j'accepte les conditions.
+                      </FormLabel>
+                      <FormMessage className="text-red-500 text-xs" />
+                    </div>
+                  </FormItem>
+                )} />
+              </div>
+
+              {/* BOUTON DE SOUMISSION */}
+              <button
+                type="submit"
+                className="w-full py-5 px-8 bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-500 hover:to-yellow-400 text-black font-extrabold text-lg uppercase tracking-widest rounded-full shadow-lg hover:shadow-yellow-500/20 transform hover:-translate-y-1 transition-all duration-300 mt-8"
+              >
+                Confirmer mon inscription
+              </button>
+
+              <p className="text-center text-gray-600 text-xs mt-4">
+                Paiement sécurisé via Waafi / D-Money à l'étape suivante.
+              </p>
+
+            </form>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 }
