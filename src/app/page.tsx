@@ -1,4 +1,3 @@
-
 "use client";
 
 import HeroSection from '@/components/cine-enroll/hero-section';
@@ -20,21 +19,17 @@ export default function Home() {
       <Divider />
 
       <main>
-        <div className="my-12">
-          <WhyChooseUsSection />
-        </div>
+        <WhyChooseUsSection />
 
         <Divider variant="gold" />
 
-        <div className="container mx-auto px-4 my-12">
+        <div className="container mx-auto px-4">
           <PhotoGallery />
         </div>
 
         <Divider />
 
-        <div className="my-12">
-          <TestimonialsSection />
-        </div>
+        <TestimonialsSection />
       </main>
     </div>
   );

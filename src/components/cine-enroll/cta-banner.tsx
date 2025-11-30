@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function CtaBanner({ className }: { className?: string }) {
   return (
-    <section className={cn("container mx-auto px-4 my-16", className)}>
+    <section className={cn("container mx-auto px-4 my-8", className)}>
       <Link href="/inscription" className="block relative group">
         <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl transition-transform duration-300 hover:scale-[1.01]">
           {/* Desktop Banner */}
