@@ -49,26 +49,53 @@ export default function InscriptionPage() {
                 </div>
 
                 {/* Contenu Gauche */}
-                <div className="relative z-10 space-y-4 lg:space-y-6">
-                    <div>
-                        <p className="text-[#FFD700] font-bold tracking-widest text-xs lg:text-sm uppercase mb-2">Votre Formateur</p>
-                        <h2 className="text-3xl lg:text-4xl font-bold font-headline leading-tight">ALI WILLIAM</h2>
+                {/* Contenu Gauche */}
+                <div className="relative z-10 w-full flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+
+                    {/* Mentor Identity */}
+                    <div className="space-y-2">
+                        <p className="text-[#FFD700] font-bold tracking-[0.3em] text-xs lg:text-sm uppercase">VOTRE FORMATEUR</p>
+                        <div className="flex flex-col items-center lg:items-start">
+                            <h2 className="text-6xl lg:text-7xl font-bold font-headline leading-none text-white drop-shadow-lg">ALI WILLIAM</h2>
+                            <div className="h-0.5 w-24 bg-[#FFD700] my-4 shadow-[0_0_10px_rgba(255,215,0,0.5)]"></div>
+                            <p className="text-gray-200 font-light tracking-widest uppercase text-sm lg:text-base">Réalisateur & Visionnaire</p>
+                        </div>
                     </div>
 
                     {/* Bloc Prix & Timer */}
-                    <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-4 lg:p-6">
-                        <div className="flex justify-between items-center mb-4">
-                            <span className="bg-[#E50914] text-white text-[10px] lg:text-xs font-bold px-2 py-1 rounded">OFFRE SPÉCIALE</span>
-                            <div className="flex items-center gap-2 text-[10px] lg:text-xs text-gray-300">
-                                <Clock className="w-3 h-3 text-[#FFD700]" />
-                                <span className="font-mono">{timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m</span>
+                    <div className="w-full bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-2xl">
+                        {/* Price */}
+                        <div className="flex flex-col items-center mb-6">
+                            <span className="bg-[#E50914] text-white text-xs font-bold px-3 py-1 rounded-full mb-2 shadow-lg">OFFRE SPÉCIALE</span>
+                            <div className="flex items-baseline gap-3">
+                                <span className="text-4xl lg:text-5xl font-bold text-white drop-shadow-md">20.000 FDJ</span>
+                                <span className="text-lg text-gray-400 line-through">40.000 FDJ</span>
                             </div>
                         </div>
-                        <div className="flex items-baseline gap-3">
-                            <span className="text-3xl lg:text-4xl font-bold text-white">20.000 FDJ</span>
-                            <span className="text-base lg:text-lg text-gray-500 line-through">40.000 FDJ</span>
+
+                        {/* Countdown Grid */}
+                        <div className="grid grid-cols-4 gap-3">
+                            {/* Day */}
+                            <div className="flex flex-col items-center p-3 border border-[#FFD700]/30 bg-black/50 rounded-lg backdrop-blur-sm shadow-inner">
+                                <span className="text-2xl lg:text-3xl font-bold font-mono text-white">{timeLeft.days}</span>
+                                <span className="text-[10px] text-[#FFD700] uppercase tracking-wider font-bold">Jrs</span>
+                            </div>
+                            {/* Hours */}
+                            <div className="flex flex-col items-center p-3 border border-[#FFD700]/30 bg-black/50 rounded-lg backdrop-blur-sm shadow-inner">
+                                <span className="text-2xl lg:text-3xl font-bold font-mono text-white">{timeLeft.hours}</span>
+                                <span className="text-[10px] text-[#FFD700] uppercase tracking-wider font-bold">Hrs</span>
+                            </div>
+                            {/* Min */}
+                            <div className="flex flex-col items-center p-3 border border-[#FFD700]/30 bg-black/50 rounded-lg backdrop-blur-sm shadow-inner">
+                                <span className="text-2xl lg:text-3xl font-bold font-mono text-white">{timeLeft.minutes}</span>
+                                <span className="text-[10px] text-[#FFD700] uppercase tracking-wider font-bold">Min</span>
+                            </div>
+                            {/* Sec */}
+                            <div className="flex flex-col items-center p-3 border border-[#FFD700]/30 bg-black/50 rounded-lg backdrop-blur-sm shadow-inner">
+                                <span className="text-2xl lg:text-3xl font-bold font-mono text-white">{timeLeft.seconds}</span>
+                                <span className="text-[10px] text-[#FFD700] uppercase tracking-wider font-bold">Sec</span>
+                            </div>
                         </div>
-                        <p className="text-[10px] lg:text-xs text-gray-400 mt-2">Formation complète + Certification</p>
                     </div>
                 </div>
 
