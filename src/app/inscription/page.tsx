@@ -25,7 +25,7 @@ export default function InscriptionPage() {
     // --- LOGIQUE ENVOI WHATSAPP (Conservée) ---
     const onSubmit = (data: any) => {
         const message = `Bonjour Ali, je veux m'inscrire !\n\n👤 ${data.nom} ${data.prenom}\n📧 ${data.email}\n📱 ${data.telephone}\n🎬 Niveau: ${data.niveau}\n💡 Attentes: ${data.attentes || 'Non précisé'}`;
-        const url = `https://wa.me/25377722004?text=${encodeURIComponent(message)}`;
+        const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
 
