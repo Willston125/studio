@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     description: 'Apprenez à réaliser, jouer et monter comme des professionnels. Places limitées !',
     images: [imageUrl],
   },
+  verification: {
+    google: '8VrUaQ3Tj84cNZi5zfm4u2b-ZUZxpXu7T0Wuwc3kBOg',
+  },
 };
 
 export default function RootLayout({
@@ -54,7 +57,7 @@ export default function RootLayout({
         <Footer />
         <Toaster />
         <BackToTopButton />
-        <div 
+        <div
           className="fixed inset-0 pointer-events-none z-[100]"
           style={{
             background: 'radial-gradient(circle at center, transparent 60%, black 150%)'
@@ -65,4 +68,3 @@ export default function RootLayout({
   );
 }
 
-    
