@@ -75,8 +75,8 @@ export default function HeroSection() {
       <div className="hero-particles"></div>
 
 
-      <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-36 pb-20 md:pb-20">
-        <div className="grid md:grid-cols-2 gap-8 w-full">
+      <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-24 pb-12 md:pb-16">
+        <div className="grid md:grid-cols-2 gap-6 w-full">
 
           {/* Colonne de Gauche : Contenu Texte */}
           <div className="flex flex-col h-full items-start space-y-4 md:space-y-6 max-w-lg">

@@ -20,19 +20,19 @@ export default function Home() {
       <Divider />
 
       <main>
-        <div className="my-24">
+        <div className="my-12">
           <WhyChooseUsSection />
         </div>
 
         <Divider variant="gold" />
 
-        <div className="container mx-auto px-4 my-24">
+        <div className="container mx-auto px-4 my-12">
           <PhotoGallery />
         </div>
 
         <Divider />
 
-        <div className="my-24">
+        <div className="my-12">
           <TestimonialsSection />
         </div>
       </main>
