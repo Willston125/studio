@@ -30,11 +30,11 @@ export default function InscriptionPage() {
     };
 
     return (
-        <div className="min-h-screen w-full flex flex-col lg:flex-row bg-black text-white font-sans">
+        <div className="flex flex-col lg:flex-row min-h-screen bg-[#0a0a0a] font-sans">
 
             {/* --- COLONNE GAUCHE (Visuelle) --- */}
-            {/* Mobile: h-80 (fixe), Desktop: h-screen (40%) */}
-            <div className="w-full lg:w-[40%] relative h-80 lg:h-screen flex flex-col justify-end p-6 lg:p-8 overflow-hidden shrink-0">
+            {/* Mobile: h-[500px] relative, Desktop: fixed w-[40%] h-full */}
+            <div className="w-full h-[500px] relative lg:fixed lg:w-[40%] lg:h-full lg:inset-0 flex flex-col justify-end p-6 lg:p-8 overflow-hidden shrink-0">
                 {/* Image de Fond */}
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -106,8 +106,8 @@ export default function InscriptionPage() {
             </div>
 
             {/* --- COLONNE DROITE (Formulaire) --- */}
-            {/* Mobile: px-6, Desktop: pt-40 (pour éviter le menu) */}
-            <div className="w-full lg:w-[60%] h-full lg:h-screen bg-black flex flex-col px-6 md:px-12 lg:px-20 pt-10 lg:pt-40 pb-10 overflow-y-auto">
+            {/* Mobile: px-4 py-10, Desktop: w-[60%] ml-auto p-20 */}
+            <div className="w-full relative z-10 lg:w-[60%] lg:ml-auto px-4 py-10 lg:p-20 bg-black flex flex-col overflow-y-auto">
 
                 {/* Bouton Retour Desktop */}
                 <div className="hidden lg:block absolute top-8 right-8 z-50">
