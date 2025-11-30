@@ -9,8 +9,6 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
-  { href: '/nos-films', label: 'Mes Films' },
-  { href: '/inscription', label: 'Inscription formation' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -59,12 +57,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right: Actions (Desktop) */}
-          <div className="hidden md:flex items-center gap-2">
-            <Button asChild className="btn-primary">
-              <Link href="/inscription">S'inscrire</Link>
-            </Button>
-          </div>
+
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
@@ -85,11 +78,6 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <div className="flex items-center gap-4 mt-4">
-              <Button asChild className="btn-primary">
-                <Link href="/inscription">S'inscrire</Link>
-              </Button>
-            </div>
           </nav>
         </div>
       )}
