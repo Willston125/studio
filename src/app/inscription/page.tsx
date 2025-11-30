@@ -24,7 +24,7 @@ export default function InscriptionPage() {
 
     // --- LOGIQUE ENVOI WHATSAPP ---
     const onSubmit = (data: any) => {
-        const message = `Bonjour Ali, je veux m'inscrire !\n\n👤 ${data.nom} ${data.prenom}\n📧 ${data.email}\n📱 ${data.telephone}\n🎬 Niveau: ${data.niveau}\n💡 Attentes: ${data.attentes || 'Non précisé'}`;
+        const message = `Bonjour, je m'appelle ${data.nom} ${data.prenom}. Je souhaite m'inscrire à la formation (20 000 FDJ).\n\n📋 MES INFOS :\n- Email: ${data.email}\n- Tél: ${data.telephone}\n- Ville: ${data.ville}\n\n🎬 MON PROFIL :\n- Niveau: ${data.niveau}\n- Matériel: ${data.materiel}\n- Attentes: ${data.attentes}\n\n📷 NOTE : J'envoie ma photo d'identité juste après ce message.`;
         const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
@@ -114,14 +114,24 @@ export default function InscriptionPage() {
                             </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Email</label>
-                            <input
-                                {...register("email", { required: true })}
-                                type="email"
-                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all"
-                                placeholder="votre@email.com"
-                            />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Email</label>
+                                <input
+                                    {...register("email", { required: true })}
+                                    type="email"
+                                    className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all"
+                                    placeholder="votre@email.com"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Ville</label>
+                                <input
+                                    {...register("ville", { required: true })}
+                                    className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all"
+                                    placeholder="Votre ville"
+                                />
+                            </div>
                         </div>
 
                         <div className="space-y-2">
@@ -144,6 +154,24 @@ export default function InscriptionPage() {
                                 <option value="intermediaire">Intermédiaire (Je monte un peu)</option>
                                 <option value="avance">Avancé (Je veux me perfectionner)</option>
                             </select>
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Matériel (Caméra, PC, etc.)</label>
+                            <input
+                                {...register("materiel")}
+                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all"
+                                placeholder="Ex: Canon 5D, MacBook Pro..."
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Vos Attentes</label>
+                            <textarea
+                                {...register("attentes")}
+                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all min-h-[100px]"
+                                placeholder="Ce que vous voulez apprendre..."
+                            />
                         </div>
 
                         <button
