@@ -6,19 +6,32 @@ import PhotoGallery from '@/components/cine-enroll/photo-gallery';
 import TestimonialsSection from '@/components/cine-enroll/testimonials-section';
 import WhyChooseUsSection from '@/components/cine-enroll/why-choose-us-section';
 import CtaBanner from '@/components/cine-enroll/cta-banner';
+import { Divider } from '@/components/ui/divider';
 
 export default function Home() {
   return (
     <div className="bg-background">
       <HeroSection />
+
+      <Divider variant="gold" />
+
       <CtaBanner />
+
+      <Divider />
+
       <main>
         <div className="my-24">
           <WhyChooseUsSection />
         </div>
+
+        <Divider variant="gold" />
+
         <div className="container mx-auto px-4 my-24">
-            <PhotoGallery />
+          <PhotoGallery />
         </div>
+
+        <Divider />
+
         <div className="my-24">
           <TestimonialsSection />
         </div>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Clock, Smartphone, Laptop, Camera, Clapperboard, CheckCircle, Star } from 'lucide-react';
+import { Divider } from '@/components/ui/divider';
 
 export default function RegistrationForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -104,12 +105,21 @@ export default function RegistrationForm() {
                 ))}
               </div>
             </div>
+
+            <Divider variant="gold" className="my-8" />
+
+            <div className="flex items-center gap-4 text-sm text-gray-400">
+              <Star className="w-5 h-5 text-[#FFD700]" />
+              <p>Formation intensive • Support personnalisé • Certificat reconnu</p>
+            </div>
           </div>
 
           {/* --- DROITE : FORMULAIRE --- */}
           <div className="glass-panel rounded-2xl p-8 lg:p-10 w-full max-w-md mx-auto lg:ml-auto">
             <h2 className="font-oswald text-3xl text-white mb-1">INSCRIPTION 2025</h2>
             <p className="text-gray-400 text-sm mb-6">Réservez votre place et lancez votre carrière.</p>
+
+            <Divider width="full" className="my-6" />
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
