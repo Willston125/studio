@@ -8,12 +8,6 @@ import { ArrowRight } from 'lucide-react';
 export default function FilmsPage() {
     return (
         <>
-            <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
-        .font-cinzel { font-family: 'Cinzel', serif; }
-        .font-raleway { font-family: 'Raleway', sans-serif; }
-      `}</style>
-
             <div className="min-h-screen bg-[#050505] text-white font-raleway overflow-x-hidden selection:bg-[#C5A059] selection:text-black">
 
                 {/* --- NAVIGATION --- */}
@@ -97,13 +91,13 @@ export default function FilmsPage() {
                         title="L'Aube des Aveugles"
                         year="2025"
                         genre="Historique"
-                        description="\" Jusqu'à sauver son peuple\". Une épopée visuelle marquante signée par le groupe OATMOON. Une œuvre qui questionne notre perception de l'histoire."
-                    image="/affiche_aube.jpg"
-                    fallbackImage="https://images.unsplash.com/photo-1478720568477-152d9b164e63?q=80&w=500"
-                    link="https://youtu.be/TON_LIEN_ICI"
-                    buttonText="Découvrir l'œuvre"
-                    reversed={false}
-            />
+                        description="&quot; Jusqu'à sauver son peuple&quot;. Une épopée visuelle marquante signée par le groupe OATMOON. Une œuvre qui questionne notre perception de l'histoire."
+                        image="/affiche_aube.jpg"
+                        fallbackImage="https://images.unsplash.com/photo-1478720568477-152d9b164e63?q=80&w=500"
+                        link="https://youtu.be/TON_LIEN_ICI"
+                        buttonText="Découvrir l'œuvre"
+                        reversed={false}
+                    />
 
                 </div>
 
