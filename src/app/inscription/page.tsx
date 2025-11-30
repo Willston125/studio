@@ -35,7 +35,7 @@ export default function InscriptionPage() {
             {/* --- COLONNE GAUCHE : VISUEL (Desktop uniquement) --- */}
             <div className="hidden lg:block w-1/2 relative overflow-hidden">
                 <Image
-                    src="/mentor-affiche.png"
+                    src="/formateur-mentor.png"
                     alt="Mentor Affiche"
                     fill
                     className="object-cover"
