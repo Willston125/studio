@@ -11,7 +11,7 @@ export default function CtaBanner({ className }: { className?: string }) {
         <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl transition-transform duration-300 hover:scale-[1.01]">
           {/* Desktop Banner */}
           <Image
-            src="/banniere-desktop.jpg"
+            src="/banniere-desktop.png"
             alt="Bannière Festival - Gagnez 200 000 FDJ"
             width={1200}
             height={400}
@@ -20,7 +20,7 @@ export default function CtaBanner({ className }: { className?: string }) {
           />
           {/* Mobile Banner */}
           <Image
-            src="/banniere-mobile.jpg"
+            src="/banniere-mobile.png"
             alt="Bannière Festival - Gagnez 200 000 FDJ"
             width={600}
             height={600}
