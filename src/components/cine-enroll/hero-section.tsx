@@ -98,7 +98,7 @@ export default function HeroSection() {
               className="text-5xl md:text-6xl font-headline font-black tracking-wide text-white leading-tight drop-shadow-2xl"
               style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}
             >
-              DEVENEZ CINÉASTE <br /> ET MONTEUR PROFESSIONNEL
+              MAÎTRISEZ LE POUVOIR <br /> DE L'IMAGE
             </motion.h1>
 
             <motion.p
@@ -107,7 +107,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
               className="text-lg md:text-xl text-neutral-200 max-w-2xl font-body"
             >
-              Apprenez à écrire, tourner et monter votre propre court-métrage à Djibouti. Une formation intensive pour transformer votre passion en compétence.
+              Apprenez à créer des vidéos impactantes, du scénario au montage final. Une formation intensive pour transformer votre passion en compétence professionnelle.
             </motion.p>
 
             <motion.div
