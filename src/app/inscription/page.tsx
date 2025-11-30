@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
-import { Star, CheckCircle, Clock } from 'lucide-react';
-import { Divider } from '@/components/ui/divider';
+import Link from 'next/link';
+import { Clock } from 'lucide-react';
 
 export default function InscriptionPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -30,7 +30,21 @@ export default function InscriptionPage() {
     };
 
     return (
-        <div className="min-h-screen w-full flex bg-black text-white font-sans">
+        <div className="min-h-screen w-full flex bg-black text-white font-sans relative">
+
+            {/* --- LOGO BRANDING (Top Left) --- */}
+            <div className="absolute top-6 left-6 z-50">
+                <Link href="/">
+                    <Image
+                        src="/logo_cineworld.png"
+                        alt="Cineworld Logo"
+                        width={120}
+                        height={40}
+                        className="w-20 md:w-24 h-auto object-contain hover:opacity-80 transition-opacity"
+                        priority
+                    />
+                </Link>
+            </div>
 
             {/* --- COLONNE GAUCHE : VISUEL (Desktop uniquement) --- */}
             <div className="hidden lg:block w-1/2 relative overflow-hidden">
@@ -65,7 +79,7 @@ export default function InscriptionPage() {
                 <div className="relative z-10 w-full max-w-md">
 
                     {/* Header Mobile (Visible uniquement sur mobile si besoin, ou intégré) */}
-                    <div className="lg:hidden mb-8 text-center">
+                    <div className="lg:hidden mb-8 text-center mt-12">
                         <h1 className="text-4xl font-bold text-[#FFD700]" style={{ fontFamily: 'Oswald, sans-serif' }}>CINEWORLD</h1>
                         <p className="text-gray-400 text-sm">Académie de Création Vidéo</p>
                     </div>
