@@ -10,7 +10,9 @@ import { Divider } from '@/components/ui/divider';
 export default function Home() {
   return (
     <div className="bg-background">
-      <HeroSection />
+      <div className="mt-32 mb-20">
+        <HeroSection />
+      </div>
 
       <Divider variant="gold" />
 
