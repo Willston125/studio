@@ -32,17 +32,11 @@ export default function InscriptionPage() {
     return (
         <div className="min-h-screen w-full flex bg-black text-white font-sans relative">
 
-            {/* --- LOGO BRANDING (Top Left) --- */}
+            {/* --- BOUTON RETOUR (Top Left) --- */}
             <div className="absolute top-6 left-6 z-50">
-                <Link href="/">
-                    <Image
-                        src="/logo_cineworld.png"
-                        alt="Cineworld Logo"
-                        width={120}
-                        height={40}
-                        className="w-20 md:w-24 h-auto object-contain hover:opacity-80 transition-opacity"
-                        priority
-                    />
+                <Link href="/" className="flex items-center gap-2 bg-black/50 hover:bg-black/70 text-white px-4 py-2 rounded-full backdrop-blur-sm transition-all border border-white/10 group">
+                    <span className="group-hover:-translate-x-1 transition-transform">←</span>
+                    <span className="font-medium text-sm uppercase tracking-wider">Retour à l'accueil</span>
                 </Link>
             </div>
 
@@ -57,17 +51,6 @@ export default function InscriptionPage() {
                 />
                 {/* Overlay Sombre */}
                 <div className="absolute inset-0 bg-black/40" />
-
-                {/* Citation / Titre en bas */}
-                <div className="absolute bottom-12 left-12 right-12 z-10">
-                    <h2 className="text-5xl font-bold text-white mb-4 drop-shadow-lg" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                        MAÎTRISEZ L'ART <br /> DU CINÉMA
-                    </h2>
-                    <div className="h-1 w-20 bg-[#FFD700] mb-6" />
-                    <p className="text-lg text-gray-200 font-light italic">
-                        "Le cinéma n'est pas un métier, c'est une vision du monde."
-                    </p>
-                </div>
             </div>
 
             {/* --- COLONNE DROITE : FORMULAIRE --- */}
