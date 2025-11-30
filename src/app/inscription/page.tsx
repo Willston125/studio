@@ -24,7 +24,7 @@ export default function InscriptionPage() {
 
     // --- LOGIQUE ENVOI WHATSAPP ---
     const onSubmit = (data: any) => {
-        const message = `Bonjour, je m'appelle ${data.nom} ${data.prenom}. Je souhaite m'inscrire à la formation (20 000 FDJ).\n\n📋 MES INFOS :\n- Email: ${data.email}\n- Tél: ${data.telephone}\n- Ville: ${data.ville}\n\n🎬 MON PROFIL :\n- Niveau: ${data.niveau}\n- Matériel: ${data.materiel}\n- Attentes: ${data.attentes}\n\n📷 NOTE : J'envoie ma photo d'identité juste après ce message.`;
+        const message = `Bonjour, je m'appelle ${data.nom} ${data.prenom}. Je souhaite m'inscrire à la formation (20 000 FDJ).\n\n📋 MES INFOS :\n- Email: ${data.email}\n- Tél: ${data.telephone}\n- Ville: ${data.ville}\n\n🎬 MON PROFIL :\n- Niveau: ${data.niveau}\n- Matériel: ${data.materiel}\n- Attentes: ${data.attentes}\n\n✅ J'ai lu et accepté les conditions de la formation (Non remboursable).\n\n📷 NOTE : J'envoie ma photo d'identité juste après ce message.`;
         const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
@@ -182,6 +182,67 @@ export default function InscriptionPage() {
                                 className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all min-h-[100px] placeholder-neutral-600"
                                 placeholder="Ce que vous voulez apprendre..."
                             />
+                        </div>
+
+                        {/* --- SECTION ENGAGEMENT --- */}
+                        <div className="space-y-4 pt-4 border-t border-neutral-800">
+                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">VALIDATION DES CONDITIONS</h3>
+
+                            <div className="space-y-3">
+                                {/* Case 1 : Prix */}
+                                <label className="flex items-start gap-3 cursor-pointer group">
+                                    <div className="relative flex items-center">
+                                        <input
+                                            type="checkbox"
+                                            {...register("condition_prix", { required: true })}
+                                            className="peer sr-only"
+                                        />
+                                        <div className="w-5 h-5 border-2 border-neutral-600 rounded bg-transparent peer-checked:bg-[#FFD700] peer-checked:border-[#FFD700] flex items-center justify-center transition-all">
+                                            <CheckCircle size={14} className="text-black opacity-0 peer-checked:opacity-100" />
+                                        </div>
+                                    </div>
+                                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors pt-0.5">
+                                        Je valide mon inscription au tarif de 20 000 FDJ.
+                                    </span>
+                                </label>
+                                {errors.condition_prix && <span className="text-red-500 text-xs ml-8">Ce champ est obligatoire.</span>}
+
+                                {/* Case 2 : Non-remboursable */}
+                                <label className="flex items-start gap-3 cursor-pointer group">
+                                    <div className="relative flex items-center">
+                                        <input
+                                            type="checkbox"
+                                            {...register("condition_remboursement", { required: true })}
+                                            className="peer sr-only"
+                                        />
+                                        <div className="w-5 h-5 border-2 border-neutral-600 rounded bg-transparent peer-checked:bg-[#FFD700] peer-checked:border-[#FFD700] flex items-center justify-center transition-all">
+                                            <CheckCircle size={14} className="text-black opacity-0 peer-checked:opacity-100" />
+                                        </div>
+                                    </div>
+                                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors pt-0.5">
+                                        Je comprends que ce paiement est ferme et <strong>NON REMBOURSABLE</strong> (réservation de place).
+                                    </span>
+                                </label>
+                                {errors.condition_remboursement && <span className="text-red-500 text-xs ml-8">Ce champ est obligatoire.</span>}
+
+                                {/* Case 3 : Délai Paiement */}
+                                <label className="flex items-start gap-3 cursor-pointer group">
+                                    <div className="relative flex items-center">
+                                        <input
+                                            type="checkbox"
+                                            {...register("condition_paiement", { required: true })}
+                                            className="peer sr-only"
+                                        />
+                                        <div className="w-5 h-5 border-2 border-neutral-600 rounded bg-transparent peer-checked:bg-[#FFD700] peer-checked:border-[#FFD700] flex items-center justify-center transition-all">
+                                            <CheckCircle size={14} className="text-black opacity-0 peer-checked:opacity-100" />
+                                        </div>
+                                    </div>
+                                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors pt-0.5">
+                                        Je m'engage à effectuer le paiement sous 48h pour valider mon dossier.
+                                    </span>
+                                </label>
+                                {errors.condition_paiement && <span className="text-red-500 text-xs ml-8">Ce champ est obligatoire.</span>}
+                            </div>
                         </div>
 
                         <button
