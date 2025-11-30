@@ -30,7 +30,20 @@ export default function InscriptionPage() {
     };
 
     return (
-        <div className="min-h-screen w-full flex flex-col lg:flex-row bg-black text-white font-sans relative">
+        <div className="min-h-screen w-full flex items-center justify-center bg-black text-white font-sans relative overflow-hidden">
+
+            {/* --- ARRIÈRE-PLAN IMMERSIF --- */}
+            <div className="fixed inset-0 z-0">
+                <Image
+                    src="/hero-fond.png"
+                    alt="Background Cinema"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                {/* Overlay Sombre pour lisibilité */}
+                <div className="absolute inset-0 bg-black/80" />
+            </div>
 
             {/* --- BOUTON RETOUR (Top Left) --- */}
             <div className="absolute top-6 left-6 z-50">
@@ -40,127 +53,109 @@ export default function InscriptionPage() {
                 </Link>
             </div>
 
-            {/* --- COLONNE GAUCHE : VISUEL --- */}
-            <div className="block w-full h-[400px] lg:w-1/2 lg:h-auto relative overflow-hidden">
-                <Image
-                    src="/formateur-mentor.png"
-                    alt="Mentor Affiche"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                {/* Overlay Sombre */}
-                <div className="absolute inset-0 bg-black/40" />
-            </div>
+            {/* --- CONTENEUR PRINCIPAL (Centré) --- */}
+            <div className="relative z-10 w-full max-w-lg p-4">
 
-            {/* --- COLONNE DROITE : FORMULAIRE --- */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 bg-black relative">
+                {/* LOGO (Centré au-dessus) */}
+                <div className="flex justify-center mb-8">
+                    <Image
+                        src="/logo_cineworld.png"
+                        alt="Cineworld Logo"
+                        width={180}
+                        height={60}
+                        className="h-auto w-40 object-contain drop-shadow-2xl"
+                        priority
+                    />
+                </div>
 
-                {/* Background mobile (optionnel, pour texture) */}
-                <div className="absolute inset-0 bg-[#050505] z-0" />
+                {/* CARD FORMULAIRE (Glassmorphism) */}
+                <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl">
 
-                <div className="relative z-10 w-full max-w-md">
-
-                    {/* Header Mobile (Visible uniquement sur mobile si besoin, ou intégré) */}
-                    <div className="lg:hidden mb-8 text-center mt-12">
-                        <h1 className="text-4xl font-bold text-[#FFD700]" style={{ fontFamily: 'Oswald, sans-serif' }}>CINEWORLD</h1>
-                        <p className="text-gray-400 text-sm">Académie de Création Vidéo</p>
+                    <div className="text-center mb-8">
+                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-wide drop-shadow-lg" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+                            BIENVENUE !
+                        </h1>
+                        <p className="text-gray-300 text-sm uppercase tracking-widest font-light">
+                            Rejoignez l'élite du cinéma
+                        </p>
                     </div>
 
-                    {/* CARD FORMULAIRE */}
-                    <div className="bg-[#111] border border-white/10 rounded-xl p-8 shadow-2xl">
-
-                        <div className="text-center mb-8">
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-wide" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                                REJOIGNEZ L'ACADÉMIE
-                            </h1>
-                            <p className="text-gray-400 text-sm uppercase tracking-widest">
-                                Session 2025 • Places Limitées
-                            </p>
+                    {/* Info Prix & Timer */}
+                    <div className="bg-white/5 rounded-lg p-4 mb-8 border-l-2 border-[#FFD700]">
+                        <div className="flex justify-between items-center mb-2">
+                            <span className="text-[#FFD700] font-bold text-xs tracking-wider">OFFRE LIMITÉE</span>
+                            <span className="bg-[#E50914] text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">-50%</span>
                         </div>
-
-                        {/* Info Prix & Timer (Intégré discrètement) */}
-                        <div className="bg-white/5 rounded-lg p-4 mb-8 border-l-2 border-[#FFD700]">
-                            <div className="flex justify-between items-center mb-2">
-                                <span className="text-[#FFD700] font-bold">PROMO SPÉCIALE</span>
-                                <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded">-50% OFF</span>
-                            </div>
-                            <div className="flex items-baseline gap-2">
-                                <span className="text-3xl font-bold text-white">20.000 FDJ</span>
-                                <span className="text-sm text-gray-500 line-through">40.000 FDJ</span>
-                            </div>
-                            <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
-                                <Clock className="w-3 h-3" />
-                                <span>Offre termine dans : {timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m</span>
-                            </div>
+                        <div className="flex items-baseline gap-2">
+                            <span className="text-3xl font-bold text-white">20.000 FDJ</span>
+                            <span className="text-sm text-gray-400 line-through">40.000 FDJ</span>
                         </div>
+                        <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
+                            <Clock className="w-3 h-3 text-[#FFD700]" />
+                            <span>Expire dans : <span className="text-white font-mono">{timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m</span></span>
+                        </div>
+                    </div>
 
-                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
 
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-1">
-                                    <label className="text-xs text-gray-500 uppercase font-bold tracking-wider">Nom</label>
-                                    <input
-                                        {...register("nom", { required: true })}
-                                        className="w-full bg-black/50 border border-white/10 text-white p-3 rounded focus:border-[#FFD700] focus:ring-1 focus:ring-[#FFD700] outline-none transition-all"
-                                        placeholder="Votre Nom"
-                                    />
-                                </div>
-                                <div className="space-y-1">
-                                    <label className="text-xs text-gray-500 uppercase font-bold tracking-wider">Prénom</label>
-                                    <input
-                                        {...register("prenom", { required: true })}
-                                        className="w-full bg-black/50 border border-white/10 text-white p-3 rounded focus:border-[#FFD700] focus:ring-1 focus:ring-[#FFD700] outline-none transition-all"
-                                        placeholder="Votre Prénom"
-                                    />
-                                </div>
-                            </div>
-
+                        <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-1">
-                                <label className="text-xs text-gray-500 uppercase font-bold tracking-wider">Email</label>
                                 <input
-                                    {...register("email", { required: true })}
-                                    type="email"
-                                    className="w-full bg-black/50 border border-white/10 text-white p-3 rounded focus:border-[#FFD700] focus:ring-1 focus:ring-[#FFD700] outline-none transition-all"
-                                    placeholder="exemple@email.com"
+                                    {...register("nom", { required: true })}
+                                    className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-gray-500"
+                                    placeholder="Nom"
                                 />
                             </div>
-
                             <div className="space-y-1">
-                                <label className="text-xs text-gray-500 uppercase font-bold tracking-wider">WhatsApp</label>
                                 <input
-                                    {...register("telephone", { required: true })}
-                                    type="tel"
-                                    className="w-full bg-black/50 border border-white/10 text-white p-3 rounded focus:border-[#FFD700] focus:ring-1 focus:ring-[#FFD700] outline-none transition-all"
-                                    placeholder="+253 ..."
+                                    {...register("prenom", { required: true })}
+                                    className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-gray-500"
+                                    placeholder="Prénom"
                                 />
                             </div>
+                        </div>
 
-                            <div className="space-y-1">
-                                <label className="text-xs text-gray-500 uppercase font-bold tracking-wider">Niveau</label>
-                                <select
-                                    {...register("niveau")}
-                                    className="w-full bg-black/50 border border-white/10 text-white p-3 rounded focus:border-[#FFD700] focus:ring-1 focus:ring-[#FFD700] outline-none transition-all appearance-none"
-                                >
-                                    <option value="debutant">Débutant (Je pars de zéro)</option>
-                                    <option value="intermediaire">Intermédiaire (Je monte un peu)</option>
-                                    <option value="avance">Avancé (Je veux me perfectionner)</option>
-                                </select>
-                            </div>
+                        <div className="space-y-1">
+                            <input
+                                {...register("email", { required: true })}
+                                type="email"
+                                className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-gray-500"
+                                placeholder="Email"
+                            />
+                        </div>
 
-                            <button
-                                type="submit"
-                                className="w-full mt-6 bg-[#E50914] hover:bg-[#b2070f] text-white font-bold text-lg py-4 rounded shadow-lg transform hover:scale-[1.02] transition-all uppercase tracking-wider"
+                        <div className="space-y-1">
+                            <input
+                                {...register("telephone", { required: true })}
+                                type="tel"
+                                className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-gray-500"
+                                placeholder="WhatsApp (+253...)"
+                            />
+                        </div>
+
+                        <div className="space-y-1">
+                            <select
+                                {...register("niveau")}
+                                className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all appearance-none cursor-pointer"
                             >
-                                Commencer l'Aventure
-                            </button>
+                                <option value="debutant" className="bg-black text-white">Débutant (Je pars de zéro)</option>
+                                <option value="intermediaire" className="bg-black text-white">Intermédiaire (Je monte un peu)</option>
+                                <option value="avance" className="bg-black text-white">Avancé (Je veux me perfectionner)</option>
+                            </select>
+                        </div>
 
-                            <p className="text-center text-xs text-gray-600 mt-4">
-                                En cliquant, vous serez redirigé vers WhatsApp pour finaliser.
-                            </p>
+                        <button
+                            type="submit"
+                            className="w-full mt-6 bg-[#E50914] hover:bg-[#b2070f] text-white font-bold text-xl py-4 rounded shadow-lg transform hover:scale-[1.02] transition-all uppercase tracking-wider"
+                        >
+                            S'inscrire Maintenant
+                        </button>
 
-                        </form>
-                    </div>
+                        <p className="text-center text-xs text-gray-500 mt-4">
+                            Redirection sécurisée vers WhatsApp.
+                        </p>
+
+                    </form>
                 </div>
             </div>
         </div>
