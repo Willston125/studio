@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Clock } from 'lucide-react';
+import { Clock, CheckCircle, ArrowLeft } from 'lucide-react';
 
 export default function InscriptionPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    // --- LOGIQUE COMPTE À REBOURS (Conservée) ---
+    // --- LOGIQUE COMPTE À REBOURS ---
     const [timeLeft, setTimeLeft] = useState({ days: 21, hours: 5, minutes: 46, seconds: 50 });
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export default function InscriptionPage() {
         return () => clearInterval(timer);
     }, []);
 
-    // --- LOGIQUE ENVOI WHATSAPP (Conservée) ---
+    // --- LOGIQUE ENVOI WHATSAPP ---
     const onSubmit = (data: any) => {
         const message = `Bonjour Ali, je veux m'inscrire !\n\n👤 ${data.nom} ${data.prenom}\n📧 ${data.email}\n📱 ${data.telephone}\n🎬 Niveau: ${data.niveau}\n💡 Attentes: ${data.attentes || 'Non précisé'}`;
         const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
@@ -30,131 +30,133 @@ export default function InscriptionPage() {
     };
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center bg-black text-white font-sans relative overflow-hidden">
+        <div className="min-h-screen w-full flex flex-col lg:flex-row bg-black text-white font-sans">
 
-            {/* --- ARRIÈRE-PLAN IMMERSIF --- */}
-            <div className="fixed inset-0 z-0">
-                <Image
-                    src="/hero-fond.png"
-                    alt="Background Cinema"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                {/* Overlay Sombre pour lisibilité */}
-                <div className="absolute inset-0 bg-black/80" />
-            </div>
+            {/* --- COLONNE GAUCHE (Visuelle - 40%) --- */}
+            <div className="w-full lg:w-[40%] relative h-[400px] lg:h-screen flex flex-col justify-end p-8 overflow-hidden">
+                {/* Image de Fond */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/mentor-affiche.png"
+                        alt="Ali William - Formateur"
+                        fill
+                        className="object-cover object-top"
+                        priority
+                    />
+                    {/* Overlay Dégradé */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                </div>
 
-            {/* --- BOUTON RETOUR (Top Left) --- */}
-            <div className="absolute top-6 left-6 z-50">
-                <Link href="/" className="flex items-center gap-2 bg-black/50 hover:bg-black/70 text-white px-4 py-2 rounded-full backdrop-blur-sm transition-all border border-white/10 group">
-                    <span className="group-hover:-translate-x-1 transition-transform">←</span>
-                    <span className="font-medium text-sm uppercase tracking-wider">Retour à l'accueil</span>
+                {/* Contenu Gauche */}
+                <div className="relative z-10 space-y-6">
+                    <div>
+                        <p className="text-[#FFD700] font-bold tracking-widest text-sm uppercase mb-2">Votre Formateur</p>
+                        <h2 className="text-4xl font-bold font-headline leading-tight">ALI WILLIAM</h2>
+                    </div>
+
+                    {/* Bloc Prix & Timer */}
+                    <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-6">
+                        <div className="flex justify-between items-center mb-4">
+                            <span className="bg-[#E50914] text-white text-xs font-bold px-2 py-1 rounded">OFFRE SPÉCIALE</span>
+                            <div className="flex items-center gap-2 text-xs text-gray-300">
+                                <Clock className="w-3 h-3 text-[#FFD700]" />
+                                <span className="font-mono">{timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m</span>
+                            </div>
+                        </div>
+                        <div className="flex items-baseline gap-3">
+                            <span className="text-4xl font-bold text-white">20.000 FDJ</span>
+                            <span className="text-lg text-gray-500 line-through">40.000 FDJ</span>
+                        </div>
+                        <p className="text-xs text-gray-400 mt-2">Formation complète + Certification</p>
+                    </div>
+                </div>
+
+                {/* Bouton Retour Mobile (visible uniquement sur mobile ici si besoin, sinon en haut à gauche global) */}
+                <Link href="/" className="absolute top-6 left-6 z-50 lg:hidden bg-black/50 p-2 rounded-full text-white">
+                    <ArrowLeft size={24} />
                 </Link>
             </div>
 
-            {/* --- CONTENEUR PRINCIPAL (Centré) --- */}
-            <div className="relative z-10 w-full max-w-lg p-4">
+            {/* --- COLONNE DROITE (Formulaire - 60%) --- */}
+            <div className="w-full lg:w-[60%] h-full lg:h-screen bg-black flex flex-col justify-center p-6 md:p-12 lg:p-20 overflow-y-auto">
 
-                {/* LOGO (Centré au-dessus) */}
-                <div className="flex justify-center mb-8">
-                    <Image
-                        src="/logo_cineworld.png"
-                        alt="Cineworld Logo"
-                        width={180}
-                        height={60}
-                        className="h-auto w-40 object-contain drop-shadow-2xl"
-                        priority
-                    />
+                {/* Bouton Retour Desktop */}
+                <div className="hidden lg:block absolute top-8 left-8 lg:left-auto lg:right-8">
+                    <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+                        <span className="group-hover:-translate-x-1 transition-transform">←</span>
+                        <span className="text-sm uppercase tracking-wider">Retour à l'accueil</span>
+                    </Link>
                 </div>
 
-                {/* CARD FORMULAIRE (Glassmorphism) */}
-                <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl">
-
-                    <div className="text-center mb-8">
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-wide drop-shadow-lg" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-                            BIENVENUE !
-                        </h1>
-                        <p className="text-gray-300 text-sm uppercase tracking-widest font-light">
-                            Rejoignez l'élite du cinéma
-                        </p>
+                <div className="max-w-xl mx-auto w-full space-y-8">
+                    <div className="space-y-2">
+                        <h1 className="text-3xl md:text-4xl font-bold font-headline text-white">INSCRIPTION</h1>
+                        <p className="text-gray-400">Remplissez ce formulaire pour réserver votre place.</p>
                     </div>
 
-                    {/* Info Prix & Timer */}
-                    <div className="bg-white/5 rounded-lg p-4 mb-8 border-l-2 border-[#FFD700]">
-                        <div className="flex justify-between items-center mb-2">
-                            <span className="text-[#FFD700] font-bold text-xs tracking-wider">OFFRE LIMITÉE</span>
-                            <span className="bg-[#E50914] text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">-50%</span>
-                        </div>
-                        <div className="flex items-baseline gap-2">
-                            <span className="text-3xl font-bold text-white">20.000 FDJ</span>
-                            <span className="text-sm text-gray-400 line-through">40.000 FDJ</span>
-                        </div>
-                        <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
-                            <Clock className="w-3 h-3 text-[#FFD700]" />
-                            <span>Expire dans : <span className="text-white font-mono">{timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m</span></span>
-                        </div>
-                    </div>
-
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="space-y-1">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Nom</label>
                                 <input
                                     {...register("nom", { required: true })}
-                                    className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-gray-500"
-                                    placeholder="Nom"
+                                    className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all"
+                                    placeholder="Votre nom"
                                 />
                             </div>
-                            <div className="space-y-1">
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Prénom</label>
                                 <input
                                     {...register("prenom", { required: true })}
-                                    className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-gray-500"
-                                    placeholder="Prénom"
+                                    className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all"
+                                    placeholder="Votre prénom"
                                 />
                             </div>
                         </div>
 
-                        <div className="space-y-1">
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Email</label>
                             <input
                                 {...register("email", { required: true })}
                                 type="email"
-                                className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-gray-500"
-                                placeholder="Email"
+                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all"
+                                placeholder="votre@email.com"
                             />
                         </div>
 
-                        <div className="space-y-1">
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Téléphone (WhatsApp)</label>
                             <input
                                 {...register("telephone", { required: true })}
                                 type="tel"
-                                className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-gray-500"
-                                placeholder="WhatsApp (+253...)"
+                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all"
+                                placeholder="+253..."
                             />
                         </div>
 
-                        <div className="space-y-1">
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Niveau Actuel</label>
                             <select
                                 {...register("niveau")}
-                                className="w-full bg-white/5 border border-white/20 text-white p-4 rounded focus:border-[#FFD700] focus:ring-0 outline-none transition-all appearance-none cursor-pointer"
+                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all appearance-none cursor-pointer"
                             >
-                                <option value="debutant" className="bg-black text-white">Débutant (Je pars de zéro)</option>
-                                <option value="intermediaire" className="bg-black text-white">Intermédiaire (Je monte un peu)</option>
-                                <option value="avance" className="bg-black text-white">Avancé (Je veux me perfectionner)</option>
+                                <option value="debutant">Débutant (Je pars de zéro)</option>
+                                <option value="intermediaire">Intermédiaire (Je monte un peu)</option>
+                                <option value="avance">Avancé (Je veux me perfectionner)</option>
                             </select>
                         </div>
 
                         <button
                             type="submit"
-                            className="w-full mt-6 bg-[#E50914] hover:bg-[#b2070f] text-white font-bold text-xl py-4 rounded shadow-lg transform hover:scale-[1.02] transition-all uppercase tracking-wider"
+                            className="w-full bg-[#E50914] hover:bg-[#b2070f] text-white font-bold text-lg py-5 rounded-lg shadow-lg transform hover:scale-[1.01] transition-all uppercase tracking-wider flex items-center justify-center gap-2"
                         >
-                            S'inscrire Maintenant
+                            <span>Confirmer mon inscription</span>
+                            <CheckCircle size={20} />
                         </button>
 
-                        <p className="text-center text-xs text-gray-500 mt-4">
-                            Redirection sécurisée vers WhatsApp.
+                        <p className="text-center text-xs text-neutral-500">
+                            En cliquant, vous serez redirigé vers WhatsApp pour finaliser.
                         </p>
-
                     </form>
                 </div>
             </div>
