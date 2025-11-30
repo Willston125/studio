@@ -66,7 +66,8 @@ export default function HeroSection() {
         priority
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent z-10"></div>
+      {/* Overlay - Lighter for better visibility */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent z-10"></div>
 
       {/* Festival Effects */}
       <div className="hero-spotlight left"></div>
@@ -94,8 +95,8 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               tabIndex={0}
-              className="text-5xl md:text-6xl font-headline font-black tracking-wide text-white leading-tight"
-              style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}
+              className="text-5xl md:text-6xl font-headline font-black tracking-wide text-white leading-tight drop-shadow-2xl"
+              style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}
             >
               DEVENEZ CINÉASTE <br /> ET MONTEUR PROFESSIONNEL
             </motion.h1>
