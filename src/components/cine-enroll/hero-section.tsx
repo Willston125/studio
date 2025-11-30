@@ -142,7 +142,7 @@ export default function HeroSection() {
           </div>
 
           {/* Colonne de Droite : Vide pour l'équilibre */}
-          <div className="relative h-full w-full hidden md:flex flex-col lg:mt-32">
+          <div className="relative h-full w-full hidden md:flex flex-col lg:mt-20">
             {/* Program Section Overlay */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
