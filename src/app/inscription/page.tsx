@@ -30,7 +30,7 @@ export default function InscriptionPage() {
     };
 
     return (
-        <div className="min-h-screen w-full flex bg-black text-white font-sans relative">
+        <div className="min-h-screen w-full flex flex-col lg:flex-row bg-black text-white font-sans relative">
 
             {/* --- BOUTON RETOUR (Top Left) --- */}
             <div className="absolute top-6 left-6 z-50">
@@ -40,8 +40,8 @@ export default function InscriptionPage() {
                 </Link>
             </div>
 
-            {/* --- COLONNE GAUCHE : VISUEL (Desktop uniquement) --- */}
-            <div className="hidden lg:block w-1/2 relative overflow-hidden">
+            {/* --- COLONNE GAUCHE : VISUEL --- */}
+            <div className="block w-full h-[400px] lg:w-1/2 lg:h-auto relative overflow-hidden">
                 <Image
                     src="/formateur-mentor.png"
                     alt="Mentor Affiche"
