@@ -1,0 +1,169 @@
+/* --- CSS BANNIÈRE FESTIVAL --- */
+.festivalSection {
+    position: relative;
+    background: radial-gradient(circle at center, #3a0000 0%, #1a0000 100%);
+    padding: 80px 20px;
+    overflow: hidden;
+    color: white;
+    border-top: 4px solid #D4AF37;
+    border-bottom: 4px solid #D4AF37;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- 1. AMBIANCE & LUMIÈRES (ANIMATIONS) --- */
+/* Rideaux Rouges sur les côtés */
+.curtainLeft, .curtainRight {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 15%;
+    background: linear-gradient(90deg, #800000 0%, #500000 50%, #200000 100%);
+    z-index: 1;
+    box-shadow: 10px 0 20px rgba(0,0,0,0.5);
+}
+.curtainLeft { left: 0; }
+.curtainRight { right: 0; transform: scaleX(-1); }
+
+/* Projecteurs qui bougent */
+.spotlight {
+    position: absolute;
+    top: -50%; left: 20%;
+    width: 200px; height: 1000px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+    transform-origin: top center;
+    animation: swing 6s infinite ease-in-out alternate;
+    z-index: 0;
+    pointer-events: none;
+}
+.spotlight:nth-child(2) {
+    left: 80%;
+    animation-delay: -3s;
+}
+
+@keyframes swing {
+    from { transform: rotate(-15deg); opacity: 0.3; }
+    to { transform: rotate(15deg); opacity: 0.6; }
+}
+
+/* Particules d'or (Joy) */
+.goldDust {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(#D4AF37 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    animation: dustMove 10s linear infinite;
+    z-index: 0;
+}
+@keyframes dustMove {
+    from { background-position: 0 0; }
+    to { background-position: 0 100px; }
+}
+
+/* --- 2. CONTENU --- */
+.festivalContainer {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.festivalTag {
+    background-color: #E50914;
+    color: white;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+}
+
+.festivalTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.festivalTitle span { color: #D4AF37; }
+
+.festivalDesc {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+/* --- 3. LES CADEAUX (CARTES INTERACTIVES) --- */
+.prizesGrid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.prizeCard {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 15px;
+    padding: 30px 20px;
+    width: 250px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet ressort */
+    cursor: pointer;
+    position: relative;
+}
+
+/* Interaction Souris (Hover) */
+.prizeCard:hover {
+    transform: translateY(-15px) scale(1.05); /* Monte et grossit */
+    background: rgba(212, 175, 55, 0.15); /* Devient doré */
+    border-color: #D4AF37;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* L'icône du prix */
+.prizeIcon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    display: block;
+    transition: transform 0.3s;
+}
+.prizeCard:hover .prizeIcon {
+    transform: scale(1.2) rotate(10deg); /* L'icône danse un peu */
+}
+
+.prizeRank {
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.prizeName {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.prizeValue {
+    color: #D4AF37;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 1.1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .curtainLeft, .curtainRight { width: 5%; } /* Rideaux plus fins sur mobile */
+    .festivalTitle { font-size: 2.2rem; }
+    .prizesGrid { gap: 15px; }
+    .prizeCard { width: 100%; margin-bottom: 10px; } /* Une carte par ligne */
+}
