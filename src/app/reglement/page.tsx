@@ -1,250 +1,92 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { CheckCircle, Download, Send } from 'lucide-react';
+import React from 'react';
 import Link from 'next/link';
 
 export default function ReglementPage() {
-    const [formData, setFormData] = useState({
-        nom: '',
-        prenom: '',
-        whatsapp: '',
-        email: ''
-    });
-
-    const [checks, setChecks] = useState({
-        conditions: false,
-        assiduite: false,
-        image: false
-    });
-
-    const [isValid, setIsValid] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [currentDate, setCurrentDate] = useState('');
-
-    useEffect(() => {
-        setCurrentDate(new Date().toLocaleDateString('fr-FR'));
-    }, []);
-
-    useEffect(() => {
-        const allFieldsFilled = Object.values(formData).every(val => val.trim() !== '');
-        const allChecked = Object.values(checks).every(val => val === true);
-        setIsValid(allFieldsFilled && allChecked);
-    }, [formData, checks]);
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!isValid) return;
-
-        // 1. Envoi WhatsApp
-        const message = `📋 *NOUVELLE SIGNATURE RÈGLEMENT*\n\n👤 *Élève :* ${formData.nom} ${formData.prenom}\n📞 *WhatsApp :* ${formData.whatsapp}\n📧 *Email :* ${formData.email}\n\n✅ *ENGAGEMENTS VALIDÉS :*\n- Conditions & Non-remboursement (Art. 3)\n- Assiduité & Matériel (Art. 5)\n- Droit à l'image (Art. 6)\n\n📅 *Date :* ${currentDate}`;
-        const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-
-        // 2. Affichage Succès
-        setIsSubmitted(true);
-    };
-
-    if (isSubmitted) {
-        return (
-            <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center p-6 text-center space-y-8">
-                <div className="bg-[#1a1a1a] p-8 rounded-2xl border border-[#333] max-w-md w-full shadow-2xl">
-                    <CheckCircle className="w-20 h-20 text-[#D4AF37] mx-auto mb-6" />
-                    <h1 className="text-3xl font-headline font-bold text-white mb-2">FÉLICITATIONS !</h1>
-                    <p className="text-gray-400 mb-8">Votre règlement a été signé et envoyé avec succès.</p>
-
-                    <div className="space-y-4">
-                        <a
-                            href="/reglement.pdf"
-                            download
-                            className="flex items-center justify-center gap-3 w-full bg-[#D4AF37] hover:bg-[#b5952f] text-black font-bold py-4 rounded-lg transition-all"
-                        >
-                            <Download size={20} />
-                            <span>TÉLÉCHARGER MON CONTRAT (PDF)</span>
-                        </a>
-
-                        <Link
-                            href="/"
-                            className="block w-full bg-[#333] hover:bg-[#444] text-white font-bold py-4 rounded-lg transition-all"
-                        >
-                            RETOUR À L'ACCUEIL
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
     return (
-        <div className="min-h-screen bg-[#050505] text-[#e0e0e0] font-sans flex justify-center items-center p-4 pt-32 lg:pt-40 pb-20">
-            <div className="w-full max-w-[800px]">
-                <h1 className="text-[#D4AF37] text-4xl md:text-5xl font-headline text-center mb-12 tracking-wide">
-                    CONTRAT DE FORMATION<br />
-                    <span className="text-white text-2xl md:text-3xl">ET RÈGLEMENT INTÉRIEUR</span>
-                </h1>
+        <div className="min-h-screen w-full flex flex-col relative font-sans text-white overflow-x-hidden">
 
-                <form onSubmit={handleSubmit} className="space-y-10">
+            {/* --- FOND D'ÉCRAN --- */}
+            <div className="fixed inset-0 z-0">
+                <div className="absolute inset-0 bg-[url('/background-reglement.jpg')] bg-cover bg-center bg-no-repeat bg-fixed"></div>
+                {/* Voile noir (Overlay) */}
+                <div className="absolute inset-0 bg-black/75"></div>
+            </div>
 
-                    {/* Zone de lecture du contrat */}
-                    <div className="bg-[#111] border border-[#333] p-6 h-[500px] overflow-y-auto rounded-xl text-sm leading-relaxed text-justify shadow-inner custom-scrollbar">
-                        <p className="mb-6 text-center border-b border-[#333] pb-4">
-                            <strong>CINÉWORLD ACADÉMIE - MASTERCLASS "L'ART DU VISUEL"</strong>
+            {/* --- CONTENU PRINCIPAL --- */}
+            <div className="relative z-10 flex-grow flex items-center justify-center p-5 md:p-10 pt-32 md:pt-40 h-screen">
+                <div className="w-full max-w-4xl bg-[#141414]/65 backdrop-blur-[12px] border border-white/15 rounded-[15px] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col h-[80vh] md:h-[85vh]">
+
+                    <div className="text-center mb-8 border-b-2 border-[#D4AF37] pb-5 shrink-0">
+                        <h1 className="font-oswald text-3xl md:text-4xl text-[#D4AF37] uppercase tracking-[2px] mb-2.5">Règlement Intérieur</h1>
+                        <h2 className="text-base md:text-lg font-normal text-white tracking-[1px]">Conditions Générales de Formation - Cinéworld Académie</h2>
+                    </div>
+
+                    <div className="flex-grow overflow-y-auto pr-5 text-base leading-[1.8] text-justify space-y-6 scrollbar-thin scrollbar-track-white/5 scrollbar-thumb-[#D4AF37]">
+                        <p><strong>CONTRAT DE FORMATION ET RÈGLEMENT INTÉRIEUR</strong><br />
+                            Cinéworld - Masterclass "L'Art du Visuel"</p>
+
+                        <p>
+                            <strong>L'Organisme de Formation :</strong> CINÉWORLD (Représenté par Ali William)<br />
+                            <strong>Le Participant :</strong> Toute personne inscrite à la formation.
                         </p>
 
-                        <p className="mb-4">Entre les soussignés :<br />
-                            L'Organisme de Formation : <strong>CINÉWORLD</strong> (Ci-après dénommé "Le Formateur")<br />
-                            Représenté par : Ali William<br />
-                            ET<br />
-                            Le Participant (L'Élève) identifié dans le formulaire ci-dessus.</p>
+                        <div>
+                            <h3 className="text-[#D4AF37] font-oswald text-xl md:text-2xl mt-8 mb-4 border-l-[3px] border-[#E50914] pl-2.5">ARTICLE 1 : OBJET DU CONTRAT</h3>
+                            <p>Le présent contrat a pour objet l'inscription du Participant à la formation complète de 20 jours "L'Art du Visuel" (Scénario, Réalisation, Montage, Création Visuelle), incluant la participation au concours final de court-métrage.</p>
+                        </div>
 
-                        <h3 className="text-[#D4AF37] mt-8 mb-3 uppercase font-bold tracking-wider text-base">ARTICLE 1 : OBJET DU CONTRAT</h3>
-                        <p className="mb-4 text-gray-300">Le présent contrat a pour objet l'inscription du Participant à la formation complète de 20 jours "L'Art du Visuel" (Scénario, Réalisation, Montage, Création Visuelle), incluant la participation au concours final de court-métrage.</p>
+                        <div>
+                            <h3 className="text-[#D4AF37] font-oswald text-xl md:text-2xl mt-8 mb-4 border-l-[3px] border-[#E50914] pl-2.5">ARTICLE 2 : ENGAGEMENT DE QUALITÉ</h3>
+                            <p>Cinéworld s'engage formellement à :</p>
+                            <ul className="list-disc ml-5 space-y-2 mt-2">
+                                <li><strong>Moyens Techniques :</strong> Mettre à disposition tous les outils pédagogiques, logiciels et matériels nécessaires au bon déroulement de la formation.</li>
+                                <li><strong>Qualité Pédagogique :</strong> Assurer un encadrement professionnel et garantir une qualité de formation à 100%, incluant la supervision des projets finaux.</li>
+                                <li><strong>Accompagnement :</strong> Superviser la création, le montage et la diffusion du court-métrage du Participant lors du festival de clôture.</li>
+                            </ul>
+                        </div>
 
-                        <h3 className="text-[#D4AF37] mt-8 mb-3 uppercase font-bold tracking-wider text-base">ARTICLE 2 : ENGAGEMENT DE QUALITÉ</h3>
-                        <p className="mb-4 text-gray-300">Cinéworld s'engage formellement à :<br />
-                            - <strong>Moyens Techniques :</strong> Mettre à disposition tous les outils pédagogiques, logiciels et matériels nécessaires.<br />
-                            - <strong>Qualité Pédagogique :</strong> Assurer un encadrement professionnel et garantir une qualité de formation à 100%.<br />
-                            - <strong>Accompagnement :</strong> Superviser la création et la diffusion du court-métrage du Participant.</p>
+                        <div>
+                            <h3 className="text-[#D4AF37] font-oswald text-xl md:text-2xl mt-8 mb-4 border-l-[3px] border-[#E50914] pl-2.5">ARTICLE 3 : CONDITIONS FINANCIÈRES (IMPORTANT)</h3>
+                            <div className="bg-[#E50914]/10 border border-[#E50914] p-4 rounded-[5px] my-5 text-[#ffcccc]">
+                                <strong>⚠️ POLITIQUE DE REMBOURSEMENT STRICTE :</strong><br />
+                                1. <strong>Délai de Rétractation :</strong> Le Participant dispose d'un délai strict de 3 (trois) jours calendaires après paiement pour se rétracter.<br />
+                                2. <strong>Expiration :</strong> Passé ce délai de 3 jours, <span className="underline">aucun remboursement</span> ne sera effectué, quel que soit le motif (abandon, empêchement, changement d'avis).<br />
+                                3. <strong>En cours de formation :</strong> Une fois les cours débutés, la somme reste acquise à Cinéworld.
+                            </div>
+                        </div>
 
-                        <h3 className="text-[#D4AF37] mt-8 mb-3 uppercase font-bold tracking-wider text-base">ARTICLE 3 : CONDITIONS FINANCIÈRES ET REMBOURSEMENT</h3>
-                        <p className="mb-4 text-gray-300">Le Participant reconnait avoir pris connaissance des conditions d'annulation suivantes :<br />
-                            1. <strong>Délai de Rétractation (3 jours) :</strong> À compter du paiement, le Participant dispose de 3 jours pour demander un remboursement intégral.<br />
-                            2. <strong>Expiration du Délai :</strong> Passé ce délai de 3 jours, <span className="text-[#d32f2f] font-bold">AUCUN REMBOURSEMENT</span> ne sera effectué, quel que soit le motif.<br />
-                            3. <strong>Abandon :</strong> Une fois la formation débutée, aucun remboursement ne sera accordé en cas d'abandon.</p>
+                        <div>
+                            <h3 className="text-[#D4AF37] font-oswald text-xl md:text-2xl mt-8 mb-4 border-l-[3px] border-[#E50914] pl-2.5">ARTICLE 4 : ANNULATION PAR L'ORGANISME</h3>
+                            <p>Cinéworld se réserve le droit de modifier le planning en cas d'imprévus majeurs. Toutefois, si la formation ne peut se tenir et dépasse un délai de <strong>15 jours de retard</strong> par rapport à la date prévue, Cinéworld s'engage à rembourser intégralement les participants.</p>
+                        </div>
 
-                        <h3 className="text-[#D4AF37] mt-8 mb-3 uppercase font-bold tracking-wider text-base">ARTICLE 4 : MODIFICATION DU PLANNING</h3>
-                        <p className="mb-4 text-gray-300">Cinéworld se réserve le droit de modifier le planning en cas d'imprévus pour garantir la qualité pédagogique. Si la formation est retardée de plus de 15 jours par rapport à la date initiale, un remboursement total sera possible.</p>
+                        <div>
+                            <h3 className="text-[#D4AF37] font-oswald text-xl md:text-2xl mt-8 mb-4 border-l-[3px] border-[#E50914] pl-2.5">ARTICLE 5 : ASSIDUITÉ ET COMPORTEMENT</h3>
+                            <p>Le Participant s'engage à être présent et ponctuel durant les 20 jours de formation. Le matériel mis à disposition doit être respecté ; toute dégradation volontaire pourra être facturée.</p>
+                        </div>
 
-                        <h3 className="text-[#D4AF37] mt-8 mb-3 uppercase font-bold tracking-wider text-base">ARTICLE 5 : ASSIDUITÉ ET COMPORTEMENT</h3>
-                        <p className="mb-4 text-gray-300">Le Participant s'engage à être ponctuel et à respecter le matériel. Toute dégradation pourra être facturée.</p>
-
-                        <h3 className="text-[#D4AF37] mt-8 mb-3 uppercase font-bold tracking-wider text-base">ARTICLE 6 : DROITS À L'IMAGE</h3>
-                        <p className="mb-4 text-gray-300">Le Participant autorise Cinéworld à diffuser son film lors du Festival et à utiliser son image (photos/vidéos prises durant la formation) pour la communication de l'académie.</p>
+                        <div>
+                            <h3 className="text-[#D4AF37] font-oswald text-xl md:text-2xl mt-8 mb-4 border-l-[3px] border-[#E50914] pl-2.5">ARTICLE 6 : DROITS À L'IMAGE</h3>
+                            <p><strong>Les Films :</strong> Le Participant reste l'auteur de son œuvre, mais autorise Cinéworld à diffuser son film lors du Festival de fin de formation et à des fins promotionnelles.<br />
+                                <strong>Image du Participant :</strong> L'élève autorise Cinéworld à le filmer/photographier durant la formation pour le "Making-of" et la communication.</p>
+                        </div>
 
                         <br />
-                        <p className="text-gray-500 italic text-right">Fait à Djibouti, le {currentDate}</p>
+                        <p className="text-center italic text-[#888]">Dernière mise à jour : 01 Décembre 2025</p>
                     </div>
 
-                    {/* Section Signature & Engagement */}
-                    <div className="bg-[#111] p-8 rounded-xl border border-[#333] space-y-8">
-                        <h3 className="text-xl font-bold text-white uppercase tracking-widest border-l-4 border-[#D4AF37] pl-4">Signature & Engagement</h3>
-
-                        {/* Champs Identité */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <label className="text-xs text-gray-500 uppercase tracking-widest font-bold">Nom Complet</label>
-                                <input
-                                    type="text"
-                                    placeholder="Votre nom"
-                                    value={formData.nom}
-                                    onChange={e => setFormData({ ...formData, nom: e.target.value })}
-                                    className="w-full bg-[#1a1a1a] border border-[#333] p-4 text-white rounded focus:border-[#D4AF37] outline-none transition-colors"
-                                    required
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-xs text-gray-500 uppercase tracking-widest font-bold">Prénom</label>
-                                <input
-                                    type="text"
-                                    placeholder="Votre prénom"
-                                    value={formData.prenom}
-                                    onChange={e => setFormData({ ...formData, prenom: e.target.value })}
-                                    className="w-full bg-[#1a1a1a] border border-[#333] p-4 text-white rounded focus:border-[#D4AF37] outline-none transition-colors"
-                                    required
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-xs text-gray-500 uppercase tracking-widest font-bold">Numéro WhatsApp</label>
-                                <input
-                                    type="tel"
-                                    placeholder="+253..."
-                                    value={formData.whatsapp}
-                                    onChange={e => setFormData({ ...formData, whatsapp: e.target.value })}
-                                    className="w-full bg-[#1a1a1a] border border-[#333] p-4 text-white rounded focus:border-[#D4AF37] outline-none transition-colors"
-                                    required
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-xs text-gray-500 uppercase tracking-widest font-bold">Email</label>
-                                <input
-                                    type="email"
-                                    placeholder="votre@email.com"
-                                    value={formData.email}
-                                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                    className="w-full bg-[#1a1a1a] border border-[#333] p-4 text-white rounded focus:border-[#D4AF37] outline-none transition-colors"
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        {/* Checkboxes Obligatoires */}
-                        <div className="space-y-4 pt-4 border-t border-[#333]">
-                            <label className="flex items-start gap-4 cursor-pointer group p-3 rounded hover:bg-[#1a1a1a] transition-colors">
-                                <div className="relative flex items-center mt-1">
-                                    <input
-                                        type="checkbox"
-                                        checked={checks.conditions}
-                                        onChange={e => setChecks({ ...checks, conditions: e.target.checked })}
-                                        className="peer sr-only"
-                                    />
-                                    <div className="w-6 h-6 border-2 border-gray-600 rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all">
-                                        <CheckCircle size={16} className="text-black opacity-0 peer-checked:opacity-100" />
-                                    </div>
-                                </div>
-                                <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
-                                    J'accepte sans réserve les conditions d'inscription, notamment la clause de <strong>NON REMBOURSEMENT</strong> après 3 jours (Article 3).
-                                </span>
-                            </label>
-
-                            <label className="flex items-start gap-4 cursor-pointer group p-3 rounded hover:bg-[#1a1a1a] transition-colors">
-                                <div className="relative flex items-center mt-1">
-                                    <input
-                                        type="checkbox"
-                                        checked={checks.assiduite}
-                                        onChange={e => setChecks({ ...checks, assiduite: e.target.checked })}
-                                        className="peer sr-only"
-                                    />
-                                    <div className="w-6 h-6 border-2 border-gray-600 rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all">
-                                        <CheckCircle size={16} className="text-black opacity-0 peer-checked:opacity-100" />
-                                    </div>
-                                </div>
-                                <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
-                                    Je m'engage à l'assiduité et au respect des règles de conduite et du matériel (Article 5).
-                                </span>
-                            </label>
-
-                            <label className="flex items-start gap-4 cursor-pointer group p-3 rounded hover:bg-[#1a1a1a] transition-colors">
-                                <div className="relative flex items-center mt-1">
-                                    <input
-                                        type="checkbox"
-                                        checked={checks.image}
-                                        onChange={e => setChecks({ ...checks, image: e.target.checked })}
-                                        className="peer sr-only"
-                                    />
-                                    <div className="w-6 h-6 border-2 border-gray-600 rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all">
-                                        <CheckCircle size={16} className="text-black opacity-0 peer-checked:opacity-100" />
-                                    </div>
-                                </div>
-                                <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
-                                    J'autorise Cinéworld à utiliser mon image durant la formation (Article 6).
-                                </span>
-                            </label>
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={!isValid}
-                            className={`w-full py-6 rounded-lg font-bold text-lg uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-3 ${isValid
-                                    ? 'bg-[#E50914] hover:bg-[#b2070f] text-white cursor-pointer shadow-lg transform hover:scale-[1.01]'
-                                    : 'bg-[#333] text-gray-500 cursor-not-allowed'
-                                }`}
-                        >
-                            <span>J'ACCEPTE ET JE SIGNE LE RÈGLEMENT</span>
-                            <Send size={20} />
-                        </button>
+                    {/* Call to Action */}
+                    <div className="mt-8 text-center shrink-0">
+                        <Link href="/inscription" className="inline-block bg-[#E50914] hover:bg-[#b2070f] text-white px-10 py-4 no-underline font-oswald uppercase font-bold tracking-[1px] rounded-[5px] transition-all shadow-[0_5px_15px_rgba(229,9,20,0.4)] hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(229,9,20,0.6)]">
+                            J'AI LU LE RÈGLEMENT -&gt; S'INSCRIRE
+                        </Link>
                     </div>
-                </form>
+
+                </div>
             </div>
+
         </div>
     );
 }
