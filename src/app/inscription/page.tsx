@@ -108,8 +108,8 @@ export default function InscriptionPage() {
 
             {/* --- ZONE DROITE (FORMULAIRE) --- */}
             <main className="w-full lg:w-[55%] relative bg-[#0a0a0a] px-5 py-10 lg:p-20 overflow-y-auto bg-[url('/background-spotlight.jpg')] bg-cover bg-center">
-                {/* Overlay Noir (85%) */}
-                <div className="absolute inset-0 bg-black/85 z-0 pointer-events-none"></div>
+                {/* Overlay Noir (40%) pour laisser voir le spotlight */}
+                <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none"></div>
 
                 <div className="relative z-10">
                     <div className="mb-8">
