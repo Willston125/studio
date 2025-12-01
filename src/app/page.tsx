@@ -16,6 +16,10 @@ export default function Home() {
 
       <Divider variant="gold" />
 
+      <Divider variant="gold" />
+
+      <FestivalSection />
+
       <Divider />
 
       <main>
@@ -27,11 +31,7 @@ export default function Home() {
           <PhotoGallery />
         </div>
 
-        <Divider />
 
-        <FestivalSection />
-
-        <Divider />
 
         <TestimonialsSection />
       </main>
