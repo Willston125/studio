@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, ArrowLeft } from 'lucide-react';
 
 export default function InscriptionPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -49,6 +49,12 @@ export default function InscriptionPage() {
             <aside className="w-full lg:w-[45%] relative bg-[url('/formateur-mentor.png')] bg-cover bg-top lg:bg-center shrink-0 min-h-[480px] lg:h-auto lg:min-h-screen flex flex-col justify-end">
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#050505]/40 to-[#050505]/70 lg:bg-gradient-to-t lg:from-[#0a0a0a] lg:via-[#050505]/40 lg:to-[#050505]/70"></div>
+
+                {/* BOUTON RETOUR MOBILE (Absolu en haut à gauche) */}
+                <Link href="/" className="absolute top-6 left-6 z-50 flex items-center gap-2 text-white/80 hover:text-[#D4AF37] transition-colors text-xs font-medium lg:hidden">
+                    <ArrowLeft size={14} />
+                    <span>Retour à l'accueil</span>
+                </Link>
 
                 <div className="relative z-10 px-5 pb-8 lg:absolute lg:bottom-8 lg:left-8 lg:right-8 mt-[320px] lg:mt-0">
                     <div className="text-[#D4AF37] font-oswald text-sm lg:text-base tracking-[2px] uppercase mb-1">Votre Formateur</div>
@@ -103,7 +109,7 @@ export default function InscriptionPage() {
             {/* --- ZONE DROITE (FORMULAIRE) --- */}
             <main className="w-full lg:w-[55%] bg-[#0a0a0a] px-5 py-10 lg:p-20 overflow-y-auto">
                 <div className="mb-8">
-                    <Link href="/" className="inline-flex items-center gap-2 text-[#a0a0a0] hover:text-[#D4AF37] transition-colors text-xs lg:text-sm mb-5 no-underline">
+                    <Link href="/" className="hidden lg:inline-flex items-center gap-2 text-[#a0a0a0] hover:text-[#D4AF37] transition-colors text-xs lg:text-sm mb-5 no-underline">
                         <span>← Retour à l'accueil</span>
                     </Link>
                     <h1 className="font-oswald text-3xl lg:text-5xl uppercase leading-none mb-2">
