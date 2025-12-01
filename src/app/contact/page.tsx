@@ -40,9 +40,9 @@ export default function ContactPage() {
                 <Phone className="w-6 h-6 text-amber-500" />
                 <span>+253 77 55 63 44</span>
               </a>
-              <a href="mailto:cineworlddjibouti@outlook.fr" className="flex items-center gap-4 text-foreground hover:text-amber-500 transition-colors">
+              <a href="mailto:cineworld@cineworldacademie.com" className="flex items-center gap-4 text-foreground hover:text-amber-500 transition-colors">
                 <Mail className="w-6 h-6 text-amber-500" />
-                <span>cineworlddjibouti@outlook.fr</span>
+                <span>cineworld@cineworldacademie.com</span>
               </a>
             </div>
           </div>
