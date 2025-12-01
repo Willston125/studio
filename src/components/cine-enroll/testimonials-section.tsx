@@ -50,9 +50,9 @@ export default function TestimonialsSection() {
             <ScrollReveal key={index} width="100%" delay={index * 0.2}>
               <div
                 className={cn(
-                  "flex flex-col items-center text-center p-8 rounded-xl",
-                  "bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl",
-                  "transition-all duration-300 hover:border-amber-500/50 hover:-translate-y-0.5"
+                  "flex flex-col items-center text-center p-[30px] rounded-[15px]",
+                  "bg-white/5 backdrop-blur-[10px] border border-white/10 shadow-2xl",
+                  "transition-all duration-300 ease-in-out hover:-translate-y-[10px] hover:border-[#D4AF37] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                 )}
               >
                 <Rating rating={testimonial.rating} />
