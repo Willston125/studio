@@ -107,152 +107,157 @@ export default function InscriptionPage() {
             </aside>
 
             {/* --- ZONE DROITE (FORMULAIRE) --- */}
-            <main className="w-full lg:w-[55%] bg-[#0a0a0a] px-5 py-10 lg:p-20 overflow-y-auto">
-                <div className="mb-8">
-                    <Link href="/" className="hidden lg:inline-flex items-center gap-2 text-[#a0a0a0] hover:text-[#D4AF37] transition-colors text-xs lg:text-sm mb-5 no-underline">
-                        <span>← Retour à l'accueil</span>
-                    </Link>
-                    <h1 className="font-oswald text-3xl lg:text-5xl uppercase leading-none mb-2">
-                        Inscription <br /><span className="text-[#D4AF37]">Formation</span>
-                    </h1>
-                    <p className="text-[#a0a0a0] text-sm lg:text-base leading-relaxed">
-                        Réservez votre place pour l'aventure cinématographique.
-                    </p>
-                </div>
+            <main className="w-full lg:w-[55%] relative bg-[#0a0a0a] px-5 py-10 lg:p-20 overflow-y-auto bg-[url('/background-spotlight.jpg')] bg-cover bg-center">
+                {/* Overlay Noir (85%) */}
+                <div className="absolute inset-0 bg-black/85 z-0 pointer-events-none"></div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                        <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Nom</label>
-                            <input
-                                {...register("nom", { required: true })}
-                                className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                placeholder="Votre nom"
-                            />
-                        </div>
-                        <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Prénom</label>
-                            <input
-                                {...register("prenom", { required: true })}
-                                className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                placeholder="Votre prénom"
-                            />
-                        </div>
+                <div className="relative z-10">
+                    <div className="mb-8">
+                        <Link href="/" className="hidden lg:inline-flex items-center gap-2 text-[#a0a0a0] hover:text-[#D4AF37] transition-colors text-xs lg:text-sm mb-5 no-underline">
+                            <span>← Retour à l'accueil</span>
+                        </Link>
+                        <h1 className="font-oswald text-3xl lg:text-5xl uppercase leading-none mb-2">
+                            Inscription <br /><span className="text-[#D4AF37]">Formation</span>
+                        </h1>
+                        <p className="text-[#a0a0a0] text-sm lg:text-base leading-relaxed">
+                            Réservez votre place pour l'aventure cinématographique.
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                        <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Email</label>
-                            <input
-                                {...register("email", { required: true })}
-                                type="email"
-                                className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                placeholder="votre@email.com"
-                            />
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <div className="flex flex-col gap-1.5">
+                                <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Nom</label>
+                                <input
+                                    {...register("nom", { required: true })}
+                                    className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                    placeholder="Votre nom"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                                <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Prénom</label>
+                                <input
+                                    {...register("prenom", { required: true })}
+                                    className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                    placeholder="Votre prénom"
+                                />
+                            </div>
                         </div>
-                        <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">WhatsApp (Djibouti)</label>
-                            <input
-                                {...register("telephone", { required: true })}
-                                type="tel"
-                                className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                placeholder="Ex: 77 XX XX XX"
-                            />
-                        </div>
-                    </div>
 
-                    <div className="flex flex-col gap-1.5">
-                        <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Niveau Actuel</label>
-                        <select
-                            {...register("niveau")}
-                            className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base appearance-none cursor-pointer"
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            <div className="flex flex-col gap-1.5">
+                                <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Email</label>
+                                <input
+                                    {...register("email", { required: true })}
+                                    type="email"
+                                    className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                    placeholder="votre@email.com"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                                <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">WhatsApp (Djibouti)</label>
+                                <input
+                                    {...register("telephone", { required: true })}
+                                    type="tel"
+                                    className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                    placeholder="Ex: 77 XX XX XX"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Niveau Actuel</label>
+                            <select
+                                {...register("niveau")}
+                                className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base appearance-none cursor-pointer"
+                            >
+                                <option value="Débutant">Débutant (Je pars de zéro)</option>
+                                <option value="Intermédiaire">Intermédiaire (Quelques bases)</option>
+                                <option value="Avancé">Avancé (Perfectionnement)</option>
+                            </select>
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Matériel (Facultatif)</label>
+                            <input
+                                {...register("materiel")}
+                                className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                placeholder="Ex: Canon 5D, MacBook Pro..."
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Vos Attentes</label>
+                            <textarea
+                                {...register("attentes")}
+                                rows={3}
+                                className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                placeholder="Ce que vous voulez apprendre en priorité..."
+                            />
+                        </div>
+
+                        {/* --- LEGAL BOX (CONDITIONS) --- */}
+                        <div className="bg-[#111]/80 backdrop-blur-sm p-5 rounded-lg border border-[#222] mt-8 space-y-4">
+                            <label className="flex items-start gap-3 cursor-pointer group">
+                                <div className="relative flex items-center mt-0.5">
+                                    <input
+                                        type="checkbox"
+                                        {...register("condition_prix", { required: true })}
+                                        className="peer sr-only"
+                                    />
+                                    <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
+                                        <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
+                                    </div>
+                                </div>
+                                <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
+                                    Je valide mon inscription au tarif de 20.000 FDJ.
+                                </span>
+                            </label>
+                            {errors.condition_prix && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
+
+                            <label className="flex items-start gap-3 cursor-pointer group">
+                                <div className="relative flex items-center mt-0.5">
+                                    <input
+                                        type="checkbox"
+                                        {...register("condition_remboursement", { required: true })}
+                                        className="peer sr-only"
+                                    />
+                                    <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
+                                        <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
+                                    </div>
+                                </div>
+                                <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
+                                    Je comprends que ce paiement est <strong className="text-[#E50914]">NON REMBOURSABLE</strong> après 3 jours.
+                                </span>
+                            </label>
+                            {errors.condition_remboursement && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
+
+                            <label className="flex items-start gap-3 cursor-pointer group">
+                                <div className="relative flex items-center mt-0.5">
+                                    <input
+                                        type="checkbox"
+                                        {...register("condition_paiement", { required: true })}
+                                        className="peer sr-only"
+                                    />
+                                    <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
+                                        <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
+                                    </div>
+                                </div>
+                                <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
+                                    Je m'engage à effectuer le paiement sous 48h.
+                                </span>
+                            </label>
+                            {errors.condition_paiement && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="w-full bg-[#E50914] hover:bg-[#b2070f] text-white font-oswald text-lg lg:text-xl py-5 rounded-md uppercase tracking-wider transition-all mt-5 shadow-[0_4px_15px_rgba(229,9,20,0.4)]"
                         >
-                            <option value="Débutant">Débutant (Je pars de zéro)</option>
-                            <option value="Intermédiaire">Intermédiaire (Quelques bases)</option>
-                            <option value="Avancé">Avancé (Perfectionnement)</option>
-                        </select>
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                        <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Matériel (Facultatif)</label>
-                        <input
-                            {...register("materiel")}
-                            className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
-                            placeholder="Ex: Canon 5D, MacBook Pro..."
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                        <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Vos Attentes</label>
-                        <textarea
-                            {...register("attentes")}
-                            rows={3}
-                            className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
-                            placeholder="Ce que vous voulez apprendre en priorité..."
-                        />
-                    </div>
-
-                    {/* --- LEGAL BOX (CONDITIONS) --- */}
-                    <div className="bg-[#111] p-5 rounded-lg border border-[#222] mt-8 space-y-4">
-                        <label className="flex items-start gap-3 cursor-pointer group">
-                            <div className="relative flex items-center mt-0.5">
-                                <input
-                                    type="checkbox"
-                                    {...register("condition_prix", { required: true })}
-                                    className="peer sr-only"
-                                />
-                                <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
-                                    <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
-                                </div>
-                            </div>
-                            <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
-                                Je valide mon inscription au tarif de 20.000 FDJ.
-                            </span>
-                        </label>
-                        {errors.condition_prix && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
-
-                        <label className="flex items-start gap-3 cursor-pointer group">
-                            <div className="relative flex items-center mt-0.5">
-                                <input
-                                    type="checkbox"
-                                    {...register("condition_remboursement", { required: true })}
-                                    className="peer sr-only"
-                                />
-                                <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
-                                    <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
-                                </div>
-                            </div>
-                            <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
-                                Je comprends que ce paiement est <strong className="text-[#E50914]">NON REMBOURSABLE</strong> après 3 jours.
-                            </span>
-                        </label>
-                        {errors.condition_remboursement && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
-
-                        <label className="flex items-start gap-3 cursor-pointer group">
-                            <div className="relative flex items-center mt-0.5">
-                                <input
-                                    type="checkbox"
-                                    {...register("condition_paiement", { required: true })}
-                                    className="peer sr-only"
-                                />
-                                <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
-                                    <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
-                                </div>
-                            </div>
-                            <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
-                                Je m'engage à effectuer le paiement sous 48h.
-                            </span>
-                        </label>
-                        {errors.condition_paiement && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
-                    </div>
-
-                    <button
-                        type="submit"
-                        className="w-full bg-[#E50914] hover:bg-[#b2070f] text-white font-oswald text-lg lg:text-xl py-5 rounded-md uppercase tracking-wider transition-all mt-5 shadow-[0_4px_15px_rgba(229,9,20,0.4)]"
-                    >
-                        CONFIRMER MON INSCRIPTION
-                    </button>
-                </form>
+                            CONFIRMER MON INSCRIPTION
+                        </button>
+                    </form>
+                </div>
             </main>
         </div>
     );
