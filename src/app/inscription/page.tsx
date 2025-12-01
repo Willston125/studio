@@ -2,12 +2,38 @@
 
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Clock, CheckCircle, ArrowLeft } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 export default function InscriptionPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+
+    // --- LOGIQUE COMPTE À REBOURS (CIBLE : 20 DECEMBRE 2025) ---
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [isExpired, setIsExpired] = useState(false);
+
+    useEffect(() => {
+        const targetDate = new Date("Dec 20, 2025 00:00:00").getTime();
+
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                setIsExpired(true);
+            } else {
+                setTimeLeft({
+                    days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                    minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                    seconds: Math.floor((distance % (1000 * 60)) / 1000)
+                });
+            }
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
 
     // --- LOGIQUE ENVOI WHATSAPP ---
     const onSubmit = (data: any) => {
@@ -19,26 +45,64 @@ export default function InscriptionPage() {
     return (
         <div className="flex flex-col lg:flex-row min-h-screen w-full bg-[#050505] font-sans text-white overflow-x-hidden">
 
-            {/* --- ZONE IMAGE (Haut sur mobile / Gauche sur PC) --- */}
-            <aside className="w-full h-[38vh] lg:h-auto lg:w-[45%] relative bg-[url('/formateur-mentor.png')] bg-cover bg-top lg:bg-center shrink-0">
+            {/* --- ZONE GAUCHE (VISUEL & MARKETING) --- */}
+            <aside className="w-full lg:w-[45%] relative bg-[url('/formateur-mentor.png')] bg-cover bg-top lg:bg-center shrink-0 min-h-[480px] lg:h-auto lg:min-h-screen flex flex-col justify-end">
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#050505]/20 to-[#050505]/60 lg:bg-gradient-to-t lg:from-[#0a0a0a] lg:via-[#050505]/20 lg:to-[#050505]/60"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#050505]/40 to-[#050505]/70 lg:bg-gradient-to-t lg:from-[#0a0a0a] lg:via-[#050505]/40 lg:to-[#050505]/70"></div>
 
-                <div className="absolute bottom-4 left-5 right-5 lg:bottom-8 lg:left-8 lg:right-8 z-10">
-                    <div className="text-[#D4AF37] font-oswald text-sm lg:text-base tracking-[2px] uppercase mb-1 lg:mb-2">Votre Formateur</div>
-                    <div className="font-oswald text-4xl lg:text-6xl uppercase leading-[0.95] mb-3 lg:mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">Ali William</div>
+                <div className="relative z-10 px-5 pb-8 lg:absolute lg:bottom-8 lg:left-8 lg:right-8 mt-[320px] lg:mt-0">
+                    <div className="text-[#D4AF37] font-oswald text-sm lg:text-base tracking-[2px] uppercase mb-1">Votre Formateur</div>
+                    <div className="font-oswald text-4xl lg:text-6xl uppercase leading-[0.95] mb-4 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">Ali William</div>
 
-                    {/* Bloc Prix */}
-                    <div className="inline-block bg-black/70 backdrop-blur-sm border border-white/10 px-4 py-3 lg:px-6 lg:py-4 rounded-lg border-l-4 border-l-[#D4AF37]">
-                        <div className="text-xs lg:text-sm text-[#bbb] line-through mb-0.5">40.000 FDJ</div>
-                        <div className="font-oswald text-2xl lg:text-4xl text-white leading-none">20.000 FDJ</div>
+                    {/* --- BLOC MARKETING (STYLE NETFLIX) --- */}
+                    <div className="bg-black/85 border border-[#333] rounded-xl p-5 border-b-4 border-b-[#E50914] shadow-2xl backdrop-blur-sm">
+                        {isExpired ? (
+                            <h3 className="text-[#E50914] text-center font-oswald text-2xl uppercase">Offre Terminée</h3>
+                        ) : (
+                            <>
+                                <span className="bg-[#E50914] text-white font-bold text-xs px-2.5 py-1 rounded uppercase font-oswald tracking-wider mb-2.5 inline-block">
+                                    Offre Spéciale
+                                </span>
+
+                                <div className="flex items-center gap-4 mb-4">
+                                    {/* PRIX BARRÉ AVEC TRAIT ROUGE CSS */}
+                                    <div className="text-xl text-[#888] font-medium relative font-oswald">
+                                        40.000 FDJ
+                                        <div className="absolute -left-[5%] top-1/2 w-[110%] h-[3px] bg-[#E50914] -rotate-[10deg] opacity-90"></div>
+                                    </div>
+                                    <div className="font-oswald text-4xl text-white leading-none">20.000 FDJ</div>
+                                </div>
+
+                                <div className="text-xs text-[#bbb] mb-2">Fin de l'offre le 20 Décembre :</div>
+
+                                {/* TIMER */}
+                                <div className="grid grid-cols-4 gap-2.5 border-t border-[#333] pt-4">
+                                    <div className="bg-[#1a1a1a] rounded-md p-2 text-center">
+                                        <span className="block font-oswald text-xl lg:text-2xl text-[#D4AF37] font-bold">{timeLeft.days < 10 ? `0${timeLeft.days}` : timeLeft.days}</span>
+                                        <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Jrs</span>
+                                    </div>
+                                    <div className="bg-[#1a1a1a] rounded-md p-2 text-center">
+                                        <span className="block font-oswald text-xl lg:text-2xl text-[#D4AF37] font-bold">{timeLeft.hours < 10 ? `0${timeLeft.hours}` : timeLeft.hours}</span>
+                                        <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Hrs</span>
+                                    </div>
+                                    <div className="bg-[#1a1a1a] rounded-md p-2 text-center">
+                                        <span className="block font-oswald text-xl lg:text-2xl text-[#D4AF37] font-bold">{timeLeft.minutes < 10 ? `0${timeLeft.minutes}` : timeLeft.minutes}</span>
+                                        <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Min</span>
+                                    </div>
+                                    <div className="bg-[#1a1a1a] rounded-md p-2 text-center">
+                                        <span className="block font-oswald text-xl lg:text-2xl text-[#D4AF37] font-bold">{timeLeft.seconds < 10 ? `0${timeLeft.seconds}` : timeLeft.seconds}</span>
+                                        <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Sec</span>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </aside>
 
-            {/* --- ZONE FORMULAIRE (Bas sur mobile / Droite sur PC) --- */}
+            {/* --- ZONE DROITE (FORMULAIRE) --- */}
             <main className="w-full lg:w-[55%] bg-[#0a0a0a] px-5 py-10 lg:p-20 overflow-y-auto">
-                <div className="mb-8 lg:mb-10">
+                <div className="mb-8">
                     <Link href="/" className="inline-flex items-center gap-2 text-[#a0a0a0] hover:text-[#D4AF37] transition-colors text-xs lg:text-sm mb-5 no-underline">
                         <span>← Retour à l'accueil</span>
                     </Link>
@@ -50,7 +114,7 @@ export default function InscriptionPage() {
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div className="flex flex-col gap-1.5">
                             <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Nom</label>
@@ -122,7 +186,7 @@ export default function InscriptionPage() {
                         />
                     </div>
 
-                    {/* Conditions (Checkbox) */}
+                    {/* --- LEGAL BOX (CONDITIONS) --- */}
                     <div className="bg-[#111] p-5 rounded-lg border border-[#222] mt-8 space-y-4">
                         <label className="flex items-start gap-3 cursor-pointer group">
                             <div className="relative flex items-center mt-0.5">
@@ -178,7 +242,7 @@ export default function InscriptionPage() {
 
                     <button
                         type="submit"
-                        className="w-full bg-[#E50914] hover:bg-[#b2070f] text-white font-oswald text-lg lg:text-xl py-5 rounded-md uppercase tracking-wider transition-all mt-5"
+                        className="w-full bg-[#E50914] hover:bg-[#b2070f] text-white font-oswald text-lg lg:text-xl py-5 rounded-md uppercase tracking-wider transition-all mt-5 shadow-[0_4px_15px_rgba(229,9,20,0.4)]"
                     >
                         CONFIRMER MON INSCRIPTION
                     </button>
