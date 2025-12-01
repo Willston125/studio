@@ -9,283 +9,181 @@ import { Clock, CheckCircle, ArrowLeft } from 'lucide-react';
 export default function InscriptionPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    // --- LOGIQUE COMPTE À REBOURS ---
-    const [timeLeft, setTimeLeft] = useState({ days: 21, hours: 5, minutes: 46, seconds: 50 });
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft(prev => {
-                if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-                return { ...prev, seconds: 59, minutes: prev.minutes - 1 };
-            });
-        }, 1000);
-        return () => clearInterval(timer);
-    }, []);
-
     // --- LOGIQUE ENVOI WHATSAPP ---
     const onSubmit = (data: any) => {
-        const message = `Bonjour, je m'appelle ${data.nom} ${data.prenom}. Je souhaite m'inscrire à la formation (20 000 FDJ).\n\n📋 MES INFOS :\n- Email: ${data.email}\n- Tél: ${data.telephone}\n- Ville: ${data.ville}\n\n🎬 MON PROFIL :\n- Niveau: ${data.niveau}\n- Matériel: ${data.materiel}\n- Attentes: ${data.attentes}\n\n✅ J'ai lu et accepté les conditions de la formation (Non remboursable).\n\n📷 NOTE : J'envoie ma photo d'identité juste après ce message.`;
+        const message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\n--------------------------------\n👤 *Candidat:* ${data.prenom} ${data.nom}\n📱 *Tel:* ${data.telephone}\n📧 *Email:* ${data.email}\n🎓 *Niveau:* ${data.niveau}\n--------------------------------\n*ENGAGEMENTS SIGNÉS :*\n✅ Tarif 20.000 FDJ accepté\n✅ Clause de NON-REMBOURSEMENT acceptée\n✅ Engagement paiement 48h validé\n📅 Date: ${new Date().toLocaleDateString()}`;
         const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
 
     return (
-        <div className="flex flex-col lg:flex-row min-h-screen bg-[#0a0a0a] font-sans">
+        <div className="flex flex-col lg:flex-row min-h-screen w-full bg-[#050505] font-sans text-white overflow-x-hidden">
 
-            {/* --- COLONNE GAUCHE (Visuelle) --- */}
-            {/* Mobile: h-[500px] relative, Desktop: fixed w-[40%] h-full */}
-            <div className="w-full h-[500px] relative lg:fixed lg:w-[40%] lg:h-full lg:inset-0 flex flex-col justify-end p-6 lg:p-8 overflow-hidden shrink-0">
-                {/* Image de Fond */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/mentor-affiche.png"
-                        alt="Ali William - Formateur"
-                        fill
-                        className="object-cover object-top"
-                        priority
-                    />
-                    {/* Overlay Dégradé */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                </div>
+            {/* --- ZONE IMAGE (Haut sur mobile / Gauche sur PC) --- */}
+            <aside className="w-full h-[38vh] lg:h-auto lg:w-[45%] relative bg-[url('/formateur-mentor.png')] bg-cover bg-top lg:bg-center shrink-0">
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#050505]/20 to-[#050505]/60 lg:bg-gradient-to-t lg:from-[#0a0a0a] lg:via-[#050505]/20 lg:to-[#050505]/60"></div>
 
-                {/* Contenu Gauche */}
-                {/* Contenu Gauche */}
-                <div className="relative z-10 w-full flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+                <div className="absolute bottom-4 left-5 right-5 lg:bottom-8 lg:left-8 lg:right-8 z-10">
+                    <div className="text-[#D4AF37] font-oswald text-sm lg:text-base tracking-[2px] uppercase mb-1 lg:mb-2">Votre Formateur</div>
+                    <div className="font-oswald text-4xl lg:text-6xl uppercase leading-[0.95] mb-3 lg:mb-6 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">Ali William</div>
 
-                    {/* Mentor Identity */}
-                    <div className="space-y-2">
-                        <p className="text-[#FFD700] font-bold tracking-[0.3em] text-xs lg:text-sm uppercase">VOTRE FORMATEUR</p>
-                        <div className="flex flex-col items-center lg:items-start">
-                            <h2 className="text-6xl lg:text-7xl font-bold font-headline leading-none text-white drop-shadow-lg">ALI WILLIAM</h2>
-                            <div className="h-0.5 w-24 bg-[#FFD700] my-4 shadow-[0_0_10px_rgba(255,215,0,0.5)]"></div>
-                            <p className="text-gray-200 font-light tracking-widest uppercase text-sm lg:text-base">Réalisateur & Visionnaire</p>
-                        </div>
-                    </div>
-
-                    {/* Bloc Prix & Timer */}
-                    <div className="w-full bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-2xl">
-                        {/* Price */}
-                        <div className="flex flex-col items-center mb-6">
-                            <span className="bg-[#E50914] text-white text-xs font-bold px-3 py-1 rounded-full mb-2 shadow-lg">OFFRE SPÉCIALE</span>
-                            <div className="flex items-baseline gap-3">
-                                <span className="text-4xl lg:text-5xl font-bold text-white drop-shadow-md">20.000 FDJ</span>
-                                <span className="text-lg text-gray-400 line-through">40.000 FDJ</span>
-                            </div>
-                        </div>
-
-                        {/* Countdown Grid */}
-                        <div className="grid grid-cols-4 gap-3">
-                            {/* Day */}
-                            <div className="flex flex-col items-center p-3 border border-[#FFD700]/30 bg-black/50 rounded-lg backdrop-blur-sm shadow-inner">
-                                <span className="text-2xl lg:text-3xl font-bold font-mono text-white">{timeLeft.days}</span>
-                                <span className="text-[10px] text-[#FFD700] uppercase tracking-wider font-bold">Jrs</span>
-                            </div>
-                            {/* Hours */}
-                            <div className="flex flex-col items-center p-3 border border-[#FFD700]/30 bg-black/50 rounded-lg backdrop-blur-sm shadow-inner">
-                                <span className="text-2xl lg:text-3xl font-bold font-mono text-white">{timeLeft.hours}</span>
-                                <span className="text-[10px] text-[#FFD700] uppercase tracking-wider font-bold">Hrs</span>
-                            </div>
-                            {/* Min */}
-                            <div className="flex flex-col items-center p-3 border border-[#FFD700]/30 bg-black/50 rounded-lg backdrop-blur-sm shadow-inner">
-                                <span className="text-2xl lg:text-3xl font-bold font-mono text-white">{timeLeft.minutes}</span>
-                                <span className="text-[10px] text-[#FFD700] uppercase tracking-wider font-bold">Min</span>
-                            </div>
-                            {/* Sec */}
-                            <div className="flex flex-col items-center p-3 border border-[#FFD700]/30 bg-black/50 rounded-lg backdrop-blur-sm shadow-inner">
-                                <span className="text-2xl lg:text-3xl font-bold font-mono text-white">{timeLeft.seconds}</span>
-                                <span className="text-[10px] text-[#FFD700] uppercase tracking-wider font-bold">Sec</span>
-                            </div>
-                        </div>
+                    {/* Bloc Prix */}
+                    <div className="inline-block bg-black/70 backdrop-blur-sm border border-white/10 px-4 py-3 lg:px-6 lg:py-4 rounded-lg border-l-4 border-l-[#D4AF37]">
+                        <div className="text-xs lg:text-sm text-[#bbb] line-through mb-0.5">40.000 FDJ</div>
+                        <div className="font-oswald text-2xl lg:text-4xl text-white leading-none">20.000 FDJ</div>
                     </div>
                 </div>
+            </aside>
 
-                {/* Bouton Retour Mobile */}
-                <Link href="/" className="absolute top-4 left-4 z-50 lg:hidden bg-black/50 p-2 rounded-full text-white backdrop-blur-sm border border-white/10">
-                    <ArrowLeft size={20} />
-                </Link>
-            </div>
-
-            {/* --- COLONNE DROITE (Formulaire) --- */}
-            {/* Mobile: px-4 py-10, Desktop: w-[60%] ml-auto p-20 */}
-            <div className="w-full relative z-10 lg:w-[60%] lg:ml-auto px-4 py-10 lg:p-20 bg-black flex flex-col overflow-y-auto">
-
-                {/* Bouton Retour Desktop */}
-                <div className="hidden lg:block absolute top-8 right-8 z-50">
-                    <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
-                        <span className="group-hover:-translate-x-1 transition-transform">←</span>
-                        <span className="text-sm uppercase tracking-wider">Retour à l'accueil</span>
+            {/* --- ZONE FORMULAIRE (Bas sur mobile / Droite sur PC) --- */}
+            <main className="w-full lg:w-[55%] bg-[#0a0a0a] px-5 py-10 lg:p-20 overflow-y-auto">
+                <div className="mb-8 lg:mb-10">
+                    <Link href="/" className="inline-flex items-center gap-2 text-[#a0a0a0] hover:text-[#D4AF37] transition-colors text-xs lg:text-sm mb-5 no-underline">
+                        <span>← Retour à l'accueil</span>
                     </Link>
+                    <h1 className="font-oswald text-3xl lg:text-5xl uppercase leading-none mb-2">
+                        Inscription <br /><span className="text-[#D4AF37]">Formation</span>
+                    </h1>
+                    <p className="text-[#a0a0a0] text-sm lg:text-base leading-relaxed">
+                        Réservez votre place pour l'aventure cinématographique.
+                    </p>
                 </div>
 
-                <div className="max-w-xl mx-auto w-full space-y-8">
-
-                    {/* --- HEADER TITRE (Nouveau) --- */}
-                    <div className="space-y-4">
-                        <h1 className="text-4xl lg:text-5xl font-bold font-headline text-white tracking-wide">
-                            INSCRIPTION - FORMATION
-                        </h1>
-                        <p className="text-gray-400 text-lg font-light">
-                            Réservez votre place pour l'aventure cinématographique.
-                        </p>
-                        {/* Ligne Dorée */}
-                        <div className="h-1 w-24 bg-[#FFD700] rounded-full"></div>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Nom</label>
+                            <input
+                                {...register("nom", { required: true })}
+                                className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                placeholder="Votre nom"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Prénom</label>
+                            <input
+                                {...register("prenom", { required: true })}
+                                className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                placeholder="Votre prénom"
+                            />
+                        </div>
                     </div>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Nom</label>
-                                <input
-                                    {...register("nom", { required: true })}
-                                    className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-neutral-600"
-                                    placeholder="Votre nom"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Prénom</label>
-                                <input
-                                    {...register("prenom", { required: true })}
-                                    className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-neutral-600"
-                                    placeholder="Votre prénom"
-                                />
-                            </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Email</label>
+                            <input
+                                {...register("email", { required: true })}
+                                type="email"
+                                className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                placeholder="votre@email.com"
+                            />
                         </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Email</label>
-                                <input
-                                    {...register("email", { required: true })}
-                                    type="email"
-                                    className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-neutral-600"
-                                    placeholder="votre@email.com"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Ville</label>
-                                <input
-                                    {...register("ville", { required: true })}
-                                    className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-neutral-600"
-                                    placeholder="Votre ville"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Téléphone (WhatsApp)</label>
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">WhatsApp (Djibouti)</label>
                             <input
                                 {...register("telephone", { required: true })}
                                 type="tel"
-                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-neutral-600"
-                                placeholder="+253..."
+                                className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
+                                placeholder="Ex: 77 XX XX XX"
                             />
                         </div>
+                    </div>
 
-                        <div className="space-y-2">
-                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Niveau Actuel</label>
-                            <select
-                                {...register("niveau")}
-                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all appearance-none cursor-pointer"
-                            >
-                                <option value="debutant">Débutant (Je pars de zéro)</option>
-                                <option value="intermediaire">Intermédiaire (Je monte un peu)</option>
-                                <option value="avance">Avancé (Je veux me perfectionner)</option>
-                            </select>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Matériel (Caméra, PC, etc.)</label>
-                            <input
-                                {...register("materiel")}
-                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all placeholder-neutral-600"
-                                placeholder="Ex: Canon 5D, MacBook Pro..."
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-xs uppercase text-gray-500 font-bold tracking-wider">Vos Attentes</label>
-                            <textarea
-                                {...register("attentes")}
-                                className="w-full bg-neutral-900 border border-neutral-800 text-white p-4 rounded-lg focus:border-[#FFD700] focus:ring-0 outline-none transition-all min-h-[100px] placeholder-neutral-600"
-                                placeholder="Ce que vous voulez apprendre..."
-                            />
-                        </div>
-
-                        {/* --- SECTION ENGAGEMENT --- */}
-                        <div className="space-y-4 pt-4 border-t border-neutral-800">
-                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">VALIDATION DES CONDITIONS</h3>
-
-                            <div className="space-y-3">
-                                {/* Case 1 : Prix */}
-                                <label className="flex items-start gap-3 cursor-pointer group">
-                                    <div className="relative flex items-center">
-                                        <input
-                                            type="checkbox"
-                                            {...register("condition_prix", { required: true })}
-                                            className="peer sr-only"
-                                        />
-                                        <div className="w-5 h-5 border-2 border-neutral-600 rounded bg-transparent peer-checked:bg-[#FFD700] peer-checked:border-[#FFD700] flex items-center justify-center transition-all">
-                                            <CheckCircle size={14} className="text-black opacity-0 peer-checked:opacity-100" />
-                                        </div>
-                                    </div>
-                                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors pt-0.5">
-                                        Je valide mon inscription au tarif de 20 000 FDJ.
-                                    </span>
-                                </label>
-                                {errors.condition_prix && <span className="text-red-500 text-xs ml-8">Ce champ est obligatoire.</span>}
-
-                                {/* Case 2 : Non-remboursable */}
-                                <label className="flex items-start gap-3 cursor-pointer group">
-                                    <div className="relative flex items-center">
-                                        <input
-                                            type="checkbox"
-                                            {...register("condition_remboursement", { required: true })}
-                                            className="peer sr-only"
-                                        />
-                                        <div className="w-5 h-5 border-2 border-neutral-600 rounded bg-transparent peer-checked:bg-[#FFD700] peer-checked:border-[#FFD700] flex items-center justify-center transition-all">
-                                            <CheckCircle size={14} className="text-black opacity-0 peer-checked:opacity-100" />
-                                        </div>
-                                    </div>
-                                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors pt-0.5">
-                                        Je comprends que ce paiement est ferme et <strong>NON REMBOURSABLE</strong> (réservation de place).
-                                    </span>
-                                </label>
-                                {errors.condition_remboursement && <span className="text-red-500 text-xs ml-8">Ce champ est obligatoire.</span>}
-
-                                {/* Case 3 : Délai Paiement */}
-                                <label className="flex items-start gap-3 cursor-pointer group">
-                                    <div className="relative flex items-center">
-                                        <input
-                                            type="checkbox"
-                                            {...register("condition_paiement", { required: true })}
-                                            className="peer sr-only"
-                                        />
-                                        <div className="w-5 h-5 border-2 border-neutral-600 rounded bg-transparent peer-checked:bg-[#FFD700] peer-checked:border-[#FFD700] flex items-center justify-center transition-all">
-                                            <CheckCircle size={14} className="text-black opacity-0 peer-checked:opacity-100" />
-                                        </div>
-                                    </div>
-                                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors pt-0.5">
-                                        Je m'engage à effectuer le paiement sous 48h pour valider mon dossier.
-                                    </span>
-                                </label>
-                                {errors.condition_paiement && <span className="text-red-500 text-xs ml-8">Ce champ est obligatoire.</span>}
-                            </div>
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="w-full bg-[#E50914] hover:bg-[#b2070f] text-white font-bold text-lg py-5 rounded-lg shadow-lg transform hover:scale-[1.01] transition-all uppercase tracking-wider flex items-center justify-center gap-2"
+                    <div className="flex flex-col gap-1.5">
+                        <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Niveau Actuel</label>
+                        <select
+                            {...register("niveau")}
+                            className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base appearance-none cursor-pointer"
                         >
-                            <span>Confirmer mon inscription</span>
-                            <CheckCircle size={20} />
-                        </button>
+                            <option value="Débutant">Débutant (Je pars de zéro)</option>
+                            <option value="Intermédiaire">Intermédiaire (Quelques bases)</option>
+                            <option value="Avancé">Avancé (Perfectionnement)</option>
+                        </select>
+                    </div>
 
-                        <p className="text-center text-xs text-neutral-500">
-                            En cliquant, vous serez redirigé vers WhatsApp pour finaliser.
-                        </p>
-                    </form>
-                </div>
-            </div>
+                    <div className="flex flex-col gap-1.5">
+                        <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Matériel (Facultatif)</label>
+                        <input
+                            {...register("materiel")}
+                            className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
+                            placeholder="Ex: Canon 5D, MacBook Pro..."
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                        <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Vos Attentes</label>
+                        <textarea
+                            {...register("attentes")}
+                            rows={3}
+                            className="w-full bg-[#161616] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-[#222] outline-none transition-colors font-sans text-base placeholder-[#555]"
+                            placeholder="Ce que vous voulez apprendre en priorité..."
+                        />
+                    </div>
+
+                    {/* Conditions (Checkbox) */}
+                    <div className="bg-[#111] p-5 rounded-lg border border-[#222] mt-8 space-y-4">
+                        <label className="flex items-start gap-3 cursor-pointer group">
+                            <div className="relative flex items-center mt-0.5">
+                                <input
+                                    type="checkbox"
+                                    {...register("condition_prix", { required: true })}
+                                    className="peer sr-only"
+                                />
+                                <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
+                                    <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
+                                </div>
+                            </div>
+                            <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
+                                Je valide mon inscription au tarif de 20.000 FDJ.
+                            </span>
+                        </label>
+                        {errors.condition_prix && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
+
+                        <label className="flex items-start gap-3 cursor-pointer group">
+                            <div className="relative flex items-center mt-0.5">
+                                <input
+                                    type="checkbox"
+                                    {...register("condition_remboursement", { required: true })}
+                                    className="peer sr-only"
+                                />
+                                <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
+                                    <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
+                                </div>
+                            </div>
+                            <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
+                                Je comprends que ce paiement est <strong className="text-[#E50914]">NON REMBOURSABLE</strong> après 3 jours.
+                            </span>
+                        </label>
+                        {errors.condition_remboursement && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
+
+                        <label className="flex items-start gap-3 cursor-pointer group">
+                            <div className="relative flex items-center mt-0.5">
+                                <input
+                                    type="checkbox"
+                                    {...register("condition_paiement", { required: true })}
+                                    className="peer sr-only"
+                                />
+                                <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
+                                    <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
+                                </div>
+                            </div>
+                            <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
+                                Je m'engage à effectuer le paiement sous 48h.
+                            </span>
+                        </label>
+                        {errors.condition_paiement && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="w-full bg-[#E50914] hover:bg-[#b2070f] text-white font-oswald text-lg lg:text-xl py-5 rounded-md uppercase tracking-wider transition-all mt-5"
+                    >
+                        CONFIRMER MON INSCRIPTION
+                    </button>
+                </form>
+            </main>
         </div>
     );
 }
