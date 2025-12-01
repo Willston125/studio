@@ -60,8 +60,8 @@ export default function InscriptionPage() {
                     <div className="text-[#D4AF37] font-oswald text-sm lg:text-base tracking-[2px] uppercase mb-1">Votre Formateur</div>
                     <div className="font-oswald text-4xl lg:text-6xl uppercase leading-[0.95] mb-4 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">Ali William</div>
 
-                    {/* --- BLOC MARKETING (STYLE NETFLIX) --- */}
-                    <div className="bg-black/85 border border-[#333] rounded-xl p-5 border-b-4 border-b-[#E50914] shadow-2xl backdrop-blur-sm">
+                    {/* --- BLOC MARKETING (MOBILE ONLY) --- */}
+                    <div className="lg:hidden bg-black/85 border border-[#333] rounded-xl p-5 border-b-4 border-b-[#E50914] shadow-2xl backdrop-blur-sm">
                         {isExpired ? (
                             <h3 className="text-[#E50914] text-center font-oswald text-2xl uppercase">Offre Terminée</h3>
                         ) : (
@@ -119,9 +119,54 @@ export default function InscriptionPage() {
                         <h1 className="font-oswald text-3xl lg:text-5xl uppercase leading-none mb-2">
                             Inscription <br /><span className="text-[#D4AF37]">Formation</span>
                         </h1>
-                        <p className="text-[#a0a0a0] text-sm lg:text-base leading-relaxed">
+                        <p className="text-[#a0a0a0] text-sm lg:text-base leading-relaxed mb-6">
                             Réservez votre place pour l'aventure cinématographique.
                         </p>
+
+                        {/* --- BLOC MARKETING (DESKTOP ONLY) --- */}
+                        <div className="hidden lg:block bg-black/60 border border-[#333] rounded-xl p-5 border-b-4 border-b-[#E50914] shadow-2xl backdrop-blur-sm mb-8">
+                            {isExpired ? (
+                                <h3 className="text-[#E50914] text-center font-oswald text-2xl uppercase">Offre Terminée</h3>
+                            ) : (
+                                <>
+                                    <div className="flex items-center justify-between mb-4">
+                                        <div>
+                                            <span className="bg-[#E50914] text-white font-bold text-xs px-2.5 py-1 rounded uppercase font-oswald tracking-wider mb-2 inline-block">
+                                                Offre Spéciale
+                                            </span>
+                                            <div className="flex items-center gap-4">
+                                                <div className="text-xl text-[#888] font-medium relative font-oswald">
+                                                    40.000 FDJ
+                                                    <div className="absolute -left-[5%] top-1/2 w-[110%] h-[3px] bg-[#E50914] -rotate-[10deg] opacity-90"></div>
+                                                </div>
+                                                <div className="font-oswald text-4xl text-white leading-none">20.000 FDJ</div>
+                                            </div>
+                                        </div>
+
+                                        {/* TIMER DESKTOP COMPACT */}
+                                        <div className="flex gap-2">
+                                            <div className="bg-[#1a1a1a] rounded-md p-2 text-center min-w-[50px]">
+                                                <span className="block font-oswald text-xl text-[#D4AF37] font-bold">{timeLeft.days < 10 ? `0${timeLeft.days}` : timeLeft.days}</span>
+                                                <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Jrs</span>
+                                            </div>
+                                            <div className="bg-[#1a1a1a] rounded-md p-2 text-center min-w-[50px]">
+                                                <span className="block font-oswald text-xl text-[#D4AF37] font-bold">{timeLeft.hours < 10 ? `0${timeLeft.hours}` : timeLeft.hours}</span>
+                                                <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Hrs</span>
+                                            </div>
+                                            <div className="bg-[#1a1a1a] rounded-md p-2 text-center min-w-[50px]">
+                                                <span className="block font-oswald text-xl text-[#D4AF37] font-bold">{timeLeft.minutes < 10 ? `0${timeLeft.minutes}` : timeLeft.minutes}</span>
+                                                <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Min</span>
+                                            </div>
+                                            <div className="bg-[#1a1a1a] rounded-md p-2 text-center min-w-[50px]">
+                                                <span className="block font-oswald text-xl text-[#D4AF37] font-bold">{timeLeft.seconds < 10 ? `0${timeLeft.seconds}` : timeLeft.seconds}</span>
+                                                <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Sec</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="text-xs text-[#bbb]">Fin de l'offre le 20 Décembre</div>
+                                </>
+                            )}
+                        </div>
                     </div>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
