@@ -73,9 +73,9 @@ const WhyChooseUsSection = () => {
                             borderColor: "rgba(212, 175, 55, 0.8)",
                             boxShadow: "0 10px 30px -10px rgba(212, 175, 55, 0.3)"
                         }}
-                        className="bg-white/5 backdrop-blur-[10px] border border-white/10 rounded-[15px] p-[30px] transition-all duration-300 ease-in-out hover:-translate-y-[10px] hover:border-[#D4AF37] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                        className="feature-card bg-white/5 backdrop-blur-[10px] border border-white/10 rounded-[15px] p-[30px] transition-all duration-300 ease-in-out hover:-translate-y-[10px] hover:border-[#D4AF37] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                     >
-                        <div className="bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37] w-[80px] h-[80px] flex items-center justify-center rounded-full mx-auto mb-5 text-[2rem]"><Camera size={36} /></div>
+                        <i className="fa-solid fa-film cine-icon"></i>
                         <h3 className="feature-title font-headline">ACCOMPAGNEMENT</h3>
                         <p className="feature-description font-body">
                             Ensemble, avec notre dévouement, nous vous accompagnons pour produire vos contenus cinématographiques avec les bonnes bases de vos œuvres.
@@ -92,9 +92,9 @@ const WhyChooseUsSection = () => {
                             borderColor: "rgba(212, 175, 55, 0.8)",
                             boxShadow: "0 10px 30px -10px rgba(212, 175, 55, 0.3)"
                         }}
-                        className="bg-white/5 backdrop-blur-[10px] border border-white/10 rounded-[15px] p-[30px] transition-all duration-300 ease-in-out hover:-translate-y-[10px] hover:border-[#D4AF37] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                        className="feature-card bg-white/5 backdrop-blur-[10px] border border-white/10 rounded-[15px] p-[30px] transition-all duration-300 ease-in-out hover:-translate-y-[10px] hover:border-[#D4AF37] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                     >
-                        <div className="bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37] w-[80px] h-[80px] flex items-center justify-center rounded-full mx-auto mb-5 text-[2rem]"><Zap size={36} /></div>
+                        <i className="fa-solid fa-bolt cine-icon"></i>
                         <h3 className="feature-title font-headline">PRATIQUE INTENSIVE</h3>
                         <p className="feature-description font-body">
                             La formation est axée à 80% sur la pratique terrain avec des projets réels
@@ -112,9 +112,9 @@ const WhyChooseUsSection = () => {
                             borderColor: "rgba(212, 175, 55, 0.8)",
                             boxShadow: "0 10px 30px -10px rgba(212, 175, 55, 0.3)"
                         }}
-                        className="bg-white/5 backdrop-blur-[10px] border border-white/10 rounded-[15px] p-[30px] transition-all duration-300 ease-in-out hover:-translate-y-[10px] hover:border-[#D4AF37] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                        className="feature-card bg-white/5 backdrop-blur-[10px] border border-white/10 rounded-[15px] p-[30px] transition-all duration-300 ease-in-out hover:-translate-y-[10px] hover:border-[#D4AF37] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                     >
-                        <div className="bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37] w-[80px] h-[80px] flex items-center justify-center rounded-full mx-auto mb-5 text-[2rem]"><Globe size={36} /></div>
+                        <i className="fa-solid fa-users cine-icon"></i>
                         <h3 className="feature-title font-headline">RÉSEAU PROFESSIONNEL</h3>
                         <p className="feature-description font-body">
                             Intégrez une communauté exclusive de passionnés et de professionnels

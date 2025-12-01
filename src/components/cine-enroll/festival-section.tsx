@@ -27,28 +27,28 @@ export default function FestivalSection() {
                 <div className={styles.prizesGrid}>
 
                     {/* PRIX 2 */}
-                    <div className={styles.prizeCard}>
+                    <div className={`${styles.prizeCard} prize-card`}>
                         <span className={styles.prizeRank}>2ème Place</span>
-                        <span className={styles.prizeIcon}>💻</span>
+                        <i className="fa-solid fa-laptop cine-icon"></i>
                         <div className={styles.prizeName}>PC Portable</div>
                         <div className={styles.prizeValue}>Pour le montage</div>
                     </div>
 
                     {/* PRIX 1 (Au milieu, mis en avant) */}
                     <div
-                        className={styles.prizeCard}
+                        className={`${styles.prizeCard} prize-card`}
                         style={{ borderColor: '#D4AF37', background: 'rgba(212, 175, 55, 0.1)' }}
                     >
                         <span className={styles.prizeRank} style={{ color: '#D4AF37' }}>🏆 1ère Place</span>
-                        <span className={styles.prizeIcon}>🥇</span>
+                        <i className="fa-solid fa-trophy cine-icon"></i>
                         <div className={styles.prizeName}>200.000 FDJ</div>
                         <div className={styles.prizeValue}>Financement Projet</div>
                     </div>
 
                     {/* PRIX 3 */}
-                    <div className={styles.prizeCard}>
+                    <div className={`${styles.prizeCard} prize-card`}>
                         <span className={styles.prizeRank}>3ème Place</span>
-                        <span className={styles.prizeIcon}>📱</span>
+                        <i className="fa-solid fa-mobile-screen cine-icon"></i>
                         <div className={styles.prizeName}>Smartphone</div>
                         <div className={styles.prizeValue}>Dernière Génération</div>
                     </div>
