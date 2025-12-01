@@ -58,7 +58,7 @@ export default function PhotoGallery() {
   if (!isMounted) {
     return (
       <section className="py-8">
-        <h2 className="text-center text-2xl font-headline mb-8">Galerie</h2>
+        <h2 className="text-center text-2xl font-headline mb-8">EN IMMERSION SUR LES TOURNAGES</h2>
         <div className="flex justify-center -ml-4">
           {[...Array(3)].map((_, index) => (
             <div key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 w-full">
@@ -76,7 +76,7 @@ export default function PhotoGallery() {
   return (
     <section className="py-8">
       <ScrollReveal width="100%">
-        <h2 className="text-center text-2xl font-headline mb-8">Galerie</h2>
+        <h2 className="text-center text-2xl font-headline mb-8">EN IMMERSION SUR LES TOURNAGES</h2>
         <Carousel
           plugins={[
             Autoplay({
