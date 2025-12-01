@@ -4,7 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Clapperboard, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -77,6 +77,9 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link href="/reglement" className="text-base font-medium text-[#D4AF37] hover:text-white transition-colors font-body tracking-wide uppercase">
+              Règlement
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -98,6 +101,9 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link href="/reglement" className="text-xl font-medium text-[#D4AF37] hover:text-white transition-colors font-body uppercase" onClick={() => setIsMenuOpen(false)}>
+              Règlement
+            </Link>
           </nav>
         </div>
       )}
