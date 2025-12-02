@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CommunicationPage() {
     const [showQuote, setShowQuote] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
 
     const toggleQuote = () => {
         setShowQuote(!showQuote);
@@ -15,6 +17,15 @@ export default function CommunicationPage() {
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (pathname === href) {
+            e.preventDefault();
+            setIsMenuOpen(false);
+        } else {
+            setIsMenuOpen(false);
+        }
     };
 
     // Auto-hide quote after 5 seconds
@@ -46,11 +57,11 @@ export default function CommunicationPage() {
                 {/* --- MOBILE MENU OVERLAY --- */}
                 <div className={`md:hidden fixed inset-0 bg-black/95 z-[150] flex flex-col justify-center items-center transition-all duration-500 ${isMenuOpen ? 'right-0' : '-right-full'}`}>
                     <nav className="flex flex-col gap-8 text-center">
-                        <Link href="/" onClick={toggleMenu} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">ACCUEIL</Link>
-                        <Link href="#" onClick={toggleMenu} className="text-[#D4AF37] font-display uppercase text-2xl">COURS COM'</Link>
-                        <Link href="/inscription" onClick={toggleMenu} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">INSCRIPTION</Link>
-                        <Link href="/contact" onClick={toggleMenu} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">CONTACT</Link>
-                        <Link href="/reglement" onClick={toggleMenu} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">RÈGLEMENT</Link>
+                        <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">ACCUEIL</Link>
+                        <Link href="#" onClick={(e) => handleLinkClick(e, '#')} className="text-[#D4AF37] font-display uppercase text-2xl">COURS COM'</Link>
+                        <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">INSCRIPTION</Link>
+                        <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">CONTACT</Link>
+                        <Link href="/reglement" onClick={(e) => handleLinkClick(e, '/reglement')} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">RÈGLEMENT</Link>
                     </nav>
                 </div>
 
