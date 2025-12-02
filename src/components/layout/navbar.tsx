@@ -68,16 +68,20 @@ export default function Navbar() {
           </Link>
 
           {/* Center: Navigation Links (Desktop) */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex nav-links">
             {navLinks.map((link, index) => (
-              <Link key={`${link.label}-${index}`} href={link.href} className={cn(
-                "text-base font-medium text-neutral-300 hover:text-[#FFD700] transition-colors font-body tracking-wide",
-                link.href === '/' ? "text-white" : ""
-              )}>
+              <Link
+                key={`${link.label}-${index}`}
+                href={link.href}
+                className={pathname === link.href ? "active" : ""}
+              >
                 {link.label}
               </Link>
             ))}
-            <Link href="/reglement" className="text-base font-medium text-[#D4AF37] hover:text-white transition-colors font-body tracking-wide uppercase">
+            <Link
+              href="/reglement"
+              className={pathname === '/reglement' ? "active" : ""}
+            >
               Règlement
             </Link>
           </nav>
