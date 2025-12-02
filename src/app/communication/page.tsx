@@ -47,8 +47,15 @@ export default function CommunicationPage() {
                 {/* --- NAVBAR --- */}
                 <nav className="navbar absolute top-0 w-full z-[100] flex justify-center items-center px-[20px] py-[20px]">
 
+                    {/* LOGO DESKTOP (Visible seulement sur PC) */}
+                    <div className="logo-desktop hidden lg:block absolute left-[40px] top-[20px]">
+                        <Link href="/">
+                            <Image src="/logo_cineworld.png" alt="Cinéworld" width={150} height={50} className="h-[50px] w-auto object-contain" />
+                        </Link>
+                    </div>
+
                     {/* === VERSION PC (PILULE) === */}
-                    <div className="nav-links desktop-menu hidden md:inline-flex bg-black/60 backdrop-blur-[10px] border border-white/20 rounded-[50px] px-[30px] py-[12px] gap-[15px]">
+                    <div className="nav-links desktop-menu hidden lg:inline-flex bg-black/60 backdrop-blur-[10px] border border-white/20 rounded-[50px] px-[30px] py-[12px] gap-[15px]">
                         <Link href="/" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
                         <Link href="/communication" className="bg-[#D4AF37] text-black font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px]">COURS COM'</Link>
                         <Link href="/inscription" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
@@ -57,7 +64,7 @@ export default function CommunicationPage() {
                     </div>
 
                     {/* === VERSION MOBILE (HEADER + DROPDOWN) === */}
-                    <div className="mobile-nav-container md:hidden block w-full absolute top-0 left-0 z-[200]">
+                    <div className="mobile-nav-container lg:hidden block w-full absolute top-0 left-0 z-[200]">
 
                         {/* Le Header Mobile (Logo + Burger) */}
                         <div className="mobile-header flex justify-between items-center px-[20px] py-[15px] bg-transparent">
