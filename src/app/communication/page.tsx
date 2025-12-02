@@ -1,19 +1,35 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CommunicationPage() {
+    const [showQuote, setShowQuote] = useState(false);
+
+    const toggleQuote = () => {
+        setShowQuote(!showQuote);
+    };
+
+    // Auto-hide quote after 5 seconds
+    useEffect(() => {
+        if (showQuote) {
+            const timer = setTimeout(() => {
+                setShowQuote(false);
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [showQuote]);
+
     return (
         <main className="bg-[#050505] text-white min-h-screen font-body overflow-x-hidden">
 
             {/* --- HERO WRAPPER --- */}
-            <div className="bg-white rounded-b-[40px] md:rounded-b-[60px] pt-5 pb-10 md:pb-0 relative text-center overflow-hidden min-h-auto md:min-h-[85vh] flex flex-col items-center">
+            <div className="bg-white rounded-b-[40px] md:rounded-b-[60px] pt-5 pb-10 relative text-center overflow-hidden min-h-[90vh] flex flex-col items-center">
 
                 {/* --- NAVIGATION PILULE (Scrollable Mobile) --- */}
-                <div className="w-full flex justify-center px-5 mb-8">
+                <div className="w-full flex justify-center px-5 mb-8 z-30 relative">
                     <nav className="inline-flex gap-1 px-4 py-2 bg-black rounded-full overflow-x-auto whitespace-nowrap scrollbar-hide max-w-full">
                         <Link href="/" className="text-white font-display uppercase text-sm px-4 py-2 rounded-full hover:bg-[#D4AF37] hover:text-black transition-colors">Accueil</Link>
                         <Link href="#" className="bg-[#D4AF37] text-black font-display uppercase text-sm px-4 py-2 rounded-full">Cours Com'</Link>
@@ -23,69 +39,92 @@ export default function CommunicationPage() {
                     </nav>
                 </div>
 
+                {/* --- DECORATION SPARK --- */}
+                <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-[50px] left-[5%] text-[#D4AF37] text-[2rem] md:text-[4rem] opacity-80 z-0"
+                >
+                    ✶
+                </motion.div>
+
                 {/* --- HERO TITLE --- */}
-                <h1 className="text-black font-display text-[2.2rem] md:text-[3.5rem] uppercase leading-[1.1] mb-4 max-w-[900px] px-4 mx-auto">
-                    <span className="text-[#D4AF37] text-xl md:text-2xl align-middle mr-2">✦</span>
-                    Devenez l'Expert<br />
-                    De Votre Image
-                    <span className="text-[#D4AF37] text-xl md:text-2xl align-middle ml-2">✦</span>
+                <h1 className="text-black font-display text-[2.2rem] md:text-[3.5rem] uppercase leading-[1.1] mb-4 max-w-[900px] px-4 mx-auto relative z-10">
+                    Maîtrisez l'Art du <span className="text-[#D4AF37]">Digital</span><br />
+                    Créez. Impactez.
                 </h1>
-                <p className="text-[#666] max-w-[600px] mx-auto mb-8 px-5 text-[0.95rem] md:text-[1.1rem] leading-relaxed">
-                    Graphisme, Marketing, Communication. Passez au niveau supérieur avec nos modules intensifs.
-                </p>
 
-                {/* --- REVIEW BADGE (Mobile Position: Centered above image) --- */}
-                <div className="block md:hidden relative mb-5 bg-white px-5 py-2 rounded-xl shadow-lg border border-gray-100">
-                    <div className="text-[#D4AF37] tracking-widest text-xs">★★★★★</div>
-                    <div className="font-display text-black text-xl font-bold leading-none mt-1">10 Ans</div>
-                    <div className="text-[#888] text-[0.7rem]">d'Expérience</div>
-                </div>
+                {/* --- HERO GRID --- */}
+                <div className="relative w-full max-w-[1200px] flex-grow mt-5 flex flex-col md:flex-row justify-center items-center md:items-end px-4">
 
-                {/* --- HERO IMAGE CONTAINER --- */}
-                <div className="relative w-full max-w-[800px] flex-grow flex justify-center items-end mt-5">
-
-                    {/* Circle Background */}
-                    <div className="absolute w-[320px] h-[320px] md:w-[500px] md:h-[500px] bg-[#f2f2f2] rounded-full bottom-[-40px] md:bottom-[-80px] z-0 left-1/2 -translate-x-1/2"></div>
-
-                    {/* Mentor Image */}
-                    <div className="relative z-10">
-                        <Image
-                            src="/formateur-mentore.png"
-                            alt="Ali William"
-                            width={600}
-                            height={800}
-                            className="h-auto w-[90vw] max-w-[400px] md:h-[550px] md:w-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.4)] mb-[-20px] md:mb-0"
-                            priority
-                        />
-                    </div>
-
-                    {/* --- DESKTOP FLOATING BUTTONS --- */}
-                    <div className="hidden md:block">
-                        <Link href="#programme" className="absolute z-20 bottom-[150px] left-[10%] bg-black/90 text-white px-8 py-4 rounded-full font-display border border-[#D4AF37] backdrop-blur-md hover:bg-[#D4AF37] hover:text-black hover:scale-105 transition-all shadow-lg text-lg">
+                    {/* 1. LEFT: INTRO TEXT */}
+                    <div className="order-1 md:order-1 relative md:absolute md:left-[5%] md:top-[30%] w-full md:w-[280px] text-center md:text-left z-20 mb-8 md:mb-0">
+                        <span className="block text-[#D4AF37] font-bold uppercase tracking-widest mb-2 text-sm md:text-base">Innovate Your Brand</span>
+                        <p className="text-[#555] text-[0.95rem] leading-relaxed mb-5">
+                            Du graphisme au marketing, nous vous livrons les stratégies innovantes qui élèvent votre marque. Créons quelque chose d'exceptionnel ensemble.
+                        </p>
+                        <Link href="#programme" className="inline-block px-6 py-3 border border-black rounded-full text-black font-display text-sm hover:bg-black hover:text-white transition-all">
                             Voir le Programme
                         </Link>
-                        <Link href="/inscription" className="absolute z-20 bottom-[150px] right-[10%] bg-black/90 text-white px-8 py-4 rounded-full font-display border border-[#D4AF37] backdrop-blur-md hover:bg-[#D4AF37] hover:text-black hover:scale-105 transition-all shadow-lg text-lg">
-                            S'inscrire ➔
-                        </Link>
+
+                        {/* CURLY ARROW SVG (Desktop Only) */}
+                        <svg className="hidden md:block absolute -right-[60px] -bottom-[40px] w-[80px] -rotate-[20deg]" viewBox="0 0 100 100">
+                            <path d="M10,10 Q50,10 50,50 T90,90" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" markerEnd="url(#arrowhead)" />
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+                                </marker>
+                            </defs>
+                        </svg>
                     </div>
 
-                    {/* --- DESKTOP REVIEW BADGE --- */}
-                    <div className="hidden md:block absolute top-[20%] right-[15%] z-20 bg-white p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] text-center">
-                        <div className="text-[#D4AF37] tracking-widest text-sm">★★★★★</div>
-                        <div className="font-display text-black text-3xl font-bold leading-none mt-1">10 Ans</div>
-                        <div className="text-[#888] text-xs">d'Expérience</div>
+                    {/* 2. CENTER: IMAGE & CIRCLE */}
+                    <div className="order-2 md:order-2 relative z-10 cursor-pointer group" onClick={toggleQuote}>
+
+                        {/* Circle Backdrop */}
+                        <div className="absolute w-[350px] h-[350px] md:w-[600px] md:h-[600px] bg-[#f4f4f4] rounded-full bottom-[40px] md:-bottom-[150px] left-1/2 -translate-x-1/2 z-0"></div>
+
+                        {/* Quote Bubble */}
+                        <AnimatePresence>
+                            {showQuote && (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.8, y: 20, x: "-50%" }}
+                                    animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}
+                                    exit={{ opacity: 0, scale: 0.8, y: 20, x: "-50%" }}
+                                    className="absolute top-[-100px] md:top-[20px] left-1/2 md:left-auto md:right-[-160px] md:translate-x-0 bg-white p-5 rounded-[20px] rounded-bl-none shadow-[0_10px_30px_rgba(0,0,0,0.2)] w-[280px] text-left border-2 border-[#D4AF37] z-30 pointer-events-auto"
+                                >
+                                    <p className="font-display italic text-black text-[1.1rem] leading-snug">"La créativité demande du courage. Osez sortir du cadre et imposez votre vision."</p>
+                                    <span className="block mt-2 text-xs text-[#D4AF37] font-bold uppercase">- Ali William</span>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Mentor Image */}
+                        <div className="relative z-10 transition-transform duration-300 group-hover:scale-105">
+                            <Image
+                                src="/formateur-mentore.png"
+                                alt="Ali William"
+                                width={600}
+                                height={800}
+                                className="h-[400px] md:h-[550px] w-auto object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.3)]"
+                                priority
+                            />
+
+                            {/* Click Indicator */}
+                            <div className="absolute bottom-[20px] right-[20px] bg-white px-3 py-1 rounded-full text-[0.7rem] text-[#888] shadow-md flex items-center gap-1 animate-bounce">
+                                <span>👆</span> Cliquez sur moi
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
+                    {/* 3. RIGHT: XP BADGE */}
+                    <div className="order-3 md:order-3 relative md:absolute md:right-[10%] md:top-[35%] text-center z-20 mt-8 md:mt-0 mb-10 md:mb-0">
+                        <div className="text-[#D4AF37] text-[1.2rem] mb-1">★★★★★</div>
+                        <div className="font-display text-black text-[3.5rem] font-bold leading-[0.9]">10 Ans</div>
+                        <div className="text-[#777] font-medium text-base">d'Expérience</div>
+                    </div>
 
-                {/* --- MOBILE ACTION BUTTONS (Stacked below image) --- */}
-                <div className="flex md:hidden flex-wrap justify-center w-full mt-[-40px] relative z-20 gap-3 px-4">
-                    <Link href="#programme" className="bg-black/90 text-white px-6 py-3 rounded-full font-display border border-[#D4AF37] backdrop-blur-md text-sm shadow-lg">
-                        Voir le Programme
-                    </Link>
-                    <Link href="/inscription" className="bg-[#D4AF37] text-black px-6 py-3 rounded-full font-display border border-[#D4AF37] text-sm shadow-lg font-bold">
-                        S'inscrire ➔
-                    </Link>
                 </div>
 
             </div>
