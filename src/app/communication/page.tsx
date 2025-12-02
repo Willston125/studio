@@ -101,7 +101,7 @@ export default function CommunicationPage() {
 
                         {/* IMAGE */}
                         <Image
-                            src="/formateur-mentor.png"
+                            src="/mentor-formateur.png"
                             alt="Ali William"
                             width={600}
                             height={800}
