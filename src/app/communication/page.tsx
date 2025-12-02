@@ -15,7 +15,7 @@ export default function CommunicationPage() {
         setShowQuote(!showQuote);
     };
 
-    const toggleMenu = () => {
+    const toggleMobileMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
@@ -45,45 +45,49 @@ export default function CommunicationPage() {
             <div className="hero-wrapper bg-white rounded-b-[30px] md:rounded-b-[60px] pt-5 pb-10 relative text-center overflow-hidden min-h-auto md:min-h-[90vh] flex flex-col items-center">
 
                 {/* --- NAVBAR (Logo + Links + Burger) --- */}
-                <div className="navbar absolute top-0 w-full z-[1000] flex justify-between items-center px-[20px] py-[15px] md:px-[40px] md:py-[20px]">
+                <nav className="navbar absolute top-0 w-full z-[100] flex justify-center items-center px-[20px] py-[20px]">
 
-                    {/* LOGO */}
-                    <div className="logo shrink-0">
+                    {/* LOGO (Positionné en absolu à gauche pour ne pas gêner le centrage du menu) */}
+                    <div className="logo absolute left-[20px] md:left-[40px] top-[15px] md:top-[20px] shrink-0">
                         <Link href="/">
                             <Image src="/logo_cineworld.png" alt="Cinéworld" width={150} height={50} className="h-[40px] md:h-[50px] w-auto object-contain" />
                         </Link>
                     </div>
 
-                    {/* DESKTOP NAV LINKS (Pill Style) */}
-                    <nav className="hidden md:flex nav-links bg-black/60 backdrop-blur-md border border-white/20 rounded-[50px] px-[30px] py-[10px] gap-[15px]">
-                        <Link href="/" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
-                        <Link href="/communication" className="bg-[#D4AF37] text-black font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px]">COMMUNICATION</Link>
-                        <Link href="/inscription" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
-                        <Link href="/contact" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
-                        <Link href="/reglement" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
-                    </nav>
-
-                    {/* HAMBURGER BUTTON (Mobile Only) */}
-                    <div
-                        onClick={toggleMenu}
-                        className={`hamburger md:hidden block cursor-pointer z-[2000] ${isMenuOpen ? 'open' : ''}`}
-                    >
-                        <span className={`block w-[30px] h-[3px] bg-[#D4AF37] rounded-[2px] my-[6px] transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-[9px] bg-white' : ''}`}></span>
-                        <span className={`block w-[30px] h-[3px] bg-[#D4AF37] rounded-[2px] my-[6px] transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                        <span className={`block w-[30px] h-[3px] bg-[#D4AF37] rounded-[2px] my-[6px] transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-[9px] bg-white' : ''}`}></span>
+                    {/* MENU PC (PILULE) - Centré */}
+                    <div className="nav-links desktop-menu hidden md:inline-flex bg-black/80 backdrop-blur-[10px] border border-white/20 rounded-[50px] px-[30px] py-[12px] gap-[15px]">
+                        <Link href="/" className="text-white font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
+                        <Link href="/communication" className="bg-[#D4AF37] text-black font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px]">COURS COM'</Link>
+                        <Link href="/inscription" className="text-white font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
+                        <Link href="/contact" className="text-white font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
+                        <Link href="/reglement" className="text-white font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
                     </div>
-                </div>
 
-                {/* --- MOBILE MENU OVERLAY --- */}
-                <div id="navLinks" className={`md:hidden fixed inset-0 bg-black/95 z-[1500] flex flex-col justify-center items-center transition-all duration-400 ease-in-out gap-[30px] ${isMenuOpen ? 'right-0 active' : '-right-full'}`}>
-                    <nav className="flex flex-col gap-[30px] text-center">
-                        <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-[1.5rem] hover:text-[#D4AF37] transition-colors">ACCUEIL</Link>
-                        <Link href="/communication" onClick={(e) => handleLinkClick(e, '/communication')} className="text-[#D4AF37] font-display uppercase text-[1.5rem]">COMMUNICATION</Link>
-                        <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-[1.5rem] hover:text-[#D4AF37] transition-colors">INSCRIPTION</Link>
-                        <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-[1.5rem] hover:text-[#D4AF37] transition-colors">CONTACT</Link>
-                        <Link href="/reglement" onClick={(e) => handleLinkClick(e, '/reglement')} className="text-white font-display uppercase text-[1.5rem] hover:text-[#D4AF37] transition-colors">RÈGLEMENT</Link>
-                    </nav>
-                </div>
+                    {/* BOUTON BURGER (Visible seulement sur mobile, Absolu Top Right) */}
+                    <div
+                        onClick={toggleMobileMenu}
+                        className="hamburger md:hidden block absolute top-[20px] right-[20px] cursor-pointer z-[200] bg-black p-[10px] rounded-[5px] border border-[#333]"
+                    >
+                        <div className="bar block w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300"></div>
+                        <div className="bar block w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300"></div>
+                        <div className="bar block w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300"></div>
+                    </div>
+
+                    {/* MENU MOBILE (OVERLAY) - Fade In/Out */}
+                    <div id="mobileMenu" className={`mobile-menu-overlay md:hidden fixed inset-0 bg-black/98 z-[999] flex flex-col justify-center items-center transition-all duration-400 ease-out ${isMenuOpen ? 'opacity-100 visible active' : 'opacity-0 invisible'}`}>
+
+                        {/* Bouton Fermer (Croix) */}
+                        <div className="close-btn absolute top-[30px] right-[30px] text-[#D4AF37] text-[2rem] font-bold cursor-pointer hover:scale-110 transition-transform" onClick={toggleMobileMenu}>✕</div>
+
+                        <div className="mobile-links flex flex-col gap-[30px] text-center">
+                            <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">ACCUEIL</Link>
+                            <Link href="/communication" onClick={(e) => handleLinkClick(e, '/communication')} className="text-[#D4AF37] font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:scale-110">COURS COM'</Link>
+                            <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">INSCRIPTION</Link>
+                            <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">CONTACT</Link>
+                            <Link href="/reglement" onClick={(e) => handleLinkClick(e, '/reglement')} className="text-white font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">RÈGLEMENT</Link>
+                        </div>
+                    </div>
+                </nav>
 
                 {/* --- TITRE PRINCIPAL --- */}
                 <h1 className="text-black font-display text-[2.2rem] md:text-[3.5rem] leading-[1.1] mt-[100px] md:mt-[120px] mb-[10px] md:mb-[10px] uppercase max-w-[900px] px-[15px] relative z-10 mx-auto">
