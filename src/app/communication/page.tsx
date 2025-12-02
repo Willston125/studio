@@ -47,35 +47,48 @@ export default function CommunicationPage() {
                 {/* --- NAVBAR --- */}
                 <nav className="navbar absolute top-0 w-full z-[100] flex justify-center items-center px-[20px] py-[20px]">
 
-                    {/* LOGO DESKTOP (Visible seulement sur PC) */}
-                    <div className="logo-desktop hidden lg:block absolute left-[40px] top-[20px]">
-                        <Link href="/">
-                            <Image src="/logo_cineworld.png" alt="Cinéworld" width={150} height={50} className="h-[50px] w-auto object-contain" />
-                        </Link>
+                    {/* ==================================================================
+                        1. DESKTOP MENU (.desktop-menu)
+                        - Visible ONLY above 900px (min-[901px]:flex)
+                        - Hidden strictly below 900px (max-[900px]:hidden)
+                        - Style: Pill, Transparent Blur
+                       ================================================================== */}
+                    <div className="desktop-menu max-[900px]:hidden flex items-center gap-[20px]">
+
+                        {/* Logo Desktop */}
+                        <div className="logo-desktop absolute left-[40px] top-[20px]">
+                            <Link href="/">
+                                <Image src="/logo_cineworld.png" alt="Cinéworld" width={150} height={50} className="h-[50px] w-auto object-contain" />
+                            </Link>
+                        </div>
+
+                        {/* Links (Pill Style) */}
+                        <div className="nav-links bg-black/60 backdrop-blur-[10px] border border-white/20 rounded-[50px] px-[30px] py-[12px] gap-[15px] flex">
+                            <Link href="/" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
+                            <Link href="/communication" className="bg-[#D4AF37] text-black font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px]">COURS COM'</Link>
+                            <Link href="/inscription" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
+                            <Link href="/contact" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
+                            <Link href="/reglement" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
+                        </div>
                     </div>
 
-                    {/* === VERSION PC (PILULE) === */}
-                    <div className="nav-links desktop-menu hidden lg:inline-flex bg-black/60 backdrop-blur-[10px] border border-white/20 rounded-[50px] px-[30px] py-[12px] gap-[15px]">
-                        <Link href="/" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
-                        <Link href="/communication" className="bg-[#D4AF37] text-black font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px]">COURS COM'</Link>
-                        <Link href="/inscription" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
-                        <Link href="/contact" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
-                        <Link href="/reglement" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
-                    </div>
+                    {/* ==================================================================
+                        2. MOBILE MENU CONTAINER (.mobile-menu-container)
+                        - Visible ONLY below 900px (max-[900px]:block)
+                        - Hidden strictly above 900px (min-[901px]:hidden)
+                       ================================================================== */}
+                    <div className="mobile-menu-container min-[901px]:hidden block w-full absolute top-0 left-0 z-[200]">
 
-                    {/* === VERSION MOBILE (HEADER + DROPDOWN) === */}
-                    <div className="mobile-nav-container lg:hidden block w-full absolute top-0 left-0 z-[200]">
-
-                        {/* Le Header Mobile (Logo + Burger) */}
+                        {/* Mobile Header (Logo + Burger) */}
                         <div className="mobile-header flex justify-between items-center px-[20px] py-[15px] bg-transparent">
-                            {/* Logo (Visible mobile) */}
+                            {/* Logo Mobile */}
                             <div className="logo-mobile">
                                 <Link href="/">
                                     <Image src="/logo_cineworld.png" alt="Cinéworld" width={150} height={50} className="h-[40px] w-auto object-contain" />
                                 </Link>
                             </div>
 
-                            {/* Bouton Burger */}
+                            {/* Burger Button (Top Right) */}
                             <div
                                 className={`hamburger cursor-pointer p-[5px] bg-black/60 rounded-[5px] ${isMenuOpen ? 'open' : ''}`}
                                 onClick={toggleDropdown}
@@ -86,15 +99,15 @@ export default function CommunicationPage() {
                             </div>
                         </div>
 
-                        {/* Le Menu Déroulant (Caché par défaut) */}
+                        {/* Mobile Dropdown (Opaque Black Background) */}
                         <div
                             id="mobileDropdown"
-                            className={`mobile-dropdown bg-[#0a0a0a]/95 backdrop-blur-[10px] border-b-2 border-[#D4AF37] overflow-hidden transition-[max-height] duration-400 ease-in-out flex flex-col items-center w-full ${isMenuOpen ? 'max-h-[400px] active' : 'max-h-0'}`}
+                            className={`mobile-dropdown bg-black border-b-2 border-[#D4AF37] overflow-hidden transition-[max-height] duration-400 ease-in-out flex flex-col items-center w-full ${isMenuOpen ? 'max-h-[400px] active' : 'max-h-0'}`}
                         >
-                            <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/5 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">ACCUEIL</Link>
-                            <Link href="/communication" onClick={(e) => handleLinkClick(e, '/communication')} className="text-[#D4AF37] font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/5 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">COURS COM'</Link>
-                            <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/5 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">INSCRIPTION</Link>
-                            <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/5 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">CONTACT</Link>
+                            <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/10 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">ACCUEIL</Link>
+                            <Link href="/communication" onClick={(e) => handleLinkClick(e, '/communication')} className="text-[#D4AF37] font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/10 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">COURS COM'</Link>
+                            <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/10 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">INSCRIPTION</Link>
+                            <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/10 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">CONTACT</Link>
                             <Link href="/reglement" onClick={(e) => handleLinkClick(e, '/reglement')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">RÈGLEMENT</Link>
                         </div>
                     </div>
