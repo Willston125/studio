@@ -29,18 +29,18 @@ export default function CommunicationPage() {
             <div className="hero-wrapper bg-white rounded-b-[30px] md:rounded-b-[60px] pt-5 pb-10 relative text-center overflow-hidden min-h-auto md:min-h-[90vh] flex flex-col items-center">
 
                 {/* --- NAVIGATION PILULE --- */}
-                <div className="nav-container w-full flex justify-center px-2 md:px-[10px] mb-5 md:mb-[20px] relative z-[100]">
-                    <nav className="pill-nav bg-black inline-flex gap-[5px] px-5 py-[10px] rounded-[50px] max-w-full overflow-x-auto whitespace-nowrap scrollbar-hide">
-                        <Link href="/" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
-                        <Link href="#" className="bg-[#D4AF37] text-black font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px]">COURS COM'</Link>
-                        <Link href="/inscription" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
-                        <Link href="/contact" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
-                        <Link href="/reglement" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
+                <div className="nav-container w-full bg-black md:bg-transparent relative py-[10px] md:py-0 px-0 md:px-[10px] mb-0 md:mb-[20px] flex md:justify-center z-[100]">
+                    <nav className="pill-nav flex md:inline-flex w-full md:w-auto justify-start md:justify-center gap-[10px] md:gap-[5px] px-[20px] md:px-5 py-[15px] md:py-[10px] bg-transparent md:bg-black rounded-none md:rounded-[50px] overflow-x-auto whitespace-nowrap scrollbar-hide">
+                        <Link href="/" className="text-white font-display uppercase text-[0.8rem] shrink-0 bg-white/10 md:bg-transparent border border-white/10 md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]">ACCUEIL</Link>
+                        <Link href="#" className="bg-[#D4AF37] text-black font-display uppercase text-[0.8rem] shrink-0 border border-[#D4AF37] md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px]">COURS COM'</Link>
+                        <Link href="/inscription" className="text-white font-display uppercase text-[0.8rem] shrink-0 bg-white/10 md:bg-transparent border border-white/10 md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]">INSCRIPTION</Link>
+                        <Link href="/contact" className="text-white font-display uppercase text-[0.8rem] shrink-0 bg-white/10 md:bg-transparent border border-white/10 md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]">CONTACT</Link>
+                        <Link href="/reglement" className="text-white font-display uppercase text-[0.8rem] shrink-0 bg-white/10 md:bg-transparent border border-white/10 md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]">RÈGLEMENT</Link>
                     </nav>
                 </div>
 
                 {/* --- TITRE PRINCIPAL --- */}
-                <h1 className="text-black font-display text-[2.2rem] md:text-[3.5rem] leading-[1.1] mb-[10px] md:mb-[10px] uppercase max-w-[900px] px-[15px] relative z-10 mx-auto">
+                <h1 className="text-black font-display text-[2.2rem] md:text-[3.5rem] leading-[1.1] mt-[20px] pt-[20px] md:mt-0 md:pt-0 mb-[10px] md:mb-[10px] uppercase max-w-[900px] px-[15px] relative z-10 mx-auto">
                     MAÎTRISEZ L'ART DU <span className="text-[#D4AF37]">DIGITAL</span><br />
                     CRÉEZ. IMPACTEZ.
                 </h1>
