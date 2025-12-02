@@ -7,9 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CommunicationPage() {
     const [showQuote, setShowQuote] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleQuote = () => {
         setShowQuote(!showQuote);
+    };
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
     };
 
     // Auto-hide quote after 5 seconds
@@ -28,14 +33,35 @@ export default function CommunicationPage() {
             {/* --- HERO WRAPPER (PARTIE BLANCHE) --- */}
             <div className="hero-wrapper bg-white rounded-b-[30px] md:rounded-b-[60px] pt-5 pb-10 relative text-center overflow-hidden min-h-auto md:min-h-[90vh] flex flex-col items-center">
 
-                {/* --- NAVIGATION PILULE --- */}
-                <div className="nav-container w-full bg-black md:bg-transparent relative py-[10px] md:py-0 px-0 md:px-[10px] mb-0 md:mb-[20px] flex md:justify-center z-[100]">
-                    <nav className="pill-nav flex md:inline-flex w-full md:w-auto justify-start md:justify-center gap-[10px] md:gap-[5px] px-[20px] md:px-5 py-[15px] md:py-[10px] bg-transparent md:bg-black rounded-none md:rounded-[50px] overflow-x-auto whitespace-nowrap scrollbar-hide">
-                        <Link href="/" className="text-white font-display uppercase text-[0.8rem] shrink-0 bg-white/10 md:bg-transparent border border-white/10 md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]">ACCUEIL</Link>
-                        <Link href="#" className="bg-[#D4AF37] text-black font-display uppercase text-[0.8rem] shrink-0 border border-[#D4AF37] md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px]">COURS COM'</Link>
-                        <Link href="/inscription" className="text-white font-display uppercase text-[0.8rem] shrink-0 bg-white/10 md:bg-transparent border border-white/10 md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]">INSCRIPTION</Link>
-                        <Link href="/contact" className="text-white font-display uppercase text-[0.8rem] shrink-0 bg-white/10 md:bg-transparent border border-white/10 md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]">CONTACT</Link>
-                        <Link href="/reglement" className="text-white font-display uppercase text-[0.8rem] shrink-0 bg-white/10 md:bg-transparent border border-white/10 md:border-none px-[20px] md:px-4 py-[10px] md:py-2 rounded-[30px] md:rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]">RÈGLEMENT</Link>
+                {/* --- HAMBURGER BUTTON (Mobile Only) --- */}
+                <button
+                    onClick={toggleMenu}
+                    className="md:hidden absolute top-5 right-5 z-[200] flex flex-col justify-center items-center gap-1.5 w-10 h-10"
+                >
+                    <span className={`block w-8 h-[3px] bg-[#D4AF37] transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
+                    <span className={`block w-8 h-[3px] bg-[#D4AF37] transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+                    <span className={`block w-8 h-[3px] bg-[#D4AF37] transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                </button>
+
+                {/* --- MOBILE MENU OVERLAY --- */}
+                <div className={`md:hidden fixed inset-0 bg-black/95 z-[150] flex flex-col justify-center items-center transition-all duration-500 ${isMenuOpen ? 'right-0' : '-right-full'}`}>
+                    <nav className="flex flex-col gap-8 text-center">
+                        <Link href="/" onClick={toggleMenu} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">ACCUEIL</Link>
+                        <Link href="#" onClick={toggleMenu} className="text-[#D4AF37] font-display uppercase text-2xl">COURS COM'</Link>
+                        <Link href="/inscription" onClick={toggleMenu} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">INSCRIPTION</Link>
+                        <Link href="/contact" onClick={toggleMenu} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">CONTACT</Link>
+                        <Link href="/reglement" onClick={toggleMenu} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">RÈGLEMENT</Link>
+                    </nav>
+                </div>
+
+                {/* --- DESKTOP NAVIGATION PILULE (Hidden on Mobile) --- */}
+                <div className="hidden md:flex w-full justify-center px-[10px] mb-[20px] relative z-[100]">
+                    <nav className="pill-nav bg-black inline-flex gap-[5px] px-5 py-[10px] rounded-[50px]">
+                        <Link href="/" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
+                        <Link href="#" className="bg-[#D4AF37] text-black font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px]">COURS COM'</Link>
+                        <Link href="/inscription" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
+                        <Link href="/contact" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
+                        <Link href="/reglement" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
                     </nav>
                 </div>
 
