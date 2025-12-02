@@ -4,8 +4,6 @@ import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -19,7 +17,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(true);
   const [lastScrollY, setLastScrollY] = React.useState(0);
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +51,7 @@ export default function Navbar() {
       )}
     >
       <div className="container mx-auto px-6 md:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between navbar">
           {/* Left: Logo/Brand */}
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -67,8 +64,8 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Center: Navigation Links (Desktop) */}
-          <nav className="hidden md:flex nav-links">
+          {/* Center: Navigation Links (Desktop & Mobile) */}
+          <nav className="flex nav-links">
             {navLinks.map((link, index) => (
               <Link
                 key={`${link.label}-${index}`}
@@ -85,32 +82,8 @@ export default function Navbar() {
               Règlement
             </Link>
           </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button onClick={() => setIsMenuOpen(!isMenuOpen)} variant="ghost" size="icon" className="text-white">
-              {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
-              <span className="sr-only">Ouvrir le menu</span>
-            </Button>
-          </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-xl absolute top-full left-0 w-full border-t border-white/10">
-          <nav className="flex flex-col items-center gap-6 p-8">
-            {navLinks.map((link, index) => (
-              <Link key={`${link.label}-${index}-mobile`} href={link.href} className="text-xl font-medium text-neutral-200 hover:text-[#FFD700] transition-colors font-body" onClick={() => setIsMenuOpen(false)}>
-                {link.label}
-              </Link>
-            ))}
-            <Link href="/reglement" className="text-xl font-medium text-[#D4AF37] hover:text-white transition-colors font-body uppercase" onClick={() => setIsMenuOpen(false)}>
-              Règlement
-            </Link>
-          </nav>
-        </div>
-      )}
     </header>
   );
 }
