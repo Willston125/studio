@@ -66,7 +66,7 @@ export default function Navbar() {
           </Link>
 
           {/* Center: Navigation Links (Desktop & Mobile) */}
-          <nav className="flex nav-links">
+          <nav className="nav-links">
             {navLinks.map((link, index) => (
               <Link
                 key={`${link.label}-${index}`}
