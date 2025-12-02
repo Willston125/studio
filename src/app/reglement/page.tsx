@@ -49,7 +49,7 @@ export default function ReglementPage() {
 
                     {!isSubmitted ? (
                         <>
-                            <div className="flex-grow md:overflow-y-auto pr-0 md:pr-5 text-base leading-[1.8] text-justify space-y-6 scrollbar-thin scrollbar-track-white/5 scrollbar-thumb-[#D4AF37]">
+                            <div className="flex-grow md:overflow-y-auto pr-0 md:pr-5 text-base leading-[1.8] text-justify space-y-6 scrollbar-thin scrollbar-track-white/5 scrollbar-thumb-[#D4AF37] max-[900px]:h-[350px] max-[900px]:overflow-y-auto max-[900px]:block max-[900px]:bg-black/40 max-[900px]:border max-[900px]:border-[#444] max-[900px]:p-[15px] max-[900px]:mb-[20px]">
                                 <p><strong>CONTRAT DE FORMATION ET RÈGLEMENT INTÉRIEUR</strong><br />
                                     Cinéworld - Masterclass "L'Art du Visuel"</p>
 
