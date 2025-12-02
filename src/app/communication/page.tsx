@@ -44,40 +44,49 @@ export default function CommunicationPage() {
             {/* --- HERO WRAPPER (PARTIE BLANCHE) --- */}
             <div className="hero-wrapper bg-white rounded-b-[30px] md:rounded-b-[60px] pt-5 pb-10 relative text-center overflow-hidden min-h-auto md:min-h-[90vh] flex flex-col items-center">
 
-                {/* --- HAMBURGER BUTTON (Mobile Only) --- */}
-                <button
-                    onClick={toggleMenu}
-                    className="md:hidden absolute top-5 right-5 z-[200] flex flex-col justify-center items-center gap-1.5 w-10 h-10"
-                >
-                    <span className={`block w-8 h-[3px] bg-[#D4AF37] transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
-                    <span className={`block w-8 h-[3px] bg-[#D4AF37] transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                    <span className={`block w-8 h-[3px] bg-[#D4AF37] transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-                </button>
+                {/* --- NAVBAR (Logo + Links + Burger) --- */}
+                <div className="navbar absolute top-0 w-full z-[1000] flex justify-between items-center px-[20px] py-[15px] md:px-[40px] md:py-[20px]">
 
-                {/* --- MOBILE MENU OVERLAY --- */}
-                <div className={`md:hidden fixed inset-0 bg-black/95 z-[150] flex flex-col justify-center items-center transition-all duration-500 ${isMenuOpen ? 'right-0' : '-right-full'}`}>
-                    <nav className="flex flex-col gap-8 text-center">
-                        <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">ACCUEIL</Link>
-                        <Link href="#" onClick={(e) => handleLinkClick(e, '#')} className="text-[#D4AF37] font-display uppercase text-2xl">COURS COM'</Link>
-                        <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">INSCRIPTION</Link>
-                        <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">CONTACT</Link>
-                        <Link href="/reglement" onClick={(e) => handleLinkClick(e, '/reglement')} className="text-white font-display uppercase text-2xl hover:text-[#D4AF37] transition-colors">RÈGLEMENT</Link>
+                    {/* LOGO */}
+                    <div className="logo shrink-0">
+                        <Link href="/">
+                            <Image src="/logo_cineworld.png" alt="Cinéworld" width={150} height={50} className="h-[40px] md:h-[50px] w-auto object-contain" />
+                        </Link>
+                    </div>
+
+                    {/* DESKTOP NAV LINKS (Pill Style) */}
+                    <nav className="hidden md:flex nav-links bg-black/60 backdrop-blur-md border border-white/20 rounded-[50px] px-[30px] py-[10px] gap-[15px]">
+                        <Link href="/" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
+                        <Link href="/communication" className="bg-[#D4AF37] text-black font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px]">COMMUNICATION</Link>
+                        <Link href="/inscription" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
+                        <Link href="/contact" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
+                        <Link href="/reglement" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[20px] py-[8px] rounded-[30px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
                     </nav>
+
+                    {/* HAMBURGER BUTTON (Mobile Only) */}
+                    <div
+                        onClick={toggleMenu}
+                        className={`hamburger md:hidden block cursor-pointer z-[2000] ${isMenuOpen ? 'open' : ''}`}
+                    >
+                        <span className={`block w-[30px] h-[3px] bg-[#D4AF37] rounded-[2px] my-[6px] transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-[9px] bg-white' : ''}`}></span>
+                        <span className={`block w-[30px] h-[3px] bg-[#D4AF37] rounded-[2px] my-[6px] transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+                        <span className={`block w-[30px] h-[3px] bg-[#D4AF37] rounded-[2px] my-[6px] transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-[9px] bg-white' : ''}`}></span>
+                    </div>
                 </div>
 
-                {/* --- DESKTOP NAVIGATION PILULE (Hidden on Mobile) --- */}
-                <div className="hidden md:flex w-full justify-center px-[10px] mb-[20px] relative z-[100]">
-                    <nav className="pill-nav bg-black inline-flex gap-[5px] px-5 py-[10px] rounded-[50px]">
-                        <Link href="/" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
-                        <Link href="#" className="bg-[#D4AF37] text-black font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px]">COURS COM'</Link>
-                        <Link href="/inscription" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
-                        <Link href="/contact" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
-                        <Link href="/reglement" className="text-white font-display uppercase text-[0.8rem] px-4 py-2 rounded-[20px] transition-all hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
+                {/* --- MOBILE MENU OVERLAY --- */}
+                <div id="navLinks" className={`md:hidden fixed inset-0 bg-black/95 z-[1500] flex flex-col justify-center items-center transition-all duration-400 ease-in-out gap-[30px] ${isMenuOpen ? 'right-0 active' : '-right-full'}`}>
+                    <nav className="flex flex-col gap-[30px] text-center">
+                        <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-[1.5rem] hover:text-[#D4AF37] transition-colors">ACCUEIL</Link>
+                        <Link href="/communication" onClick={(e) => handleLinkClick(e, '/communication')} className="text-[#D4AF37] font-display uppercase text-[1.5rem]">COMMUNICATION</Link>
+                        <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-[1.5rem] hover:text-[#D4AF37] transition-colors">INSCRIPTION</Link>
+                        <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-[1.5rem] hover:text-[#D4AF37] transition-colors">CONTACT</Link>
+                        <Link href="/reglement" onClick={(e) => handleLinkClick(e, '/reglement')} className="text-white font-display uppercase text-[1.5rem] hover:text-[#D4AF37] transition-colors">RÈGLEMENT</Link>
                     </nav>
                 </div>
 
                 {/* --- TITRE PRINCIPAL --- */}
-                <h1 className="text-black font-display text-[2.2rem] md:text-[3.5rem] leading-[1.1] mt-[20px] pt-[20px] md:mt-0 md:pt-0 mb-[10px] md:mb-[10px] uppercase max-w-[900px] px-[15px] relative z-10 mx-auto">
+                <h1 className="text-black font-display text-[2.2rem] md:text-[3.5rem] leading-[1.1] mt-[100px] md:mt-[120px] mb-[10px] md:mb-[10px] uppercase max-w-[900px] px-[15px] relative z-10 mx-auto">
                     MAÎTRISEZ L'ART DU <span className="text-[#D4AF37]">DIGITAL</span><br />
                     CRÉEZ. IMPACTEZ.
                 </h1>
