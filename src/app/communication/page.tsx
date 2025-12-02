@@ -15,7 +15,7 @@ export default function CommunicationPage() {
         setShowQuote(!showQuote);
     };
 
-    const toggleMobileMenu = () => {
+    const toggleDropdown = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
@@ -44,49 +44,54 @@ export default function CommunicationPage() {
             {/* --- HERO WRAPPER (PARTIE BLANCHE) --- */}
             <div className="hero-wrapper bg-white rounded-b-[30px] md:rounded-b-[60px] pt-5 pb-10 relative text-center overflow-hidden min-h-auto md:min-h-[90vh] flex flex-col items-center">
 
-                {/* --- NAVBAR (Logo + Links + Burger) --- */}
+                {/* --- NAVBAR --- */}
                 <nav className="navbar absolute top-0 w-full z-[100] flex justify-center items-center px-[20px] py-[20px]">
 
-                    {/* LOGO (Positionné en absolu à gauche pour ne pas gêner le centrage du menu) */}
-                    <div className="logo absolute left-[20px] md:left-[40px] top-[15px] md:top-[20px] shrink-0">
-                        <Link href="/">
-                            <Image src="/logo_cineworld.png" alt="Cinéworld" width={150} height={50} className="h-[40px] md:h-[50px] w-auto object-contain" />
-                        </Link>
-                    </div>
-
-                    {/* MENU PC (PILULE) - Centré */}
-                    <div className="nav-links desktop-menu hidden md:inline-flex bg-black/80 backdrop-blur-[10px] border border-white/20 rounded-[50px] px-[30px] py-[12px] gap-[15px]">
-                        <Link href="/" className="text-white font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
+                    {/* === VERSION PC (PILULE) === */}
+                    <div className="nav-links desktop-menu hidden md:inline-flex bg-black/60 backdrop-blur-[10px] border border-white/20 rounded-[50px] px-[30px] py-[12px] gap-[15px]">
+                        <Link href="/" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">ACCUEIL</Link>
                         <Link href="/communication" className="bg-[#D4AF37] text-black font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px]">COURS COM'</Link>
-                        <Link href="/inscription" className="text-white font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
-                        <Link href="/contact" className="text-white font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
-                        <Link href="/reglement" className="text-white font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
+                        <Link href="/inscription" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">INSCRIPTION</Link>
+                        <Link href="/contact" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">CONTACT</Link>
+                        <Link href="/reglement" className="text-[#e0e0e0] font-display uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">RÈGLEMENT</Link>
                     </div>
 
-                    {/* BOUTON BURGER (Visible seulement sur mobile, Absolu Top Right) */}
-                    <div
-                        onClick={toggleMobileMenu}
-                        className="hamburger md:hidden block absolute top-[20px] right-[20px] cursor-pointer z-[200] bg-black p-[10px] rounded-[5px] border border-[#333]"
-                    >
-                        <div className="bar block w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300"></div>
-                        <div className="bar block w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300"></div>
-                        <div className="bar block w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300"></div>
-                    </div>
+                    {/* === VERSION MOBILE (HEADER + DROPDOWN) === */}
+                    <div className="mobile-nav-container md:hidden block w-full absolute top-0 left-0 z-[200]">
 
-                    {/* MENU MOBILE (OVERLAY) - Fade In/Out */}
-                    <div id="mobileMenu" className={`mobile-menu-overlay md:hidden fixed inset-0 bg-black/98 z-[999] flex flex-col justify-center items-center transition-all duration-400 ease-out ${isMenuOpen ? 'opacity-100 visible active' : 'opacity-0 invisible'}`}>
+                        {/* Le Header Mobile (Logo + Burger) */}
+                        <div className="mobile-header flex justify-between items-center px-[20px] py-[15px] bg-transparent">
+                            {/* Logo (Visible mobile) */}
+                            <div className="logo-mobile">
+                                <Link href="/">
+                                    <Image src="/logo_cineworld.png" alt="Cinéworld" width={150} height={50} className="h-[40px] w-auto object-contain" />
+                                </Link>
+                            </div>
 
-                        {/* Bouton Fermer (Croix) */}
-                        <div className="close-btn absolute top-[30px] right-[30px] text-[#D4AF37] text-[2rem] font-bold cursor-pointer hover:scale-110 transition-transform" onClick={toggleMobileMenu}>✕</div>
+                            {/* Bouton Burger */}
+                            <div
+                                className={`hamburger cursor-pointer p-[5px] bg-black/60 rounded-[5px] ${isMenuOpen ? 'open' : ''}`}
+                                onClick={toggleDropdown}
+                            >
+                                <div className={`bar w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-x-[5px] translate-y-[6px]' : ''}`}></div>
+                                <div className={`bar w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></div>
+                                <div className={`bar w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300 ${isMenuOpen ? '-rotate-45 translate-x-[5px] -translate-y-[6px]' : ''}`}></div>
+                            </div>
+                        </div>
 
-                        <div className="mobile-links flex flex-col gap-[30px] text-center">
-                            <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">ACCUEIL</Link>
-                            <Link href="/communication" onClick={(e) => handleLinkClick(e, '/communication')} className="text-[#D4AF37] font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:scale-110">COURS COM'</Link>
-                            <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">INSCRIPTION</Link>
-                            <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">CONTACT</Link>
-                            <Link href="/reglement" onClick={(e) => handleLinkClick(e, '/reglement')} className="text-white font-display uppercase text-[1.5rem] tracking-[2px] transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">RÈGLEMENT</Link>
+                        {/* Le Menu Déroulant (Caché par défaut) */}
+                        <div
+                            id="mobileDropdown"
+                            className={`mobile-dropdown bg-[#0a0a0a]/95 backdrop-blur-[10px] border-b-2 border-[#D4AF37] overflow-hidden transition-[max-height] duration-400 ease-in-out flex flex-col items-center w-full ${isMenuOpen ? 'max-h-[400px] active' : 'max-h-0'}`}
+                        >
+                            <Link href="/" onClick={(e) => handleLinkClick(e, '/')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/5 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">ACCUEIL</Link>
+                            <Link href="/communication" onClick={(e) => handleLinkClick(e, '/communication')} className="text-[#D4AF37] font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/5 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">COURS COM'</Link>
+                            <Link href="/inscription" onClick={(e) => handleLinkClick(e, '/inscription')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/5 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">INSCRIPTION</Link>
+                            <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center border-b border-white/5 transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">CONTACT</Link>
+                            <Link href="/reglement" onClick={(e) => handleLinkClick(e, '/reglement')} className="text-white font-display uppercase text-[1rem] p-[15px] w-full text-center transition-all duration-200 hover:bg-[#222] hover:text-[#D4AF37]">RÈGLEMENT</Link>
                         </div>
                     </div>
+
                 </nav>
 
                 {/* --- TITRE PRINCIPAL --- */}
