@@ -40,8 +40,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  // Hide Navbar on Inscription page for distraction-free layout
-  if (pathname === '/inscription') return null;
+  // Hide Navbar on Inscription and Communication pages
+  if (pathname === '/inscription' || pathname === '/communication') return null;
 
   return (
     <header
