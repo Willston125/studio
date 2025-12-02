@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         body: ["'Montserrat'", 'sans-serif'],
         headline: ["'Bebas Neue'", 'sans-serif'],
+        display: ["'Oswald'", 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
