@@ -26,9 +26,9 @@ export default function Navbar() {
           <Image
             src="/logo_cineworld.png"
             alt="Cinéworld"
-            width={120}
-            height={40}
-            className="h-[40px] w-auto object-contain"
+            width={200}
+            height={90}
+            className="h-[90px] max-[900px]:h-[70px] w-auto object-contain transition-transform duration-300 hover:scale-110"
           />
         </Link>
       </div>
