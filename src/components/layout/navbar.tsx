@@ -18,7 +18,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar relative p-5 flex justify-center z-[500] max-[900px]:justify-end max-[900px]:px-5 max-[900px]:py-[15px]">
+    <nav className="navbar relative p-5 flex justify-center z-[9999] max-[900px]:justify-end max-[900px]:px-5 max-[900px]:py-[15px]">
 
       {/* LOGO (Optional / As per request) */}
       <div className="logo-container absolute left-[20px] top-[20px] max-[900px]:left-[20px]">

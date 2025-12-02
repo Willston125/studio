@@ -39,8 +39,8 @@ export default function ReglementPage() {
             </div>
 
             {/* --- CONTENU PRINCIPAL --- */}
-            <div className="relative z-10 flex-grow flex items-center justify-center p-5 md:p-10 pt-32 md:pt-40 h-screen">
-                <div className="w-full max-w-4xl bg-[#141414]/65 backdrop-blur-[12px] border border-white/15 rounded-[15px] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col h-[80vh] md:h-[85vh]">
+            <div className="relative z-10 flex-grow flex items-center justify-center p-5 md:p-10 pt-32 md:pt-40 min-h-screen">
+                <div className="w-full max-w-4xl bg-[#141414]/65 backdrop-blur-[12px] border border-white/15 rounded-[15px] p-6 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col h-auto md:h-[85vh]">
 
                     <div className="text-center mb-8 border-b-2 border-[#D4AF37] pb-5 shrink-0">
                         <h1 className="font-oswald text-3xl md:text-4xl text-[#D4AF37] uppercase tracking-[2px] mb-2.5">Règlement Intérieur</h1>
@@ -49,7 +49,7 @@ export default function ReglementPage() {
 
                     {!isSubmitted ? (
                         <>
-                            <div className="flex-grow overflow-y-auto pr-5 text-base leading-[1.8] text-justify space-y-6 scrollbar-thin scrollbar-track-white/5 scrollbar-thumb-[#D4AF37]">
+                            <div className="flex-grow md:overflow-y-auto pr-0 md:pr-5 text-base leading-[1.8] text-justify space-y-6 scrollbar-thin scrollbar-track-white/5 scrollbar-thumb-[#D4AF37]">
                                 <p><strong>CONTRAT DE FORMATION ET RÈGLEMENT INTÉRIEUR</strong><br />
                                     Cinéworld - Masterclass "L'Art du Visuel"</p>
 
@@ -141,7 +141,7 @@ export default function ReglementPage() {
                                             <label className="flex items-start gap-3 cursor-pointer group">
                                                 <div className="relative flex items-center mt-0.5">
                                                     <input type="checkbox" {...register("check_remboursement", { required: true })} className="peer sr-only" />
-                                                    <div className="w-5 h-5 border-2 border-[#555] rounded bg-transparent peer-checked:bg-[#E50914] peer-checked:border-[#E50914] flex items-center justify-center transition-all shrink-0">
+                                                    <div className="w-5 h-5 border-2 border-[#555] rounded bg-transparent peer-checked:bg-[#E50914] peer-checked:border-[#E50914] peer-focus:ring-2 peer-focus:ring-[#D4AF37] peer-focus:ring-offset-2 peer-focus:ring-offset-black flex items-center justify-center transition-all shrink-0">
                                                         <CheckCircle size={12} className="text-white opacity-0 peer-checked:opacity-100" />
                                                     </div>
                                                 </div>
@@ -154,7 +154,7 @@ export default function ReglementPage() {
                                             <label className="flex items-start gap-3 cursor-pointer group">
                                                 <div className="relative flex items-center mt-0.5">
                                                     <input type="checkbox" {...register("check_assiduite", { required: true })} className="peer sr-only" />
-                                                    <div className="w-5 h-5 border-2 border-[#555] rounded bg-transparent peer-checked:bg-[#E50914] peer-checked:border-[#E50914] flex items-center justify-center transition-all shrink-0">
+                                                    <div className="w-5 h-5 border-2 border-[#555] rounded bg-transparent peer-checked:bg-[#E50914] peer-checked:border-[#E50914] peer-focus:ring-2 peer-focus:ring-[#D4AF37] peer-focus:ring-offset-2 peer-focus:ring-offset-black flex items-center justify-center transition-all shrink-0">
                                                         <CheckCircle size={12} className="text-white opacity-0 peer-checked:opacity-100" />
                                                     </div>
                                                 </div>
@@ -167,7 +167,7 @@ export default function ReglementPage() {
                                             <label className="flex items-start gap-3 cursor-pointer group">
                                                 <div className="relative flex items-center mt-0.5">
                                                     <input type="checkbox" {...register("check_image", { required: true })} className="peer sr-only" />
-                                                    <div className="w-5 h-5 border-2 border-[#555] rounded bg-transparent peer-checked:bg-[#E50914] peer-checked:border-[#E50914] flex items-center justify-center transition-all shrink-0">
+                                                    <div className="w-5 h-5 border-2 border-[#555] rounded bg-transparent peer-checked:bg-[#E50914] peer-checked:border-[#E50914] peer-focus:ring-2 peer-focus:ring-[#D4AF37] peer-focus:ring-offset-2 peer-focus:ring-offset-black flex items-center justify-center transition-all shrink-0">
                                                         <CheckCircle size={12} className="text-white opacity-0 peer-checked:opacity-100" />
                                                     </div>
                                                 </div>
