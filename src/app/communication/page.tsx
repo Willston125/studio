@@ -19,84 +19,7 @@ export default function CommunicationPage() {
                 setShowQuote(false);
             }, 5000);
             return () => clearTimeout(timer);
-        }
-    }, [showQuote]);
-
-    return (
-        <main className="bg-[#050505] text-white min-h-screen font-body overflow-x-hidden">
-
-            {/* --- HERO ZYLO STRUCTURE (STRICT) --- */}
-            <section className="zylo-hero-wrapper flex flex-col md:flex-row items-center justify-between px-[5%] py-[60px] bg-black text-white min-h-[90vh] gap-[40px]">
-
-                {/* --- GAUCHE : TEXTE (40%) --- */}
-                <div className="zylo-text-side w-full md:w-[40%] text-center md:text-left">
-                    <div className="brand-badge inline-block bg-[#222] text-[#D4AF37] px-[15px] py-[5px] rounded-full text-[0.9rem] font-bold uppercase tracking-wider mb-[20px] border border-[#333]">
-                        ✨ Nouveau Module
-                    </div>
-                    <h1 className="text-[3.5rem] md:text-[4rem] font-[800] leading-[1.1] my-[20px]">
-                        AUTOMATISEZ VOTRE <br />
-                        <span className="text-[#D4AF37]">CROISSANCE</span>
-                    </h1>
-                    <p className="text-[#ccc] text-[1.1rem] leading-[1.6] mb-[30px]">
-                        Rejoignez un réseau où créateurs et marques collaborent. Du branding au montage, maîtrisez l'impact digital.
-                    </p>
-
-                    <div className="zylo-actions">
-                        <a href="#programme" className="btn-main bg-white text-black px-[35px] py-[15px] rounded-[50px] font-bold inline-block hover:bg-gray-200 transition-colors text-[1.1rem]">
-                            Commencer
-                        </a>
-
-                        <div className="pills-container mt-[30px] flex gap-[10px] flex-wrap justify-center md:justify-start">
-                            <span className="pill border border-[#333] px-[20px] py-[10px] rounded-[50px] text-[0.9rem] bg-[#111]">Stratégie +</span>
-                            <span className="pill border border-[#333] px-[20px] py-[10px] rounded-[50px] text-[0.9rem] bg-[#111]">Branding +</span>
-                            <span className="pill border border-[#333] px-[20px] py-[10px] rounded-[50px] text-[0.9rem] bg-[#111]">Montage</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* --- DROITE : GRILLE (55%) --- */}
-                <div className="zylo-grid-side w-full md:w-[55%] flex gap-[20px]">
-
-                    {/* Colonne A (Gauche) */}
-                    <div className="grid-column flex flex-col gap-[20px] w-1/2">
-                        {/* Haut : GRANDE carte verticale (Portrait) */}
-                        <div className="card card-tall h-[400px] bg-[#222] rounded-[40px] overflow-hidden relative group">
-                            <Image
-                                src="/formateur-mentor.png"
-                                alt="Mentor Portrait"
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                        </div>
-                        {/* Bas : PETITE carte (Communauté) */}
-                        <div className="card card-short h-[200px] bg-[#333] rounded-[40px] flex flex-col justify-center items-center text-center p-4">
-                            <div className="avatars text-[2rem] mb-2">👤👤👤</div>
-                            <span className="font-bold text-[1.1rem]">Rejoignez-nous</span>
-                        </div>
-                    </div>
-
-                    {/* Colonne B (Droite) */}
-                    <div className="grid-column flex flex-col gap-[20px] w-1/2">
-                        {/* Haut : PETITE carte (Chiffre clé) */}
-                        <div className="card card-short h-[200px] bg-[#333] rounded-[40px] flex flex-col justify-center items-center text-center p-4">
-                            <span className="stat-val text-[#D4AF37] text-[3rem] font-[800] leading-none">+50</span>
-                            <span className="stat-label text-[1rem] font-medium uppercase mt-2">Marques</span>
-                        </div>
-                        {/* Bas : GRANDE carte verticale (Action) */}
-                        <div className="card card-tall h-[400px] bg-[#222] rounded-[40px] overflow-hidden relative group">
-                            <Image
-                                src="/mentor-formateur.png"
-                                alt="Action Mentor"
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            {/* --- PARTIE BASSE (NOIRE) - PROGRAMME --- */}
+            {/* --- PARTIE BASSE (NOIRE) - PROGRAMME --- */ }
             <div className="dark-section bg-[#050505] py-[60px] px-[20px] text-center" id="programme">
                 <h2 className="section-title text-[#D4AF37] font-display text-[2.5rem] mb-[50px] uppercase">LE PROGRAMME COMPLET</h2>
 
@@ -143,6 +66,6 @@ export default function CommunicationPage() {
                 </Link>
             </div>
 
-        </main>
+        </main >
     );
 }
