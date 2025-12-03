@@ -25,96 +25,81 @@ export default function CommunicationPage() {
     return (
         <main className="bg-[#050505] text-white min-h-screen font-body overflow-x-hidden">
 
-            {/* --- HERO WRAPPER (PARTIE BLANCHE) --- */}
-            <div className="hero-wrapper bg-white rounded-b-[30px] md:rounded-b-[60px] pt-5 pb-10 relative text-center overflow-hidden min-h-auto md:min-h-[90vh] flex flex-col items-center">
+            {/* --- HERO COMMUNICATION (BENTO UI) --- */}
+            <section className="hero-communication bg-white rounded-b-[30px] md:rounded-b-[60px] pt-[120px] pb-[60px] px-[20px] md:px-[50px] relative overflow-hidden">
+                <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
 
-                {/* --- NAVBAR REMOVED (Using Global Navbar) --- */}
-
-                {/* --- TITRE PRINCIPAL --- */}
-                <h1 className="text-black font-display text-[2.2rem] md:text-[3.5rem] leading-[1.1] mt-[100px] md:mt-[120px] mb-[10px] md:mb-[10px] uppercase max-w-[900px] px-[15px] relative z-10 mx-auto">
-                    MAÎTRISEZ L'ART DU <span className="text-[#D4AF37]">DIGITAL</span><br />
-                    CRÉEZ. IMPACTEZ.
-                </h1>
-
-                {/* --- Décoration Étoile --- */}
-                <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    className="deco-spark absolute top-[10px] md:top-[50px] left-[10px] md:left-[5%] text-[#D4AF37] text-[2rem] md:text-[3rem] opacity-80"
-                >
-                    ✶
-                </motion.div>
-
-                {/* --- GRILLE CENTRALE (Mise en scène) --- */}
-                <div className="hero-grid relative w-full max-w-[1200px] h-auto md:h-[600px] mt-0 md:mt-[20px] flex flex-col md:flex-row justify-center items-center md:items-end mx-auto">
-
-                    {/* TEXTE GAUCHE */}
-                    <div className="intro-text-box order-2 md:order-1 relative md:absolute md:left-[5%] md:top-[30%] w-[90%] md:w-[280px] text-center md:text-left z-[5] mt-[40px] md:mt-0 mb-[20px] md:mb-0 mx-auto md:mx-0">
-                        <span className="mini-title text-[#D4AF37] font-bold uppercase tracking-[1px] mb-[10px] block text-[0.9rem]">INNOVATE YOUR BRAND</span>
-                        <p className="intro-desc text-[0.9rem] text-[#555] leading-[1.6] mb-[20px]">
-                            Du graphisme au marketing, nous vous livrons les stratégies innovantes qui élèvent votre marque. Créons quelque chose d'exceptionnel ensemble.
+                    {/* --- GAUCHE : CONTENU TEXTE (40%) --- */}
+                    <div className="lg:col-span-5 text-center lg:text-left z-10">
+                        <div className="badge-new inline-block bg-[#f0f0f0] text-black px-[15px] py-[5px] rounded-full text-[0.8rem] font-bold uppercase tracking-wider mb-[20px] border border-[#e0e0e0]">
+                            Nouveau Module
+                        </div>
+                        <h1 className="text-black font-display text-[2.5rem] md:text-[3.5rem] leading-[1.1] mb-[20px] uppercase">
+                            DEVENEZ UN STRATÈGE <br />
+                            <span className="text-[#D4AF37]">DE LA COMMUNICATION</span>
+                        </h1>
+                        <p className="text-[#555] text-[1rem] md:text-[1.1rem] leading-[1.6] mb-[30px] max-w-[500px] mx-auto lg:mx-0">
+                            Branding, Réseaux Sociaux, Publicité : apprenez à faire entendre votre voix et à construire une image de marque puissante.
                         </p>
-                        <Link href="#programme" className="btn-pill-black px-[25px] py-[10px] border border-black rounded-[50px] text-black font-display text-[0.85rem] transition-all inline-block bg-transparent hover:bg-black hover:text-white">
-                            Voir le Programme
-                        </Link>
-
-                        {/* FLÈCHE DESSINÉE (Desktop only) */}
-                        <svg className="curly-arrow hidden md:block absolute -right-[50px] -bottom-[30px] w-[60px] -rotate-[20deg]" viewBox="0 0 100 100">
-                            <path d="M10,10 Q50,10 50,50 T90,90" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" markerEnd="url(#arrowhead)" />
-                            <defs>
-                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                                    <polygon points="0 0, 10 3.5, 0 7" fill="black" />
-                                </marker>
-                            </defs>
-                        </svg>
+                        <a href="#programme" className="btn-com inline-block bg-black text-white px-[30px] py-[15px] rounded-full font-bold uppercase tracking-wide hover:bg-[#D4AF37] hover:text-black transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            Se former maintenant
+                        </a>
                     </div>
 
-                    {/* IMAGE CENTRALE */}
-                    <div className="hero-image-container order-1 md:order-2 relative z-10 cursor-pointer transition-transform duration-300 hover:scale-[1.01] mt-[20px] md:mt-0 w-full flex justify-center" onClick={toggleQuote}>
+                    {/* --- DROITE : MOSAÏQUE (60%) --- */}
+                    <div className="lg:col-span-7 relative">
+                        <div className="bento-grid grid grid-cols-2 md:grid-cols-3 gap-[15px] md:gap-[20px] h-auto md:h-[500px]">
 
-                        {/* CERCLE FOND */}
-                        <div className="circle-backdrop absolute w-[300px] h-[300px] md:w-[550px] md:h-[550px] bg-[#f4f4f4] rounded-full -bottom-[20px] md:-bottom-[100px] left-1/2 -translate-x-1/2 z-[1]"></div>
+                            {/* Carte 1 : Grande Image Verticale */}
+                            <div className="card-vertical col-span-2 md:col-span-1 md:row-span-2 bg-[#f4f4f4] rounded-[20px] overflow-hidden relative group h-[300px] md:h-full">
+                                <Image
+                                    src="/mentor-formateur.png"
+                                    alt="Étudiant en présentation"
+                                    fill
+                                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-[20px]">
+                                    <span className="text-white font-display text-[1.2rem]">Mentorat</span>
+                                </div>
+                            </div>
 
-                        {/* BULLE CITATION */}
-                        <AnimatePresence>
-                            {showQuote && (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8, y: 20, x: "-50%" }}
-                                    animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}
-                                    exit={{ opacity: 0, scale: 0.8, y: 20, x: "-50%" }}
-                                    className="quote-bubble absolute top-0 md:top-[50px] left-1/2 md:left-auto md:right-[-150px] bg-white p-[15px] rounded-[15px] rounded-bl-none shadow-[0_10px_30px_rgba(0,0,0,0.15)] w-[220px] md:w-[240px] text-left border-2 border-[#D4AF37] z-[20] md:translate-x-0"
-                                >
-                                    <p className="quote-text font-display text-[1rem] text-black italic">"La créativité c'est l'intelligence qui s'amuse."</p>
-                                    <span className="quote-author block mt-[5px] text-[0.8rem] text-[#D4AF37] font-bold">- Ali William</span>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                            {/* Carte 2 : Chiffre Clé */}
+                            <div className="card-stat bg-[#D4AF37] rounded-[20px] p-[20px] flex flex-col justify-center items-center text-center text-black relative overflow-hidden group">
+                                <div className="absolute top-[-20px] right-[-20px] text-white/20 text-[8rem] font-display leading-none rotate-12 group-hover:rotate-0 transition-transform duration-500">50</div>
+                                <span className="text-[3rem] font-display font-bold leading-none relative z-10">+50</span>
+                                <span className="text-[0.9rem] font-medium uppercase tracking-wide relative z-10">Marques Accompagnées</span>
+                            </div>
 
-                        {/* IMAGE */}
-                        <Image
-                            src="/mentor-formateur.png"
-                            alt="Ali William"
-                            width={600}
-                            height={800}
-                            className="ali-photo h-[350px] md:h-[550px] w-auto object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.3)] relative z-10"
-                            priority
-                        />
+                            {/* Carte 3 : Outils (Visuel) */}
+                            <div className="card-tools bg-[#111] rounded-[20px] p-[20px] flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                                <div className="flex gap-4 mb-2 relative z-10">
+                                    {/* Fake Logos for demo */}
+                                    <div className="w-[40px] h-[40px] bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xs">C</div>
+                                    <div className="w-[40px] h-[40px] bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold text-xs">IG</div>
+                                </div>
+                                <span className="text-white text-[0.9rem] font-medium relative z-10">Maîtrisez les outils</span>
+                                <span className="text-[#888] text-[0.7rem] relative z-10">Canva, Meta Ads, TikTok</span>
+                            </div>
 
-                        {/* Petit bouton indicateur */}
-                        <div className="absolute bottom-[20px] right-[20px] bg-white px-[12px] py-[5px] rounded-[20px] text-[0.7rem] text-[#888] shadow-[0_4px_10px_rgba(0,0,0,0.1)] pointer-events-none z-20">
-                            👆 Cliquez sur moi
+                            {/* Carte 4 : Visuel Extra (Pour remplir la grille) */}
+                            <div className="card-extra col-span-2 md:col-span-2 bg-[#f8f8f8] rounded-[20px] p-[25px] flex items-center justify-between border border-[#eee] relative overflow-hidden">
+                                <div className="z-10">
+                                    <h3 className="font-display text-black text-[1.5rem] leading-tight mb-1">Stratégie <br />360°</h3>
+                                    <p className="text-[#666] text-[0.8rem]">De l'idée à la diffusion.</p>
+                                </div>
+                                <div className="w-[60px] h-[60px] rounded-full bg-white flex items-center justify-center shadow-md z-10 text-[#D4AF37] text-[1.5rem]">
+                                    ➔
+                                </div>
+                                {/* Decorative circle */}
+                                <div className="absolute right-[-20px] bottom-[-20px] w-[100px] h-[100px] bg-[#D4AF37]/10 rounded-full"></div>
+                            </div>
+
                         </div>
                     </div>
 
-                    {/* BADGE DROITE */}
-                    <div className="xp-badge order-3 md:order-3 relative md:absolute md:right-[10%] md:top-[35%] text-center z-[5] mt-[20px] md:mt-0 mb-[10px] md:mb-0">
-                        <div className="xp-stars text-[#D4AF37] text-[1rem] mb-[5px]">★★★★★</div>
-                        <div className="xp-number text-[3.5rem] font-display leading-[0.9] text-black font-bold">10 Ans</div>
-                        <div className="xp-label text-[0.9rem] text-[#777] font-medium">d'Expérience</div>
-                    </div>
-
                 </div>
-            </div>
+            </section>
 
             {/* --- PARTIE BASSE (NOIRE) - PROGRAMME --- */}
             <div className="dark-section bg-[#050505] py-[60px] px-[20px] text-center" id="programme">
