@@ -68,8 +68,8 @@ export default function CommunicationPage() {
                     <div className="visual-side w-full md:w-[50%] relative flex justify-center mb-[40px] md:mb-0">
                         <div className="relative z-10">
                             <Image
-                                src="/formateur-mentor.png"
-                                alt="Formateur"
+                                src="/mentor-formateur.png"
+                                alt="Mentor Formateur Communication"
                                 width={500}
                                 height={600}
                                 className="main-img max-w-full h-auto drop-shadow-2xl"
