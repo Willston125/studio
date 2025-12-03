@@ -19,7 +19,86 @@ export default function CommunicationPage() {
                 setShowQuote(false);
             }, 5000);
             return () => clearTimeout(timer);
-            {/* --- PARTIE BASSE (NOIRE) - PROGRAMME --- */ }
+        }
+    }, [showQuote]);
+
+    return (
+        <main className="bg-white min-h-screen font-sans overflow-x-hidden">
+
+            {/* --- HERO STRICT SEOC STYLE --- */}
+            <section className="hero-seoc-split relative bg-white overflow-hidden py-[80px] font-sans min-h-[90vh] flex items-center">
+
+                {/* Blobs */}
+                <div className="absolute w-[400px] h-[400px] bg-[#8e44ad] rounded-full blur-[80px] top-[-100px] left-[-100px] z-0 opacity-50"></div>
+                <div className="absolute w-[300px] h-[300px] bg-[#ff7675] rounded-full blur-[80px] bottom-[-50px] right-[-50px] z-0 opacity-50"></div>
+
+                <div className="container split-container flex flex-col-reverse md:flex-row items-center justify-between max-w-[1200px] mx-auto px-[20px] relative z-10">
+
+                    {/* --- GAUCHE : CONTENU (45%) --- */}
+                    <div className="content-side w-full md:w-[45%] text-center md:text-left relative">
+                        <div className="badge-pill inline-block bg-[#f3e5f5] text-[#8e44ad] px-[20px] py-[8px] rounded-[50px] font-bold mb-[20px]">
+                            🚀 Formation Certifiante 2025
+                        </div>
+
+                        <h1 className="text-[3.5rem] leading-[1.1] text-[#2c3e50] font-[800] mb-[20px]">
+                            Devenez un Expert du <br />
+                            <span className="text-[#8e44ad]">Design Digital</span>
+                        </h1>
+
+                        <p className="hero-desc text-[1.1rem] text-[#666] mb-[30px] leading-[1.6]">
+                            Ne créez plus au hasard. Apprenez à maîtriser <strong className="text-[#333] font-bold">Photoshop, Canva & l'IA</strong> pour propulser votre communication visuelle au niveau supérieur.
+                        </p>
+
+                        <div className="btn-group-left flex gap-[15px] justify-center md:justify-start flex-wrap">
+                            <a href="#inscription" className="btn-fill bg-[#8e44ad] text-white px-[30px] py-[15px] rounded-[50px] font-bold hover:bg-[#732d91] transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                Je m'inscris maintenant ↗
+                            </a>
+                            <a href="#programme" className="btn-outline border-2 border-[#f3e5f5] text-[#8e44ad] px-[30px] py-[15px] rounded-[50px] font-bold hover:bg-[#f3e5f5] transition-colors">
+                                Voir le programme
+                            </a>
+                        </div>
+
+                        {/* Doodle Arrow */}
+                        <div className="doodle-arrow absolute right-[-50px] bottom-[80px] text-[4rem] text-[#8e44ad] rotate-45 opacity-60 hidden md:block font-serif select-none pointer-events-none">
+                            ⤵
+                        </div>
+                    </div>
+
+                    {/* --- DROITE : VISUEL (50%) --- */}
+                    <div className="visual-side w-full md:w-[50%] relative flex justify-center mb-[40px] md:mb-0">
+                        <div className="relative z-10">
+                            <Image
+                                src="/formateur-mentor.png"
+                                alt="Formateur"
+                                width={500}
+                                height={600}
+                                className="main-img max-w-full h-auto drop-shadow-2xl"
+                            />
+                        </div>
+
+                        {/* Floating Card Top */}
+                        <div className="float-card card-top absolute top-[10%] right-0 bg-white p-[15px] rounded-[20px] shadow-xl flex items-center gap-[15px] z-20 animate-bounce-slow border border-gray-100">
+                            <span className="icon text-[1.5rem] bg-[#f3e5f5] p-[10px] rounded-[12px]">🎨</span>
+                            <div className="info flex flex-col text-left">
+                                <strong className="text-[#333]">+50 Modèles</strong>
+                                <small className="text-[#666]">Prêts à l'emploi</small>
+                            </div>
+                        </div>
+
+                        {/* Floating Card Bottom */}
+                        <div className="float-card card-bottom absolute bottom-[15%] left-0 bg-white p-[15px] rounded-[20px] shadow-xl flex items-center gap-[15px] z-20 animate-bounce-slow delay-700 border border-gray-100">
+                            <span className="icon text-[1.5rem] bg-[#f3e5f5] p-[10px] rounded-[12px]">✨</span>
+                            <div className="info flex flex-col text-left">
+                                <strong className="text-[#333]">Certifié</strong>
+                                <small className="text-[#666]">Expert Canva/Ps</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            {/* --- PARTIE BASSE (NOIRE) - PROGRAMME --- */}
             <div className="dark-section bg-[#050505] py-[60px] px-[20px] text-center" id="programme">
                 <h2 className="section-title text-[#D4AF37] font-display text-[2.5rem] mb-[50px] uppercase">LE PROGRAMME COMPLET</h2>
 
