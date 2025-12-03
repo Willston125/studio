@@ -1302,6 +1302,201 @@
     /* Centre les boutons */
     flex-wrap: wrap;
     /* Permet aux boutons de passer à la ligne si besoin */
+  gap: 15px;
+  background-color: var(--or-clair);
+  border-radius: 50%;
+  opacity: 0;
+  animation: rise 10s infinite ease-in;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.7;
+  }
+
+  90% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(var(--x-end));
+    opacity: 0;
+  }
+}
+
+.laurel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  color: hsl(var(--primary));
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.laurel-icon {
+  height: 1.5rem;
+  width: auto;
+  filter: invert(81%) sepia(52%) saturate(464%) hue-rotate(357deg) brightness(97%) contrast(96%);
+}
+
+/* === FESTIVAL BANNER PARTICLES === */
+.particle-gold {
+  position: absolute;
+  bottom: -20px;
+  background-color: rgba(255, 215, 0, 0.7);
+  /* Gold color */
+  border-radius: 50%;
+  opacity: 0;
+  animation: rise-gold 15s infinite ease-in;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 1);
+}
+
+@keyframes rise-gold {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: translateY(-120vh) translateX(var(--x-end));
+    opacity: 0;
+  }
+}
+
+/* === STYLE DES CARTES (Pourquoi nous & Avis) - PREMIUM ICONS === */
+.cine-icon {
+  font-size: 3rem;
+  /* Belle taille */
+  color: #D4AF37;
+  /* Or Cinéworld */
+  margin-bottom: 20px;
+  /* Espace sous l'icône */
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+  /* Lueur dorée autour */
+  transition: all 0.4s ease;
+  /* Animation fluide */
+  display: inline-block;
+}
+
+/* Animation au survol de la souris */
+.feature-card:hover .cine-icon,
+.prize-card:hover .cine-icon {
+  color: #ffffff;
+  /* Devient blanc */
+  transform: scale(1.2) rotate(-10deg);
+  /* Grossit et penche */
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
+  /* La lueur s'intensifie */
+}
+
+/* Personnalisation de la barre de défilement */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Plus fine */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  /* Fond discret */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  /* Barre DORÉE */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F4CF57;
+  /* Plus clair au survol */
+}
+
+/* --- 1. LE CONTENEUR (LA CAPSULE) --- */
+.nav-links {
+  /* Fond transparent noir léger */
+  background: rgba(0, 0, 0, 0.4);
+
+  /* Le contour blanc (subtil pour faire classe) */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Arrondi forme pilule */
+  border-radius: 50px;
+
+  /* Espacement interne */
+  padding: 10px 30px;
+
+  /* Effet de verre flouté (Très important pour le look Pro) */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Alignement */
+  display: flex;
+  gap: 15px;
+  /* Espace entre les boutons */
+  align-items: center;
+}
+
+/* --- 2. LES LIENS (AVANT SURVOL) --- */
+.nav-links a {
+  text-decoration: none;
+  color: #e0e0e0;
+  /* Gris clair */
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* Pour préparer l'effet bouton */
+  padding: 8px 20px;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  /* Animation fluide */
+}
+
+/* --- 3. L'EFFET WAOUH (AU SURVOL) --- */
+.nav-links a:hover,
+.nav-links a.active {
+  /* Le bouton apparait ! */
+  background-color: #D4AF37;
+  /* Couleur OR (ou white si tu préfères) */
+  color: #000000;
+  /* Le texte devient noir pour le contraste */
+
+  /* Petite ombre pour le relief */
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+  /* Le bouton monte un peu */
+}
+
+/* Adaptation Mobile pour la Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    /* Met le logo au dessus, le menu en dessous */
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .nav-links {
+    width: 100%;
+    /* Prend toute la largeur */
+    justify-content: center;
+    /* Centre les boutons */
+    flex-wrap: wrap;
+    /* Permet aux boutons de passer à la ligne si besoin */
     padding: 10px;
     border-radius: 20px;
     /* Arrondi un peu moins fort sur mobile */
@@ -1313,5 +1508,36 @@
     padding: 8px 12px;
     /* Boutons plus compacts */
     margin: 0;
+  }
+}
+
+/* CORRECTIF RESPONSIVE MOBILE */
+
+/* 1. On force le fond blanc et le texte sombre partout */
+.hero-seoc-split {
+  background-color: #ffffff !important; /* !important force la priorité */
+  color: #2c3e50 !important;
+}
+
+/* 2. On s'assure que sur mobile (écrans < 768px), ça reste blanc */
+@media (max-width: 900px) {
+  .hero-seoc-split {
+    background-color: #ffffff !important;
+  }
+  
+  /* Corrige la couleur du titre sur mobile */
+  .hero-seoc-split h1 {
+    color: #2c3e50 !important;
+  }
+  
+  /* Corrige la couleur du paragraphe sur mobile */
+  .hero-seoc-split p {
+    color: #555555 !important;
+  }
+  
+  /* Ajustement des espacements mobile au passage */
+  .split-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
