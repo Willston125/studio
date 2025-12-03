@@ -25,76 +25,71 @@ export default function CommunicationPage() {
     return (
         <main className="bg-[#050505] text-white min-h-screen font-body overflow-x-hidden">
 
-            {/* --- HERO COMMUNICATION (BENTO UI) --- */}
-            <section className="hero-communication bg-white rounded-b-[30px] md:rounded-b-[60px] pt-[120px] pb-[60px] px-[20px] md:px-[50px] relative overflow-hidden">
-                <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
+            {/* --- HERO ZYLO STRUCTURE (STRICT) --- */}
+            <section className="zylo-hero-wrapper flex flex-col md:flex-row items-center justify-between px-[5%] py-[60px] bg-black text-white min-h-[90vh] gap-[40px]">
 
-                    {/* --- GAUCHE : CONTENU TEXTE (40%) --- */}
-                    <div className="lg:col-span-5 text-center lg:text-left z-10">
-                        <div className="badge-new inline-block bg-[#f0f0f0] text-black px-[15px] py-[5px] rounded-full text-[0.8rem] font-bold uppercase tracking-wider mb-[20px] border border-[#e0e0e0]">
-                            Nouveau Module
-                        </div>
-                        <h1 className="text-black font-display text-[2.5rem] md:text-[3.5rem] leading-[1.1] mb-[20px] uppercase">
-                            DEVENEZ UN STRATÈGE <br />
-                            <span className="text-[#D4AF37]">DE LA COMMUNICATION</span>
-                        </h1>
-                        <p className="text-[#555] text-[1rem] md:text-[1.1rem] leading-[1.6] mb-[30px] max-w-[500px] mx-auto lg:mx-0">
-                            Branding, Réseaux Sociaux, Publicité : apprenez à faire entendre votre voix et à construire une image de marque puissante.
-                        </p>
-                        <a href="#programme" className="btn-com inline-block bg-black text-white px-[30px] py-[15px] rounded-full font-bold uppercase tracking-wide hover:bg-[#D4AF37] hover:text-black transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            Se former maintenant
+                {/* --- GAUCHE : TEXTE (40%) --- */}
+                <div className="zylo-text-side w-full md:w-[40%] text-center md:text-left">
+                    <div className="brand-badge inline-block bg-[#222] text-[#D4AF37] px-[15px] py-[5px] rounded-full text-[0.9rem] font-bold uppercase tracking-wider mb-[20px] border border-[#333]">
+                        ✨ Nouveau Module
+                    </div>
+                    <h1 className="text-[3.5rem] md:text-[4rem] font-[800] leading-[1.1] my-[20px]">
+                        AUTOMATISEZ VOTRE <br />
+                        <span className="text-[#D4AF37]">CROISSANCE</span>
+                    </h1>
+                    <p className="text-[#ccc] text-[1.1rem] leading-[1.6] mb-[30px]">
+                        Rejoignez un réseau où créateurs et marques collaborent. Du branding au montage, maîtrisez l'impact digital.
+                    </p>
+
+                    <div className="zylo-actions">
+                        <a href="#programme" className="btn-main bg-white text-black px-[35px] py-[15px] rounded-[50px] font-bold inline-block hover:bg-gray-200 transition-colors text-[1.1rem]">
+                            Commencer
                         </a>
+
+                        <div className="pills-container mt-[30px] flex gap-[10px] flex-wrap justify-center md:justify-start">
+                            <span className="pill border border-[#333] px-[20px] py-[10px] rounded-[50px] text-[0.9rem] bg-[#111]">Stratégie +</span>
+                            <span className="pill border border-[#333] px-[20px] py-[10px] rounded-[50px] text-[0.9rem] bg-[#111]">Branding +</span>
+                            <span className="pill border border-[#333] px-[20px] py-[10px] rounded-[50px] text-[0.9rem] bg-[#111]">Montage</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* --- DROITE : GRILLE (55%) --- */}
+                <div className="zylo-grid-side w-full md:w-[55%] flex gap-[20px]">
+
+                    {/* Colonne A (Gauche) */}
+                    <div className="grid-column flex flex-col gap-[20px] w-1/2">
+                        {/* Haut : GRANDE carte verticale (Portrait) */}
+                        <div className="card card-tall h-[400px] bg-[#222] rounded-[40px] overflow-hidden relative group">
+                            <Image
+                                src="/formateur-mentor.png"
+                                alt="Mentor Portrait"
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                        </div>
+                        {/* Bas : PETITE carte (Communauté) */}
+                        <div className="card card-short h-[200px] bg-[#333] rounded-[40px] flex flex-col justify-center items-center text-center p-4">
+                            <div className="avatars text-[2rem] mb-2">👤👤👤</div>
+                            <span className="font-bold text-[1.1rem]">Rejoignez-nous</span>
+                        </div>
                     </div>
 
-                    {/* --- DROITE : MOSAÏQUE (60%) --- */}
-                    <div className="lg:col-span-7 relative">
-                        <div className="bento-grid grid grid-cols-2 md:grid-cols-3 gap-[15px] md:gap-[20px] h-auto md:h-[500px]">
-
-                            {/* Carte 1 : Grande Image Verticale */}
-                            <div className="card-vertical col-span-2 md:col-span-1 md:row-span-2 bg-[#f4f4f4] rounded-[20px] overflow-hidden relative group h-[300px] md:h-full">
-                                <Image
-                                    src="/mentor-formateur.png"
-                                    alt="Étudiant en présentation"
-                                    fill
-                                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                                />
-                                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-[20px]">
-                                    <span className="text-white font-display text-[1.2rem]">Mentorat</span>
-                                </div>
-                            </div>
-
-                            {/* Carte 2 : Chiffre Clé */}
-                            <div className="card-stat bg-[#D4AF37] rounded-[20px] p-[20px] flex flex-col justify-center items-center text-center text-black relative overflow-hidden group">
-                                <div className="absolute top-[-20px] right-[-20px] text-white/20 text-[8rem] font-display leading-none rotate-12 group-hover:rotate-0 transition-transform duration-500">50</div>
-                                <span className="text-[3rem] font-display font-bold leading-none relative z-10">+50</span>
-                                <span className="text-[0.9rem] font-medium uppercase tracking-wide relative z-10">Marques Accompagnées</span>
-                            </div>
-
-                            {/* Carte 3 : Outils (Visuel) */}
-                            <div className="card-tools bg-[#111] rounded-[20px] p-[20px] flex flex-col justify-center items-center text-center relative overflow-hidden group">
-                                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                                <div className="flex gap-4 mb-2 relative z-10">
-                                    {/* Fake Logos for demo */}
-                                    <div className="w-[40px] h-[40px] bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xs">C</div>
-                                    <div className="w-[40px] h-[40px] bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold text-xs">IG</div>
-                                </div>
-                                <span className="text-white text-[0.9rem] font-medium relative z-10">Maîtrisez les outils</span>
-                                <span className="text-[#888] text-[0.7rem] relative z-10">Canva, Meta Ads, TikTok</span>
-                            </div>
-
-                            {/* Carte 4 : Visuel Extra (Pour remplir la grille) */}
-                            <div className="card-extra col-span-2 md:col-span-2 bg-[#f8f8f8] rounded-[20px] p-[25px] flex items-center justify-between border border-[#eee] relative overflow-hidden">
-                                <div className="z-10">
-                                    <h3 className="font-display text-black text-[1.5rem] leading-tight mb-1">Stratégie <br />360°</h3>
-                                    <p className="text-[#666] text-[0.8rem]">De l'idée à la diffusion.</p>
-                                </div>
-                                <div className="w-[60px] h-[60px] rounded-full bg-white flex items-center justify-center shadow-md z-10 text-[#D4AF37] text-[1.5rem]">
-                                    ➔
-                                </div>
-                                {/* Decorative circle */}
-                                <div className="absolute right-[-20px] bottom-[-20px] w-[100px] h-[100px] bg-[#D4AF37]/10 rounded-full"></div>
-                            </div>
-
+                    {/* Colonne B (Droite) */}
+                    <div className="grid-column flex flex-col gap-[20px] w-1/2">
+                        {/* Haut : PETITE carte (Chiffre clé) */}
+                        <div className="card card-short h-[200px] bg-[#333] rounded-[40px] flex flex-col justify-center items-center text-center p-4">
+                            <span className="stat-val text-[#D4AF37] text-[3rem] font-[800] leading-none">+50</span>
+                            <span className="stat-label text-[1rem] font-medium uppercase mt-2">Marques</span>
+                        </div>
+                        {/* Bas : GRANDE carte verticale (Action) */}
+                        <div className="card card-tall h-[400px] bg-[#222] rounded-[40px] overflow-hidden relative group">
+                            <Image
+                                src="/mentor-formateur.png"
+                                alt="Action Mentor"
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
                         </div>
                     </div>
 
