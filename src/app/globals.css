@@ -1302,11 +1302,8 @@
     /* Centre les boutons */
     flex-wrap: wrap;
     /* Permet aux boutons de passer à la ligne si besoin */
-  gap: 15px;
-  background-color: var(--or-clair);
-  border-radius: 50%;
-  opacity: 0;
-  animation: rise 10s infinite ease-in;
+    gap: 15px;
+  }
 }
 
 @keyframes rise {
