@@ -37,7 +37,7 @@ export default function InscriptionPage() {
 
     // --- LOGIQUE ENVOI WHATSAPP ---
     const onSubmit = (data: any) => {
-        const message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\n--------------------------------\n👤 *Candidat:* ${data.prenom} ${data.nom}\n📱 *Tel:* ${data.telephone}\n📧 *Email:* ${data.email}\n🎓 *Niveau:* ${data.niveau}\n--------------------------------\n*ENGAGEMENTS SIGNÉS :*\n✅ Tarif 20.000 FDJ accepté\n✅ Clause de NON-REMBOURSEMENT acceptée\n✅ Engagement paiement 48h validé\n📅 Date: ${new Date().toLocaleDateString()}`;
+        const message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\n--------------------------------\n👤 *Candidat:* ${data.prenom} ${data.nom}\n📱 *Tel:* ${data.telephone}\n📧 *Email:* ${data.email}\n🎓 *Niveau:* ${data.niveau}\n--------------------------------\n*ENGAGEMENTS SIGNÉS :*\n✅ Tarif 5.000 FDJ accepté\n✅ Clause de NON-REMBOURSEMENT acceptée\n✅ Engagement paiement 48h validé\n📅 Date: ${new Date().toLocaleDateString()}`;
         const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
@@ -73,10 +73,10 @@ export default function InscriptionPage() {
                                 <div className="flex items-center gap-4 mb-4">
                                     {/* PRIX BARRÉ AVEC TRAIT ROUGE CSS */}
                                     <div className="text-xl text-[#888] font-medium relative font-oswald">
-                                        40.000 FDJ
+                                        10.000 FDJ
                                         <div className="absolute -left-[5%] top-1/2 w-[110%] h-[3px] bg-[#E50914] -rotate-[10deg] opacity-90"></div>
                                     </div>
-                                    <div className="font-oswald text-4xl text-white leading-none">20.000 FDJ</div>
+                                    <div className="font-oswald text-4xl text-white leading-none">5.000 FDJ</div>
                                 </div>
 
                                 <div className="text-xs text-[#bbb] mb-2">Fin de l'offre le 20 Décembre :</div>
@@ -210,7 +210,7 @@ export default function InscriptionPage() {
                                     </div>
                                 </div>
                                 <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
-                                    Je valide mon inscription au tarif de 20.000 FDJ.
+                                    Je valide mon inscription au tarif de 5.000 FDJ.
                                 </span>
                             </label>
                             {errors.condition_prix && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}

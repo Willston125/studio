@@ -60,7 +60,7 @@ export default function ReglementPage() {
 
                                 <div>
                                     <h3 className="text-[#D4AF37] font-oswald text-xl md:text-2xl mt-8 mb-4 border-l-[3px] border-[#E50914] pl-2.5">ARTICLE 1 : OBJET DU CONTRAT</h3>
-                                    <p>Le présent contrat a pour objet l'inscription du Participant à la formation complète de 20 jours "L'Art du Visuel" (Scénario, Réalisation, Montage, Création Visuelle), incluant la participation au concours final de court-métrage.</p>
+                                    <p>Le présent contrat a pour objet l'inscription du Participant à la formation complète de 20 jours "L'Art du Visuel" (Scénario, Réalisation, Montage, Création Visuelle).</p>
                                 </div>
 
                                 <div>
@@ -69,7 +69,7 @@ export default function ReglementPage() {
                                     <ul className="list-disc ml-5 space-y-2 mt-2">
                                         <li><strong>Moyens Techniques :</strong> Mettre à disposition tous les outils pédagogiques, logiciels et matériels nécessaires au bon déroulement de la formation.</li>
                                         <li><strong>Qualité Pédagogique :</strong> Assurer un encadrement professionnel et garantir une qualité de formation à 100%, incluant la supervision des projets finaux.</li>
-                                        <li><strong>Accompagnement :</strong> Superviser la création, le montage et la diffusion du court-métrage du Participant lors du festival de clôture.</li>
+                                        <li><strong>Accompagnement :</strong> Superviser la création, le montage et la diffusion du court-métrage du Participant.</li>
                                     </ul>
                                 </div>
 
@@ -95,7 +95,7 @@ export default function ReglementPage() {
 
                                 <div>
                                     <h3 className="text-[#D4AF37] font-oswald text-xl md:text-2xl mt-8 mb-4 border-l-[3px] border-[#E50914] pl-2.5">ARTICLE 6 : DROITS À L'IMAGE</h3>
-                                    <p><strong>Les Films :</strong> Le Participant reste l'auteur de son œuvre, mais autorise Cinéworld à diffuser son film lors du Festival de fin de formation et à des fins promotionnelles.<br />
+                                    <p><strong>Les Films :</strong> Le Participant reste l'auteur de son œuvre, mais autorise Cinéworld à diffuser son film lors de la fin de la formation et à des fins promotionnelles.<br />
                                         <strong>Image du Participant :</strong> L'élève autorise Cinéworld à le filmer/photographier durant la formation pour le "Making-of" et la communication.</p>
                                 </div>
 

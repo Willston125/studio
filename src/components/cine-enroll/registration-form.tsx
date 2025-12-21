@@ -75,16 +75,9 @@ export default function RegistrationForm() {
 
             {/* PROMO BOX */}
             <div className="bg-white/5 backdrop-blur-md border-l-4 border-[#FFD700] p-6 rounded-r-xl max-w-lg">
-              <div className="font-oswald text-[#FFD700] text-2xl mb-1">
-                🏆 GRAND PRIX : 200.000 FDJ
-              </div>
-              <p className="text-sm text-gray-300 mb-4">
-                Pour le meilleur film réalisé durant la formation.
-              </p>
-
               <div className="flex items-baseline gap-4">
-                <span className="font-oswald text-4xl font-bold text-white">20.000 FDJ</span>
-                <span className="text-gray-500 line-through text-lg">40.000 FDJ</span>
+                <span className="font-oswald text-4xl font-bold text-white">5.000 FDJ</span>
+                <span className="text-gray-500 line-through text-lg">10.000 FDJ</span>
                 <span className="bg-[#D32F2F] text-white text-xs font-bold px-2 py-1 rounded uppercase">
                   -50% OFF
                 </span>
