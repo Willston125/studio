@@ -73,7 +73,7 @@ export default function InscriptionPage() {
                                 <div className="flex items-center gap-4 mb-4">
                                     {/* PRIX BARRÉ AVEC TRAIT ROUGE CSS */}
                                     <div className="text-xl text-[#888] font-medium relative font-oswald">
-                                        10.000 FDJ
+                                        5 000 FDJ
                                         <div className="absolute -left-[5%] top-1/2 w-[110%] h-[3px] bg-[#E50914] -rotate-[10deg] opacity-90"></div>
                                     </div>
                                     <div className="font-oswald text-4xl text-white leading-none">5.000 FDJ</div>

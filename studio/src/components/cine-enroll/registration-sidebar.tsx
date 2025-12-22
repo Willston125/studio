@@ -28,7 +28,7 @@ export default function RegistrationSidebar({ onSubmit, isSubmitting, isSubmitDi
 
             {/* Tarif */}
             <div className="special-price p-8 text-center">
-                <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 10 000 FDJ</p>
+                <p className="text-md font-medium text-gray-400 line-through">Tarif normal : 5 000 FDJ</p>
                 <div className="relative inline-block my-2">
                     <div className="font-headline text-5xl font-bold text-primary relative z-10">
                         5 000 FDJ
