@@ -7,6 +7,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -45,7 +47,7 @@ const programItems = [
 
 export default function ProgramSection() {
   return (
-    <section className="container mx-auto px-4 py-6 md:py-8 rounded-xl bg-black/20 backdrop-blur-sm">
+    <section className="container mx-auto px-12 py-6 md:py-8 rounded-xl bg-black/20 backdrop-blur-sm">
       <h2 className="text-xl md:text-2xl font-headline font-bold tracking-wide mb-4 text-white">Nos projets réalisé</h2>
       <Carousel
         opts={{
@@ -79,6 +81,8 @@ export default function ProgramSection() {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <CarouselPrevious className="left-[-45px] bg-black/50 hover:bg-amber-500 border-white/20 text-white" />
+        <CarouselNext className="right-[-45px] bg-black/50 hover:bg-amber-500 border-white/20 text-white" />
       </Carousel>
     </section>
   );
