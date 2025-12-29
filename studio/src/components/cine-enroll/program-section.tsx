@@ -35,11 +35,11 @@ const programItems = [
     imageHint: "movie premiere",
     youtubeUrl: "https://www.youtube.com/watch?v=h-zKt_xyzrs&t=744s",
   },
-    {
-    title: "La boussole digital",
+  {
+    title: "LA BOUSSOLE DIGITAL",
     imageSrc: "/affiche5.png",
-    imageHint: "director actor",
-    youtubeUrl: "/contact", // Fallback to contact page if no URL
+    imageHint: "digital series",
+    youtubeUrl: "https://www.youtube.com/watch?v=ZYw06JP34t0&list=PLNgPaWbvQsiFMrwt8t5baANg3qchWA4v-",
   },
 ];
 
