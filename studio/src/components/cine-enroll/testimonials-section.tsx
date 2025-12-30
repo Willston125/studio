@@ -4,6 +4,7 @@
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { ClapperIcon } from "@/components/ui/clapper-board";
 
 const testimonials = [
   {
@@ -40,9 +41,13 @@ export default function TestimonialsSection() {
       <div className="container mx-auto px-4">
         <ScrollReveal width="100%">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase">
-              Ils parlent de nous
-            </h2>
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <ClapperIcon size={28} />
+              <h2 className="text-3xl md:text-4xl font-headline font-bold text-amber-500 uppercase">
+                Ils parlent de nous
+              </h2>
+              <ClapperIcon size={28} />
+            </div>
           </div>
         </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -8,10 +8,14 @@ import CurriculumSection from '@/components/cine-enroll/curriculum-section';
 
 import WhyChooseUsSection from '@/components/cine-enroll/why-choose-us-section';
 import { Divider } from '@/components/ui/divider';
+import { FilmGrainOverlay } from '@/components/ui/cinema-effects';
 
 export default function Home() {
   return (
     <div className="bg-background">
+      {/* Cinema Film Grain Overlay */}
+      <FilmGrainOverlay />
+
       <div className="mt-32 mb-20">
         <HeroSection />
       </div>

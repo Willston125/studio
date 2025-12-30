@@ -7,6 +7,9 @@ import { Star } from "lucide-react";
 import ProgramSection from "./program-section";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { ViewfinderFrame } from "@/components/ui/viewfinder-frame";
+import { Timecode } from "@/components/ui/timecode";
+import { RecIndicator } from "@/components/ui/rec-indicator";
 
 export default function HeroSection() {
   useEffect(() => {
@@ -73,6 +76,31 @@ export default function HeroSection() {
       <div className="hero-spotlight left"></div>
       <div className="hero-spotlight right"></div>
       <div className="hero-particles"></div>
+
+      {/* Cinema Viewfinder Corners */}
+      <div className="viewfinder-corner top-left hidden md:block"></div>
+      <div className="viewfinder-corner top-right hidden md:block"></div>
+      <div className="viewfinder-corner bottom-left hidden md:block"></div>
+      <div className="viewfinder-corner bottom-right hidden md:block"></div>
+
+      {/* Cinema Indicators */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.5 }}
+        className="absolute top-24 right-6 z-30 hidden md:block"
+      >
+        <RecIndicator />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 0.5 }}
+        className="absolute bottom-8 right-6 z-30 hidden md:block"
+      >
+        <Timecode fps={24} />
+      </motion.div>
 
 
       <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-24 pb-12 md:pb-16">

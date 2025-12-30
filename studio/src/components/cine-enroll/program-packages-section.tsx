@@ -2,6 +2,9 @@
 
 import { Film, Scissors, Palette, PenTool, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import { CinemaScope, Vignette } from "@/components/ui/cinema-effects";
+import { ClapperIcon } from "@/components/ui/clapper-board";
+import { FilmReel } from "@/components/ui/film-reel";
 
 interface PackageFeature {
     icon: React.ReactNode;
@@ -57,29 +60,37 @@ export default function ProgramPackagesSection() {
     return (
         <section className="relative w-full overflow-hidden bg-black">
             {/* Hero Image Section with Overlay */}
-            <div className="relative h-[400px] md:h-[500px] w-full">
-                <Image
-                    src="/groupeeleve.png"
-                    alt="Formation Cinéma Cineworld Djibouti"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/90" />
+            <Vignette>
+                <div className="relative h-[400px] md:h-[500px] w-full cinemascope">
+                    <Image
+                        src="/groupeeleve.png"
+                        alt="Formation Cinéma Cineworld Djibouti"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    {/* Dark Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/90" />
 
-                {/* Title Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center px-4">
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-wider">
-                            NOS PACKS CINÉMATOGRAPHIQUES
-                        </h2>
-                        <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
-                            Formations professionnelles diplômantes - Devenez un expert du cinéma
-                        </p>
+                    {/* Title Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center px-4">
+                            {/* Film Reel decorations */}
+                            <div className="flex justify-center gap-4 mb-4">
+                                <FilmReel size={40} className="opacity-60 hidden md:block" />
+                                <ClapperIcon size={32} className="opacity-80" />
+                                <FilmReel size={40} className="opacity-60 hidden md:block" />
+                            </div>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-wider">
+                                NOS PACKS CINÉMATOGRAPHIQUES
+                            </h2>
+                            <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
+                                Formations professionnelles diplômantes - Devenez un expert du cinéma
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Vignette>
 
             {/* Packages Cards Section */}
             <div className="relative bg-gradient-to-b from-black to-gray-900 py-16 px-4">
