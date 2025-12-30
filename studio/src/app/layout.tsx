@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     google: '8VrUaQ3Tj84cNZi5zfm4u2b-ZUZxpXu7T0Wuwc3kBOg',
   },
   icons: {
-    icon: '/logo_cineworld.png',
-    apple: '/logo_cineworld.png',
+    icon: '/favicon.ico.png',
+    apple: '/favicon.ico.png',
   },
 };
 
