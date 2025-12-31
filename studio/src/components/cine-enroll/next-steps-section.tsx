@@ -41,40 +41,40 @@ export default function NextStepsSection() {
                     </p>
                 </div>
 
-                {/* Steps Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+                {/* Steps Grid - TEXTE DIRECTEMENT SUR FOND JAUNE */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {steps.map((step, index) => (
                         <div
                             key={index}
-                            className={`p-8 text-center border-2 border-black/20 ${step.highlight ? 'bg-black/5' : 'bg-transparent'}`}
+                            className="text-center"
                         >
                             {/* Icon */}
-                            <div className="text-4xl mb-4">{step.icon}</div>
+                            <div className="text-5xl mb-4">{step.icon}</div>
 
-                            {/* Title */}
+                            {/* Title - NOIR SUR JAUNE */}
                             <h3 className="text-xl font-black text-black uppercase tracking-wider mb-2">
                                 {step.title}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-black/60 text-sm mb-6">
+                            <p className="text-black/70 text-sm mb-6">
                                 {step.description}
                             </p>
 
-                            {/* CTA Button */}
+                            {/* CTA Button - TRANSPARENT AVEC BORDURE NOIRE */}
                             {step.link.startsWith('http') || step.link.startsWith('tel') ? (
                                 <a
                                     href={step.link}
                                     target={step.link.startsWith('http') ? "_blank" : undefined}
                                     rel={step.link.startsWith('http') ? "noopener noreferrer" : undefined}
-                                    className="btn-cta-footer inline-block w-full py-4 bg-transparent border-2 border-black text-black font-black uppercase tracking-wider transition-all duration-300 hover:bg-black hover:text-[#FFD700]"
+                                    className="btn-cta-footer inline-block w-full py-4 px-6 bg-transparent border-2 border-black text-black font-black uppercase tracking-wider transition-all duration-300 hover:bg-black hover:text-[#FFD700]"
                                 >
                                     {step.cta}
                                 </a>
                             ) : (
                                 <Link
                                     href={step.link}
-                                    className="btn-cta-footer inline-block w-full py-4 bg-transparent border-2 border-black text-black font-black uppercase tracking-wider transition-all duration-300 hover:bg-black hover:text-[#FFD700]"
+                                    className="btn-cta-footer inline-block w-full py-4 px-6 bg-transparent border-2 border-black text-black font-black uppercase tracking-wider transition-all duration-300 hover:bg-black hover:text-[#FFD700]"
                                 >
                                     {step.cta}
                                 </Link>
@@ -84,7 +84,7 @@ export default function NextStepsSection() {
                 </div>
 
                 {/* Bottom Note */}
-                <p className="text-center text-black/50 text-sm mt-8">
+                <p className="text-center text-black/60 text-sm mt-8">
                     📍 CineWorld Academy - Djibouti Centre Ville
                 </p>
             </div>

@@ -2416,21 +2416,25 @@
   background-color: #000;
 }
 
-/* Movie Poster - Correctif Affiches Vides */
+/* STYLE EMPLACEMENT AFFICHE */
 .poster-img {
-  background-color: #1a1a1a;
+  background-color: #111;
+  /* Noir au lieu de gris */
+  border: 1px solid #333;
+  /* Bordure subtile */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  border: 1px solid #333;
+  transition: all 0.3s ease;
 }
 
-/* Ajoute une fausse icône de film si l'image manque */
+/* Icône par défaut au centre */
 .poster-img::after {
   content: "🎬";
-  font-size: 3rem;
-  opacity: 0.2;
+  font-size: 40px;
+  opacity: 0.3;
+  filter: grayscale(100%);
 }
 
 /* Cadre doré au survol pour l'effet premium */
