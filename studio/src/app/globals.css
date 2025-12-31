@@ -2346,6 +2346,74 @@
   }
 }
 
+/* === NYFA PURE DESIGN CLASSES === */
+
+/* Text Stroke Effect (Outline Text) */
+.text-stroke {
+  -webkit-text-stroke: 2px white;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Responsive Split Screen */
+@media (max-width: 800px) {
+  .split-container {
+    flex-direction: column;
+  }
+
+  .split-image {
+    min-height: 300px;
+  }
+
+  .split-content {
+    padding: 40px 20px !important;
+  }
+
+  .split-content h2 {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* NYFA Navigation Bar hover effect */
+.nyfa-col {
+  position: relative;
+  overflow: hidden;
+}
+
+.nyfa-col::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: #FFD700;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.nyfa-col:hover::after {
+  transform: translateX(0);
+}
+
+/* Movie Poster Hover Effect */
+.movie-card .poster-img {
+  position: relative;
+}
+
+.movie-card .poster-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .poster-img::after {
+  opacity: 1;
+}
+
 .loading-reel {
   width: 60px;
   height: 60px;
