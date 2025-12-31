@@ -3,60 +3,52 @@
 import Link from 'next/link';
 
 export default function PathfinderSection() {
-    const paths = [
+    const blocks = [
         {
             id: "initie",
             icon: "📱",
-            title: "JE VEUX CRÉER",
-            subtitle: "Contenu Réseaux & Mobile",
+            title: "CRÉATEUR",
+            subtitle: "Réseaux & Mobile",
             link: "#tarifs",
-            bgClass: "bg-[#f0f0f0]",
-            textClass: "text-black"
+            colorClass: "block-white"
         },
         {
             id: "pro",
             icon: "🎥",
-            title: "JE VEUX EN VIVRE",
-            subtitle: "Métier Vidéaste & Freelance",
+            title: "PROFESSIONNEL",
+            subtitle: "Vidéaste & Freelance",
             link: "#tarifs",
-            bgClass: "bg-[#FFD700]",
-            textClass: "text-black"
+            colorClass: "block-gold"
         },
         {
             id: "expert",
             icon: "🎬",
-            title: "JE VEUX RÉALISER",
+            title: "RÉALISATEUR",
             subtitle: "Cinéma & Fiction",
             link: "#tarifs",
-            bgClass: "bg-[#1a1a1a]",
-            textClass: "text-white"
+            colorClass: "block-black"
         }
     ];
 
     return (
-        <section className="nyfa-nav-bar w-full border-b-4 border-black">
-            <div className="flex flex-wrap">
-                {paths.map((path, index) => (
+        <section className="nyfa-full-bar w-full m-0 p-0 border-b border-black">
+            <div className="nyfa-cols-container grid grid-cols-1 md:grid-cols-3 h-auto md:h-[140px]">
+                {blocks.map((block, index) => (
                     <Link
                         key={index}
-                        href={path.link}
-                        className={`nyfa-col flex-1 min-w-[300px] py-10 px-5 flex items-center justify-center gap-5 transition-all duration-300 hover:pl-8 ${path.bgClass} ${path.textClass}`}
+                        href={block.link}
+                        className={`nyfa-block ${block.colorClass} flex items-center justify-center gap-4 no-underline transition-all duration-300 px-5 py-8 md:py-0 border-b md:border-b-0 border-black/10`}
                     >
-                        {/* Icon */}
-                        <span className="text-4xl">{path.icon}</span>
-
-                        {/* Text */}
-                        <div className="nav-text">
-                            <h3 className="text-xl font-extrabold uppercase tracking-wider m-0">
-                                {path.title}
+                        <span className="block-icon text-4xl">{block.icon}</span>
+                        <div className="block-text">
+                            <h3 className="m-0 text-xl font-extrabold tracking-wider uppercase">
+                                {block.title}
                             </h3>
-                            <p className="text-sm opacity-80 m-0">
-                                {path.subtitle}
+                            <p className="m-0 mt-1 text-sm uppercase opacity-70">
+                                {block.subtitle}
                             </p>
                         </div>
-
-                        {/* Arrow */}
-                        <span className="text-2xl font-bold">➜</span>
+                        <span className="block-arrow text-2xl transition-transform duration-300">➔</span>
                     </Link>
                 ))}
             </div>
