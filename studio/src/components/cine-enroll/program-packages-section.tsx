@@ -13,44 +13,68 @@ interface PackageFeature {
 
 interface Package {
     title: string;
+    subtitle: string;
+    slogan: string;
     duration: string;
     price: string;
+    target: string;
+    promise: string;
     features: PackageFeature[];
+    careers: string[];
     isPopular?: boolean;
+    badge?: string;
 }
 
 export default function ProgramPackagesSection() {
     const packages: Package[] = [
         {
-            title: "Pack Initié",
+            title: "L'INITIÉ",
+            subtitle: "Le Créateur de Contenu",
+            slogan: "Passez du Smartphone à la Caméra Pro.",
             duration: "8 JOURS",
             price: "5 000 FDJ",
+            badge: "🥉",
+            target: "Débutants, YouTubeurs, Community Managers",
+            promise: "En 8 jours, apprenez à filmer et monter des vidéos dynamiques pour les réseaux sociaux.",
             features: [
                 { icon: <Film className="w-5 h-5" />, label: "Réalisation de vidéo pro" },
                 { icon: <Palette className="w-5 h-5" />, label: "Création visuel pro" },
             ],
+            careers: ["Créateur de contenu", "Vlogger", "Assistant Com'"],
         },
         {
-            title: "Pack Maîtrise",
+            title: "LA MAÎTRISE",
+            subtitle: "Le Freelance / Le Pro",
+            slogan: "Devenez autonome sur le marché du travail.",
             duration: "12 JOURS",
             price: "10 000 FDJ",
+            badge: "🥇",
             isPopular: true,
+            target: "Ceux qui veulent en vivre : clips, pubs, reportages",
+            promise: "Le cursus complet pour gérer une commande client de A à Z. C'est le standard de l'industrie.",
             features: [
                 { icon: <Film className="w-5 h-5" />, label: "Réalisation de vidéo pro" },
                 { icon: <Palette className="w-5 h-5" />, label: "Création visuel pro" },
                 { icon: <Scissors className="w-5 h-5" />, label: "Montage vidéo pro" },
             ],
+            careers: ["Cadreur-Monteur", "Vidéaste Freelance", "Reporter d'images"],
         },
         {
-            title: "Pack Expert",
+            title: "L'EXPERT",
+            subtitle: "Le Cinéaste / Le Réalisateur",
+            slogan: "L'Art de raconter des histoires (Storytelling).",
             duration: "23 JOURS",
             price: "20 000 FDJ",
+            badge: "💎",
+            target: "Artistes, passionnés de cinéma, courts-métrages, télé",
+            promise: "On ne fait pas que de la technique : écriture, direction d'acteurs, identité visuelle unique.",
             features: [
                 { icon: <Film className="w-5 h-5" />, label: "Réalisation de vidéo pro" },
                 { icon: <Palette className="w-5 h-5" />, label: "Création visuel pro" },
                 { icon: <Scissors className="w-5 h-5" />, label: "Montage vidéo pro" },
                 { icon: <PenTool className="w-5 h-5" />, label: "Écriture de scénario" },
             ],
+            careers: ["Réalisateur", "Chef Opérateur", "Directeur Artistique"],
         },
     ];
 
@@ -122,47 +146,76 @@ export default function ProgramPackagesSection() {
                                     </div>
 
                                     {/* Card Content */}
-                                    <div className="p-8 pt-10">
-                                        {/* Package Title */}
-                                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 text-center">
-                                            {pkg.title}
-                                        </h3>
+                                    <div className="p-6 pt-8">
+                                        {/* Badge + Title */}
+                                        <div className="text-center mb-3">
+                                            <span className="text-3xl">{pkg.badge}</span>
+                                            <h3 className="text-2xl md:text-3xl font-bold text-white mt-2">
+                                                {pkg.title}
+                                            </h3>
+                                            <p className="text-yellow-400 text-sm font-medium uppercase tracking-wider">
+                                                {pkg.subtitle}
+                                            </p>
+                                        </div>
+
+                                        {/* Slogan - The Hook */}
+                                        <div className="bg-gradient-to-r from-yellow-500/10 to-transparent border-l-4 border-yellow-400 px-4 py-2 mb-4">
+                                            <p className="text-white font-semibold italic text-sm">
+                                                "{pkg.slogan}"
+                                            </p>
+                                        </div>
 
                                         {/* Duration */}
-                                        <p className="text-yellow-400 text-center font-semibold mb-6 text-lg">
-                                            {pkg.duration}
+                                        <p className="text-gray-400 text-center font-semibold mb-4 text-sm">
+                                            ⏱️ {pkg.duration}
                                         </p>
 
                                         {/* Price */}
-                                        <div className="bg-black/50 rounded-lg p-6 mb-6 border border-yellow-500/30">
-                                            <p className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 text-center">
+                                        <div className="bg-black/50 rounded-lg p-4 mb-4 border border-yellow-500/30">
+                                            <p className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 text-center">
                                                 {pkg.price}
                                             </p>
                                         </div>
 
+                                        {/* Target Audience - Pour Qui ? */}
+                                        <div className="bg-gray-800/50 rounded-lg p-3 mb-4">
+                                            <p className="text-xs text-gray-400 uppercase font-bold mb-1">👤 Pour qui ?</p>
+                                            <p className="text-gray-200 text-sm">{pkg.target}</p>
+                                        </div>
+
+                                        {/* Promise - La Promesse */}
+                                        <div className="mb-4">
+                                            <p className="text-xs text-gray-400 uppercase font-bold mb-1">🎯 La promesse</p>
+                                            <p className="text-gray-300 text-sm leading-relaxed">{pkg.promise}</p>
+                                        </div>
+
                                         {/* Features List */}
-                                        <div className="space-y-3">
+                                        <div className="space-y-2 mb-4">
+                                            <p className="text-xs text-gray-400 uppercase font-bold">📚 Modules inclus</p>
                                             {pkg.features.map((feature, idx) => (
                                                 <div
                                                     key={idx}
-                                                    className="flex items-start gap-3 text-gray-200 group-hover:text-white transition-colors"
+                                                    className="flex items-center gap-2 text-gray-200"
                                                 >
-                                                    <CheckCircle2 className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
-                                                    <span className="text-sm font-medium">{feature.label}</span>
+                                                    <CheckCircle2 className="w-4 h-4 text-yellow-400 flex-shrink-0" />
+                                                    <span className="text-xs font-medium">{feature.label}</span>
                                                 </div>
                                             ))}
                                         </div>
 
-                                        {/* Icons Row */}
-                                        <div className="flex justify-center gap-4 mt-6 pt-6 border-t border-gray-700">
-                                            {pkg.features.map((feature, idx) => (
-                                                <div
-                                                    key={idx}
-                                                    className="text-yellow-400 transform transition-transform hover:scale-110"
-                                                >
-                                                    {feature.icon}
-                                                </div>
-                                            ))}
+                                        {/* Career Outcomes - Débouchés */}
+                                        <div className="bg-gradient-to-r from-green-900/30 to-transparent rounded-lg p-3 border border-green-600/30">
+                                            <p className="text-xs text-green-400 uppercase font-bold mb-2">🚀 Débouchés</p>
+                                            <div className="flex flex-wrap gap-1">
+                                                {pkg.careers.map((career, idx) => (
+                                                    <span
+                                                        key={idx}
+                                                        className="bg-green-900/50 text-green-300 text-xs px-2 py-1 rounded-full"
+                                                    >
+                                                        {career}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
 
