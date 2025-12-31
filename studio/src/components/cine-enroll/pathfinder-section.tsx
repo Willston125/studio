@@ -37,7 +37,7 @@ export default function PathfinderSection() {
                     <Link
                         key={index}
                         href={block.link}
-                        className={`nyfa-block ${block.colorClass} flex items-center justify-center gap-4 no-underline transition-all duration-300 px-5 py-8 md:py-0 border-b md:border-b-0 border-black/10`}
+                        className={`nyfa-block ${block.colorClass} flex items-center justify-center gap-4 no-underline transition-all duration-300 px-5 py-8 md:py-0`}
                     >
                         <span className="block-icon text-4xl">{block.icon}</span>
                         <div className="block-text">
