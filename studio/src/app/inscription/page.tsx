@@ -7,6 +7,7 @@ import { CheckCircle, ArrowLeft } from 'lucide-react';
 
 export default function InscriptionPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     // --- LOGIQUE COMPTE À REBOURS (CIBLE : 20 DECEMBRE 2025) ---
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -37,9 +38,15 @@ export default function InscriptionPage() {
 
     // --- LOGIQUE ENVOI WHATSAPP ---
     const onSubmit = (data: any) => {
-        const message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\n--------------------------------\n👤 *Candidat:* ${data.prenom} ${data.nom}\n📱 *Tel:* ${data.telephone}\n📧 *Email:* ${data.email}\n🎓 *Niveau:* ${data.niveau}\n--------------------------------\n*ENGAGEMENTS SIGNÉS :*\n✅ Tarif 5.000 FDJ accepté\n✅ Clause de NON-REMBOURSEMENT acceptée\n✅ Engagement paiement 48h validé\n📅 Date: ${new Date().toLocaleDateString()}`;
-        const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
+        // Afficher la modal de confirmation
+        setShowSuccessModal(true);
+
+        // Ouvrir WhatsApp après un court délai
+        setTimeout(() => {
+            const message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\n--------------------------------\n👤 *Candidat:* ${data.prenom} ${data.nom}\n📱 *Tel:* ${data.telephone}\n📧 *Email:* ${data.email}\n🎓 *Niveau:* ${data.niveau}\n--------------------------------\n*ENGAGEMENTS SIGNÉS :*\n✅ Tarif 5.000 FDJ accepté\n✅ Clause de NON-REMBOURSEMENT acceptée\n✅ Engagement paiement 48h validé\n📅 Date: ${new Date().toLocaleDateString()}`;
+            const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }, 1500);
     };
 
     return (
@@ -129,18 +136,20 @@ export default function InscriptionPage() {
                             <div className="flex flex-col gap-1.5">
                                 <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Nom</label>
                                 <input
-                                    {...register("nom", { required: true })}
+                                    {...register("nom", { required: "Le nom est obligatoire" })}
                                     className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
                                     placeholder="Votre nom"
                                 />
+                                {errors.nom && <span className="text-[#E50914] text-sm mt-1 block">⚠️ {errors.nom.message as string}</span>}
                             </div>
                             <div className="flex flex-col gap-1.5">
                                 <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Prénom</label>
                                 <input
-                                    {...register("prenom", { required: true })}
+                                    {...register("prenom", { required: "Le prénom est obligatoire" })}
                                     className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
                                     placeholder="Votre prénom"
                                 />
+                                {errors.prenom && <span className="text-[#E50914] text-sm mt-1 block">⚠️ {errors.prenom.message as string}</span>}
                             </div>
                         </div>
 
@@ -148,20 +157,34 @@ export default function InscriptionPage() {
                             <div className="flex flex-col gap-1.5">
                                 <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Email</label>
                                 <input
-                                    {...register("email", { required: true })}
+                                    {...register("email", {
+                                        required: "L'email est obligatoire",
+                                        pattern: {
+                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                            message: "Email invalide"
+                                        }
+                                    })}
                                     type="email"
                                     className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
                                     placeholder="votre@email.com"
                                 />
+                                {errors.email && <span className="text-[#E50914] text-sm mt-1 block">⚠️ {errors.email.message as string}</span>}
                             </div>
                             <div className="flex flex-col gap-1.5">
                                 <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">WhatsApp (Djibouti)</label>
                                 <input
-                                    {...register("telephone", { required: true })}
+                                    {...register("telephone", {
+                                        required: "Le numéro WhatsApp est obligatoire",
+                                        pattern: {
+                                            value: /^[0-9]{8}$/,
+                                            message: "Format: 8 chiffres (ex: 77556344)"
+                                        }
+                                    })}
                                     type="tel"
                                     className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
                                     placeholder="Ex: 77 XX XX XX"
                                 />
+                                {errors.telephone && <span className="text-[#E50914] text-sm mt-1 block">⚠️ {errors.telephone.message as string}</span>}
                             </div>
                         </div>
 
@@ -259,6 +282,46 @@ export default function InscriptionPage() {
                     </form>
                 </div>
             </main>
+
+            {/* 🎉 SUCCESS MODAL - Confirmation visuelle */}
+            {showSuccessModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
+                    <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border-2 border-[#D4AF37] rounded-2xl p-8 max-w-md mx-4 shadow-[0_0_50px_rgba(212,175,55,0.3)] animate-in zoom-in-95 duration-300">
+                        <div className="text-center">
+                            {/* Checkmark animé */}
+                            <div className="w-20 h-20 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
+                                <CheckCircle size={48} className="text-black" />
+                            </div>
+
+                            {/* Titre */}
+                            <h3 className="font-oswald text-3xl text-white uppercase mb-4">
+                                Dossier Pré-validé !
+                            </h3>
+
+                            {/* Message */}
+                            <p className="text-[#ccc] text-lg mb-6 leading-relaxed">
+                                Votre formulaire a été <strong className="text-[#D4AF37]">traité avec succès</strong>. <br />
+                                <span className="text-white">WhatsApp va s'ouvrir</span> dans un instant.
+                            </p>
+
+                            {/* Call to action */}
+                            <div className="bg-[#E50914]/10 border border-[#E50914]/30 rounded-lg p-4 mb-6">
+                                <p className="text-sm text-[#ffcccc]">
+                                    ⚠️ <strong>Action requise :</strong> Finalisez l'envoi sur WhatsApp pour <strong>confirmer votre place</strong>.
+                                </p>
+                            </div>
+
+                            {/* Bouton fermer */}
+                            <button
+                                onClick={() => setShowSuccessModal(false)}
+                                className="text-[#888] hover:text-white text-sm underline transition-colors"
+                            >
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

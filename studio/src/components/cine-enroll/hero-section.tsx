@@ -13,6 +13,11 @@ import { RecIndicator } from "@/components/ui/rec-indicator";
 
 export default function HeroSection() {
   useEffect(() => {
+    // ⚡ OPTIMIZATION: Disable particles on mobile for better performance
+    // Old Android phones can struggle with 30 animated particles
+    const isMobile = window.innerWidth < 768; // md breakpoint
+    if (isMobile) return; // Skip particle generation on mobile
+
     const particleContainer = document.querySelector('.hero-particles');
     if (!particleContainer) return;
 

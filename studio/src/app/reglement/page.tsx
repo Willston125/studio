@@ -8,25 +8,36 @@ import { CheckCircle, Download } from 'lucide-react';
 export default function ReglementPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const onSubmit = (data: any) => {
-        // 1. Envoi au FORMATEUR (Moi)
-        const messageFormateur = `*SIGNATURE RÈGLEMENT - CINEWORLD*\n--------------------------------\n👤 *Élève:* ${data.prenom} ${data.nom}\n📱 *Tel:* ${data.telephone}\n--------------------------------\n*ENGAGEMENTS VALIDÉS :*\n✅ Clause Non-Remboursement (Art. 3)\n✅ Assiduité & Matériel (Art. 5)\n✅ Droit à l'image (Art. 6)\n📅 Date: ${new Date().toLocaleDateString()}`;
-        const urlFormateur = `https://wa.me/25377556344?text=${encodeURIComponent(messageFormateur)}`;
+        // Afficher la modal de confirmation
+        setShowSuccessModal(true);
 
-        // 2. Envoi à l'ÉLÈVE
-        const messageEleve = `Félicitations ${data.prenom} ! Votre acceptation du règlement est enregistrée.\n\nVous avez coché :\n✅ NON REMBOURSABLE (Article 3)\n✅ ASSIDUITÉ (Article 5)\n✅ DROIT IMAGE (Article 6)\n\nTéléchargez votre copie ici : https://cineworld-djibouti.vercel.app/reglement.pdf`;
-        const urlEleve = `https://wa.me/${data.telephone}?text=${encodeURIComponent(messageEleve)}`;
-
-        // Ouverture des fenêtres (Attention aux bloqueurs de pop-up)
-        window.open(urlFormateur, '_blank');
-
-        // Petit délai pour tenter d'ouvrir la 2ème fenêtre
+        // Gérer les envois WhatsApp après un court délai
         setTimeout(() => {
-            window.open(urlEleve, '_blank');
-        }, 1000);
+            // 1. Envoi au FORMATEUR (Moi)
+            const messageFormateur = `*SIGNATURE RÈGLEMENT - CINEWORLD*\n--------------------------------\n👤 *Élève:* ${data.prenom} ${data.nom}\n📱 *Tel:* ${data.telephone}\n--------------------------------\n*ENGAGEMENTS VALIDÉS :*\n✅ Clause Non-Remboursement (Art. 3)\n✅ Assiduité & Matériel (Art. 5)\n✅ Droit à l'image (Art. 6)\n📅 Date: ${new Date().toLocaleDateString()}`;
+            const urlFormateur = `https://wa.me/25377556344?text=${encodeURIComponent(messageFormateur)}`;
 
-        setIsSubmitted(true);
+            // 2. Envoi à l'ÉLÈVE
+            const messageEleve = `Félicitations ${data.prenom} ! Votre acceptation du règlement est enregistrée.\n\nVous avez coché :\n✅ NON REMBOURSABLE (Article 3)\n✅ ASSIDUITÉ (Article 5)\n✅ DROIT IMAGE (Article 6)\n\nTéléchargez votre copie ici : https://cineworld-djibouti.vercel.app/reglement.pdf`;
+            const urlEleve = `https://wa.me/${data.telephone}?text=${encodeURIComponent(messageEleve)}`;
+
+            // Ouverture des fenêtres (Attention aux bloqueurs de pop-up)
+            window.open(urlFormateur, '_blank');
+
+            // Petit délai pour tenter d'ouvrir la 2ème fenêtre
+            setTimeout(() => {
+                window.open(urlEleve, '_blank');
+            }, 1000);
+
+            // Passer à l'état "soumis" après 2s
+            setTimeout(() => {
+                setIsSubmitted(true);
+                setShowSuccessModal(false);
+            }, 2000);
+        }, 1500);
     };
 
     return (
@@ -221,6 +232,42 @@ export default function ReglementPage() {
 
                 </div>
             </div>
+
+            {/* 🎉 SUCCESS MODAL - Confirmation visuelle */}
+            {showSuccessModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
+                    <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border-2 border-[#D4AF37] rounded-2xl p-8 max-w-md mx-4 shadow-[0_0_50px_rgba(212,175,55,0.3)] animate-in zoom-in-95 duration-300">
+                        <div className="text-center">
+                            {/* Checkmark */}
+                            <div className="w-20 h-20 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
+                                <CheckCircle size={48} className="text-black" />
+                            </div>
+
+                            <h3 className="font-oswald text-3xl text-white uppercase mb-4">
+                                Signature Enregistrée !
+                            </h3>
+
+                            <p className="text-[#ccc] text-lg mb-6 leading-relaxed">
+                                Votre engagement a été <strong className="text-[#D4AF37]">validé avec succès</strong>. <br />
+                                <span className="text-white">2 fenêtres WhatsApp</span> vont s'ouvrir.
+                            </p>
+
+                            <div className="bg-[#E50914]/10 border border-[#E50914]/30 rounded-lg p-4 mb-6">
+                                <p className="text-sm text-[#ffcccc]">
+                                    📝 <strong>Double confirmation :</strong> Un message sera envoyé au formateur ET à vous.
+                                </p>
+                            </div>
+
+                            <button
+                                onClick={() => setShowSuccessModal(false)}
+                                className="text-[#888] hover:text-white text-sm underline transition-colors"
+                            >
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
         </div>
     );
