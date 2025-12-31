@@ -1,13 +1,14 @@
 "use client";
 
 import HeroSection from '@/components/cine-enroll/hero-section';
-import PhotoGallery from '@/components/cine-enroll/photo-gallery';
-import TestimonialsSection from '@/components/cine-enroll/testimonials-section';
-import PremiumPricingSection from '@/components/cine-enroll/premium-pricing-section';
+import PathfinderSection from '@/components/cine-enroll/pathfinder-section';
+import SolidPricingSection from '@/components/cine-enroll/solid-pricing-section';
+import ExperienceSection from '@/components/cine-enroll/experience-section';
 import CurriculumSection from '@/components/cine-enroll/curriculum-section';
-
-import WhyChooseUsSection from '@/components/cine-enroll/why-choose-us-section';
-import { Divider } from '@/components/ui/divider';
+import PhotoGallery from '@/components/cine-enroll/photo-gallery';
+import AlumniSection from '@/components/cine-enroll/alumni-section';
+import NextStepsSection from '@/components/cine-enroll/next-steps-section';
+import PremiumFooter from '@/components/cine-enroll/premium-footer';
 import { FilmGrainOverlay } from '@/components/ui/cinema-effects';
 
 export default function Home() {
@@ -16,33 +17,38 @@ export default function Home() {
       {/* Cinema Film Grain Overlay */}
       <FilmGrainOverlay />
 
+      {/* HERO - Conservé */}
       <div className="mt-32 mb-20">
         <HeroSection />
       </div>
 
-      <Divider variant="gold" />
+      {/* QUEL PARCOURS POUR VOUS ? - Nouveau (style NYFA jaune) */}
+      <PathfinderSection />
 
-      <PremiumPricingSection />
+      {/* TARIFS - Nouveau design solide minimaliste */}
+      <SolidPricingSection />
 
-      <Divider variant="gold" />
+      {/* L'EXPÉRIENCE CINEWORLD - Nouveau */}
+      <ExperienceSection />
 
+      {/* CURRICULUM - Conservé mais intégré */}
       <CurriculumSection />
 
-      <Divider variant="gold" />
-
-      <main>
-        <WhyChooseUsSection />
-
-        <Divider variant="gold" />
-
+      {/* PHOTO GALLERY - Conservé (En Immersion sur les Tournages) */}
+      <div className="bg-black py-20">
         <div className="container mx-auto px-4">
           <PhotoGallery />
         </div>
+      </div>
 
+      {/* NOS ANCIENS ÉLÈVES - Nouveau (remplace Testimonials) */}
+      <AlumniSection />
 
+      {/* PROCHAINE ÉTAPE - Nouveau CTA final */}
+      <NextStepsSection />
 
-        <TestimonialsSection />
-      </main>
+      {/* FOOTER PREMIUM - Nouveau */}
+      <PremiumFooter />
     </div>
   );
 }
