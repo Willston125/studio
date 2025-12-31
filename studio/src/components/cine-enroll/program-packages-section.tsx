@@ -123,7 +123,7 @@ export default function ProgramPackagesSection() {
                         {packages.map((pkg, index) => (
                             <div
                                 key={index}
-                                className="relative group"
+                                className="relative group package-card"
                             >
                                 {/* Popular Badge */}
                                 {pkg.isPopular && (
@@ -149,19 +149,19 @@ export default function ProgramPackagesSection() {
                                     <div className="p-6 pt-8">
                                         {/* Badge + Title */}
                                         <div className="text-center mb-3">
-                                            <span className="text-3xl">{pkg.badge}</span>
+                                            <span className="text-3xl mb-2 inline-block">{pkg.badge}</span>
                                             <h3 className="text-2xl md:text-3xl font-bold text-white mt-2">
                                                 {pkg.title}
                                             </h3>
-                                            <p className="text-yellow-400 text-sm font-medium uppercase tracking-wider">
+                                            <p className="card-subtitle text-yellow-400">
                                                 {pkg.subtitle}
                                             </p>
                                         </div>
 
                                         {/* Slogan - The Hook */}
-                                        <div className="bg-gradient-to-r from-yellow-500/10 to-transparent border-l-4 border-yellow-400 px-4 py-2 mb-4">
-                                            <p className="text-white font-semibold italic text-sm">
-                                                "{pkg.slogan}"
+                                        <div className="promise bg-gradient-to-r from-yellow-500/10 to-transparent rounded px-3 py-2 mb-4">
+                                            <p className="text-white font-semibold text-sm">
+                                                {pkg.slogan}
                                             </p>
                                         </div>
 
@@ -185,32 +185,42 @@ export default function ProgramPackagesSection() {
 
                                         {/* Promise - La Promesse */}
                                         <div className="mb-4">
-                                            <p className="text-xs text-gray-400 uppercase font-bold mb-1">🎯 La promesse</p>
+                                            <p className="text-xs text-gray-400 uppercase font-bold mb-2 flex items-center gap-1">
+                                                <span className="icon">🎯</span> La promesse
+                                            </p>
                                             <p className="text-gray-300 text-sm leading-relaxed">{pkg.promise}</p>
                                         </div>
 
+                                        <hr className="separator" />
+
                                         {/* Features List */}
-                                        <div className="space-y-2 mb-4">
-                                            <p className="text-xs text-gray-400 uppercase font-bold">📚 Modules inclus</p>
+                                        <div className="space-y-2 mb-4 card-content">
+                                            <p className="text-xs text-gray-400 uppercase font-bold flex items-center gap-1">
+                                                <span className="icon">📚</span> Modules inclus
+                                            </p>
                                             {pkg.features.map((feature, idx) => (
                                                 <div
                                                     key={idx}
                                                     className="flex items-center gap-2 text-gray-200"
                                                 >
                                                     <CheckCircle2 className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-                                                    <span className="text-xs font-medium">{feature.label}</span>
+                                                    <span className="text-xs font-medium"><strong>{feature.label}</strong></span>
                                                 </div>
                                             ))}
                                         </div>
 
+                                        <hr className="separator" />
+
                                         {/* Career Outcomes - Débouchés */}
                                         <div className="bg-gradient-to-r from-green-900/30 to-transparent rounded-lg p-3 border border-green-600/30">
-                                            <p className="text-xs text-green-400 uppercase font-bold mb-2">🚀 Débouchés</p>
+                                            <p className="text-xs text-green-400 uppercase font-bold mb-2 flex items-center gap-1">
+                                                <span className="icon">🚀</span> Débouchés
+                                            </p>
                                             <div className="flex flex-wrap gap-1">
                                                 {pkg.careers.map((career, idx) => (
                                                     <span
                                                         key={idx}
-                                                        className="bg-green-900/50 text-green-300 text-xs px-2 py-1 rounded-full"
+                                                        className="career-tag bg-green-900/50 text-green-300 text-xs px-2 py-1 rounded-full"
                                                     >
                                                         {career}
                                                     </span>
