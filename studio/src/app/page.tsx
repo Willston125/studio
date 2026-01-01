@@ -8,6 +8,9 @@ import { FilmGrainOverlay } from '@/components/ui/cinema-effects';
 export default function Home() {
   return (
     <div className="bg-background">
+      {/* Cinema Film Grain Overlay */}
+      <FilmGrainOverlay />
+
       {/* HERO - Conservé */}
       <div className="mt-32 mb-20">
         <HeroSection />
