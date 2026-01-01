@@ -2,8 +2,8 @@
 
 import HeroSection from '@/components/cine-enroll/hero-section';
 import PathfinderSection from '@/components/cine-enroll/pathfinder-section';
-import SolidPricingSection from '@/components/cine-enroll/solid-pricing-section';
-import ExperienceSection from '@/components/cine-enroll/experience-section';
+import CheckerboardSection from '@/components/cine-enroll/checkerboard-section';
+import PricingGridSection from '@/components/cine-enroll/pricing-grid-section';
 import CurriculumSection from '@/components/cine-enroll/curriculum-section';
 import PhotoGallery from '@/components/cine-enroll/photo-gallery';
 import AlumniSection from '@/components/cine-enroll/alumni-section';
@@ -22,14 +22,14 @@ export default function Home() {
         <HeroSection />
       </div>
 
-      {/* QUEL PARCOURS POUR VOUS ? - Nouveau (style NYFA jaune) */}
+      {/* QUEL EST VOTRE BUT ? - Nouveau solid-nav-bar */}
       <PathfinderSection />
 
-      {/* L'EXPÉRIENCE CINEWORLD - Nouveau */}
-      <ExperienceSection />
+      {/* CHECKERBOARD - Tech d'abord & Une Famille */}
+      <CheckerboardSection />
 
-      {/* TARIFS - Nouveau design solide minimaliste */}
-      <SolidPricingSection />
+      {/* TARIFS - Nouveau pricing-grid-section */}
+      <PricingGridSection />
 
       {/* CURRICULUM - Conservé mais intégré */}
       <CurriculumSection />

@@ -3,52 +3,60 @@
 import Link from 'next/link';
 
 export default function PathfinderSection() {
-    const blocks = [
+    const options = [
         {
             id: "initie",
             icon: "📱",
-            title: "CRÉATEUR",
-            subtitle: "Réseaux & Mobile",
+            title: "CRÉER",
+            subtitle: "Réseaux & Passion",
             link: "#tarifs",
-            colorClass: "block-white"
+            colorClass: "item-light"
         },
         {
             id: "pro",
             icon: "🎥",
-            title: "PROFESSIONNEL",
-            subtitle: "Vidéaste & Freelance",
+            title: "EN VIVRE",
+            subtitle: "Carrière Pro",
             link: "#tarifs",
-            colorClass: "block-gold"
+            colorClass: "item-gold"
         },
         {
             id: "expert",
             icon: "🎬",
-            title: "RÉALISATEUR",
-            subtitle: "Cinéma & Fiction",
+            title: "RÉALISER",
+            subtitle: "Cinéma & Art",
             link: "#tarifs",
-            colorClass: "block-black"
+            colorClass: "item-dark"
         }
     ];
 
     return (
-        <section className="nyfa-full-bar w-full m-0 p-0 border-b border-black">
-            <div className="nyfa-cols-container grid grid-cols-1 md:grid-cols-3 h-auto md:h-[140px]">
-                {blocks.map((block, index) => (
+        <section className="solid-nav-bar flex flex-wrap">
+            {/* Left Label */}
+            <div className="nav-label bg-[#111] text-white py-10 px-8 flex items-center min-w-[200px]">
+                <h3 className="text-2xl md:text-3xl font-black uppercase leading-tight m-0">
+                    QUEL EST<br />VOTRE<br /><span className="text-[#FFD700]">BUT ?</span>
+                </h3>
+            </div>
+
+            {/* Options */}
+            <div className="nav-options flex flex-1 flex-wrap">
+                {options.map((option, index) => (
                     <Link
                         key={index}
-                        href={block.link}
-                        className={`nyfa-block ${block.colorClass} flex items-center justify-center gap-4 no-underline transition-all duration-300 px-5 py-8 md:py-0`}
+                        href={option.link}
+                        className={`nav-item ${option.colorClass} flex-1 min-w-[200px] flex items-center justify-center gap-4 py-8 px-6 no-underline transition-all duration-300`}
                     >
-                        <span className="block-icon text-4xl">{block.icon}</span>
-                        <div className="block-text">
-                            <h3 className="m-0 text-xl font-extrabold tracking-wider uppercase">
-                                {block.title}
-                            </h3>
-                            <p className="m-0 mt-1 text-sm uppercase opacity-70">
-                                {block.subtitle}
-                            </p>
+                        <span className="nav-icon text-3xl">{option.icon}</span>
+                        <div className="nav-content">
+                            <span className="nav-title block text-lg font-black uppercase tracking-wider">
+                                {option.title}
+                            </span>
+                            <span className="nav-sub block text-sm opacity-70">
+                                {option.subtitle}
+                            </span>
                         </div>
-                        <span className="block-arrow text-2xl transition-transform duration-300">➔</span>
+                        <span className="nav-arrow text-xl font-bold">→</span>
                     </Link>
                 ))}
             </div>
