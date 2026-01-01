@@ -25,11 +25,11 @@ export default function Home() {
       {/* QUEL PARCOURS POUR VOUS ? - Nouveau (style NYFA jaune) */}
       <PathfinderSection />
 
-      {/* TARIFS - Nouveau design solide minimaliste */}
-      <SolidPricingSection />
-
       {/* L'EXPÉRIENCE CINEWORLD - Nouveau */}
       <ExperienceSection />
+
+      {/* TARIFS - Nouveau design solide minimaliste */}
+      <SolidPricingSection />
 
       {/* CURRICULUM - Conservé mais intégré */}
       <CurriculumSection />
