@@ -41,15 +41,13 @@ export default function Home() {
       {/* CURRICULUM - Conservé mais intégré */}
       <CurriculumSection />
 
+
       {/* PHOTO GALLERY - Conservé (En Immersion sur les Tournages) */}
       <div className="bg-black py-20">
         <div className="container mx-auto px-4">
           <PhotoGallery />
         </div>
       </div>
-
-      {/* NOS ANCIENS ÉLÈVES - Nouveau (remplace Testimonials) */}
-      <AlumniSection />
 
       {/* PROCHAINE ÉTAPE - Nouveau CTA final */}
       <NextStepsSection />
