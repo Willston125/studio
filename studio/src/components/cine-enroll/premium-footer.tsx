@@ -26,7 +26,7 @@ export default function PremiumFooter() {
     };
 
     return (
-        <footer className="bg-black text-white">
+        <footer className="bg-white border-t border-gray-100 text-[#1a1a1a]">
             {/* Main Footer */}
             <div className="container mx-auto px-4 max-w-7xl py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -42,7 +42,7 @@ export default function PremiumFooter() {
                                 className="h-12 w-auto"
                             />
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                        <p className="text-gray-600 text-sm leading-relaxed mb-6 font-body">
                             La première académie audiovisuelle de Djibouti.
                             Formation professionnelle en cinéma, vidéo et création de contenu.
                         </p>
@@ -129,9 +129,9 @@ export default function PremiumFooter() {
                                 <li key={index}>
                                     <a
                                         href={link.href}
-                                        className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2"
+                                        className="text-gray-600 hover:text-black transition-colors text-sm flex items-center gap-2 font-body"
                                     >
-                                        <span>{link.icon}</span>
+                                        <span className="opacity-70">{link.icon}</span>
                                         {link.label}
                                     </a>
                                 </li>
@@ -142,7 +142,7 @@ export default function PremiumFooter() {
             </div>
 
             {/* Bottom Bar */}
-            <div className="border-t border-white/10">
+            <div className="border-t border-gray-100">
                 <div className="container mx-auto px-4 max-w-7xl py-6">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <p className="text-gray-500 text-sm">

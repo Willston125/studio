@@ -42,7 +42,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar fixed top-0 left-0 right-0 p-5 flex justify-center z-[9999] max-[900px]:justify-end max-[900px]:px-5 max-[900px]:py-[15px] bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
+    <nav className="navbar fixed top-0 left-0 right-0 p-5 flex justify-center z-[9999] max-[900px]:justify-end max-[900px]:px-5 max-[900px]:py-[15px] bg-white/95 border-b border-gray-100 shadow-sm backdrop-blur-md">
 
       {/* LOGO */}
       <div className="logo-container absolute left-[20px] top-[20px] max-[900px]:left-[20px]">
@@ -58,12 +58,12 @@ export default function Navbar() {
       </div>
 
       {/* MENU PC (PILULE) */}
-      <div className="desktop-menu max-[900px]:hidden inline-flex bg-black/60 px-[30px] py-[12px] rounded-[50px] border border-white/20 backdrop-blur-[10px] gap-[15px] items-center">
+      <div className="desktop-menu max-[900px]:hidden inline-flex bg-gray-50/80 px-[30px] py-[12px] rounded-[50px] border border-gray-200 backdrop-blur-[10px] gap-[15px] items-center">
 
         {/* ACCUEIL */}
         <Link
           href="/"
-          className={`text-[#e0e0e0] no-underline font-oswald uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black ${pathname === '/' ? 'bg-[#D4AF37] text-black' : ''}`}
+          className={`text-gray-700 no-underline font-oswald uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#FFD700] hover:text-black ${pathname === '/' ? 'bg-[#FFD700] text-black' : ''}`}
         >
           ACCUEIL
         </Link>
@@ -75,7 +75,7 @@ export default function Navbar() {
           onMouseLeave={() => setIsProgramsOpen(false)}
         >
           <button
-            className={`flex items-center gap-1 text-[#e0e0e0] no-underline font-oswald uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black ${isProgramsOpen ? 'bg-[#D4AF37]/50 text-white' : ''}`}
+            className={`flex items-center gap-1 text-gray-700 no-underline font-oswald uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#FFD700] hover:text-black ${isProgramsOpen ? 'bg-[#FFD700]/50 text-black' : ''}`}
           >
             PROGRAMMES
             <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isProgramsOpen ? 'rotate-180' : ''}`} />
@@ -83,7 +83,7 @@ export default function Navbar() {
 
           {/* Dropdown Menu */}
           <div
-            className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[280px] bg-black/95 backdrop-blur-xl border border-yellow-500/30 rounded-xl shadow-2xl overflow-hidden transition-all duration-300 ${isProgramsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+            className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[280px] bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden transition-all duration-300 ${isProgramsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
           >
             <div className="p-2">
               {programs.map((program, index) => (
@@ -95,14 +95,14 @@ export default function Navbar() {
                   <div className="text-yellow-400">{program.icon}</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-white font-semibold text-sm">{program.name}</span>
+                      <span className="text-gray-900 font-semibold text-sm">{program.name}</span>
                       {program.popular && (
-                        <span className="bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-full font-bold">
+                        <span className="bg-yellow-400 text-black text-[10px] px-2 py-0.5 rounded-full font-bold">
                           POPULAIRE
                         </span>
                       )}
                     </div>
-                    <span className="text-gray-400 text-xs">{program.duration} • {program.price}</span>
+                    <span className="text-gray-500 text-xs">{program.duration} • {program.price}</span>
                   </div>
                 </button>
               ))}
@@ -122,7 +122,7 @@ export default function Navbar() {
         {/* À PROPOS */}
         <Link
           href="/a-propos"
-          className={`text-[#e0e0e0] no-underline font-oswald uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black ${pathname === '/a-propos' ? 'bg-[#D4AF37] text-black' : ''}`}
+          className={`text-gray-700 no-underline font-oswald uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#FFD700] hover:text-black ${pathname === '/a-propos' ? 'bg-[#FFD700] text-black' : ''}`}
         >
           À PROPOS
         </Link>
@@ -130,7 +130,7 @@ export default function Navbar() {
         {/* CONTACT */}
         <Link
           href="/contact"
-          className={`text-[#e0e0e0] no-underline font-oswald uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black ${pathname === '/contact' ? 'bg-[#D4AF37] text-black' : ''}`}
+          className={`text-gray-700 no-underline font-oswald uppercase text-[0.9rem] px-[15px] py-[8px] rounded-[20px] transition-all duration-300 hover:bg-[#FFD700] hover:text-black ${pathname === '/contact' ? 'bg-[#FFD700] text-black' : ''}`}
         >
           CONTACT
         </Link>
@@ -148,21 +148,21 @@ export default function Navbar() {
       <div className="mobile-menu-container min-[901px]:hidden block">
         {/* Bouton Burger */}
         <div
-          className={`fixed right-[20px] top-[20px] z-[10001] cursor-pointer p-[10px] bg-black border-2 border-[#D4AF37] rounded-[8px] ${isMenuOpen ? 'open' : ''}`}
+          className={`fixed right-[20px] top-[20px] z-[10001] cursor-pointer p-[10px] bg-white border-2 border-[#FFD700] rounded-[8px] ${isMenuOpen ? 'open' : ''}`}
           onClick={toggleDropdown}
         >
-          <div className={`bar w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-x-[5px] translate-y-[8px]' : ''}`}></div>
-          <div className={`bar w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></div>
-          <div className={`bar w-[25px] h-[3px] bg-[#D4AF37] my-[5px] transition-all duration-300 ${isMenuOpen ? '-rotate-45 translate-x-[5px] -translate-y-[8px]' : ''}`}></div>
+          <div className={`bar w-[25px] h-[3px] bg-black my-[5px] transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-x-[5px] translate-y-[8px]' : ''}`}></div>
+          <div className={`bar w-[25px] h-[3px] bg-black my-[5px] transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></div>
+          <div className={`bar w-[25px] h-[3px] bg-black my-[5px] transition-all duration-300 ${isMenuOpen ? '-rotate-45 translate-x-[5px] -translate-y-[8px]' : ''}`}></div>
         </div>
 
         {/* Overlay Plein Écran */}
         <div
-          className={`fixed inset-0 bg-black z-[10000] transition-all duration-300 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+          className={`fixed inset-0 bg-white z-[10000] transition-all duration-300 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
         >
           {/* Menu Centré */}
           <div className="flex flex-col items-center justify-center h-full gap-4">
-            <Link href="/" onClick={handleLinkClick} className="text-white no-underline font-oswald text-2xl uppercase tracking-widest py-3 px-6 transition-all duration-300 hover:text-[#D4AF37] hover:scale-110">
+            <Link href="/" onClick={handleLinkClick} className="text-black no-underline font-oswald text-2xl uppercase tracking-widest py-3 px-6 transition-all duration-300 hover:text-[#FFD700] hover:scale-110">
               ACCUEIL
             </Link>
 

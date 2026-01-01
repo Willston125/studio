@@ -4,40 +4,34 @@
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
-    /* Gris Charbon Profond */
-    --foreground: 0 0% 98%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
 
-    --card: 0 0% 10%;
-    /* Gris Anthracite */
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
 
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
 
     --primary: 39 91% 55%;
-    /* Or / Ambre */
-    --primary-foreground: 0 0% 10%;
+    /* Or / Ambre (Conservé pour les accents institutionnels) */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45.1%;
 
-    --accent: 0 0% 15%;
+    --accent: 0 0% 96%;
     --accent-foreground: 39 91% 55%;
-    /* Or / Ambre pour accent */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 100% / 0.2;
-    /* Blanc avec 20% d'opacité */
-    --input: 0 0% 100% / 0.05;
-    /* Blanc avec 5% d'opacité */
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
     --ring: 39 91% 55%;
-    /* Or / Ambre pour le focus */
 
     --radius: 0.5rem;
 
@@ -45,10 +39,10 @@
     --noir-profond: #000000;
     --or-cinema: #D4AF37;
     --or-clair: #FFD700;
-    --or-accessible: #E8C547;
-    /* ✨ Brighter gold for text - Better contrast on black (WCAG AA) */
-    --gris-texte: #e8e8e8;
-    --gris-fonce: #2a2a2a;
+    --or-accessible: #B8860B;
+    /* Or plus sombre pour meilleure lisibilité sur blanc */
+    --gris-texte: #444444;
+    --gris-fonce: #1a1a1a;
   }
 }
 
@@ -63,11 +57,46 @@
 
   body {
     @apply text-foreground;
-    background: linear-gradient(to bottom, #111, #000);
+    background-color: #ffffff;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+}
+
+/* === GLOBAL RESET : MODE CLAIR (INSTITUTIONNEL) === */
+body,
+html {
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+  /* Texte gris foncé */
+}
+
+section {
+  background-color: #ffffff;
+}
+
+.inst-formations {
+  background-color: #F9FAFB !important;
+  /* Gris "Admin" très léger */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000000 !important;
+}
+
+p,
+li,
+span {
+  color: #444444;
+}
+
+@layer base {
 
   h1,
   h2,
@@ -109,37 +138,22 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--or-clair) 0%, var(--or-cinema) 100%);
+    background: #FFD700;
     padding: 18px 40px;
-    border-radius: 12px;
-    color: var(--noir-profond);
-    font-weight: 700;
-    font-size: 1.2rem;
-    box-shadow:
-      0 0 5px var(--or-cinema),
-      0 0 10px var(--or-cinema),
-      0 0 15px var(--or-clair);
+    border-radius: 8px;
+    color: #000000;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
-  }
-
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 0 #b8860b;
   }
 
   .btn-primary:hover {
-    transform: translateY(-3px) scale(1.05);
-    color: var(--noir-profond);
-    box-shadow:
-      0 0 10px var(--or-clair),
-      0 0 20px var(--or-clair),
-      0 0 30px var(--or-cinema);
+    transform: translateY(-2px);
+    background: #ffdf33;
+    box-shadow: 0 6px 0 #b8860b;
   }
 
   .btn-primary:hover::before {

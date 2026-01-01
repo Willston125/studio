@@ -77,9 +77,12 @@ export default function PhotoGallery() {
   return (
     <section className="py-8">
       <ScrollReveal width="100%">
-        {/* Title with film strip decoration */}
-        <div className="film-strip-horizontal mb-8">
-          <h2 className="text-center text-2xl font-headline py-4">EN IMMERSION SUR LES TOURNAGES</h2>
+        {/* Title with decorative underline */}
+        <div className="mb-12">
+          <h2 className="text-center text-3xl font-black text-black py-4 uppercase tracking-tighter">
+            EN IMMERSION SUR LES TOURNAGES
+            <div className="w-24 h-1 bg-[#FFD700] mx-auto mt-2"></div>
+          </h2>
         </div>
         <Carousel
           plugins={[
@@ -106,7 +109,7 @@ export default function PhotoGallery() {
                         width={800}
                         height={600}
                         data-ai-hint={img.imageHint}
-                        className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-110"
+                        className="object-cover w-full h-full transition-all duration-500 ease-out group-hover:scale-110"
                       />
                     </div>
                   </Vignette>

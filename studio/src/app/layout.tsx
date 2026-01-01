@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="dark">
+    <html lang="fr">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -101,12 +101,6 @@ export default function RootLayout({
         <Footer />
         <Toaster />
         <BackToTopButton />
-        <div
-          className="fixed inset-0 pointer-events-none z-[100]"
-          style={{
-            background: 'radial-gradient(circle at center, transparent 60%, black 150%)'
-          }}
-        />
       </body>
     </html>
   );

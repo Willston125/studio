@@ -53,60 +53,27 @@ export default function HeroSection() {
       aria-label="Section principale de la formation cinéma"
       className="relative w-full flex flex-col justify-center text-white overflow-hidden"
     >
-      {/* Video for Desktop */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute z-0 w-full h-full object-cover hidden md:block"
-        src="/cinema-bg.mp4"
-      >
-        Votre navigateur ne supporte pas la lecture de vidéos.
-      </video>
+      {/* White background with subtle pattern */}
+      <div className="absolute inset-0 bg-white z-0">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+      </div>
 
-      {/* Image for Mobile */}
-      <Image
-        src="/hero-fond.png"
-        alt="Arrière-plan cinéma"
-        fill
-        className="absolute z-0 w-full h-full object-cover object-center block md:hidden"
-        priority
-      />
+      {/* Hero Content Image - Optional or more subtle */}
+      <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 hidden lg:block z-0">
+        <Image
+          src="/hero-fond.png"
+          alt=""
+          fill
+          className="object-cover grayscale"
+        />
+      </div>
 
-      {/* Overlay - Lighter for better visibility */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent z-10"></div>
+      {/* Removed dark effects */}
 
-      {/* Festival Effects */}
-      <div className="hero-spotlight left"></div>
-      <div className="hero-spotlight right"></div>
-      <div className="hero-particles"></div>
-
-      {/* Cinema Viewfinder Corners */}
-      <div className="viewfinder-corner top-left hidden md:block"></div>
-      <div className="viewfinder-corner top-right hidden md:block"></div>
-      <div className="viewfinder-corner bottom-left hidden md:block"></div>
-      <div className="viewfinder-corner bottom-right hidden md:block"></div>
-
-      {/* Cinema Indicators */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute top-24 right-6 z-30 hidden md:block"
-      >
-        <RecIndicator />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 0.5 }}
-        className="absolute bottom-8 right-6 z-30 hidden md:block"
-      >
-        <Timecode fps={24} />
-      </motion.div>
-
+      {/* Removed dark effects */}
 
       <div className="container mx-auto px-4 flex-grow flex items-center relative z-20 pt-24 pb-12 md:pb-16">
         <div className="grid md:grid-cols-2 gap-6 w-full">
@@ -128,19 +95,18 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               tabIndex={0}
-              className="text-5xl md:text-6xl font-headline font-black tracking-wide text-white leading-tight drop-shadow-2xl"
-              style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}
+              className="text-5xl md:text-7xl font-headline font-black tracking-tight text-black leading-[0.9] mb-4"
             >
-              MAÎTRISEZ LE POUVOIR <br /> DE L'IMAGE
+              MAÎTRISEZ LE POUVOIR <br /> DE L'IMAGE.
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="text-lg md:text-xl text-neutral-200 max-w-2xl font-body"
+              className="text-xl md:text-2xl text-gray-600 max-w-xl font-body leading-relaxed"
             >
-              Apprenez à créer des vidéos impactantes, du scénario au montage final. Une formation intensive pour transformer votre passion en compétence professionnelle.
+              La première académie audiovisuelle de Djibouti. Apprenez à créer des contenus qui marquent les esprits.
             </motion.p>
 
             <motion.div
@@ -150,13 +116,13 @@ export default function HeroSection() {
               className="flex items-center gap-2"
             >
               <div className="flex items-center gap-0.5">
-                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-                <Star className="w-5 h-5 text-amber-400/80 fill-amber-400/80" />
+                <Star className="w-5 h-5 text-[#FFD700] fill-[#FFD700]" />
+                <Star className="w-5 h-5 text-[#FFD700] fill-[#FFD700]" />
+                <Star className="w-5 h-5 text-[#FFD700] fill-[#FFD700]" />
+                <Star className="w-5 h-5 text-[#FFD700] fill-[#FFD700]" />
+                <Star className="w-5 h-5 text-[#FFD700]/50 fill-[#FFD700]/50" />
               </div>
-              <span className="font-semibold text-lg font-body">4.8 (12 Avis)</span>
+              <span className="font-bold text-lg font-body text-black">4.8/5 (Session 2026)</span>
             </motion.div>
 
             <motion.div
