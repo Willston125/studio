@@ -188,12 +188,12 @@ export default function CurriculumSection() {
                             {/* Module Header - Clickable */}
                             <div
                                 onClick={() => toggleModule(module.id)}
-                                className="bg-gradient-to-r from-black/80 to-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6 cursor-pointer hover:border-yellow-500/50 transition-all duration-300"
+                                className="accordion-item bg-gradient-to-r from-black/80 to-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6 cursor-pointer hover:border-yellow-500/50 transition-all duration-300"
                             >
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-4 flex-1">
                                         {/* Icon */}
-                                        <div className={`bg-gradient-to-br ${module.color} p-4 rounded-lg text-white`}>
+                                        <div className="accordion-icon p-4 rounded-lg text-white">
                                             {module.icon}
                                         </div>
 

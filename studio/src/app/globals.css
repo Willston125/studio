@@ -2979,6 +2979,62 @@
   }
 }
 
+/* CORRECTION ACCORDÉON (STYLE GOLD PRO) */
+.accordion-item {
+  background-color: #111 !important;
+  /* Fond gris foncé */
+  border: 1px solid #333 !important;
+  border-left: 4px solid #FFD700 !important;
+  /* Juste une ligne dorée */
+  margin-bottom: 10px;
+}
+
+.accordion-trigger {
+  color: white !important;
+}
+
+.accordion-icon {
+  background-color: transparent !important;
+  /* Plus de fond coloré */
+  color: #FFD700 !important;
+  /* Icône Dorée */
+  border: 1px solid #FFD700;
+}
+
+/* CORRECTION FOOTER (TRANSPARENT) */
+.prochaine-etape-card {
+  background-color: transparent !important;
+  /* On enlève le blanc */
+  box-shadow: none !important;
+  /* On enlève l'ombre */
+  border: none !important;
+  text-align: center;
+}
+
+.prochaine-etape-card h3 {
+  color: black !important;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.prochaine-etape-card p {
+  color: #333 !important;
+}
+
+.prochaine-etape-card button,
+.prochaine-etape-card a.btn-cta-footer {
+  border: 2px solid black !important;
+  background: transparent !important;
+  color: black !important;
+  font-weight: bold;
+}
+
+.prochaine-etape-card button:hover,
+.prochaine-etape-card a.btn-cta-footer:hover {
+  background: black !important;
+  color: #FFD700 !important;
+}
+
 .loading-reel {
   width: 60px;
   height: 60px;

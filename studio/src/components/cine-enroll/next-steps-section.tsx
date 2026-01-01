@@ -46,7 +46,7 @@ export default function NextStepsSection() {
                     {steps.map((step, index) => (
                         <div
                             key={index}
-                            className="text-center"
+                            className="text-center prochaine-etape-card"
                         >
                             {/* Icon */}
                             <div className="text-5xl mb-4">{step.icon}</div>
