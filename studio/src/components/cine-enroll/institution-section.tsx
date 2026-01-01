@@ -1,66 +1,91 @@
-
 "use client";
 
-import Image from "next/image";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import React from 'react';
+import Image from 'next/image';
+import { CheckCircle, Target, Users, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function InstitutionSection() {
+    const highlights = [
+        { icon: Target, text: "Formation certifiante reconnue" },
+        { icon: Users, text: "Classes à effectif réduit (max 15)" },
+        { icon: Award, text: "Matériel professionnel fourni" }
+    ];
+
     return (
-        <section className="py-24 bg-white overflow-hidden">
-            <div className="container mx-auto px-4">
-                <ScrollReveal>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <section className="section-container bg-white">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
 
-                        {/* Image Side - Professional & Clean */}
-                        <div className="relative aspect-square lg:aspect-auto lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-                            <Image
-                                src="/experience-bg.png"
-                                alt="L'excellence de l'Académie Cineworld"
-                                fill
-                                className="object-cover transition-transform duration-700 hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
-                        </div>
-
-                        {/* Text Side - Academic Typography */}
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <span className="text-[#B8860B] font-bold tracking-[0.2em] uppercase text-sm block">
-                                    L'EXCELLENCE ACADÉMIQUE
-                                </span>
-                                <h2 className="text-4xl md:text-6xl font-black text-black leading-tight tracking-tighter">
-                                    FORGER LES RÉALISATEURS <br /> DE DEMAIN.
-                                </h2>
-                                <div className="w-20 h-2 bg-black"></div>
-                            </div>
-
-                            <div className="space-y-6 text-gray-600 text-lg md:text-xl leading-relaxed font-body">
-                                <p>
-                                    Cineworld Academy n'est pas seulement un centre de formation. C'est un écosystème conçu pour transformer la passion en expertise technique et artistique rigoureuse.
-                                </p>
-                                <p>
-                                    Inspirée par les plus grandes institutions mondiales, notre pédagogie repose sur un équilibre parfait entre théorie fondamentale et pratique intensive sur le terrain.
-                                </p>
-
-                                <ul className="space-y-4 pt-4">
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-[#FFD700] text-2xl">●</span>
-                                        <span className="text-black font-bold">Matériel professionnel de dernière génération</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-[#FFD700] text-2xl">●</span>
-                                        <span className="text-black font-bold">Intervenants certifiés et actifs dans l'industrie</span>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <span className="text-[#FFD700] text-2xl">●</span>
-                                        <span className="text-black font-bold">Réseau d'anciens élèves connectés au marché</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
+                {/* GAUCHE : Image */}
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="relative"
+                >
+                    <div className="relative rounded-lg overflow-hidden shadow-xl">
+                        <Image
+                            src="/groupeeleve.png"
+                            alt="Étudiants Cineworld en formation"
+                            width={800}
+                            height={600}
+                            className="w-full h-auto object-cover"
+                        />
                     </div>
-                </ScrollReveal>
+                    {/* Badge flottant */}
+                    <div className="absolute -bottom-6 -right-6 bg-black text-white px-8 py-4 rounded-lg shadow-2xl">
+                        <div className="text-3xl font-black">+100</div>
+                        <div className="text-sm opacity-90">Projets Réalisés</div>
+                    </div>
+                </motion.div>
+
+                {/* DROITE : Contenu */}
+                <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="space-y-6"
+                >
+                    {/* Surtitre */}
+                    <div className="inline-block bg-yellow-100 text-yellow-900 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">
+                        Notre Académie
+                    </div>
+
+                    {/* Titre */}
+                    <h2 className="text-4xl md:text-5xl font-black text-black leading-tight">
+                        Formez-vous aux<br />
+                        Métiers de l'Image
+                    </h2>
+
+                    {/* Description */}
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                        Cineworld Academy est la première institution djiboutienne dédiée exclusivement
+                        à la formation audiovisuelle. Nos programmes allient théorie académique et pratique
+                        intensive pour transformer votre passion en compétence professionnelle.
+                    </p>
+
+                    {/* Points clés */}
+                    <div className="space-y-4 pt-4">
+                        {highlights.map((item, index) => (
+                            <div key={index} className="flex items-center gap-4">
+                                <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <item.icon className="w-6 h-6 text-yellow-800" />
+                                </div>
+                                <span className="text-gray-700 font-medium">{item.text}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* CTA */}
+                    <div className="pt-6">
+                        <a href="/a-propos" className="btn-primary">
+                            En Savoir Plus
+                        </a>
+                    </div>
+                </motion.div>
+
             </div>
         </section>
     );

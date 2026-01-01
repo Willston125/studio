@@ -1,320 +1,230 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
-import { CheckCircle, ArrowLeft } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Send } from 'lucide-react';
 
 export default function InscriptionPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-    // --- LOGIQUE COMPTE À REBOURS (CIBLE : 20 DECEMBRE 2025) ---
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-    const [isExpired, setIsExpired] = useState(false);
-
-    useEffect(() => {
-        const targetDate = new Date("Dec 20, 2025 00:00:00").getTime();
-
-        const timer = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            if (distance < 0) {
-                clearInterval(timer);
-                setIsExpired(true);
-            } else {
-                setTimeLeft({
-                    days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                    minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                    seconds: Math.floor((distance % (1000 * 60)) / 1000)
-                });
-            }
-        }, 1000);
-
-        return () => clearInterval(timer);
-    }, []);
-
-    // --- LOGIQUE ENVOI WHATSAPP ---
     const onSubmit = (data: any) => {
-        // Afficher la modal de confirmation
         setShowSuccessModal(true);
 
-        // Ouvrir WhatsApp après un court délai
         setTimeout(() => {
-            const message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\n--------------------------------\n👤 *Candidat:* ${data.prenom} ${data.nom}\n📱 *Tel:* ${data.telephone}\n📧 *Email:* ${data.email}\n🎓 *Niveau:* ${data.niveau}\n--------------------------------\n*ENGAGEMENTS SIGNÉS :*\n✅ Tarif 5.000 FDJ accepté\n✅ Clause de NON-REMBOURSEMENT acceptée\n✅ Engagement paiement 48h validé\n📅 Date: ${new Date().toLocaleDateString()}`;
+            const message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\\n--------------------------------\\n👤 *Candidat:* ${data.prenom} ${data.nom}\\n📱 *Tel:* ${data.telephone}\\n📧 *Email:* ${data.email}\\n🎓 *Niveau:* ${data.niveau}\\n--------------------------------\\n*ENGAGEMENTS:*\\n✅ Tarif accepté\\n✅ Engagement paiement 48h\\n📅 Date: ${new Date().toLocaleDateString()}`;
             const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         }, 1500);
     };
 
     return (
-        <div className="flex flex-col lg:flex-row min-h-screen w-full bg-[#050505] font-sans text-white overflow-x-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
 
-            {/* --- ZONE GAUCHE (VISUEL & MARKETING) --- */}
-            <aside className="w-full lg:w-[45%] relative bg-[url('/formateur-mentor.png')] bg-cover bg-top lg:bg-center shrink-0 min-h-[480px] lg:h-auto lg:min-h-screen flex flex-col justify-end">
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#050505]/40 to-[#050505]/70 lg:bg-gradient-to-t lg:from-[#0a0a0a] lg:via-[#050505]/40 lg:to-[#050505]/70"></div>
-
-                {/* BOUTON RETOUR MOBILE (Absolu en haut à gauche) */}
-                <Link href="/" className="absolute top-6 left-6 z-50 flex items-center gap-2 text-white/80 hover:text-[#D4AF37] transition-colors text-xs font-medium lg:hidden">
-                    <ArrowLeft size={14} />
-                    <span>Retour à l'accueil</span>
+            {/* En-tête avec retour */}
+            <div className="container mx-auto px-4 py-8">
+                <Link href="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-black transition-colors">
+                    <ArrowLeft className="w-5 h-5" />
+                    <span className="font-medium">Retour à l'accueil</span>
                 </Link>
+            </div>
 
-                <div className="relative z-10 px-5 pb-8 lg:absolute lg:bottom-8 lg:left-8 lg:right-8 mt-[320px] lg:mt-0">
-                    <div className="text-[#D4AF37] font-oswald text-sm lg:text-base tracking-[2px] uppercase mb-1">Votre Formateur</div>
-                    <div className="font-oswald text-4xl lg:text-6xl uppercase leading-[0.95] mb-4 drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">Ali William</div>
+            {/* Contenu Principal */}
+            <div className="container mx-auto px-4 pb-20">
+                <div className="max-w-4xl mx-auto">
 
-                    {/* --- BLOC MARKETING (STYLE NETFLIX) --- */}
-                    <div className="bg-black/85 border border-[#333] rounded-xl p-5 border-b-4 border-b-[#E50914] shadow-2xl backdrop-blur-sm">
-                        {isExpired ? (
-                            <h3 className="text-[#E50914] text-center font-oswald text-2xl uppercase">Offre Terminée</h3>
-                        ) : (
-                            <>
-                                <span className="bg-[#E50914] text-white font-bold text-xs px-2.5 py-1 rounded uppercase font-oswald tracking-wider mb-2.5 inline-block">
-                                    Offre Spéciale
-                                </span>
-
-                                <div className="flex items-center gap-4 mb-4">
-                                    {/* PRIX BARRÉ AVEC TRAIT ROUGE CSS */}
-                                    <div className="text-xl text-[#888] font-medium relative font-oswald">
-                                        5 000 FDJ
-                                        <div className="absolute -left-[5%] top-1/2 w-[110%] h-[3px] bg-[#E50914] -rotate-[10deg] opacity-90"></div>
-                                    </div>
-                                    <div className="font-oswald text-4xl text-white leading-none">5.000 FDJ</div>
-                                </div>
-
-                                <div className="text-xs text-[#bbb] mb-2">Fin de l'offre le 20 Décembre :</div>
-
-                                {/* TIMER */}
-                                <div className="grid grid-cols-4 gap-2.5 border-t border-[#333] pt-4">
-                                    <div className="bg-[#1a1a1a] rounded-md p-2 text-center">
-                                        <span className="block font-oswald text-xl lg:text-2xl text-[#D4AF37] font-bold">{timeLeft.days < 10 ? `0${timeLeft.days}` : timeLeft.days}</span>
-                                        <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Jrs</span>
-                                    </div>
-                                    <div className="bg-[#1a1a1a] rounded-md p-2 text-center">
-                                        <span className="block font-oswald text-xl lg:text-2xl text-[#D4AF37] font-bold">{timeLeft.hours < 10 ? `0${timeLeft.hours}` : timeLeft.hours}</span>
-                                        <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Hrs</span>
-                                    </div>
-                                    <div className="bg-[#1a1a1a] rounded-md p-2 text-center">
-                                        <span className="block font-oswald text-xl lg:text-2xl text-[#D4AF37] font-bold">{timeLeft.minutes < 10 ? `0${timeLeft.minutes}` : timeLeft.minutes}</span>
-                                        <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Min</span>
-                                    </div>
-                                    <div className="bg-[#1a1a1a] rounded-md p-2 text-center">
-                                        <span className="block font-oswald text-xl lg:text-2xl text-[#D4AF37] font-bold">{timeLeft.seconds < 10 ? `0${timeLeft.seconds}` : timeLeft.seconds}</span>
-                                        <span className="text-[0.6rem] text-[#777] uppercase tracking-wider">Sec</span>
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
-            </aside>
-
-            {/* --- ZONE DROITE (FORMULAIRE) --- */}
-            <main className="w-full lg:w-[55%] relative bg-[#0a0a0a] px-5 py-10 lg:p-20 overflow-y-auto bg-[url('/background-spotlight.jpg')] bg-cover bg-center">
-                {/* Overlay Noir (40%) pour laisser voir le spotlight */}
-                <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none"></div>
-
-                <div className="relative z-10">
-                    <div className="mb-8">
-                        <Link href="/" className="hidden lg:inline-flex items-center gap-2 text-[#a0a0a0] hover:text-[#D4AF37] transition-colors text-xs lg:text-sm mb-5 no-underline">
-                            <span>← Retour à l'accueil</span>
-                        </Link>
-                        <h1 className="font-oswald text-3xl lg:text-5xl uppercase leading-none mb-2">
-                            Inscription <br /><span className="text-[#D4AF37]">Formation</span>
+                    {/* En-tête de Page */}
+                    <div className="text-center mb-12">
+                        <div className="inline-block bg-yellow-100 text-yellow-900 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+                            Inscription
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-black text-black mb-4">
+                            Rejoignez-nous
                         </h1>
-                        <p className="text-[#a0a0a0] text-sm lg:text-base leading-relaxed">
-                            Réservez votre place pour l'aventure cinématographique.
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Remplissez ce formulaire pour candidater à l'une de nos formations.
+                            Nous vous contacterons sous 48h pour confirmer votre inscription.
                         </p>
                     </div>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                            <div className="flex flex-col gap-1.5">
-                                <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Nom</label>
-                                <input
-                                    {...register("nom", { required: "Le nom est obligatoire" })}
-                                    className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                    placeholder="Votre nom"
-                                />
-                                {errors.nom && <span className="text-[#E50914] text-sm mt-1 block">⚠️ {errors.nom.message as string}</span>}
+                    {/* Formulaire */}
+                    <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 md:p-12">
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+
+                            {/* Identité */}
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                                        Nom *
+                                    </label>
+                                    <input
+                                        {...register("nom", { required: "Le nom est obligatoire" })}
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="Votre nom"
+                                    />
+                                    {errors.nom && (
+                                        <span className="text-red-600 text-sm mt-1 block">
+                                            {errors.nom.message as string}
+                                        </span>
+                                    )}
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                                        Prénom *
+                                    </label>
+                                    <input
+                                        {...register("prenom", { required: "Le prénom est obligatoire" })}
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="Votre prénom"
+                                    />
+                                    {errors.prenom && (
+                                        <span className="text-red-600 text-sm mt-1 block">
+                                            {errors.prenom.message as string}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-1.5">
-                                <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Prénom</label>
-                                <input
-                                    {...register("prenom", { required: "Le prénom est obligatoire" })}
-                                    className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                    placeholder="Votre prénom"
-                                />
-                                {errors.prenom && <span className="text-[#E50914] text-sm mt-1 block">⚠️ {errors.prenom.message as string}</span>}
+
+                            {/* Contact */}
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                                        Email *
+                                    </label>
+                                    <input
+                                        {...register("email", {
+                                            required: "L'email est obligatoire",
+                                            pattern: {
+                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$/i,
+                                                message: "Email invalide"
+                                            }
+                                        })}
+                                        type="email"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="votre@email.com"
+                                    />
+                                    {errors.email && (
+                                        <span className="text-red-600 text-sm mt-1 block">
+                                            {errors.email.message as string}
+                                        </span>
+                                    )}
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                                        WhatsApp (Djibouti) *
+                                    </label>
+                                    <input
+                                        {...register("telephone", {
+                                            required: "Le numéro est obligatoire",
+                                            pattern: {
+                                                value: /^[0-9]{8}$/,
+                                                message: "Format: 8 chiffres (ex: 77556344)"
+                                            }
+                                        })}
+                                        type="tel"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all"
+                                        placeholder="77 XX XX XX"
+                                    />
+                                    {errors.telephone && (
+                                        <span className="text-red-600 text-sm mt-1 block">
+                                            {errors.telephone.message as string}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                            <div className="flex flex-col gap-1.5">
-                                <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Email</label>
-                                <input
-                                    {...register("email", {
-                                        required: "L'email est obligatoire",
-                                        pattern: {
-                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                            message: "Email invalide"
-                                        }
-                                    })}
-                                    type="email"
-                                    className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                    placeholder="votre@email.com"
-                                />
-                                {errors.email && <span className="text-[#E50914] text-sm mt-1 block">⚠️ {errors.email.message as string}</span>}
+                            {/* Niveau */}
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">
+                                    Niveau Actuel *
+                                </label>
+                                <select
+                                    {...register("niveau")}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all appearance-none cursor-pointer bg-white"
+                                >
+                                    <option value="Débutant">Débutant (Je pars de zéro)</option>
+                                    <option value="Intermédiaire">Intermédiaire (Quelques bases)</option>
+                                    <option value="Avancé">Avancé (Perfectionnement)</option>
+                                </select>
                             </div>
-                            <div className="flex flex-col gap-1.5">
-                                <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">WhatsApp (Djibouti)</label>
-                                <input
-                                    {...register("telephone", {
-                                        required: "Le numéro WhatsApp est obligatoire",
-                                        pattern: {
-                                            value: /^[0-9]{8}$/,
-                                            message: "Format: 8 chiffres (ex: 77556344)"
-                                        }
-                                    })}
-                                    type="tel"
-                                    className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                    placeholder="Ex: 77 XX XX XX"
+
+                            {/* Attentes */}
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">
+                                    Vos Attentes (optionnel)
+                                </label>
+                                <textarea
+                                    {...register("attentes")}
+                                    rows={4}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all resize-none"
+                                    placeholder="Ce que vous souhaitez apprendre..."
                                 />
-                                {errors.telephone && <span className="text-[#E50914] text-sm mt-1 block">⚠️ {errors.telephone.message as string}</span>}
                             </div>
-                        </div>
 
-                        <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Niveau Actuel</label>
-                            <select
-                                {...register("niveau")}
-                                className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base appearance-none cursor-pointer"
-                            >
-                                <option value="Débutant">Débutant (Je pars de zéro)</option>
-                                <option value="Intermédiaire">Intermédiaire (Quelques bases)</option>
-                                <option value="Avancé">Avancé (Perfectionnement)</option>
-                            </select>
-                        </div>
-
-                        <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Matériel (Facultatif)</label>
-                            <input
-                                {...register("materiel")}
-                                className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                placeholder="Ex: Canon 5D, MacBook Pro..."
-                            />
-                        </div>
-
-                        <div className="flex flex-col gap-1.5">
-                            <label className="text-[0.7rem] text-[#a0a0a0] uppercase font-semibold">Vos Attentes</label>
-                            <textarea
-                                {...register("attentes")}
-                                rows={3}
-                                className="w-full bg-[#161616]/80 backdrop-blur-[5px] border border-[#333] text-white p-4 rounded-md focus:border-[#D4AF37] focus:bg-black/90 outline-none transition-colors font-sans text-base placeholder-[#555]"
-                                placeholder="Ce que vous voulez apprendre en priorité..."
-                            />
-                        </div>
-
-                        {/* --- LEGAL BOX (CONDITIONS) --- */}
-                        <div className="bg-[#111]/80 backdrop-blur-sm p-5 rounded-lg border border-[#222] mt-8 space-y-4">
-                            <label className="flex items-start gap-3 cursor-pointer group">
-                                <div className="relative flex items-center mt-0.5">
+                            {/* Conditions */}
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 space-y-4">
+                                <label className="flex items-start gap-3 cursor-pointer group">
                                     <input
                                         type="checkbox"
                                         {...register("condition_prix", { required: true })}
-                                        className="peer sr-only"
+                                        className="mt-1 w-5 h-5 text-yellow-600 border-gray-300 rounded focus:ring-yellow-500"
                                     />
-                                    <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
-                                        <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
-                                    </div>
-                                </div>
-                                <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
-                                    Je valide mon inscription au tarif de 5.000 FDJ.
-                                </span>
-                            </label>
-                            {errors.condition_prix && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
+                                    <span className="text-sm text-gray-700 group-hover:text-black transition-colors">
+                                        J'accepte les tarifs proposés et m'engage à effectuer le paiement sous 48h après validation.
+                                    </span>
+                                </label>
+                                {errors.condition_prix && (
+                                    <span className="text-red-600 text-xs block ml-8">Ce champ est obligatoire.</span>
+                                )}
 
-                            <label className="flex items-start gap-3 cursor-pointer group">
-                                <div className="relative flex items-center mt-0.5">
+                                <label className="flex items-start gap-3 cursor-pointer group">
                                     <input
                                         type="checkbox"
                                         {...register("condition_remboursement", { required: true })}
-                                        className="peer sr-only"
+                                        className="mt-1 w-5 h-5 text-yellow-600 border-gray-300 rounded focus:ring-yellow-500"
                                     />
-                                    <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
-                                        <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
-                                    </div>
-                                </div>
-                                <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
-                                    Je comprends que ce paiement est <strong className="text-[#E50914]">NON REMBOURSABLE</strong> après 3 jours.
-                                </span>
-                            </label>
-                            {errors.condition_remboursement && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
+                                    <span className="text-sm text-gray-700 group-hover:text-black transition-colors">
+                                        Je comprends que le paiement est <strong className="text-red-600">non remboursable</strong> après 3 jours.
+                                    </span>
+                                </label>
+                                {errors.condition_remboursement && (
+                                    <span className="text-red-600 text-xs block ml-8">Ce champ est obligatoire.</span>
+                                )}
+                            </div>
 
-                            <label className="flex items-start gap-3 cursor-pointer group">
-                                <div className="relative flex items-center mt-0.5">
-                                    <input
-                                        type="checkbox"
-                                        {...register("condition_paiement", { required: true })}
-                                        className="peer sr-only"
-                                    />
-                                    <div className="w-5 h-5 border-2 border-[#444] rounded bg-transparent peer-checked:bg-[#D4AF37] peer-checked:border-[#D4AF37] flex items-center justify-center transition-all shrink-0">
-                                        <CheckCircle size={12} className="text-black opacity-0 peer-checked:opacity-100" />
-                                    </div>
-                                </div>
-                                <span className="text-sm text-[#ccc] leading-relaxed group-hover:text-white transition-colors">
-                                    Je m'engage à effectuer le paiement sous 48h.
-                                </span>
-                            </label>
-                            {errors.condition_paiement && <span className="text-[#E50914] text-xs ml-8 block">Ce champ est obligatoire.</span>}
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="w-full bg-[#E50914] hover:bg-[#b2070f] text-white font-oswald text-lg lg:text-xl py-5 rounded-md uppercase tracking-wider transition-all mt-5 shadow-[0_4px_15px_rgba(229,9,20,0.4)]"
-                        >
-                            CONFIRMER MON INSCRIPTION
-                        </button>
-                    </form>
+                            {/* Submit */}
+                            <button
+                                type="submit"
+                                className="w-full bg-black text-white py-4 rounded-lg font-bold uppercase tracking-wider hover:bg-gray-800 transition-all flex items-center justify-center gap-3 shadow-lg"
+                            >
+                                <Send className="w-5 h-5" />
+                                Envoyer ma Candidature
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </main>
+            </div>
 
-            {/* 🎉 SUCCESS MODAL - Confirmation visuelle */}
+            {/* Modal de Succès */}
             {showSuccessModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-in fade-in duration-300">
-                    <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border-2 border-[#D4AF37] rounded-2xl p-8 max-w-md mx-4 shadow-[0_0_50px_rgba(212,175,55,0.3)] animate-in zoom-in-95 duration-300">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+                    <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
                         <div className="text-center">
-                            {/* Checkmark animé */}
-                            <div className="w-20 h-20 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
-                                <CheckCircle size={48} className="text-black" />
+                            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <CheckCircle size={48} className="text-green-600" />
                             </div>
-
-                            {/* Titre */}
-                            <h3 className="font-oswald text-3xl text-white uppercase mb-4">
-                                Dossier Pré-validé !
+                            <h3 className="text-2xl font-black text-black mb-4">
+                                Candidature Envoyée !
                             </h3>
-
-                            {/* Message */}
-                            <p className="text-[#ccc] text-lg mb-6 leading-relaxed">
-                                Votre formulaire a été <strong className="text-[#D4AF37]">traité avec succès</strong>. <br />
-                                <span className="text-white">WhatsApp va s'ouvrir</span> dans un instant.
+                            <p className="text-gray-600 mb-6 leading-relaxed">
+                                Votre formulaire a été traité. <strong className="text-black">WhatsApp</strong> va s'ouvrir pour finaliser votre inscription.
                             </p>
-
-                            {/* Call to action */}
-                            <div className="bg-[#E50914]/10 border border-[#E50914]/30 rounded-lg p-4 mb-6">
-                                <p className="text-sm text-[#ffcccc]">
-                                    ⚠️ <strong>Action requise :</strong> Finalisez l'envoi sur WhatsApp pour <strong>confirmer votre place</strong>.
-                                </p>
-                            </div>
-
-                            {/* Bouton fermer */}
                             <button
                                 onClick={() => setShowSuccessModal(false)}
-                                className="text-[#888] hover:text-white text-sm underline transition-colors"
+                                className="text-gray-500 hover:text-black text-sm font-medium transition-colors"
                             >
                                 Fermer
                             </button>

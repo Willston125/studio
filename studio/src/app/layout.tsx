@@ -1,9 +1,7 @@
-
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 import Navbar from '@/components/layout/navbar';
-import Footer from '@/components/layout/footer';
 import BackToTopButton from '@/components/layout/back-to-top-button';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:9002';
@@ -98,7 +96,6 @@ export default function RootLayout({
       <body className="font-body antialiased bg-background">
         <Navbar />
         {children}
-        <Footer />
         <Toaster />
         <BackToTopButton />
       </body>
