@@ -3077,3 +3077,128 @@ span {
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* --- NAVBAR STYLE AFDAS --- */
+
+.inst-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 90px;
+  background-color: #E8ECEB;
+  /* Le gris très clair/vert d'eau de l'AFDAS */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Inter', sans-serif;
+}
+
+/* GAUCHE : LIENS GRAS */
+.nav-left {
+  display: flex;
+  gap: 30px;
+  flex: 1;
+}
+
+.nav-link-bold {
+  text-decoration: none;
+  color: #000;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.nav-link-bold:hover {
+  text-decoration: underline;
+}
+
+/* CENTRE : LOGO */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* DROITE : LIENS FINS + BOUTON */
+.nav-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-link-light {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.nav-link-light:hover {
+  color: #000;
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* LE BOUTON NOIR (STYLE "SE CONNECTER") */
+.btn-inst-black {
+  background-color: #000;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.btn-inst-black:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+  color: #fff !important;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 1024px) {
+  .inst-navbar {
+    padding: 0 20px;
+    height: auto;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .nav-left {
+    display: none;
+  }
+
+  .nav-center {
+    flex: none;
+    justify-content: flex-start;
+  }
+
+  .nav-right {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+
+  .nav-link-light {
+    display: none;
+  }
+}
