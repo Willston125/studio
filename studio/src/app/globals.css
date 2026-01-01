@@ -2444,71 +2444,353 @@
   transform: scale(1.03);
 }
 
-/* === NEW NYFA SECTIONS CSS === */
+/* --- SYSTEME GRAPHIQUE NYFA/INSTITUTION --- */
 
-/* Solid Nav Bar with Label */
+:root {
+  --black: #050505;
+  --dark-grey: #111111;
+  --gold: #FFD700;
+  --white: #ffffff;
+}
+
+/* 1. SOLID NAV BAR */
 .solid-nav-bar {
-  border-bottom: 2px solid #000;
+  display: flex;
+  width: 100%;
+  height: 160px;
+  border-bottom: 1px solid #222;
+}
+
+.nav-label {
+  width: 20%;
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #222;
+  padding: 20px;
+}
+
+.nav-label h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+
+.nav-options {
+  width: 80%;
+  display: flex;
+}
+
+.nav-item {
+  flex: 1;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  transition: 0.3s;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .item-light {
-  background-color: #f5f5f5;
-  color: #000;
+  background: #f5f5f5;
+  color: var(--black);
 }
 
 .item-gold {
-  background-color: #FFD700;
-  color: #000;
-  font-weight: bold;
+  background: var(--gold);
+  color: var(--black);
 }
 
 .item-dark {
-  background-color: #1a1a1a;
-  color: #fff;
+  background: var(--dark-grey);
+  color: var(--white);
 }
 
-.nav-item:hover .nav-arrow {
-  transform: translateX(5px);
+.nav-content {
+  display: flex;
+  flex-direction: column;
 }
 
-.item-light:hover {
-  background-color: #e8e8e8;
+.nav-title {
+  font-weight: 900;
+  font-size: 1.4rem;
+  text-transform: uppercase;
 }
 
-.item-gold:hover {
-  background-color: #ffea00;
+.nav-sub {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 5px;
 }
 
-.item-dark:hover {
-  background-color: #000;
+.nav-icon {
+  font-size: 2rem;
 }
 
-/* Text Stroke Effect for Black */
-.text-stroke-black {
-  -webkit-text-stroke: 2px #000;
+.nav-arrow {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-item:hover {
+  padding-left: 50px;
+}
+
+/* Micro-animation pro */
+
+/* 2. DAMIER (CHECKERBOARD) */
+.check-row {
+  display: flex;
+  min-height: 500px;
+}
+
+.check-img {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+  transition: 0.5s;
+}
+
+.check-row:hover .check-img {
+  filter: grayscale(0%);
+}
+
+.check-text {
+  flex: 1;
+  background: var(--black);
+  color: var(--white);
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.theme-darker {
+  background: #000000;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.mini-title {
+  color: #666;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.check-text h2 {
+  font-size: 3.5rem;
+  line-height: 0.9;
+  margin: 0 0 30px 0;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px var(--white);
   color: transparent;
-  display: inline-block;
 }
 
-/* Responsive Checkerboard */
-@media (max-width: 768px) {
-  .check-row.reverse {
-    flex-direction: column !important;
-  }
+.separator {
+  width: 60px;
+  height: 4px;
+  background: var(--white);
+  margin-bottom: 30px;
 }
 
-/* Pricing Grid Section */
-.pricing-col.highlight {
-  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+.gold-sep {
+  background: var(--gold);
+}
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.check-list li::before {
+  content: "■ ";
+  color: var(--gold);
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+/* 3. PRICING GRID (TABLEAU) */
+.pricing-grid-section {
+  background: var(--black);
+  padding: 100px 50px;
+}
+
+.grid-header {
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.pricing-table {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid #333;
+}
+
+.pricing-col {
+  flex: 1;
+  background: var(--dark-grey);
+  border-right: 1px solid #333;
+  padding: 50px 30px;
+  text-align: center;
+  position: relative;
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.pricing-col:last-child {
+  border-right: none;
+}
+
+.pricing-col:hover {
+  background: #161616;
+}
+
+.highlight {
+  background: #1a1a1a;
+  border-top: 4px solid var(--gold);
+  transform: scaleY(1.05);
+  z-index: 2;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.p-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--gold);
+  color: black;
+  padding: 5px 15px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.p-head h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.p-body ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+  text-align: left;
+  margin-left: 20%;
+}
+
+.p-body li {
+  margin-bottom: 10px;
+  color: #999;
+  border-bottom: 1px solid #222;
+  padding-bottom: 5px;
+}
+
+.p-body strong {
+  color: var(--white);
 }
 
 .btn-grid {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--white);
+  padding: 15px;
+  color: var(--white);
   text-decoration: none;
-  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.btn-grid:hover {
+  background: var(--white);
+  color: var(--black);
 }
 
 .btn-grid.filled {
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+}
+
+.btn-grid.filled:hover {
+  background: #e6c200;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .solid-nav-bar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .nav-label {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #333;
+  }
+
+  .nav-options {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .nav-item {
+    padding: 30px;
+    border-left: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .check-row,
+  .check-row.reverse {
+    flex-direction: column;
+  }
+
+  .pricing-table {
+    flex-direction: column;
+    border: none;
+  }
+
+  .pricing-col {
+    margin-bottom: 20px;
+    border: 1px solid #333;
+  }
+
+  .highlight {
+    transform: none;
+    border-top: 4px solid var(--gold);
+  }
 }
 
 .loading-reel {
