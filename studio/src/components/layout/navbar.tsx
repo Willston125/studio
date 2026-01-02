@@ -12,7 +12,7 @@ export default function Navbar() {
 
       {/* 1. GAUCHE : LES CIBLES (Navigation Stratégique) */}
       <div className="hidden md:flex gap-8 items-center flex-1">
-        <Link href="/inscription" className="text-black font-extrabold text-sm uppercase tracking-wide hover:text-[#D4AF37] transition-colors">
+        <Link href="/formations" className="text-black font-extrabold text-sm uppercase tracking-wide hover:text-[#D4AF37] transition-colors">
           FUTURS ÉLÈVES
         </Link>
         <Link href="/a-propos" className="text-black font-extrabold text-sm uppercase tracking-wide hover:text-[#D4AF37] transition-colors">
@@ -72,7 +72,7 @@ export default function Navbar() {
         <div className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg md:hidden">
           <div className="flex flex-col p-6 space-y-4">
             <Link
-              href="/inscription"
+              href="/formations"
               onClick={() => setIsMobileMenuOpen(false)}
               className="text-black font-extrabold text-sm uppercase tracking-wide hover:text-[#D4AF37]"
             >
