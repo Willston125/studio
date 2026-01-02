@@ -1,27 +1,13 @@
-import HeroSection from '@/components/cine-enroll/hero-section';
-import InstitutionSection from '@/components/cine-enroll/institution-section';
-import PricingGridSection from '@/components/cine-enroll/pricing-grid-section';
-import PhotoGallery from '@/components/cine-enroll/photo-gallery';
-import PremiumFooter from '@/components/cine-enroll/premium-footer';
-
 export default function Home() {
   return (
-    <div className="bg-white">
+    <main className="min-h-screen bg-white flex flex-col items-center justify-center">
 
-      {/* HERO - Nouveau design institutionnel */}
-      <HeroSection />
+      {/* Juste un texte pour dire que ça marche */}
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">CINEWORLD ACADÉMIE</h1>
+        <p className="text-gray-500">Refonte V2 - Base Propre</p>
+      </div>
 
-      {/* ACADÉMIE - Section présentation */}
-      <InstitutionSection />
-
-      {/* TARIFS - Grille des programmes */}
-      <PricingGridSection />
-
-      {/* GALERIE - Photos de formations */}
-      <PhotoGallery />
-
-      {/* FOOTER - Informations de contact */}
-      <PremiumFooter />
-    </div>
+    </main>
   );
 }

@@ -152,7 +152,7 @@ export default function FormationsPage() {
                                 <div className="flex items-center justify-between mb-6">
                                     <div className="flex items-center gap-3">
                                         <Image
-                                            src="/logo_cineworld.png"
+                                            src="/mentor-affiche.png"
                                             alt="Ali William - Formateur"
                                             width={48}
                                             height={48}
