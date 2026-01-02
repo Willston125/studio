@@ -1,138 +1,156 @@
-"use client";
+'use client';
 
+import React from 'react';
 import { motion } from "framer-motion";
-import { Film, Users, Lightbulb, Target, GraduationCap, Briefcase, Sparkles } from "lucide-react";
+import { Target, GraduationCap, Briefcase, Sparkles, ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const pillars = [
+    {
+        icon: GraduationCap,
+        title: "L'Académie",
+        subtitle: "Ingénierie Pédagogique",
+        points: [
+            "Première académie 100% pratique à Djibouti",
+            "Cursus intensifs certifiants",
+            "Formation de créateurs de contenu"
+        ]
+    },
+    {
+        icon: Briefcase,
+        title: "L'Expertise",
+        subtitle: "Consulting Audiovisuel",
+        points: [
+            "Stratégie vidéo pour institutions & ONG",
+            "Conseil en production exécutive",
+            "Supervision artistique"
+        ]
+    },
+    {
+        icon: Sparkles,
+        title: "L'Innovation",
+        subtitle: "Technologie & Mentorat",
+        points: [
+            "Workflows IA & Nouveaux médias",
+            "Mentorat de jeunes talents locaux",
+            "Ateliers d'innovation continue"
+        ]
+    }
+];
+
 export default function AProposPage() {
-    const pillars = [
-        {
-            icon: <GraduationCap className="w-10 h-10" />,
-            title: "L'Académie",
-            subtitle: "Direction & Ingénierie pédagogique",
-            points: [
-                "Première académie 100% pratique dédiée aux métiers de l'image à Djibouti",
-                "Cursus intensifs et masterclass : réalisation cinéma, montage vidéo, étalonnage et storytelling",
-                "Formation de la nouvelle génération de créateurs de contenu",
-            ],
-        },
-        {
-            icon: <Briefcase className="w-10 h-10" />,
-            title: "L'Expertise",
-            subtitle: "Consulting & Stratégie audiovisuelle",
-            points: [
-                "Accompagnement des institutions, entreprises et ONG dans leur stratégie vidéo",
-                "Conseil en production exécutive : du scénario à la diffusion",
-                "Direction artistique et supervision de projets visuels à fort impact",
-            ],
-        },
-        {
-            icon: <Sparkles className="w-10 h-10" />,
-            title: "L'Innovation",
-            subtitle: "Développement & Mentorat",
-            points: [
-                "Intégration des outils modernes (IA générative, workflows innovants)",
-                "Mentorat de jeunes talents djiboutiens",
-                "Organisation d'ateliers découverte et formations continues",
-            ],
-        },
-    ];
-
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-white text-gray-900">
+
+            {/* Navigation Header */}
+            <nav className="sticky top-0 z-50 bg-[#F9FAFB] border-b border-gray-200 h-20 flex items-center justify-between px-6 md:px-12">
+                <div className="font-black text-xl uppercase tracking-tighter">
+                    CINEWORDL<span className="text-[#D4AF37]">ACADÉMIE</span>
+                </div>
+                <Link href="/" className="text-sm font-bold text-gray-500 hover:text-black transition-colors flex items-center gap-2">
+                    <ArrowLeft className="w-4 h-4" /> RETOUR ACCUEIL
+                </Link>
+            </nav>
+
             {/* Hero Section */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black z-10" />
-                <Image
-                    src="/groupeeleve.png"
-                    alt="Équipe Cineworld"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                <div className="relative z-20 text-center px-4">
-                    <motion.span
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-6 py-2 rounded-full font-bold text-sm mb-6"
-                    >
-                        🎬 CINEWORLD DJIBOUTI
-                    </motion.span>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-5xl md:text-7xl font-bold mb-6"
-                    >
-                        À PROPOS DE NOUS
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-xl text-gray-300 max-w-2xl mx-auto"
-                    >
-                        La première académie dédiée aux métiers de l'image à Djibouti
-                    </motion.p>
-                </div>
-            </section>
+            <section className="relative py-24 px-6 overflow-hidden bg-gray-50">
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <div className="grid md:grid-cols-2 gap-16 items-center">
 
-            {/* Mission Section */}
-            <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
-                <div className="container mx-auto max-w-5xl">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">
-                                Notre Mission
-                            </span>
-                        </h2>
-                        <div className="bg-white/5 backdrop-blur-sm border border-yellow-500/30 rounded-2xl p-8 md:p-12">
-                            <Target className="w-16 h-16 text-yellow-400 mx-auto mb-6" />
-                            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
-                                <strong className="text-yellow-400">Professionnaliser le secteur audiovisuel djiboutien</strong> pour atteindre les standards internationaux et offrir aux talents locaux les outils techniques pour <strong className="text-yellow-400">raconter leurs propres histoires</strong>.
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <div className="inline-block bg-yellow-100 text-[#B8860B] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                                Qui Sommes-Nous ?
+                            </div>
+                            <h1 className="text-4xl md:text-6xl font-black mb-8 leading-tight text-black">
+                                Façonner le Futur de <br />
+                                <span className="text-[#D4AF37]">l'Audiovisuel à Djibouti</span>
+                            </h1>
+                            <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl">
+                                Cineworld Academy est l'institution de référence pour les métiers de l'image.
+                                Nous allions rigueur académique et expertise de terrain pour transformer
+                                le potentiel des talents locaux en compétences professionnelles de classe mondiale.
                             </p>
-                        </div>
-                    </motion.div>
 
-                    {/* Vision */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-center"
-                    >
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">
-                                Notre Vision
-                            </span>
-                        </h2>
-                        <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                            Faire de Djibouti un hub créatif reconnu en Afrique de l'Est, où chaque talent peut accéder à une formation de qualité internationale et contribuer à l'essor d'une industrie audiovisuelle locale dynamique et innovante.
-                        </p>
-                    </motion.div>
+                            <div className="flex flex-wrap gap-4">
+                                <Link href="/inscription" className="bg-black text-white px-8 py-4 rounded font-bold text-sm uppercase hover:bg-gray-800 transition-all shadow-lg">
+                                    Découvrir nos cursus
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8 }}
+                            className="relative hidden md:block"
+                        >
+                            <div className="relative rounded-2xl overflow-hidden border-4 border-white shadow-2xl">
+                                <Image
+                                    src="/groupeeleve.png"
+                                    alt="Académie Cineworld"
+                                    width={800}
+                                    height={600}
+                                    className="w-full h-auto object-cover"
+                                />
+                            </div>
+                            {/* Overlay decoratif */}
+                            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#D4AF37] rounded-full blur-3xl opacity-20" />
+                        </motion.div>
+
+                    </div>
                 </div>
             </section>
 
-            {/* Three Pillars Section */}
-            <section className="py-20 px-4 bg-gray-900">
+            {/* Mission & Vision (Light) */}
+            <section className="py-24 px-6 bg-white">
+                <div className="max-w-4xl mx-auto">
+                    <div className="grid md:grid-cols-2 gap-12">
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-[#F9FAFB] p-10 rounded-2xl border border-gray-100"
+                        >
+                            <Target className="w-12 h-12 text-[#D4AF37] mb-6" />
+                            <h2 className="text-2xl font-black mb-4 uppercase">Notre Mission</h2>
+                            <p className="text-gray-600 leading-relaxed">
+                                Professionnaliser le secteur en offrant aux talents djiboutiens
+                                les outils techniques pour raconter leurs propres histoires avec une qualité irréprochable.
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="bg-[#F9FAFB] p-10 rounded-2xl border border-gray-100"
+                        >
+                            <Sparkles className="w-12 h-12 text-[#D4AF37] mb-6" />
+                            <h2 className="text-2xl font-black mb-4 uppercase">Notre Vision</h2>
+                            <p className="text-gray-600 leading-relaxed">
+                                Faire de Djibouti un hub créatif reconnu en Afrique de l'Est,
+                                porté par une industrie locale dynamique, innovante et respectée.
+                            </p>
+                        </motion.div>
+
+                    </div>
+                </div>
+            </section>
+
+            {/* Pillars Section */}
+            <section className="py-24 px-6 bg-gray-50">
                 <div className="container mx-auto max-w-7xl">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-center mb-16"
-                    >
-                        Nos <span className="text-yellow-400">3 Piliers</span>
-                    </motion.h2>
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase">Nos <span className="text-[#D4AF37]">3 Pillars</span> Stratégiques</h2>
+                        <div className="w-20 h-1 bg-[#D4AF37] mx-auto"></div>
+                    </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {pillars.map((pillar, index) => (
@@ -141,17 +159,19 @@ export default function AProposPage() {
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: index * 0.2 }}
-                                className="bg-black/50 border border-yellow-500/20 rounded-2xl p-8 hover:border-yellow-400 transition-all duration-300 hover:-translate-y-2"
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300"
                             >
-                                <div className="text-yellow-400 mb-6">{pillar.icon}</div>
-                                <h3 className="text-2xl font-bold text-white mb-2">{pillar.title}</h3>
-                                <p className="text-yellow-400/80 text-sm mb-6">{pillar.subtitle}</p>
-                                <ul className="space-y-3">
+                                <div className="w-14 h-14 bg-yellow-50 rounded-lg flex items-center justify-center mb-6">
+                                    <pillar.icon className="w-7 h-7 text-[#D4AF37]" />
+                                </div>
+                                <h3 className="text-xl font-black text-black mb-1">{pillar.title}</h3>
+                                <p className="text-[#B8860B] font-bold text-xs uppercase tracking-wider mb-6">{pillar.subtitle}</p>
+                                <ul className="space-y-4">
                                     {pillar.points.map((point, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 text-gray-300">
-                                            <span className="text-yellow-400 mt-1">•</span>
-                                            <span className="text-sm leading-relaxed">{point}</span>
+                                        <li key={idx} className="flex items-start gap-3">
+                                            <span className="text-yellow-500 font-bold mt-1">✓</span>
+                                            <span className="text-sm text-gray-600 leading-relaxed font-medium">{point}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -162,29 +182,35 @@ export default function AProposPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 px-4 bg-gradient-to-t from-black to-gray-900">
-                <div className="container mx-auto max-w-4xl text-center">
+            <section className="py-24 px-6 bg-white">
+                <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 border border-yellow-500/50 rounded-3xl p-12"
+                        className="bg-black rounded-3xl p-12 text-center text-white"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Prêt à rejoindre l'aventure ?
-                        </h2>
-                        <p className="text-gray-300 text-lg mb-8">
-                            Découvrez nos formations et lancez votre carrière dans l'audiovisuel.
+                        <h2 className="text-3xl md:text-4xl font-black mb-6 uppercase">Prêt à Transformer Votre <span className="text-yellow-500">Passion</span> ?</h2>
+                        <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+                            Rejoignez la prochaine promotion et commencez votre carrière dans l'audiovisuel avec les meilleurs outils.
                         </p>
                         <Link
                             href="/inscription"
-                            className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl"
+                            className="inline-flex items-center gap-3 bg-[#D4AF37] text-black px-10 py-4 rounded font-black text-sm uppercase hover:scale-105 transition-all shadow-xl"
                         >
-                            S'inscrire maintenant
+                            S'inscrire Maintenant
+                            <ArrowRight className="w-5 h-5" />
                         </Link>
                     </motion.div>
                 </div>
             </section>
+
+            {/* Signature Footer */}
+            <footer className="py-12 bg-white text-center border-t border-gray-100">
+                <div className="font-black text-xs uppercase tracking-[0.2em] text-gray-300 mb-2">Cineworld Djibouti</div>
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">© 2026 Tous Droits Réservés</p>
+            </footer>
+
         </div>
     );
 }
