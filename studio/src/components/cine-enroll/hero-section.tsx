@@ -106,6 +106,18 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative hidden md:block"
           >
+            {/* Badge Circulaire de Preuve Sociale (Style Edule) */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
+              className="absolute -top-8 -right-8 z-20 w-28 h-28 bg-[#4CAF50] rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-white"
+            >
+              <div className="text-white text-3xl font-black">127+</div>
+              <div className="text-white text-[10px] font-bold uppercase tracking-wide">Élèves</div>
+              <div className="text-white text-[10px] font-bold uppercase">Formés</div>
+            </motion.div>
+
             {/* Image Principale avec bordure dorée */}
             <div className="relative rounded-2xl overflow-hidden border-4 border-yellow-600 shadow-2xl">
               <Image
@@ -134,6 +146,21 @@ export default function HeroSection() {
             {/* Éléments décoratifs flottants */}
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-yellow-400 rounded-full blur-3xl opacity-20" />
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-yellow-600 rounded-full blur-3xl opacity-20" />
+
+            {/* Doodles Décoratifs (Style Edule) */}
+            {/* Flèche montante à droite */}
+            <svg className="absolute -right-12 top-20 w-16 h-16 text-yellow-400 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+
+            {/* Étoiles dorées */}
+            <svg className="absolute -left-8 top-32 w-8 h-8 text-yellow-500 opacity-40" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+
+            {/* Points décoratifs */}
+            <div className="absolute top-4 left-4 w-3 h-3 bg-yellow-500 rounded-full opacity-50" />
+            <div className="absolute bottom-16 right-4 w-2 h-2 bg-yellow-600 rounded-full opacity-60" />
           </motion.div>
 
         </div>
