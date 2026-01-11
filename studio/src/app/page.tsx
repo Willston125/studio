@@ -1,13 +1,16 @@
+import Image from 'next/image';
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white flex flex-col items-center justify-center">
-
-      {/* Juste un texte pour dire que ça marche */}
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">CINEWORLD ACADÉMIE</h1>
-        <p className="text-gray-500">Refonte V2 - Base Propre</p>
-      </div>
-
+    <main className="relative w-full h-screen">
+      <Image
+        src="/galerie1.png"
+        alt="Cineworld Académie"
+        fill
+        className="object-cover"
+        priority
+        quality={100}
+      />
     </main>
   );
 }
