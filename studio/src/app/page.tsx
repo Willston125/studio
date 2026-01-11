@@ -39,9 +39,9 @@ export default function Home() {
 
           {/* Ligne inférieure avec lauriers */}
           <div className="flex items-center justify-center gap-4">
-            <span className="text-4xl md:text-5xl">🏆</span>
+            <span className="text-4xl md:text-5xl">🌿</span>
             <div className="h-[2px] w-32 md:w-48 bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-            <span className="text-4xl md:text-5xl">🏆</span>
+            <span className="text-4xl md:text-5xl">🌿</span>
           </div>
 
         </div>
