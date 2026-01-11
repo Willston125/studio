@@ -112,9 +112,6 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-white/80 font-light tracking-widest uppercase mb-8">
             Première Académie Audiovisuelle de Djibouti
           </p>
-          <div className="text-xs text-white/40 uppercase tracking-[0.2em] font-bold animate-pulse">
-            [ Cliquez n'importe où pour l'inspiration ]
-          </div>
         </div>
       </div>
     </main>
