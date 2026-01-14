@@ -126,6 +126,7 @@ export default function Home() {
               href="/formations"
               className="inline-block px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-sm hover:bg-[#8b1c1b] transition-all transform hover:scale-105 pointer-events-auto border border-white/10 shadow-xl"
             >
+              {/* CTA visible */}
               Découvrir nos formations
             </Link>
           </div>
