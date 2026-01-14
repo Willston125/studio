@@ -15,6 +15,7 @@ const FORMATIONS = [
         duree: "5 Jours",
         sessions: "Sessions de 1h30",
         tarif: "15.000 FDJ",
+        hoverImage: "/hover-web.png",
         programme: [
             "Jour 1 : L'art du prompting & structure",
             "Jour 2 : Design UI/UX par IA",
@@ -32,6 +33,7 @@ const FORMATIONS = [
         duree: "12 Jours",
         sessions: "Sessions de 1h30",
         tarif: "10.000 FDJ",
+        hoverImage: "/hover-design.png",
         programme: [
             "Jours 1-3 : Canva Expert",
             "Jours 4-8 : Photoshop CC (détourage, retouche, affiches)",
@@ -47,6 +49,7 @@ const FORMATIONS = [
         duree: "15 Jours",
         sessions: "Sessions de 1h30",
         tarif: "13.000 FDJ",
+        hoverImage: "/hover-editing.png",
         isBestSeller: true,
         programme: [
             "Phase 1 (J1-3) : Pré-production — Script, Storyboard",
@@ -64,6 +67,7 @@ const FORMATIONS = [
         duree: "8 Jours",
         sessions: "Sessions de 1h30",
         tarif: "7.000 FDJ",
+        hoverImage: "/hover-digital.png",
         programme: [
             "Jours 1-3 : Gestion de Projet (Cahier des charges, Devis, Planning)",
             "Jours 4-6 : Stratégie Marketing (Persona, Branding, Calendrier)",
@@ -176,19 +180,29 @@ export default function FormationsPage() {
                         return (
                             <div
                                 key={formation.id}
-                                className="group relative bg-black border border-gray-800 p-8 transition-all duration-300 hover:border-l-4 hover:border-l-yellow-500 hover:bg-gray-900/30"
+                                className="group relative bg-black border border-gray-800 p-8 transition-all duration-300 hover:border-l-4 hover:border-l-yellow-500 hover:bg-gray-900/30 overflow-hidden"
                             >
+                                {/* Image Hover Background */}
+                                <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500">
+                                    <Image
+                                        src={formation.hoverImage}
+                                        alt=""
+                                        fill
+                                        className="object-cover object-center"
+                                    />
+                                </div>
+
                                 {/* Badge Best-Seller */}
                                 {formation.isBestSeller && (
-                                    <div className="absolute top-4 right-4 flex items-center gap-1 bg-yellow-500 text-black px-3 py-1 text-xs font-bold uppercase">
+                                    <div className="absolute top-4 right-4 z-10 flex items-center gap-1 bg-yellow-500 text-black px-3 py-1 text-xs font-bold uppercase">
                                         <Star size={12} fill="currentColor" />
                                         Best-Seller
                                     </div>
                                 )}
 
                                 {/* Header */}
-                                <div className="flex items-start gap-4 mb-6">
-                                    <div className="p-3 border border-gray-700 group-hover:border-yellow-500/50 transition-colors">
+                                <div className="relative z-10 flex items-start gap-4 mb-6">
+                                    <div className="p-3 border border-gray-700 group-hover:border-yellow-500/50 transition-colors bg-black/50">
                                         <IconComponent size={28} className="text-yellow-500" />
                                     </div>
                                     <div>
@@ -202,12 +216,12 @@ export default function FormationsPage() {
                                 </div>
 
                                 {/* Slogan */}
-                                <p className="text-white/60 italic mb-6 text-lg">
+                                <p className="relative z-10 text-white/60 italic mb-6 text-lg">
                                     "{formation.slogan}"
                                 </p>
 
                                 {/* Infos */}
-                                <div className="flex flex-wrap gap-4 mb-6 text-sm">
+                                <div className="relative z-10 flex flex-wrap gap-4 mb-6 text-sm">
                                     <div className="flex items-center gap-2 text-white/80">
                                         <Clock size={16} className="text-yellow-500" />
                                         <span>{formation.duree}</span>
@@ -219,7 +233,7 @@ export default function FormationsPage() {
                                 </div>
 
                                 {/* Programme */}
-                                <div className="border-t border-gray-800 pt-6">
+                                <div className="relative z-10 border-t border-gray-800 pt-6">
                                     <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">
                                         Programme
                                     </h4>
@@ -243,16 +257,26 @@ export default function FormationsPage() {
             {/* ═══════════════════════════════════════════════════════════════════ */}
             <section className="py-20 px-6 md:px-12 lg:px-20">
                 <div className="max-w-4xl mx-auto">
-                    <div className="relative border-2 border-yellow-500 bg-gradient-to-br from-yellow-500/10 to-transparent p-10 md:p-14">
+                    <div className="group relative border-2 border-yellow-500 bg-gradient-to-br from-yellow-500/10 to-transparent p-10 md:p-14 overflow-hidden">
+
+                        {/* Image Hover Background for Pack */}
+                        <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500">
+                            <Image
+                                src="/hover-pack360.png"
+                                alt=""
+                                fill
+                                className="object-cover object-center"
+                            />
+                        </div>
 
                         {/* Badge */}
-                        <div className="absolute -top-4 left-8 flex items-center gap-2 bg-yellow-500 text-black px-4 py-2 font-black text-sm uppercase">
+                        <div className="absolute -top-4 left-8 z-20 flex items-center gap-2 bg-yellow-500 text-black px-4 py-2 font-black text-sm uppercase">
                             <Sparkles size={16} />
                             L'Offre Ultime
                         </div>
 
                         {/* Contenu */}
-                        <div className="text-center">
+                        <div className="relative z-10 text-center">
                             <h2 className="text-3xl md:text-5xl font-black text-white mb-2">
                                 PACK "CREATOR 360°"
                             </h2>
