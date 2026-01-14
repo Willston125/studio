@@ -42,7 +42,7 @@ export default function InscriptionPage() {
 
             const url = `https://wa.me/25377145306?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
-        }, 1500);
+        }, 100);
     };
 
     return (
