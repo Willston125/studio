@@ -275,6 +275,73 @@ export default function FormationsPage() {
             </section>
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* SECTION MENTOR */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <section className="py-20 px-6 border-t border-gray-900 bg-black relative overflow-hidden">
+                {/* Background Glow */}
+                <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-yellow-600/10 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/3 z-0 pointer-events-none" />
+
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-20 relative z-10">
+
+                    {/* Colonne Texte */}
+                    <div className="flex-1 space-y-8 text-left">
+                        <div>
+                            <span className="text-yellow-500 font-bold tracking-widest uppercase text-sm mb-2 block">
+                                L'Excellence Pédagogique
+                            </span>
+                            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+                                APPRENEZ AVEC <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-200">
+                                    UN EXPERT
+                                </span>
+                            </h2>
+                        </div>
+
+                        <p className="text-gray-400 text-lg leading-relaxed">
+                            "La théorie ne suffit pas. Dans mes formations, je partage avec vous <span className="text-white font-medium">10 ans d'expérience terrain</span>, des tournage aux studios de post-production."
+                        </p>
+
+                        <div className="space-y-4">
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-full bg-[#6e1615]/20 flex items-center justify-center text-[#6e1615]">
+                                    <Video size={24} />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-bold">Réalisateur primé</h4>
+                                    <p className="text-gray-500 text-sm">Plus de 50 projets majeurs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500">
+                                    <Monitor size={24} />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-bold">Pédagogie Active</h4>
+                                    <p className="text-gray-500 text-sm">Apprentissage par la pratique (80%)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Colonne Photo */}
+                    <div className="relative w-full md:w-1/2 h-[600px] flex items-end justify-center">
+                        <div className="relative w-full h-full">
+                            {/* Cercle décoratif derrière */}
+                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[90%] bg-gradient-to-b from-gray-800 to-black rounded-t-full opacity-50 border border-gray-700/50" />
+
+                            <Image
+                                src="/formateur-mentor.png"
+                                alt="Votre Mentor Cineworld"
+                                fill
+                                className="object-contain object-bottom drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+                            />
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* SECTION 3 : PACK CREATOR 360° */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
             <section className="py-20 px-6 md:px-12 lg:px-20">
