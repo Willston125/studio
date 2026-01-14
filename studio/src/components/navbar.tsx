@@ -29,7 +29,7 @@ export default function Navbar() {
                     href="/entreprises"
                     className="text-black font-black text-sm uppercase tracking-wide hover:text-[#6e1615] transition-colors"
                 >
-                    ENTREPRISES
+                    PRODUCTION
                 </Link>
             </div>
 
