@@ -10,7 +10,7 @@ const FORMATIONS = [
         id: 1,
         icon: Monitor,
         module: "MODULE 1",
-        titre: "CRÉATION DE SITE WEB AVEC L'IA",
+        titre: "Création de site internet avec l'IA",
         slogan: "De l'idée au site en ligne sans coder",
         duree: "5 Jours",
         sessions: "Sessions de 1h30",
@@ -28,7 +28,7 @@ const FORMATIONS = [
         id: 2,
         icon: Palette,
         module: "MODULE 2",
-        titre: "DESIGN GRAPHIQUE PRO",
+        titre: "Design graphique pro",
         slogan: "Maîtrisez la suite visuelle moderne",
         duree: "12 Jours",
         sessions: "Sessions de 1h30",
@@ -44,7 +44,7 @@ const FORMATIONS = [
         id: 3,
         icon: Video,
         module: "MODULE 3",
-        titre: "RÉALISATION & EDITING VIDÉO",
+        titre: "Réalisation & editing vidéo",
         slogan: "Tournez, Montez, Publiez",
         duree: "15 Jours",
         sessions: "Sessions de 1h30",
@@ -62,7 +62,7 @@ const FORMATIONS = [
         id: 4,
         icon: TrendingUp,
         module: "MODULE 4",
-        titre: "MARKETING DIGITAL & GESTION DE PROJET",
+        titre: "Marketing digital et gestion de projet",
         slogan: "Transformez vos talents en business",
         duree: "8 Jours",
         sessions: "Sessions de 1h30",
@@ -142,7 +142,7 @@ export default function FormationsPage() {
                 <div className="relative z-40 h-full flex flex-col items-center justify-center pointer-events-none">
                     <div className="text-center px-6 drop-shadow-2xl">
                         <h1 className="text-5xl md:text-8xl font-black text-white mb-6 tracking-tighter">
-                            NOS FORMATIONS
+                            Nos formations
                         </h1>
                         <p className="text-xl md:text-2xl text-white/80 font-light tracking-widest uppercase">
                             Développez vos talents créatifs
@@ -168,7 +168,7 @@ export default function FormationsPage() {
                     {[...Array(4)].map((_, i) => (
                         <span key={i} className="text-white font-bold text-lg uppercase tracking-widest mx-8 flex items-center gap-8">
                             <span>★</span>
-                            <span>SITE WEB</span>
+                            <span>INSCRIPTION OUVERT</span>
                             <span>★</span>
                             <span>DESIGN GRAPHIQUE</span>
                             <span>★</span>
@@ -176,7 +176,7 @@ export default function FormationsPage() {
                             <span>★</span>
                             <span>MARKETING DIGITAL</span>
                             <span>★</span>
-                            <span>PACK CREATOR 360°</span>
+                            <span>INSCRIPTION OUVERT</span>
                         </span>
                     ))}
                 </div>
