@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CITATIONS = [
   { auteur: "Stanley Kubrick", texte: "Si cela peut être écrit ou pensé, cela peut être filmé." },
@@ -118,9 +119,15 @@ export default function Home() {
             <h1 className="text-5xl md:text-8xl font-black text-white mb-6 tracking-tighter mix-blend-overlay opacity-90">
               Cinéworld Académie
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 font-light tracking-widest uppercase mb-8">
+            <p className="text-xl md:text-2xl text-white/80 font-light tracking-widest uppercase mb-10">
               Première Académie Audiovisuelle de Djibouti
             </p>
+            <Link
+              href="/formations"
+              className="inline-block px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-sm hover:bg-[#8b1c1b] transition-all transform hover:scale-105 pointer-events-auto border border-white/10 shadow-xl"
+            >
+              Découvrir nos formations
+            </Link>
           </div>
         </div>
       </section>

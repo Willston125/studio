@@ -268,6 +268,16 @@ export default function FormationsPage() {
                                         ))}
                                     </ul>
                                 </div>
+
+                                {/* CTA Inscription */}
+                                <div className="relative z-10 mt-6 pt-6 border-t border-gray-800">
+                                    <Link
+                                        href={`/inscription?module=${formation.id}`}
+                                        className="block w-full bg-[#6e1615] text-white text-center py-3 px-6 font-bold uppercase tracking-wider rounded-sm hover:bg-[#8b1c1b] transition-all transform hover:scale-105 shadow-lg"
+                                    >
+                                        M'inscrire à ce module
+                                    </Link>
+                                </div>
                             </div>
                         );
                     })}

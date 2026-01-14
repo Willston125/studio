@@ -1,19 +1,44 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { ArrowLeft, CheckCircle, Send } from 'lucide-react';
+
+// Données des modules (synchronisées avec formations/page.tsx)
+const MODULES_DATA = [
+    { id: 1, titre: "CRÉATION DE SITE WEB AVEC L'IA", tarif: "15.000 FDJ", duree: "5 Jours", sessions: "Sessions de 1h30" },
+    { id: 2, titre: "DESIGN GRAPHIQUE PRO", tarif: "10.000 FDJ", duree: "12 Jours", sessions: "Sessions de 1h30" },
+    { id: 3, titre: "RÉALISATION & EDITING VIDÉO", tarif: "13.000 FDJ", duree: "15 Jours", sessions: "Sessions de 1h30" },
+    { id: 4, titre: "MARKETING DIGITAL & GESTION DE PROJET", tarif: "7.000 FDJ", duree: "8 Jours", sessions: "Sessions de 1h30" },
+];
 
 export default function InscriptionPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const searchParams = useSearchParams();
+    const moduleId = searchParams.get('module');
+
+    // Récupérer les infos du module sélectionné
+    const selectedModule = useMemo(() => {
+        if (!moduleId) return null;
+        return MODULES_DATA.find(m => m.id === parseInt(moduleId));
+    }, [moduleId]);
 
     const onSubmit = (data: any) => {
         setShowSuccessModal(true);
 
         setTimeout(() => {
-            const message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\\n--------------------------------\\n👤 *Candidat:* ${data.prenom} ${data.nom}\\n📱 *Tel:* ${data.telephone}\\n📧 *Email:* ${data.email}\\n🎓 *Niveau:* ${data.niveau}\\n--------------------------------\\n*ENGAGEMENTS:*\\n✅ Tarif accepté\\n✅ Engagement paiement 48h\\n📅 Date: ${new Date().toLocaleDateString()}`;
+            let message = `*NOUVELLE INSCRIPTION - CINEWORLD ACADEMIE*\\n--------------------------------\\n👤 *Candidat:* ${data.prenom} ${data.nom}\\n📱 *Tel:* ${data.telephone}\\n📧 *Email:* ${data.email}\\n🎓 *Niveau:* ${data.niveau}`;
+
+            // Ajouter les infos du module si sélectionné
+            if (selectedModule) {
+                message += `\\n\\n━━━━━━━━━━━━━━━━━━\\n📚 *MODULE SÉLECTIONNÉ*\\n━━━━━━━━━━━━━━━━━━\\n📌 ${selectedModule.titre}\\n💰 ${selectedModule.tarif}\\n⏱️ ${selectedModule.duree} (${selectedModule.sessions})`;
+            }
+
+            message += `\\n\\n--------------------------------\\n*ENGAGEMENTS:*\\n✅ Tarif accepté\\n✅ Engagement paiement 48h\\n📅 Date: ${new Date().toLocaleDateString()}`;
+
             const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         }, 1500);
@@ -24,9 +49,9 @@ export default function InscriptionPage() {
 
             {/* En-tête avec retour */}
             <div className="container mx-auto px-4 py-8">
-                <Link href="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-black transition-colors">
+                <Link href="/formations" className="inline-flex items-center gap-2 text-gray-600 hover:text-black transition-colors">
                     <ArrowLeft className="w-5 h-5" />
-                    <span className="font-medium">Retour à l'accueil</span>
+                    <span className="font-medium">Retour aux formations</span>
                 </Link>
             </div>
 
@@ -47,6 +72,33 @@ export default function InscriptionPage() {
                             Nous vous contacterons sous 48h pour confirmer votre inscription.
                         </p>
                     </div>
+
+                    {/* Encadré Module Sélectionné */}
+                    {selectedModule && (
+                        <div className="bg-gradient-to-r from-[#6e1615] to-[#8b1c1b] text-white rounded-xl p-6 mb-8 shadow-xl">
+                            <div className="flex items-start gap-4">
+                                <div className="flex-shrink-0">
+                                    <CheckCircle size={32} className="text-yellow-400" />
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="font-black text-lg mb-2 uppercase tracking-wide">
+                                        ✅ Module Sélectionné
+                                    </h3>
+                                    <div className="space-y-1 text-white/90">
+                                        <p className="text-xl font-bold">{selectedModule.titre}</p>
+                                        <div className="flex flex-wrap gap-4 text-sm mt-3">
+                                            <span className="flex items-center gap-2">
+                                                💰 <strong>{selectedModule.tarif}</strong>
+                                            </span>
+                                            <span className="flex items-center gap-2">
+                                                ⏱️ {selectedModule.duree}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     {/* Formulaire */}
                     <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 md:p-12">
@@ -97,7 +149,7 @@ export default function InscriptionPage() {
                                         {...register("email", {
                                             required: "L'email est obligatoire",
                                             pattern: {
-                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$/i,
+                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                                 message: "Email invalide"
                                             }
                                         })}
