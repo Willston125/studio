@@ -161,6 +161,28 @@ export default function FormationsPage() {
             </section>
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* BANDEAU DÉFILANT */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <div className="bg-[#6e1615] py-4 overflow-hidden">
+                <div className="animate-marquee whitespace-nowrap flex">
+                    {[...Array(4)].map((_, i) => (
+                        <span key={i} className="text-white font-bold text-lg uppercase tracking-widest mx-8 flex items-center gap-8">
+                            <span>★</span>
+                            <span>SITE WEB</span>
+                            <span>★</span>
+                            <span>DESIGN GRAPHIQUE</span>
+                            <span>★</span>
+                            <span>RÉALISATION VIDÉO</span>
+                            <span>★</span>
+                            <span>MARKETING DIGITAL</span>
+                            <span>★</span>
+                            <span>PACK CREATOR 360°</span>
+                        </span>
+                    ))}
+                </div>
+            </div>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* SECTION 2 : CATALOGUE DES FORMATIONS */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
             <section id="catalogue" className="py-20 px-6 md:px-12 lg:px-20">
@@ -257,7 +279,7 @@ export default function FormationsPage() {
             {/* ═══════════════════════════════════════════════════════════════════ */}
             <section className="py-20 px-6 md:px-12 lg:px-20">
                 <div className="max-w-4xl mx-auto">
-                    <div className="group relative border-2 border-yellow-500 bg-gradient-to-br from-yellow-500/10 to-transparent p-10 md:p-14 overflow-hidden">
+                    <div className="group relative border-2 border-yellow-500 bg-gradient-to-br from-yellow-500/10 to-transparent p-10 md:p-14">
 
                         {/* Image Hover Background for Pack */}
                         <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500">
