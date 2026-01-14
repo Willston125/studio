@@ -168,7 +168,7 @@ export default function FormationsPage() {
                     {[...Array(4)].map((_, i) => (
                         <span key={i} className="text-white font-bold text-lg uppercase tracking-widest mx-8 flex items-center gap-8">
                             <span>★</span>
-                            <span>INSCRIPTION OUVERT</span>
+                            <span>INSCRIPTION OUVERT - RENTRÉE 2026</span>
                             <span>★</span>
                             <span>DESIGN GRAPHIQUE</span>
                             <span>★</span>
@@ -176,7 +176,7 @@ export default function FormationsPage() {
                             <span>★</span>
                             <span>MARKETING DIGITAL</span>
                             <span>★</span>
-                            <span>INSCRIPTION OUVERT</span>
+                            <span>INSCRIPTION OUVERT - RENTRÉE 2026</span>
                         </span>
                     ))}
                 </div>

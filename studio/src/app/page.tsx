@@ -36,7 +36,7 @@ export default function Home() {
     // Faire disparaître après 6 secondes
     const id = setTimeout(() => {
       setCitation(null);
-    }, 6000);
+    }, 2000);
     setTimeoutId(id);
   };
 
@@ -107,7 +107,7 @@ export default function Home() {
       <div className={`relative z-40 h-full flex items-center justify-center pointer-events-none transition-opacity duration-500 ${citation ? 'opacity-0' : 'opacity-100'}`}>
         <div className="text-center px-6 drop-shadow-2xl">
           <h1 className="text-5xl md:text-8xl font-black text-white mb-6 tracking-tighter mix-blend-overlay opacity-90">
-            CINEWORLD ACADÉMIE
+            Cinéworld Académie
           </h1>
           <p className="text-xl md:text-2xl text-white/80 font-light tracking-widest uppercase mb-8">
             Première Académie Audiovisuelle de Djibouti
