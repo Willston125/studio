@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -15,7 +15,7 @@ const MODULES_DATA = [
     { id: 5, titre: "PACK CREATOR 360°", tarif: "45.000 FDJ", duree: "1 Mois", sessions: "Parcours intensif complet" },
 ];
 
-export default function InscriptionPage() {
+function InscriptionContent() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const searchParams = useSearchParams();
@@ -286,5 +286,17 @@ export default function InscriptionPage() {
                 </div>
             )}
         </div>
+    );
+}
+
+export default function InscriptionPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center bg-gray-50">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500"></div>
+            </div>
+        }>
+            <InscriptionContent />
+        </Suspense>
     );
 }
