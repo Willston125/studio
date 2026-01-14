@@ -12,6 +12,7 @@ const MODULES_DATA = [
     { id: 2, titre: "DESIGN GRAPHIQUE PRO", tarif: "10.000 FDJ", duree: "12 Jours", sessions: "Sessions de 1h30" },
     { id: 3, titre: "RÉALISATION & EDITING VIDÉO", tarif: "13.000 FDJ", duree: "15 Jours", sessions: "Sessions de 1h30" },
     { id: 4, titre: "MARKETING DIGITAL & GESTION DE PROJET", tarif: "7.000 FDJ", duree: "8 Jours", sessions: "Sessions de 1h30" },
+    { id: 5, titre: "PACK CREATOR 360°", tarif: "45.000 FDJ", duree: "1 Mois", sessions: "Parcours intensif complet" },
 ];
 
 export default function InscriptionPage() {
@@ -39,7 +40,7 @@ export default function InscriptionPage() {
 
             message += `\\n\\n--------------------------------\\n*ENGAGEMENTS:*\\n✅ Tarif accepté\\n✅ Engagement paiement 48h\\n📅 Date: ${new Date().toLocaleDateString()}`;
 
-            const url = `https://wa.me/25377556344?text=${encodeURIComponent(message)}`;
+            const url = `https://wa.me/25377145306?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         }, 1500);
     };
@@ -173,7 +174,7 @@ export default function InscriptionPage() {
                                             required: "Le numéro est obligatoire",
                                             pattern: {
                                                 value: /^[0-9]{8}$/,
-                                                message: "Format: 8 chiffres (ex: 77556344)"
+                                                message: "Format: 8 chiffres (ex: 77145306)"
                                             }
                                         })}
                                         type="tel"

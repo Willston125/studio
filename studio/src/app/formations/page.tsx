@@ -407,10 +407,10 @@ export default function FormationsPage() {
 
                             {/* CTA */}
                             <Link
-                                href="/inscription"
+                                href="/inscription?module=5"
                                 className="inline-block bg-[#6e1615] text-white px-10 py-4 font-bold text-lg uppercase tracking-wider hover:bg-[#8b1c1b] transition-all shadow-lg hover:shadow-yellow-500/20"
                             >
-                                Candidater Maintenant
+                                M'inscrire à ce module complet
                             </Link>
                         </div>
                     </div>
