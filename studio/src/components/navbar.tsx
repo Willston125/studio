@@ -98,7 +98,7 @@ export default function Navbar() {
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="text-black font-black text-sm uppercase tracking-wide hover:text-[#6e1615] py-2"
                         >
-                            ENTREPRISES
+                            PRODUCTION
                         </Link>
 
                         <hr className="border-gray-200" />
