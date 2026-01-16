@@ -460,8 +460,8 @@ export default function FormationsPage() {
                             <p className="text-gray-700 mb-4 pl-4">Dois-je avoir du matériel pour suivre la formation ?</p>
                             <p className="font-bold text-[#6e1615] mb-2">FORMATEUR</p>
                             <p className="text-gray-700 pl-4">
-                                Non, tout est fourni sur place.<br />
-                                Caméras, ordinateurs, logiciels professionnels...<br />
+                                Oui, les logiciel profesionnel sont fourni sur place.<br />
+
                                 Vous venez juste avec votre motivation !
                             </p>
                             <p className="text-gray-400 mt-4 italic">FADE TO:</p>
@@ -475,7 +475,7 @@ export default function FormationsPage() {
                             <p className="font-bold text-[#6e1615] mb-2">FORMATEUR</p>
                             <p className="text-gray-700 pl-4">
                                 Sessions de 1h30, flexibles selon ton emploi du temps.<br />
-                                Tu peux venir le matin ou l'après-midi.
+                                Tu peux venir le matin ou l'après-midi en sessions de groupes.
                             </p>
                             <p className="text-gray-400 mt-4 italic">CUT TO:</p>
                         </div>
@@ -551,7 +551,7 @@ export default function FormationsPage() {
                     </div>
 
                     <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
-                        © 2026 Cineworld Académie - Tous droits réservés
+                        © 2026 Cineworld Académie - Tous droits réservés - #quedubon
                     </div>
                 </div>
             </footer>
