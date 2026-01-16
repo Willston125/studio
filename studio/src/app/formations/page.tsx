@@ -437,6 +437,126 @@ export default function FormationsPage() {
                 </div>
             </section>
 
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* SECTION FAQ - STYLE SCÉNARIO CINÉMA */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <section className="py-20 px-6 bg-gradient-to-b from-black to-gray-900">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-12">
+                        <span className="text-yellow-500 text-sm font-medium tracking-widest uppercase">
+                            Questions Fréquentes
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-black text-white mt-2 tracking-tight">
+                            LE SCÉNARIO DE VOS QUESTIONS
+                        </h2>
+                        <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
+                    </div>
+
+                    <div className="space-y-6">
+                        {/* Question 1 */}
+                        <div className="bg-yellow-50 rounded-lg p-6 font-mono text-sm border-l-4 border-[#6e1615]">
+                            <p className="text-gray-600 mb-4">INT. STUDIO CINEWORLD - JOUR</p>
+                            <p className="font-bold text-gray-900 mb-2">ÉTUDIANT</p>
+                            <p className="text-gray-700 mb-4 pl-4">Dois-je avoir du matériel pour suivre la formation ?</p>
+                            <p className="font-bold text-[#6e1615] mb-2">FORMATEUR</p>
+                            <p className="text-gray-700 pl-4">
+                                Non, tout est fourni sur place.<br />
+                                Caméras, ordinateurs, logiciels professionnels...<br />
+                                Vous venez juste avec votre motivation !
+                            </p>
+                            <p className="text-gray-400 mt-4 italic">FADE TO:</p>
+                        </div>
+
+                        {/* Question 2 */}
+                        <div className="bg-yellow-50 rounded-lg p-6 font-mono text-sm border-l-4 border-[#6e1615]">
+                            <p className="text-gray-600 mb-4">INT. SALLE DE MONTAGE - APRÈS-MIDI</p>
+                            <p className="font-bold text-gray-900 mb-2">ÉTUDIANT</p>
+                            <p className="text-gray-700 mb-4 pl-4">Quelle est la durée quotidienne des sessions ?</p>
+                            <p className="font-bold text-[#6e1615] mb-2">FORMATEUR</p>
+                            <p className="text-gray-700 pl-4">
+                                Sessions de 1h30, flexibles selon ton emploi du temps.<br />
+                                Tu peux venir le matin ou l'après-midi.
+                            </p>
+                            <p className="text-gray-400 mt-4 italic">CUT TO:</p>
+                        </div>
+
+                        {/* Question 3 */}
+                        <div className="bg-yellow-50 rounded-lg p-6 font-mono text-sm border-l-4 border-[#6e1615]">
+                            <p className="text-gray-600 mb-4">INT. BUREAU ADMINISTRATION - SOIR</p>
+                            <p className="font-bold text-gray-900 mb-2">ÉTUDIANT</p>
+                            <p className="text-gray-700 mb-4 pl-4">Y a-t-il un certificat à la fin de la formation ?</p>
+                            <p className="font-bold text-[#6e1615] mb-2">FORMATEUR</p>
+                            <p className="text-gray-700 pl-4">
+                                Absolument ! Certificat officiel Cineworld Académie<br />
+                                reconnu par les professionnels du secteur.
+                            </p>
+                            <p className="text-gray-400 mt-4 italic">CUT TO BLACK.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* FOOTER */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <footer className="bg-black text-white py-16 border-t-4 border-[#6e1615]">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="grid md:grid-cols-3 gap-12">
+                        {/* Formations */}
+                        <div>
+                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Formations</h3>
+                            <ul className="space-y-3 text-gray-400">
+                                <li><Link href="/formations" className="hover:text-white transition-colors">Site Web avec l'IA</Link></li>
+                                <li><Link href="/formations" className="hover:text-white transition-colors">Design Graphique</Link></li>
+                                <li><Link href="/formations" className="hover:text-white transition-colors">Réalisation Vidéo</Link></li>
+                                <li><Link href="/formations" className="hover:text-white transition-colors">Marketing Digital</Link></li>
+                                <li><Link href="/formations" className="hover:text-white transition-colors">Pack Creator 360°</Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Contact */}
+                        <div>
+                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Contact</h3>
+                            <ul className="space-y-3 text-gray-400">
+                                <li className="flex items-start gap-3">
+                                    <span>📍</span>
+                                    <span>Djibouti, Aviation<br />Institut "DIHM"</span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <span>📧</span>
+                                    <a href="mailto:cineworld@cineworldacademie.com" className="hover:text-white transition-colors">cineworld@cineworldacademie.com</a>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <span>📱</span>
+                                    <a href="https://wa.me/25377145306" className="hover:text-white transition-colors">+253 77 14 53 06</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Réseaux */}
+                        <div>
+                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Réseaux Sociaux</h3>
+                            <div className="flex gap-4">
+                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
+                                    <span>📘</span>
+                                </a>
+                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
+                                    <span>📷</span>
+                                </a>
+                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
+                                    <span>📺</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+                        © 2026 Cineworld Académie - Tous droits réservés
+                    </div>
+                </div>
+            </footer>
+
         </main>
     );
 }
+

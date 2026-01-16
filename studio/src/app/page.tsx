@@ -134,6 +134,28 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* SECTION CHIFFRES CLÉS */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-16 bg-black">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="grid grid-cols-3 gap-8 text-center">
+            <div>
+              <span className="text-4xl md:text-6xl font-black text-yellow-500">3000+</span>
+              <p className="text-white/70 text-sm md:text-base mt-2 uppercase tracking-wider">Personnes formées</p>
+            </div>
+            <div>
+              <span className="text-4xl md:text-6xl font-black text-yellow-500">10+</span>
+              <p className="text-white/70 text-sm md:text-base mt-2 uppercase tracking-wider">Ans d'expérience</p>
+            </div>
+            <div>
+              <span className="text-4xl md:text-6xl font-black text-yellow-500">100%</span>
+              <p className="text-white/70 text-sm md:text-base mt-2 uppercase tracking-wider">Pratique</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SECTION PARTENAIRES */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-20 bg-white">
@@ -167,6 +189,130 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* SECTION TÉMOIGNAGES */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-gray-400 text-sm font-medium tracking-widest uppercase">
+              Ils ont suivi nos formations
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-2 tracking-tight">
+              TÉMOIGNAGES
+            </h2>
+            <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Témoignage 1 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg">
+              <div className="text-4xl text-[#6e1615] mb-4">"</div>
+              <p className="text-gray-700 italic mb-6">
+                C'est une grande plaisir pour moi de travailler avec vous, je vous remercie amplement pour la confiance que vous m'accordez
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-[#6e1615] rounded-full flex items-center justify-center text-white font-bold">A</div>
+                <div>
+                  <p className="font-bold text-gray-900">Assia</p>
+                  <p className="text-sm text-gray-500">Étudiante</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Témoignage 2 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg">
+              <div className="text-4xl text-[#6e1615] mb-4">"</div>
+              <p className="text-gray-700 italic mb-6">
+                Insha'Allah je vais arriver à faire un festival moi aussi grâce à ton soutien, plusieurs festivals même !
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-[#6e1615] rounded-full flex items-center justify-center text-white font-bold">H</div>
+                <div>
+                  <p className="font-bold text-gray-900">Houmed</p>
+                  <p className="text-sm text-gray-500">Étudiant</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Témoignage 3 */}
+            <div className="bg-white p-6 rounded-xl shadow-lg">
+              <div className="text-4xl text-[#6e1615] mb-4">"</div>
+              <p className="text-gray-700 italic mb-6">
+                Je suis une actrice de théâtre, je peux jouer toutes les émotions.
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-[#6e1615] rounded-full flex items-center justify-center text-white font-bold">A</div>
+                <div>
+                  <p className="font-bold text-gray-900">Aicha</p>
+                  <p className="text-sm text-gray-500">Actrice</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* FOOTER */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <footer className="bg-black text-white py-16 border-t-4 border-[#6e1615]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-12">
+            {/* Formations */}
+            <div>
+              <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Formations</h3>
+              <ul className="space-y-3 text-gray-400">
+                <li><Link href="/formations" className="hover:text-white transition-colors">Site Web avec l'IA</Link></li>
+                <li><Link href="/formations" className="hover:text-white transition-colors">Design Graphique</Link></li>
+                <li><Link href="/formations" className="hover:text-white transition-colors">Réalisation Vidéo</Link></li>
+                <li><Link href="/formations" className="hover:text-white transition-colors">Marketing Digital</Link></li>
+                <li><Link href="/formations" className="hover:text-white transition-colors">Pack Creator 360°</Link></li>
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Contact</h3>
+              <ul className="space-y-3 text-gray-400">
+                <li className="flex items-start gap-3">
+                  <span>📍</span>
+                  <span>Djibouti, Aviation<br />Institut "DIHM"</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span>📧</span>
+                  <a href="mailto:cineworld@cineworldacademie.com" className="hover:text-white transition-colors">cineworld@cineworldacademie.com</a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span>📱</span>
+                  <a href="https://wa.me/25377145306" className="hover:text-white transition-colors">+253 77 14 53 06</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Réseaux */}
+            <div>
+              <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Réseaux Sociaux</h3>
+              <div className="flex gap-4">
+                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
+                  <span>📘</span>
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
+                  <span>📷</span>
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
+                  <span>📺</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+            © 2026 Cineworld Académie - Tous droits réservés
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
