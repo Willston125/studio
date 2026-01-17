@@ -35,6 +35,11 @@ export const metadata: Metadata = {
     },
   },
 
+  // === CANONICAL URL (version officielle HTTPS) ===
+  alternates: {
+    canonical: 'https://cineworldacademie.com',
+  },
+
   // === FAVICON & ICONS ===
   icons: {
     icon: '/logo_cineworld.png',
