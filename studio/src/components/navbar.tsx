@@ -26,7 +26,7 @@ export default function Navbar() {
                     L'ASSOCIATION
                 </Link>
                 <Link
-                    href="/entreprises"
+                    href="/production"
                     className="text-black font-black text-sm uppercase tracking-wide hover:text-[#6e1615] transition-colors"
                 >
                     PRODUCTION
@@ -94,7 +94,7 @@ export default function Navbar() {
                             L'ASSOCIATION
                         </Link>
                         <Link
-                            href="/entreprises"
+                            href="/production"
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="text-black font-black text-sm uppercase tracking-wide hover:text-[#6e1615] py-2"
                         >
