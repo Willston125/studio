@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vider le Cache Favicon - Cineworld</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .status.info {
+            background: #e3f2fd;
+            color: #1976d2;
+            border-left: 4px solid #1976d2;
+        }
+        .status.success {
+            background: #e8f5e9;
+            color: #388e3c;
+            border-left: 4px solid #388e3c;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .steps {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .steps h2 {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .steps ol {
+            padding-left: 20px;
+        }
+        .steps li {
+            margin-bottom: 10px;
+            color: #666;
+            line-height: 1.6;
+        }
+        .code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Vider le Cache Favicon</h1>
+        
+        <div id="status" class="status info">
+            ⏳ Prêt à vider le cache du favicon...
+        </div>
+
+        <button class="btn" onclick="clearCacheAndReload()">
+            🗑️ Vider le Cache et Recharger
+        </button>
+
+        <button class="btn" onclick="openPrivateWindow()">
+            🕶️ Ouvrir en Navigation Privée
+        </button>
+
+        <div class="steps">
+            <h2>📋 Méthode Manuelle (Si les boutons ne fonctionnent pas)</h2>
+            <ol>
+                <li>Ouvrez <strong>localhost:3000</strong> dans votre navigateur</li>
+                <li>Appuyez sur <strong>F12</strong> pour ouvrir DevTools</li>
+                <li><strong>Clic droit</strong> sur le bouton ⟳ (rafraîchir)</li>
+                <li>Sélectionnez : <strong>"Vider le cache et effectuer une actualisation forcée"</strong></li>
+            </ol>
+            
+            <div class="code">
+                🎯 Raccourci : Ctrl + Shift + R (Windows)<br>
+                🎯 Raccourci : Cmd + Shift + R (Mac)
+            </div>
+        </div>
+
+        <div class="status" style="margin-top: 20px; background: #fff3cd; color: #856404; border-left: 4px solid #ffc107;">
+            <strong>⚠️ Problème confirmé :</strong> Le serveur sert correctement le logo Cineworld (HTTP 200), mais votre navigateur affiche encore le logo Vercel à cause du cache.
+        </div>
+    </div>
+
+    <script>
+        function clearCacheAndReload() {
+            const status = document.getElementById('status');
+            status.className = 'status info';
+            status.innerHTML = '⏳ Tentative de vidage du cache...';
+            
+            // Try to force a hard reload
+            if (window.location.replace) {
+                window.location.replace('http://localhost:3000');
+            } else {
+                window.location.href = 'http://localhost:3000';
+            }
+            
+            setTimeout(() => {
+                status.className = 'status success';
+                status.innerHTML = '✅ Redirection vers localhost:3000... Si le favicon ne change pas, utilisez la méthode manuelle ci-dessous.';
+            }, 500);
+        }
+
+        function openPrivateWindow() {
+            const status = document.getElementById('status');
+            status.className = 'status info';
+            status.innerHTML = '⚠️ Veuillez copier manuellement cette URL dans une fenêtre privée : <strong>http://localhost:3000</strong><br><br>Raccourci : Ctrl + Shift + N (Chrome/Edge) ou Ctrl + Shift + P (Firefox)';
+            
+            // Try to open in new window (browser will block popup, but worth trying)
+            window.open('http://localhost:3000', '_blank');
+        }
+
+        // Auto-detect if opened from localhost:3000
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            setTimeout(() => {
+                document.getElementById('status').className = 'status success';
+                document.getElementById('status').innerHTML = '✅ Vous êtes sur localhost ! Utilisez les boutons ci-dessus ou la méthode manuelle.';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
