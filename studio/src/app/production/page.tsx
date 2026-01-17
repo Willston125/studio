@@ -15,7 +15,7 @@ const PROJETS = [
         episodes: '1 Épisodes',
         client: 'Cinéworld Production',
         synopsis: "Hassan et Hela partagent une complicité profonde à Djibouti-ville, mais Hassan est fiancé, lié par une promesse traditionnelle. Pris entre deux amours, un mensonge et une suite de tensions font éclater la vérité. Humiliée, la fiancée rompt, tandis que Hela, blessée, décide de se battre.",
-        image: '/Affiche-film-douteforce.png',
+        image: '/affiche-film-doute.png',
         featured: true,
         teaser: '#',
     },
@@ -84,7 +84,7 @@ export default function ProductionPage() {
                                     src={featuredProject.image}
                                     alt={featuredProject.titre}
                                     fill
-                                    className="object-cover transition duration-700 group-hover:scale-105"
+                                    className="object-cover object-top transition duration-700 group-hover:scale-105"
                                     priority
                                 />
                             </div>

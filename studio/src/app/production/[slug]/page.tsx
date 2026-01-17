@@ -18,7 +18,7 @@ const PROJETS = [
         annee: '2026',
         duree: '4 x 25 min',
         synopsis: "Hassan et Hela partagent une complicité profonde à Djibouti-ville, mais Hassan est fiancé, lié par une promesse traditionnelle. Pris entre deux amours, un mensonge et une suite de tensions font éclater la vérité. Humiliée, la fiancée rompt, tandis que Hela, blessée, décide de se battre.",
-        image: '/Affiche-film-douteforce.png',
+        image: '/affiche-film-doute.png',
         teaser: '#',
         equipe: [
             { role: 'Réalisateur', nom: 'Équipe Cinéworld' },
