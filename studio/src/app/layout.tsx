@@ -4,6 +4,9 @@ import Navbar from '@/components/navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 export const metadata: Metadata = {
+  // === BASE URL (pour les images OG) ===
+  metadataBase: new URL('https://cineworldacademie.com'),
+
   // === TITRE & DESCRIPTION ===
   title: {
     default: 'Cineworld Académie | Formation Audiovisuelle à Djibouti',
