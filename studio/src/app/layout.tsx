@@ -40,11 +40,13 @@ export const metadata: Metadata = {
     canonical: 'https://cineworldacademie.com',
   },
 
-  // === FAVICON & ICONS ===
+  // === FAVICON & ICONS (avec Cache Busting) ===
   icons: {
-    icon: '/logo_cineworld.png',
-    shortcut: '/logo_cineworld.png',
-    apple: '/logo_cineworld.png',
+    icon: [
+      { url: '/favicon.png?v=2', type: 'image/png' },
+    ],
+    shortcut: '/favicon.png?v=2',
+    apple: '/favicon.png?v=2',
   },
 
   // === OPEN GRAPH (Facebook, WhatsApp) ===
