@@ -66,6 +66,13 @@ export const metadata: Metadata = {
     images: ['/logo_cineworld.png'],
   },
 
+  // === FAVICONS ===
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
+
   // === AUTRES ===
   authors: [{ name: 'Cineworld Académie' }],
   creator: 'Cineworld Académie',
