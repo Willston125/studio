@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import StatusBanner from '@/components/StatusBanner';
 
 export const metadata: Metadata = {
   // === BASE URL (pour les images OG) ===
@@ -18,11 +19,21 @@ export const metadata: Metadata = {
   keywords: [
     'Formation vidéo Djibouti',
     'École Cinéma Djibouti',
-    'Montage vidéo',
+    'Montage vidéo professionnel',
+    'Réalisation vidéo Djibouti',
+    'Editing vidéo',
     'Graphic Design Djibouti',
+    'Design graphique formation',
+    'Photoshop Djibouti',
+    'Canva formation',
     'Cinéworld',
     'Marketing Digital Djibouti',
+    'Community Manager formation',
+    'Facebook Ads Djibouti',
     'Formation audiovisuelle',
+    'Création site web IA',
+    'ChatGPT formation',
+    'Formation créative Djibouti',
   ],
 
   // === ROBOTS (INDEXATION GOOGLE) ===
@@ -87,6 +98,12 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
+        {process.env.NEXT_PUBLIC_SITE_STATUS && (
+          <StatusBanner
+            message={process.env.NEXT_PUBLIC_SITE_STATUS}
+            type="warning"
+          />
+        )}
         <Navbar />
         {children}
         <WhatsAppButton />
