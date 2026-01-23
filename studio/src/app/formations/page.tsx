@@ -93,7 +93,7 @@ export default function FormationsPage() {
             {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* HERO - Design Académique Motivant */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            <section className="relative min-h-[90vh] overflow-hidden">
+            <section className="relative min-h-[70vh] md:min-h-[90vh] overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <Image
@@ -193,7 +193,7 @@ export default function FormationsPage() {
                 </div>
 
                 {/* Scroll Indicator */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce hidden md:flex">
                     <div className="flex flex-col items-center gap-2">
                         <span className="text-xs">Découvrir</span>
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -259,62 +259,6 @@ export default function FormationsPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════════════════════════════════ */}
-            {/* TÉMOIGNAGES */}
-            {/* ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 bg-[#1a1a2e]">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Ils ont transformé leur vie
-                        </h2>
-                        <p className="text-white/70">
-                            Découvrez les témoignages de nos anciens étudiants
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                name: "Ahmed M.",
-                                role: "Vidéaste Freelance",
-                                quote: "Grâce à Cineworld, j'ai décroché mes premiers clients en freelance. La formation pratique m'a donné la confiance dont j'avais besoin.",
-                                avatar: "A"
-                            },
-                            {
-                                name: "Houda S.",
-                                role: "Community Manager",
-                                quote: "Je suis passée de stagiaire à responsable marketing en 6 mois. Les compétences acquises ici sont ultra demandées à Djibouti.",
-                                avatar: "H"
-                            },
-                            {
-                                name: "Mohamed K.",
-                                role: "Entrepreneur",
-                                quote: "J'ai créé mon agence de production vidéo après la formation. Meilleur investissement de ma vie professionnelle.",
-                                avatar: "M"
-                            }
-                        ].map((testimonial, i) => (
-                            <div key={i} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                                <div className="flex items-center gap-1 text-[#C5A572] mb-4">
-                                    {"★★★★★".split("").map((star, idx) => (
-                                        <span key={idx}>{star}</span>
-                                    ))}
-                                </div>
-                                <p className="text-white/90 mb-6 leading-relaxed">"{testimonial.quote}"</p>
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-[#C5A572] rounded-full flex items-center justify-center font-bold text-[#1a1a2e]">
-                                        {testimonial.avatar}
-                                    </div>
-                                    <div>
-                                        <div className="font-semibold text-white">{testimonial.name}</div>
-                                        <div className="text-sm text-white/60">{testimonial.role}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* CATALOGUE DES FORMATIONS */}
@@ -413,7 +357,7 @@ export default function FormationsPage() {
                                             href={`/inscription?module=${formation.id}`}
                                             className="block w-full text-center py-3 px-4 rounded-lg font-semibold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors"
                                         >
-                                            S'inscrire à ce module
+                                            Réserver ma place
                                         </Link>
                                     </div>
                                 </div>
@@ -441,7 +385,7 @@ export default function FormationsPage() {
                                     href="/inscription?module=5"
                                     className="inline-flex items-center gap-2 bg-[#C5A572] text-[#8B2635] px-8 py-4 rounded-lg font-bold hover:bg-[#d4b882] transition-colors"
                                 >
-                                    Réserver ma place
+                                    Économiser 10.000 FDJ
                                     <ArrowRight size={18} />
                                 </Link>
                             </div>
@@ -454,6 +398,63 @@ export default function FormationsPage() {
                                 ))}
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* TÉMOIGNAGES */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <section className="py-20 bg-[#1a1a2e]">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Ils ont transformé leur vie
+                        </h2>
+                        <p className="text-white/70">
+                            Découvrez les témoignages de nos anciens étudiants
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            {
+                                name: "Ahmed M.",
+                                role: "Vidéaste Freelance",
+                                quote: "Grâce à Cineworld, j'ai décroché mes premiers clients en freelance. La formation pratique m'a donné la confiance dont j'avais besoin.",
+                                avatar: "A"
+                            },
+                            {
+                                name: "Houda S.",
+                                role: "Community Manager",
+                                quote: "Je suis passée de stagiaire à responsable marketing en 6 mois. Les compétences acquises ici sont ultra demandées à Djibouti.",
+                                avatar: "H"
+                            },
+                            {
+                                name: "Mohamed K.",
+                                role: "Entrepreneur",
+                                quote: "J'ai créé mon agence de production vidéo après la formation. Meilleur investissement de ma vie professionnelle.",
+                                avatar: "M"
+                            }
+                        ].map((testimonial, i) => (
+                            <div key={i} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                                <div className="flex items-center gap-1 text-[#C5A572] mb-4">
+                                    {"★★★★★".split("").map((star, idx) => (
+                                        <span key={idx}>{star}</span>
+                                    ))}
+                                </div>
+                                <p className="text-white/90 mb-6 leading-relaxed">"{testimonial.quote}"</p>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 bg-[#C5A572] rounded-full flex items-center justify-center font-bold text-[#1a1a2e]">
+                                        {testimonial.avatar}
+                                    </div>
+                                    <div>
+                                        <div className="font-semibold text-white">{testimonial.name}</div>
+                                        <div className="text-sm text-white/60">{testimonial.role}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -473,6 +474,7 @@ export default function FormationsPage() {
                                     width={500}
                                     height={600}
                                     className="object-cover w-full"
+                                    loading="lazy"
                                 />
                             </div>
                         </div>
@@ -550,6 +552,7 @@ export default function FormationsPage() {
                                 width={600}
                                 height={400}
                                 className="rounded-xl shadow-lg"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -577,6 +580,7 @@ export default function FormationsPage() {
                             width={1200}
                             height={600}
                             className="w-full object-cover"
+                            loading="lazy"
                         />
                     </div>
                 </div>
