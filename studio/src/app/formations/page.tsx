@@ -106,14 +106,28 @@ export default function FormationsPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a2e]/95 via-[#1a1a2e]/80 to-transparent" />
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
-                    <div className="max-w-2xl text-white">
-                        {/* Urgency Badge */}
-                        <div className="inline-flex items-center gap-2 bg-[#C5A572] text-[#1a1a2e] rounded-full px-4 py-2 mb-8 font-semibold text-sm">
-                            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                            🎬 Inscriptions ouvertes — Places limitées
-                        </div>
+                {/* Bande défilante en haut */}
+                <div className="absolute top-0 left-0 w-full bg-[#C5A572] overflow-hidden py-2 z-20">
+                    <div className="animate-marquee whitespace-nowrap">
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ INSCRIPTIONS OUVERTES</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ #C'EST QUE DU BON</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ VIDÉO</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ PRODUCTION</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ MONTAGE</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ DESIGN GRAPHIQUE</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ MARKETING DIGITAL</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ INSCRIPTIONS OUVERTES</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ #C'EST QUE DU BON</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ VIDÉO</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ PRODUCTION</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ MONTAGE</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ DESIGN GRAPHIQUE</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ MARKETING DIGITAL</span>
+                    </div>
+                </div>
 
+                <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-20">
+                    <div className="max-w-2xl text-white">
                         {/* Main Title */}
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                             Transformez votre passion en
