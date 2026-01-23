@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Clock, Monitor, Palette, Video, TrendingUp, Check, Users, Award, BookOpen, ArrowRight, GraduationCap, MapPin, Phone, Mail } from 'lucide-react';
+import { Clock, Monitor, Palette, Video, TrendingUp, Check, Users, Award, BookOpen, ArrowRight, GraduationCap, MapPin, Phone, Mail, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
 
 const FORMATIONS = [
     {
@@ -18,6 +18,9 @@ const FORMATIONS = [
         outils: ["ChatGPT", "Wix/Framer", "Canva"],
         pratique: 70,
         placesRestantes: 6,
+        dateDebut: "15 Février 2026",
+        horaires: "9h - 17h",
+        lieu: "Plateau du Serpent, Djibouti",
         programme: [
             "L'art du prompting & structure",
             "Design UI/UX par IA",
@@ -38,6 +41,9 @@ const FORMATIONS = [
         outils: ["Canva", "Photoshop", "Figma"],
         pratique: 85,
         placesRestantes: 3,
+        dateDebut: "1er Mars 2026",
+        horaires: "9h - 17h",
+        lieu: "Plateau du Serpent, Djibouti",
         programme: [
             "Canva Expert",
             "Photoshop CC avancé",
@@ -57,6 +63,9 @@ const FORMATIONS = [
         pratique: 80,
         placesRestantes: 2,
         isPopular: true,
+        dateDebut: "10 Mars 2026",
+        horaires: "9h - 18h",
+        lieu: "Plateau du Serpent, Djibouti",
         programme: [
             "Pré-production — Script, Storyboard",
             "Tournage — Cadrage, Son, Éclairage",
@@ -76,6 +85,9 @@ const FORMATIONS = [
         outils: ["Meta Business", "Google Ads", "Notion"],
         pratique: 60,
         placesRestantes: 8,
+        dateDebut: "20 Mars 2026",
+        horaires: "14h - 19h",
+        lieu: "Plateau du Serpent, Djibouti",
         programme: [
             "Gestion de Projet",
             "Stratégie Marketing",
@@ -86,6 +98,18 @@ const FORMATIONS = [
 
 export default function FormationsPage() {
     const [activeModule, setActiveModule] = useState(0);
+    const [showStickyCTA, setShowStickyCTA] = useState(false);
+    const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+
+    // Scroll listener for sticky CTA
+    useEffect(() => {
+        const handleScroll = () => {
+            // Show sticky CTA after scrolling 800px
+            setShowStickyCTA(window.scrollY > 800);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <main className="bg-[#FAFAFA] min-h-screen">
@@ -352,10 +376,26 @@ export default function FormationsPage() {
                                             <span className="text-sm font-medium text-gray-900">Livrable: {formation.livrable}</span>
                                         </div>
 
-                                        {/* CTA */}
+                                        {/* Infos Pratiques */}
+                                        <div className="mb-4 p-3 bg-gray-50 rounded-lg space-y-2">
+                                            <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                <Calendar size={14} className="text-[#8B2635]" />
+                                                <span><strong>Début:</strong> {formation.dateDebut}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                <Clock size={14} className="text-[#8B2635]" />
+                                                <span><strong>Horaires:</strong> {formation.horaires}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                <MapPin size={14} className="text-[#8B2635]" />
+                                                <span><strong>Lieu:</strong> {formation.lieu}</span>
+                                            </div>
+                                        </div>
+
+                                        {/* CTA - Enlarged for mobile touch targets */}
                                         <Link
                                             href={`/inscription?module=${formation.id}`}
-                                            className="block w-full text-center py-3 px-4 rounded-lg font-semibold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors"
+                                            className="block w-full text-center py-4 px-6 rounded-lg font-semibold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors"
                                         >
                                             Réserver ma place
                                         </Link>
@@ -614,9 +654,23 @@ export default function FormationsPage() {
                                 a: "Paiement en espèces, virement, ou en 2 fois pour le Pack Complet. Contactez-nous pour plus de détails."
                             }
                         ].map((faq, i) => (
-                            <div key={i} className="bg-white rounded-xl p-6 border border-gray-200">
-                                <h3 className="font-semibold text-gray-900 mb-2">{faq.q}</h3>
-                                <p className="text-gray-600">{faq.a}</p>
+                            <div key={i} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                                <button
+                                    onClick={() => setOpenFAQIndex(openFAQIndex === i ? null : i)}
+                                    className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                                >
+                                    <h3 className="font-semibold text-gray-900 pr-4">{faq.q}</h3>
+                                    {openFAQIndex === i ? (
+                                        <ChevronUp className="text-[#8B2635] flex-shrink-0" size={20} />
+                                    ) : (
+                                        <ChevronDown className="text-gray-400 flex-shrink-0" size={20} />
+                                    )}
+                                </button>
+                                {openFAQIndex === i && (
+                                    <div className="px-6 pb-6 text-gray-600">
+                                        <p>{faq.a}</p>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
@@ -707,6 +761,22 @@ export default function FormationsPage() {
                 </div>
             </footer>
 
-        </main>
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* STICKY CTA BAR MOBILE */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {
+                showStickyCTA && (
+                    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-50 shadow-lg animate-slide-up">
+                        <Link
+                            href="/inscription"
+                            className="block w-full text-center py-4 px-6 rounded-lg font-bold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors shadow-md"
+                        >
+                            S'inscrire maintenant
+                        </Link>
+                    </div>
+                )
+            }
+
+        </main >
     );
 }
