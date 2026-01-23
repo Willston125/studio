@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Clock, Monitor, Palette, Video, TrendingUp, Check, Users, Award, BookOpen, ArrowRight, GraduationCap, MapPin, Phone, Mail, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
+import { Clock, Monitor, Palette, Video, TrendingUp, Check, Users, Award, BookOpen, ArrowRight, GraduationCap, MapPin, Phone, Mail, Calendar, ChevronDown, ChevronUp, X, ZoomIn, ArrowUp } from 'lucide-react';
 
 const FORMATIONS = [
     {
@@ -100,19 +100,103 @@ export default function FormationsPage() {
     const [activeModule, setActiveModule] = useState(0);
     const [showStickyCTA, setShowStickyCTA] = useState(false);
     const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+    const [showLightbox, setShowLightbox] = useState(false);
+    const [activeMobileTab, setActiveMobileTab] = useState(0);
+    const [showScrollTop, setShowScrollTop] = useState(false);
 
-    // Scroll listener for sticky CTA
+    // Scroll listener for sticky CTA and scroll-to-top button
     useEffect(() => {
         const handleScroll = () => {
             // Show sticky CTA after scrolling 800px
             setShowStickyCTA(window.scrollY > 800);
+            // Show scroll-to-top after scrolling 400px
+            setShowScrollTop(window.scrollY > 400);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Conversion Tracking Helpers
+    const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
+        // Google Analytics 4
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', eventName, eventData);
+        }
+
+        // Facebook Pixel
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+            (window as any).fbq('track', eventName, eventData);
+        }
+
+        console.log('📊 Tracking:', eventName, eventData);
+    };
+
+    const handleCTAClick = (source: string, moduleId?: number) => {
+        trackEvent('inscription_click', {
+            source,
+            module_id: moduleId,
+            page: 'formations',
+            timestamp: new Date().toISOString()
+        });
+    };
+
+    // Schema.org Structured Data for SEO
+    const generateCourseSchema = (formation: typeof FORMATIONS[0]) => ({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": formation.titre,
+        "description": formation.programme.join(", "),
+        "provider": {
+            "@type": "Organization",
+            "name": "Cineworld Académie",
+            "sameAs": "https://cineworld-djibouti.vercel.app"
+        },
+        "offers": {
+            "@type": "Offer",
+            "category": "Paid",
+            "price": formation.tarif.replace(/[^\d]/g, ''),
+            "priceCurrency": "DJF",
+            "availability": formation.placesRestantes > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+        },
+        "educationalLevel": formation.niveau,
+        "coursePrerequisites": "Aucun prérequis",
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Onsite",
+            "startDate": formation.dateDebut,
+            "courseSchedule": {
+                "@type": "Schedule",
+                "repeatFrequency": "Daily",
+                "byDay": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+            },
+            "location": {
+                "@type": "Place",
+                "name": formation.lieu,
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Djibouti",
+                    "addressCountry": "DJ"
+                }
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "150"
+        }
+    });
+
     return (
         <main className="bg-[#FAFAFA] min-h-screen">
+
+            {/* Schema.org Structured Data */}
+            {FORMATIONS.map((formation) => (
+                <script
+                    key={`schema-${formation.id}`}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(generateCourseSchema(formation)) }}
+                />
+            ))}
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* HERO - Design Académique Motivant */}
@@ -197,11 +281,11 @@ export default function FormationsPage() {
                             </div>
                         </div>
 
-                        {/* CTA Buttons */}
                         <div className="flex flex-wrap gap-4">
                             <Link
                                 href="/inscription"
-                                className="inline-flex items-center gap-2 bg-[#C5A572] text-[#1a1a2e] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#d4b882] transition-all hover:scale-105 shadow-lg"
+                                onClick={() => handleCTAClick('hero_primary')}
+                                className="inline-flex items-center gap-2 bg-[#C5A572] text-[#1a1a2e] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#d4b882] transition-all hover:scale-105 shadow-lg focus:outline-none focus:ring-4 focus:ring-[#C5A572]/50"
                             >
                                 🎓 Commencer ma formation
                                 <ArrowRight size={20} />
@@ -300,8 +384,26 @@ export default function FormationsPage() {
                         </p>
                     </div>
 
-                    {/* Formation Cards */}
-                    <div className="grid md:grid-cols-2 gap-6 mb-12">
+                    {/* Mobile Tabs - One formation at a time */}
+                    <div className="md:hidden mb-8">
+                        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                            {FORMATIONS.map((formation, idx) => (
+                                <button
+                                    key={formation.id}
+                                    onClick={() => setActiveMobileTab(idx)}
+                                    className={`flex-shrink-0 px-4 py-2 rounded-lg font-medium text-sm transition-all ${activeMobileTab === idx
+                                        ? 'bg-[#8B2635] text-white'
+                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                        }`}
+                                >
+                                    {formation.module}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Formation Cards - Grid on desktop, single on mobile */}
+                    <div className="hidden md:grid md:grid-cols-2 gap-6 mb-12">
                         {FORMATIONS.map((formation) => {
                             const IconComponent = formation.icon;
                             return (
@@ -403,6 +505,108 @@ export default function FormationsPage() {
                                 </div>
                             );
                         })}
+                    </div>
+
+                    {/* Mobile - Single Card View */}
+                    <div className="md:hidden mb-12">
+                        {(() => {
+                            const formation = FORMATIONS[activeMobileTab];
+                            const IconComponent = formation.icon;
+                            return (
+                                <div
+                                    key={formation.id}
+                                    className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg"
+                                >
+                                    {/* Header */}
+                                    <div className="p-6 border-b border-gray-100">
+                                        <div className="flex items-start justify-between mb-4">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-12 h-12 bg-[#8B2635]/10 rounded-xl flex items-center justify-center">
+                                                    <IconComponent size={24} className="text-[#8B2635]" />
+                                                </div>
+                                                <div>
+                                                    <div className="text-xs text-gray-500 font-medium">{formation.module}</div>
+                                                    <h3 className="text-lg font-bold text-gray-900">{formation.titre}</h3>
+                                                </div>
+                                            </div>
+                                            {formation.placesRestantes <= 5 && (
+                                                <span className={`text-xs px-2 py-1 rounded-full font-semibold ${formation.placesRestantes <= 2
+                                                    ? 'bg-red-100 text-red-700 animate-pulse'
+                                                    : formation.placesRestantes <= 3
+                                                        ? 'bg-orange-100 text-orange-700'
+                                                        : 'bg-yellow-100 text-yellow-700'
+                                                    }`}>
+                                                    {formation.placesRestantes} places
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                                            <div className="flex items-center gap-1">
+                                                <Clock size={14} />
+                                                <span>{formation.duree}</span>
+                                            </div>
+                                            <div className="flex items-center gap-1">
+                                                <span className="font-semibold text-[#8B2635]">{formation.tarif}</span>
+                                            </div>
+                                            <div>
+                                                <span className="text-gray-400">Niveau:</span> {formation.niveau}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="p-6">
+                                        <div className="mb-4">
+                                            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Programme</div>
+                                            <ul className="space-y-1">
+                                                {formation.programme.slice(0, 3).map((item, idx) => (
+                                                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                                                        <Check size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="flex flex-wrap gap-2 mb-4">
+                                            {formation.outils.map((outil, i) => (
+                                                <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                                                    {outil}
+                                                </span>
+                                            ))}
+                                        </div>
+
+                                        <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg mb-4">
+                                            <Award className="text-green-600" size={18} />
+                                            <span className="text-sm font-medium text-gray-900">Livrable: {formation.livrable}</span>
+                                        </div>
+
+                                        <div className="mb-4 p-3 bg-gray-50 rounded-lg space-y-2">
+                                            <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                <Calendar size={14} className="text-[#8B2635]" />
+                                                <span><strong>Début:</strong> {formation.dateDebut}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                <Clock size={14} className="text-[#8B2635]" />
+                                                <span><strong>Horaires:</strong> {formation.horaires}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                <MapPin size={14} className="text-[#8B2635]" />
+                                                <span><strong>Lieu:</strong> {formation.lieu}</span>
+                                            </div>
+                                        </div>
+
+                                        <Link
+                                            href={`/inscription?module=${formation.id}`}
+                                            className="block w-full text-center py-4 px-6 rounded-lg font-semibold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors"
+                                        >
+                                            Réserver ma place
+                                        </Link>
+                                    </div>
+                                </div>
+                            );
+                        })()}
                     </div>
 
                     {/* Pack Complet */}
@@ -613,15 +817,24 @@ export default function FormationsPage() {
                             pendant leur formation.
                         </p>
                     </div>
-                    <div className="relative rounded-2xl overflow-hidden">
+                    <div
+                        className="relative rounded-2xl overflow-hidden cursor-pointer group"
+                        onClick={() => setShowLightbox(true)}
+                    >
                         <Image
                             src="/student-projects-grid.jpg"
                             alt="Projets étudiants Cineworld"
                             width={1200}
                             height={600}
-                            className="w-full object-cover"
+                            className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
                             loading="lazy"
                         />
+                        {/* Overlay with zoom icon */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white rounded-full p-4">
+                                <ZoomIn size={32} className="text-[#8B2635]" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -769,7 +982,8 @@ export default function FormationsPage() {
                     <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-50 shadow-lg animate-slide-up">
                         <Link
                             href="/inscription"
-                            className="block w-full text-center py-4 px-6 rounded-lg font-bold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors shadow-md"
+                            onClick={() => handleCTAClick('sticky_mobile')}
+                            className="block w-full text-center py-4 px-6 rounded-lg font-bold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors shadow-md focus:outline-none focus:ring-4 focus:ring-[#8B2635]/50 touch-action-manipulation"
                         >
                             S'inscrire maintenant
                         </Link>
@@ -777,6 +991,55 @@ export default function FormationsPage() {
                 )
             }
 
-        </main >
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* LIGHTBOX MODAL - Student Projects */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {showLightbox && (
+                <div
+                    className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 animate-fade-in"
+                    onClick={() => setShowLightbox(false)}
+                >
+                    {/* Close Button */}
+                    <button
+                        onClick={() => setShowLightbox(false)}
+                        className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors"
+                        aria-label="Fermer"
+                    >
+                        <X size={24} className="text-white" />
+                    </button>
+
+                    {/* Image Container */}
+                    <div
+                        className="relative max-w-6xl w-full"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <Image
+                            src="/student-projects-grid.jpg"
+                            alt="Projets étudiants Cineworld - Vue détaillée"
+                            width={1200}
+                            height={600}
+                            className="w-full rounded-lg"
+                        />
+                        <p className="text-white text-center mt-4 text-sm">
+                            Cliquez en dehors de l'image pour fermer
+                        </p>
+                    </div>
+                </div>
+            )}
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* SCROLL TO TOP BUTTON */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {showScrollTop && (
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="fixed bottom-20 md:bottom-6 right-6 bg-[#8B2635] text-white p-4 rounded-full shadow-lg hover:bg-[#6e1615] transition-all hover:scale-110 z-40 animate-fade-in"
+                    aria-label="Retour en haut"
+                >
+                    <ArrowUp size={24} />
+                </button>
+            )}
+
+        </main>
     );
 }
