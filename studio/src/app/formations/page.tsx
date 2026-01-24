@@ -262,14 +262,25 @@ export default function FormationsPage() {
                     </div>
                 </div>
 
-                {/* Visitor Counter Toast (appears on load, 3 seconds) */}
+                {/* Visitor Counter Notification (Android Style) */}
                 {showVisitorToast && (
-                    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none animate-fade-in">
-                        <div className="bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-[#C5A572]/30 flex items-center gap-2">
-                            <Eye size={14} className="text-[#8B2635]" />
-                            <span className="text-xs font-semibold text-gray-700">
-                                <span className="text-[#8B2635]">{activeViewers}</span> {activeViewers === 1 ? 'personne consulte' : 'personnes consultent'}
-                            </span>
+                    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-sm pointer-events-none animate-slide-in-down">
+                        <div className="bg-white/90 backdrop-blur-md dark:bg-gray-900/90 rounded-2xl p-4 shadow-2xl border border-white/20 flex gap-3 items-start">
+                            {/* App Icon */}
+                            <div className="w-10 h-10 rounded-xl bg-[#8B2635] flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <Eye size={20} className="text-white" />
+                            </div>
+
+                            {/* Content */}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex justify-between items-baseline mb-0.5">
+                                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Cineworld Académie</h4>
+                                    <span className="text-[10px] text-gray-500 font-medium">Maintenant</span>
+                                </div>
+                                <p className="text-sm text-gray-700 dark:text-gray-200 leading-tight">
+                                    <span className="font-bold text-[#8B2635]">{activeViewers} personnes</span> consultent cette formation en ce moment.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 )}
