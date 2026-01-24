@@ -791,7 +791,7 @@ export default function FormationsPage() {
                         </div>
                         <div className="relative">
                             <Image
-                                src="/certificate-sample.jpg.png"
+                                src="/certificate-sample.jpg"
                                 alt="Certificat Cineworld Académie"
                                 width={600}
                                 height={400}
