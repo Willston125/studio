@@ -104,6 +104,13 @@ export default function FormationsPage() {
     const [activeMobileTab, setActiveMobileTab] = useState(0);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [activeViewers, setActiveViewers] = useState(7); // Real-time visitor counter
+    const [showVisitorToast, setShowVisitorToast] = useState(false); // Toast visibility
+
+    // Function to trigger toast for 3 seconds
+    const triggerVisitorToast = () => {
+        setShowVisitorToast(true);
+        setTimeout(() => setShowVisitorToast(false), 3000);
+    };
 
     // Scroll listener for sticky CTA and scroll-to-top button
     useEffect(() => {
@@ -119,6 +126,9 @@ export default function FormationsPage() {
 
     // Real-time visitor counter (simulated realistic fluctuations)
     useEffect(() => {
+        // Trigger toast on load
+        triggerVisitorToast();
+
         const updateViewers = () => {
             setActiveViewers(prev => {
                 // Random fluctuation between 3 and 12 viewers
@@ -252,16 +262,17 @@ export default function FormationsPage() {
                     </div>
                 </div>
 
-                {/* Real-Time Visitor Counter Badge */}
-                <div className="fixed top-4 left-4 z-50 animate-fade-in pointer-events-none">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg border border-[#C5A572]/30 flex items-center gap-1.5">
-                        <Eye size={14} className="text-[#8B2635]" />
-                        <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                        <span className="text-xs font-semibold text-gray-700">
-                            <span className="text-[#8B2635]">{activeViewers}</span> {activeViewers === 1 ? 'personne consulte' : 'personnes consultent'}
-                        </span>
+                {/* Visitor Counter Toast (appears on load, 3 seconds) */}
+                {showVisitorToast && (
+                    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none animate-fade-in">
+                        <div className="bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-[#C5A572]/30 flex items-center gap-2">
+                            <Eye size={14} className="text-[#8B2635]" />
+                            <span className="text-xs font-semibold text-gray-700">
+                                <span className="text-[#8B2635]">{activeViewers}</span> {activeViewers === 1 ? 'personne consulte' : 'personnes consultent'}
+                            </span>
+                        </div>
                     </div>
-                </div>
+                )}
 
 
                 <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-20">
