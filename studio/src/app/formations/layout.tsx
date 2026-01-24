@@ -1,39 +1,40 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Formations Audiovisuelles Professionnelles',
-    description: 'Maîtrisez le montage vidéo, le design graphique et le marketing digital en moins de 30 jours. 80% de pratique, formateurs experts, projets réels. Certification professionnelle.',
+    title: 'Formations Professionnelles à Djibouti | Cineworld Académie',
+    description: 'Développez les compétences les plus demandées à Djibouti : Montage Vidéo professionnel, Création de sites web avec l\'IA, Marketing Digital et Design Graphique. Formation certifiante 80% pratique, projets réels, formateurs experts. Lancez votre carrière créative dès maintenant !',
     keywords: [
         'Formation montage vidéo Djibouti',
+        'Création site web IA Djibouti',
+        'Marketing digital formation Djibouti',
+        'Design graphique Djibouti',
         'École audiovisuelle Djibouti',
-        'Design graphique formation',
-        'Marketing digital Djibouti',
-        'Premiere Pro formation',
-        'Photoshop Canva formation',
-        'DaVinci Resolve Djibouti',
-        'Formation création vidéo',
+        'Premiere Pro DaVinci Resolve',
+        'ChatGPT site web',
+        'Formation professionnelle Djibouti',
+        'Compétences numériques Afrique',
     ],
     openGraph: {
-        title: '🎬 Formations Audiovisuelles | Devenez Créateur Pro en 30 Jours',
-        description: '📹 Montage Vidéo • 🎨 Design Graphique • 📱 Marketing Digital | 80% Pratique • Projets Réels • Certification Professionnelle',
+        title: '🚀 Djibouti, Développez vos Compétences Numériques | Cineworld Académie',
+        description: '4 formations essentielles pour réussir : 🎬 Montage Vidéo • � Création de Sites Web avec l\'IA • 📱 Marketing Digital • 🎨 Design Graphique | 80% Pratique • Certification Professionnelle • Formateurs Experts | Inscrivez-vous maintenant !',
         url: 'https://cineworldacademie.com/formations',
         type: 'website',
         locale: 'fr_FR',
         siteName: 'Cineworld Académie',
         images: [
             {
-                url: '/og-formations.png',
+                url: '/oepngraph.png',
                 width: 1200,
                 height: 630,
-                alt: 'Cineworld Académie - Formations Vidéo, Design & Marketing Digital',
+                alt: 'Cineworld Académie Djibouti - Formations Montage Vidéo, Création Web IA, Marketing Digital & Design',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: '🎬 Formations Audiovisuelles | Cineworld Académie',
-        description: 'Montage Vidéo • Design Graphique • Marketing Digital | 80% Pratique • Certification',
-        images: ['/og-formations.png'],
+        title: '🚀 Formations Numériques à Djibouti | Cineworld Académie',
+        description: '🎬 Montage Vidéo • 🌐 Site Web avec IA • 📱 Marketing Digital • 🎨 Design | 80% Pratique • Certifiant',
+        images: ['/oepngraph.png'],
     },
 };
 
