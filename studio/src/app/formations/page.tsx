@@ -253,13 +253,11 @@ export default function FormationsPage() {
                 </div>
 
                 {/* Real-Time Visitor Counter Badge */}
-                <div className="fixed top-4 right-4 z-50 animate-fade-in">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-[#C5A572]/30 flex items-center gap-2">
-                        <div className="relative">
-                            <Eye size={16} className="text-[#8B2635]" />
-                            <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        </div>
-                        <span className="text-xs font-semibold text-gray-700 transition-all duration-300">
+                <div className="fixed top-4 left-4 z-50 animate-fade-in pointer-events-none">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg border border-[#C5A572]/30 flex items-center gap-1.5">
+                        <Eye size={14} className="text-[#8B2635]" />
+                        <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                        <span className="text-xs font-semibold text-gray-700">
                             <span className="text-[#8B2635]">{activeViewers}</span> {activeViewers === 1 ? 'personne consulte' : 'personnes consultent'}
                         </span>
                     </div>
