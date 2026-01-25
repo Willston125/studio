@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         siteName: 'Cineworld Académie',
         images: [
             {
-                url: '/opengraph.png',
+                url: 'https://cineworldacademie.com/opengraph.png',
                 width: 1200,
                 height: 630,
                 alt: 'Cineworld Académie Djibouti - Formations Montage Vidéo, Création Web IA, Marketing Digital & Design',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Formations professionnelles à Djibouti | Cineworld Académie',
         description: 'Montage Vidéo • Site Web avec IA • Marketing Digital • Design | 80% Pratique • Certifiant',
-        images: ['/opengraph.png'],
+        images: ['https://cineworldacademie.com/opengraph.png'],
     },
 };
 
