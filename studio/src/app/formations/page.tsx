@@ -43,7 +43,7 @@ const FORMATIONS = [
         placesRestantes: 3,
         dateDebut: "1er Mars 2026",
         horaires: "9h - 17h",
-        lieu: "Plateau du Serpent, Djibouti",
+        lieu: "Aviation, institut DHIM, Djibouti",
         programme: [
             "Canva Expert",
             "Photoshop CC avancé",
@@ -59,13 +59,13 @@ const FORMATIONS = [
         tarif: "13.000 FDJ",
         niveau: "Débutant à Intermédiaire",
         livrable: "1 court-métrage complet",
-        outils: ["Premiere Pro", "DaVinci Resolve", "After Effects"],
+        outils: ["Premiere Pro", "DaVinci Resolve"],
         pratique: 80,
         placesRestantes: 2,
         isPopular: true,
         dateDebut: "10 Mars 2026",
         horaires: "9h - 18h",
-        lieu: "Plateau du Serpent, Djibouti",
+        lieu: "Aviation, institut DHIM, Djibouti",
         programme: [
             "Pré-production — Script, Storyboard",
             "Tournage — Cadrage, Son, Éclairage",
@@ -87,7 +87,7 @@ const FORMATIONS = [
         placesRestantes: 8,
         dateDebut: "20 Mars 2026",
         horaires: "14h - 19h",
-        lieu: "Plateau du Serpent, Djibouti",
+        lieu: "Aviation, institut DHIM, Djibouti",
         programme: [
             "Gestion de Projet",
             "Stratégie Marketing",
