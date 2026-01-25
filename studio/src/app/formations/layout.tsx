@@ -15,15 +15,15 @@ export const metadata: Metadata = {
         'Compétences numériques Afrique',
     ],
     openGraph: {
-        title: '🚀 Djibouti, Développez vos Compétences Numériques | Cineworld Académie',
-        description: '4 formations essentielles pour réussir : 🎬 Montage Vidéo • � Création de Sites Web avec l\'IA • 📱 Marketing Digital • 🎨 Design Graphique | 80% Pratique • Certification Professionnelle • Formateurs Experts | Inscrivez-vous maintenant !',
+        title: 'Développez vos Compétences professionnelles | Cineworld Académie',
+        description: '4 formations essentielles pour réussir : Montage Vidéo • Création de Sites Web avec l\'IA • Marketing Digital • Design Graphique | 80% Pratique • Certification Professionnelle • Formateur Expert | Inscrivez-vous maintenant !',
         url: 'https://cineworldacademie.com/formations',
         type: 'website',
         locale: 'fr_FR',
         siteName: 'Cineworld Académie',
         images: [
             {
-                url: '/oepngraph.png',
+                url: '/opengraph.png',
                 width: 1200,
                 height: 630,
                 alt: 'Cineworld Académie Djibouti - Formations Montage Vidéo, Création Web IA, Marketing Digital & Design',
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: '🚀 Formations Numériques à Djibouti | Cineworld Académie',
-        description: '🎬 Montage Vidéo • 🌐 Site Web avec IA • 📱 Marketing Digital • 🎨 Design | 80% Pratique • Certifiant',
-        images: ['/oepngraph.png'],
+        title: 'Formations professionnelles à Djibouti | Cineworld Académie',
+        description: 'Montage Vidéo • Site Web avec IA • Marketing Digital • Design | 80% Pratique • Certifiant',
+        images: ['/opengraph.png'],
     },
 };
 
