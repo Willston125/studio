@@ -119,6 +119,7 @@
     opacity: 0;
     transform: translate(-50%, -20px);
   }
+
   100% {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -127,4 +128,86 @@
 
 .animate-slide-in-down {
   animation: slide-in-down 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animation Breathe - CTA Buttons */
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* Animation Gradient Shift - Hover Effects */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Animation Reveal - Enhanced Scroll Reveal */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-reveal {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Animation Counter Spin - Animated Numbers */
+@keyframes counter-spin {
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(360deg);
+  }
+}
+
+.animate-counter {
+  animation: counter-spin 0.6s ease-out;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #8B2635 0%, #C5A572 100%);
+  transform-origin: 0%;
+  z-index: 9999;
 }

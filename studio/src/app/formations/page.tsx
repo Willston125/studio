@@ -105,6 +105,7 @@ export default function FormationsPage() {
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [activeViewers, setActiveViewers] = useState(7); // Real-time visitor counter
     const [showVisitorToast, setShowVisitorToast] = useState(false); // Toast visibility
+    const [scrollProgress, setScrollProgress] = useState(0); // Scroll progress percentage
 
     // Function to trigger toast for 3 seconds
     const triggerVisitorToast = () => {
@@ -112,13 +113,20 @@ export default function FormationsPage() {
         setTimeout(() => setShowVisitorToast(false), 3000);
     };
 
-    // Scroll listener for sticky CTA and scroll-to-top button
+    // Scroll listener for sticky CTA, scroll-to-top button, and progress bar
     useEffect(() => {
         const handleScroll = () => {
             // Show sticky CTA after scrolling 800px
             setShowStickyCTA(window.scrollY > 800);
             // Show scroll-to-top after scrolling 400px
             setShowScrollTop(window.scrollY > 400);
+
+            // Calculate scroll progress percentage
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.scrollY;
+            const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+            setScrollProgress(Math.min(scrollPercentage, 100));
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -216,6 +224,11 @@ export default function FormationsPage() {
 
     return (
         <main className="bg-[#FAFAFA] min-h-screen">
+            {/* Scroll Progress Bar */}
+            <div
+                className="scroll-progress"
+                style={{ transform: `scaleX(${scrollProgress / 100})` }}
+            />
 
             {/* Schema.org Structured Data */}
             {FORMATIONS.map((formation) => (
@@ -475,12 +488,14 @@ export default function FormationsPage() {
                                                     <h3 className="text-lg font-bold text-gray-900">{formation.titre}</h3>
                                                 </div>
                                             </div>
-                                            {formation.placesRestantes <= 3 && (
-                                                <span className={`text-xs font-semibold px-2 py-1 rounded ${formation.placesRestantes <= 2
-                                                    ? 'bg-red-100 text-red-700'
-                                                    : 'bg-orange-100 text-orange-700'
+                                            {formation.placesRestantes <= 5 && (
+                                                <span className={`text-xs px-3 py-1.5 rounded-full font-bold transition-all ${formation.placesRestantes <= 2
+                                                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white animate-breathe shadow-lg shadow-red-500/50'
+                                                    : formation.placesRestantes <= 3
+                                                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white animate-pulse'
+                                                        : 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900'
                                                     }`}>
-                                                    {formation.placesRestantes} places
+                                                    ⚡ {formation.placesRestantes} {formation.placesRestantes === 1 ? 'place' : 'places'}
                                                 </span>
                                             )}
                                         </div>
@@ -582,13 +597,13 @@ export default function FormationsPage() {
                                                 </div>
                                             </div>
                                             {formation.placesRestantes <= 5 && (
-                                                <span className={`text-xs px-2 py-1 rounded-full font-semibold ${formation.placesRestantes <= 2
-                                                    ? 'bg-red-100 text-red-700 animate-pulse'
+                                                <span className={`text-xs px-3 py-1.5 rounded-full font-bold transition-all ${formation.placesRestantes <= 2
+                                                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white animate-breathe shadow-lg shadow-red-500/50'
                                                     : formation.placesRestantes <= 3
-                                                        ? 'bg-orange-100 text-orange-700'
-                                                        : 'bg-yellow-100 text-yellow-700'
+                                                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white animate-pulse'
+                                                        : 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900'
                                                     }`}>
-                                                    {formation.placesRestantes} places
+                                                    ⚡ {formation.placesRestantes} {formation.placesRestantes === 1 ? 'place' : 'places'}
                                                 </span>
                                             )}
                                         </div>
