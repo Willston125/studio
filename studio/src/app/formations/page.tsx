@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Clock, Monitor, Palette, Video, TrendingUp, Check, Users, Award, BookOpen, ArrowRight, GraduationCap, MapPin, Phone, Mail, Calendar, ChevronDown, ChevronUp, X, ZoomIn, ArrowUp, Eye } from 'lucide-react';
@@ -95,6 +96,24 @@ const FORMATIONS = [
         ]
     }
 ];
+
+// Animated Section Component for scroll-triggered animations
+const AnimatedSection = ({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+    return (
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+            className={className}
+        >
+            {children}
+        </motion.div>
+    );
+};
 
 export default function FormationsPage() {
     const [activeModule, setActiveModule] = useState(0);
@@ -469,107 +488,108 @@ export default function FormationsPage() {
 
                     {/* Formation Cards - Grid on desktop, single on mobile */}
                     <div className="hidden md:grid md:grid-cols-2 gap-6 mb-12">
-                        {FORMATIONS.map((formation) => {
+                        {FORMATIONS.map((formation, index) => {
                             const IconComponent = formation.icon;
                             return (
-                                <div
-                                    key={formation.id}
-                                    className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all"
-                                >
-                                    {/* Header */}
-                                    <div className="p-6 border-b border-gray-100">
-                                        <div className="flex items-start justify-between mb-4">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-12 h-12 bg-[#8B2635]/10 rounded-xl flex items-center justify-center">
-                                                    <IconComponent size={24} className="text-[#8B2635]" />
+                                <AnimatedSection key={formation.id} delay={index * 0.1}>
+                                    <div
+                                        className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all h-full"
+                                    >
+                                        {/* Header */}
+                                        <div className="p-6 border-b border-gray-100">
+                                            <div className="flex items-start justify-between mb-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-12 h-12 bg-[#8B2635]/10 rounded-xl flex items-center justify-center">
+                                                        <IconComponent size={24} className="text-[#8B2635]" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-sm text-gray-500 font-medium">{formation.module}</div>
+                                                        <h3 className="text-lg font-bold text-gray-900">{formation.titre}</h3>
+                                                    </div>
+                                                </div>
+                                                {formation.placesRestantes <= 5 && (
+                                                    <span className={`text-xs px-3 py-1.5 rounded-full font-bold transition-all ${formation.placesRestantes <= 2
+                                                        ? 'bg-gradient-to-r from-red-500 to-red-600 text-white animate-breathe shadow-lg shadow-red-500/50'
+                                                        : formation.placesRestantes <= 3
+                                                            ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white animate-pulse'
+                                                            : 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900'
+                                                        }`}>
+                                                        ⚡ {formation.placesRestantes} {formation.placesRestantes === 1 ? 'place' : 'places'}
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            {/* Quick Info */}
+                                            <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                                                <div className="flex items-center gap-1">
+                                                    <Clock size={14} />
+                                                    <span>{formation.duree}</span>
+                                                </div>
+                                                <div className="flex items-center gap-1">
+                                                    <span className="font-semibold text-[#8B2635]">{formation.tarif}</span>
                                                 </div>
                                                 <div>
-                                                    <div className="text-sm text-gray-500 font-medium">{formation.module}</div>
-                                                    <h3 className="text-lg font-bold text-gray-900">{formation.titre}</h3>
+                                                    <span className="text-gray-400">Niveau:</span> {formation.niveau}
                                                 </div>
                                             </div>
-                                            {formation.placesRestantes <= 5 && (
-                                                <span className={`text-xs px-3 py-1.5 rounded-full font-bold transition-all ${formation.placesRestantes <= 2
-                                                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white animate-breathe shadow-lg shadow-red-500/50'
-                                                    : formation.placesRestantes <= 3
-                                                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white animate-pulse'
-                                                        : 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900'
-                                                    }`}>
-                                                    ⚡ {formation.placesRestantes} {formation.placesRestantes === 1 ? 'place' : 'places'}
-                                                </span>
-                                            )}
                                         </div>
 
-                                        {/* Quick Info */}
-                                        <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                                            <div className="flex items-center gap-1">
-                                                <Clock size={14} />
-                                                <span>{formation.duree}</span>
+                                        {/* Content */}
+                                        <div className="p-6">
+                                            {/* Programme */}
+                                            <div className="mb-4">
+                                                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Programme</div>
+                                                <ul className="space-y-1">
+                                                    {formation.programme.slice(0, 3).map((item, idx) => (
+                                                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                                                            <Check size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
+                                                            <span>{item}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
                                             </div>
-                                            <div className="flex items-center gap-1">
-                                                <span className="font-semibold text-[#8B2635]">{formation.tarif}</span>
-                                            </div>
-                                            <div>
-                                                <span className="text-gray-400">Niveau:</span> {formation.niveau}
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    {/* Content */}
-                                    <div className="p-6">
-                                        {/* Programme */}
-                                        <div className="mb-4">
-                                            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Programme</div>
-                                            <ul className="space-y-1">
-                                                {formation.programme.slice(0, 3).map((item, idx) => (
-                                                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                                                        <Check size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
-                                                        <span>{item}</span>
-                                                    </li>
+                                            {/* Tools */}
+                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                {formation.outils.map((outil, i) => (
+                                                    <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                                                        {outil}
+                                                    </span>
                                                 ))}
-                                            </ul>
-                                        </div>
-
-                                        {/* Tools */}
-                                        <div className="flex flex-wrap gap-2 mb-4">
-                                            {formation.outils.map((outil, i) => (
-                                                <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                                                    {outil}
-                                                </span>
-                                            ))}
-                                        </div>
-
-                                        {/* Livrable */}
-                                        <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg mb-4">
-                                            <Award className="text-green-600" size={18} />
-                                            <span className="text-sm font-medium text-gray-900">Livrable: {formation.livrable}</span>
-                                        </div>
-
-                                        {/* Infos Pratiques */}
-                                        <div className="mb-4 p-3 bg-gray-50 rounded-lg space-y-2">
-                                            <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                <Calendar size={14} className="text-[#8B2635]" />
-                                                <span><strong>Début:</strong> {formation.dateDebut}</span>
                                             </div>
-                                            <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                <Clock size={14} className="text-[#8B2635]" />
-                                                <span><strong>Horaires:</strong> {formation.horaires}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                <MapPin size={14} className="text-[#8B2635]" />
-                                                <span><strong>Lieu:</strong> {formation.lieu}</span>
-                                            </div>
-                                        </div>
 
-                                        {/* CTA - Enlarged for mobile touch targets */}
-                                        <Link
-                                            href={`/inscription?module=${formation.id}`}
-                                            className="block w-full text-center py-4 px-6 rounded-lg font-semibold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors"
-                                        >
-                                            Réserver ma place
-                                        </Link>
+                                            {/* Livrable */}
+                                            <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg mb-4">
+                                                <Award className="text-green-600" size={18} />
+                                                <span className="text-sm font-medium text-gray-900">Livrable: {formation.livrable}</span>
+                                            </div>
+
+                                            {/* Infos Pratiques */}
+                                            <div className="mb-4 p-3 bg-gray-50 rounded-lg space-y-2">
+                                                <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                    <Calendar size={14} className="text-[#8B2635]" />
+                                                    <span><strong>Début:</strong> {formation.dateDebut}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                    <Clock size={14} className="text-[#8B2635]" />
+                                                    <span><strong>Horaires:</strong> {formation.horaires}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                    <MapPin size={14} className="text-[#8B2635]" />
+                                                    <span><strong>Lieu:</strong> {formation.lieu}</span>
+                                                </div>
+                                            </div>
+
+                                            {/* CTA - Enlarged for mobile touch targets */}
+                                            <Link
+                                                href={`/inscription?module=${formation.id}`}
+                                                className="block w-full text-center py-4 px-6 rounded-lg font-semibold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors"
+                                            >
+                                                Réserver ma place
+                                            </Link>
+                                        </div>
                                     </div>
-                                </div>
+                                </AnimatedSection>
                             );
                         })}
                     </div>
