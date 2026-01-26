@@ -4,7 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Clock, Monitor, Palette, Video, TrendingUp, Check, Users, Award, BookOpen, ArrowRight, GraduationCap, MapPin, Phone, Mail, Calendar, ChevronDown, ChevronUp, X, ZoomIn, ArrowUp, Eye } from 'lucide-react';
+import { Clock, Monitor, Palette, Video, TrendingUp, Check, Users, Award, BookOpen, ArrowRight, GraduationCap, MapPin, Phone, Mail, Calendar, ChevronDown, ChevronUp, X, ZoomIn, ArrowUp, Eye, Sparkles } from 'lucide-react';
+import FormationQuiz from '@/components/FormationQuiz';
 
 const FORMATIONS = [
     {
@@ -923,6 +924,28 @@ export default function FormationsPage() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* QUIZ D'ORIENTATION */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <section className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+                <div className="max-w-4xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 px-4 py-2 rounded-full mb-4">
+                            <Sparkles className="w-5 h-5 text-red-400" />
+                            <span className="text-red-400 font-semibold text-sm">Découvrez votre voie</span>
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Quelle formation est faite pour vous ?
+                        </h2>
+                        <p className="text-gray-400 max-w-2xl mx-auto">
+                            Répondez à 5 questions rapides et découvrez le parcours qui correspond
+                            le mieux à vos aspirations professionnelles.
+                        </p>
+                    </div>
+                    <FormationQuiz />
                 </div>
             </section>
 
