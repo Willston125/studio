@@ -159,7 +159,7 @@ export default function Home() {
       {/* SECTION ORIENTATION CARRIÈRE - CTA QUIZ */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-20 bg-black">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
           {/* Titre */}
           <div className="text-center mb-12">
             <span className="text-gray-400 text-sm font-medium tracking-widest uppercase">
@@ -171,38 +171,84 @@ export default function Home() {
             <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
           </div>
 
-          {/* Card CTA */}
-          <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-12 text-center hover:border-[#6e1615]/50 transition-all duration-500">
-            {/* Icône */}
-            <div className="w-16 h-16 bg-[#6e1615] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#6e1615]/30">
-              <span className="text-3xl">🎯</span>
+          {/* Card CTA - Design enrichi */}
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8 md:p-12 hover:border-[#6e1615]/50 transition-all duration-500 overflow-hidden relative">
+            {/* Décoration visuelle */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#6e1615]/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+              {/* Colonne gauche - Contenu */}
+              <div className="text-center md:text-left">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 bg-[#6e1615]/20 px-4 py-2 rounded-full mb-6">
+                  <span className="text-2xl">🎯</span>
+                  <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Quiz Gratuit</span>
+                </div>
+
+                {/* Hook principal */}
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
+                  Votre carrière commence ici.
+                </h3>
+                <p className="text-lg text-gray-300 mb-6">
+                  Faites le test pour trouver la compétence qui changera votre avenir.
+                </p>
+
+                {/* Liste d'avantages */}
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center gap-3 text-gray-300">
+                    <span className="w-6 h-6 bg-[#6e1615] rounded-full flex items-center justify-center text-xs">✓</span>
+                    <span>5 questions pour identifier votre profil</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-gray-300">
+                    <span className="w-6 h-6 bg-[#6e1615] rounded-full flex items-center justify-center text-xs">✓</span>
+                    <span>Recommandation personnalisée</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-gray-300">
+                    <span className="w-6 h-6 bg-[#6e1615] rounded-full flex items-center justify-center text-xs">✓</span>
+                    <span>Résultat instantané</span>
+                  </li>
+                </ul>
+
+                {/* Bouton CTA */}
+                <Link
+                  href="/formations#quiz"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-sm hover:bg-[#8b1c1b] transition-all transform hover:scale-105 border border-white/10 shadow-xl"
+                >
+                  <span>Découvrir mon profil</span>
+                  <span className="text-xl">→</span>
+                </Link>
+
+                {/* Sous-texte */}
+                <p className="text-gray-500 text-sm mt-4 flex items-center justify-center md:justify-start gap-4">
+                  <span className="flex items-center gap-1">
+                    <span>⏱️</span> 2 minutes
+                  </span>
+                  <span>•</span>
+                  <span>Sans engagement</span>
+                </p>
+              </div>
+
+              {/* Colonne droite - Statistiques visuelles */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-black/40 border border-gray-700 rounded-xl p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-black text-yellow-500 mb-2">4</div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wider">Formations</div>
+                </div>
+                <div className="bg-black/40 border border-gray-700 rounded-xl p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-black text-yellow-500 mb-2">80%</div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wider">Pratique</div>
+                </div>
+                <div className="bg-black/40 border border-gray-700 rounded-xl p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-black text-yellow-500 mb-2">150+</div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wider">Diplômés</div>
+                </div>
+                <div className="bg-black/40 border border-gray-700 rounded-xl p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-black text-yellow-500 mb-2">100%</div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wider">Certifié</div>
+                </div>
+              </div>
             </div>
-
-            {/* Hook principal */}
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
-              Votre carrière commence ici.
-            </h3>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Faites le test pour trouver la compétence qui changera votre avenir.
-            </p>
-
-            {/* Bouton CTA */}
-            <Link
-              href="/formations"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-sm hover:bg-[#8b1c1b] transition-all transform hover:scale-105 border border-white/10 shadow-xl"
-            >
-              <span>Découvrir mon profil</span>
-              <span className="text-xl">→</span>
-            </Link>
-
-            {/* Sous-texte */}
-            <p className="text-gray-500 text-sm mt-6 flex items-center justify-center gap-4">
-              <span className="flex items-center gap-1">
-                <span>⏱️</span> 2 minutes
-              </span>
-              <span>•</span>
-              <span>Sans engagement</span>
-            </p>
           </div>
         </div>
       </section>

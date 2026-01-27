@@ -930,7 +930,7 @@ export default function FormationsPage() {
             {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* QUIZ D'ORIENTATION */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+            <section id="quiz" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 scroll-mt-20">
                 <div className="max-w-4xl mx-auto px-6">
                     <div className="text-center mb-12">
                         <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 px-4 py-2 rounded-full mb-4">
