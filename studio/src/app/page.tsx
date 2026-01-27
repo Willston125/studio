@@ -156,6 +156,58 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* SECTION ORIENTATION CARRIÈRE - CTA QUIZ */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-20 bg-black">
+        <div className="max-w-4xl mx-auto px-6">
+          {/* Titre */}
+          <div className="text-center mb-12">
+            <span className="text-gray-400 text-sm font-medium tracking-widest uppercase">
+              Trouvez votre voie
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-white mt-2 tracking-tight">
+              ORIENTATION CARRIÈRE
+            </h2>
+            <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
+          </div>
+
+          {/* Card CTA */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-12 text-center hover:border-[#6e1615]/50 transition-all duration-500">
+            {/* Icône */}
+            <div className="w-16 h-16 bg-[#6e1615] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#6e1615]/30">
+              <span className="text-3xl">🎯</span>
+            </div>
+
+            {/* Hook principal */}
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
+              Votre carrière commence ici.
+            </h3>
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              Faites le test pour trouver la compétence qui changera votre avenir.
+            </p>
+
+            {/* Bouton CTA */}
+            <Link
+              href="/formations"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-sm hover:bg-[#8b1c1b] transition-all transform hover:scale-105 border border-white/10 shadow-xl"
+            >
+              <span>Découvrir mon profil</span>
+              <span className="text-xl">→</span>
+            </Link>
+
+            {/* Sous-texte */}
+            <p className="text-gray-500 text-sm mt-6 flex items-center justify-center gap-4">
+              <span className="flex items-center gap-1">
+                <span>⏱️</span> 2 minutes
+              </span>
+              <span>•</span>
+              <span>Sans engagement</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SECTION PARTENAIRES */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-20 bg-white">
