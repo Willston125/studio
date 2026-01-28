@@ -226,7 +226,7 @@ function TestimonialStack() {
   );
 }
 
-// Composant Section Orientation Carrière avec animations
+// Composant Section Orientation Carrière avec animations - Style Script Cinéma
 function OrientationCarriereSection() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -236,135 +236,153 @@ function OrientationCarriereSection() {
   }, []);
 
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
-      {/* Pattern SVG subtil en arrière-plan */}
-      <div className="absolute inset-0 opacity-[0.02]">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+      {/* Pattern de bobine de film subtil */}
+      <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
         }} />
       </div>
 
-      {/* Barre latérale couleur institutionnelle */}
-      <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#6e1615] via-yellow-500 to-[#6e1615] hidden lg:block" />
-
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
-        {/* Titre */}
-        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-          <span className="text-gray-400 text-sm font-medium tracking-widest uppercase">
-            Trouvez votre voie
+      <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10">
+        {/* Titre style script */}
+        <div className={`text-center mb-10 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <span className="text-gray-500 text-sm font-mono tracking-widest uppercase">
+            🎬 Acte II - Scène 1
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-white mt-2 tracking-tight">
+          <h2 className="text-2xl md:text-4xl font-black text-white mt-2 tracking-tight font-mono">
             ORIENTATION CARRIÈRE
           </h2>
           <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
         </div>
 
-        {/* Card CTA - Design enrichi */}
-        <div className={`bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8 md:p-12 hover:border-[#6e1615]/50 transition-all duration-700 overflow-hidden relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: '200ms' }}>
-          {/* Décoration visuelle */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#6e1615]/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        {/* Card CTA principale - Style Script */}
+        <div
+          className={`relative rounded-sm overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          style={{
+            background: 'linear-gradient(135deg, #f5f5dc 0%, #e8e4c9 50%, #d4c89e 100%)',
+            transitionDelay: '200ms',
+            boxShadow: '0 20px 50px -12px rgba(0, 0, 0, 0.5)'
+          }}
+        >
+          {/* Trous de perforation gauche */}
+          <div className="absolute left-2 md:left-4 top-0 bottom-0 flex flex-col justify-center gap-6 md:gap-10">
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-400/50 shadow-inner"></div>
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-400/50 shadow-inner"></div>
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-400/50 shadow-inner"></div>
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-400/50 shadow-inner"></div>
+            <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-400/50 shadow-inner"></div>
+          </div>
 
-          <div className="relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Colonne gauche - Contenu (7 colonnes) */}
-            <div className="lg:col-span-7 text-center lg:text-left">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-[#6e1615]/20 border border-[#6e1615]/30 px-4 py-2 rounded-lg mb-6">
-                <div className="w-2 h-2 rounded-full bg-[#6e1615] animate-pulse" />
-                <GraduationCap className="w-4 h-4 text-yellow-500" />
-                <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Quiz Gratuit</span>
+          {/* Marge rouge gauche */}
+          <div className="absolute left-6 md:left-10 top-0 bottom-0 w-0.5 bg-red-400/60"></div>
+
+          {/* Contenu principal */}
+          <div className="pl-10 md:pl-16 pr-4 md:pr-8 py-6 md:py-10 font-mono text-gray-800">
+
+            {/* En-tête script */}
+            <div className="flex justify-between items-center border-b-2 border-gray-400/40 pb-3 mb-6">
+              <div>
+                <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider">Cineworld Académie - Production 2025</p>
+                <p className="text-sm md:text-base text-gray-700 font-bold">QUIZ D'ORIENTATION PROFESSIONNELLE</p>
               </div>
-
-              {/* Hook principal */}
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
-                Votre carrière commence{" "}
-                <span className="relative inline-block">
-                  <span className="relative z-10 text-yellow-500">ici</span>
-                  <span className="absolute bottom-1 left-0 w-full h-2 bg-[#6e1615]/60 -z-0" />
-                </span>
-                <span className="text-gray-500">.</span>
-              </h3>
-              <p className="text-lg text-gray-300 mb-6 max-w-xl">
-                Faites le test d'orientation pour découvrir la formation qui correspond à vos aspirations professionnelles.
-              </p>
-
-              {/* Liste d'avantages avec fond */}
-              <ul className="space-y-3 mb-8 bg-black/30 p-5 rounded-xl border border-gray-700/50">
-                {BENEFITS.map((benefit, index) => (
-                  <li key={index} className="flex items-center gap-3 text-gray-300">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#6e1615] flex items-center justify-center">
-                      <CheckCircle2 className="w-4 h-4 text-white" />
-                    </div>
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Bouton CTA avec animation */}
-              <Link
-                href="/formations#quiz"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-lg hover:bg-[#8b1c1b] transition-all duration-300 shadow-lg shadow-[#6e1615]/30 hover:shadow-xl hover:shadow-[#6e1615]/40 hover:scale-105"
-              >
-                <span>Découvrir mon profil</span>
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-
-              {/* Métadonnées en bas */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 lg:gap-6 text-sm text-gray-500 mt-6 pt-6 border-t border-gray-700/50">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>2 minutes</span>
-                </div>
-                <div className="w-px h-4 bg-gray-700 hidden sm:block" />
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4" />
-                  <span>Sans engagement</span>
-                </div>
-                <div className="w-px h-4 bg-gray-700 hidden sm:block" />
-                <div className="flex items-center gap-2">
-                  <Award className="w-4 h-4" />
-                  <span>Certifié</span>
-                </div>
+              <div className="text-right hidden md:block">
+                <p className="text-[10px] text-gray-400">PAGE 1/1</p>
+                <p className="text-xs text-gray-500">🎬 SCÈNE INTERACTIVE</p>
               </div>
             </div>
 
-            {/* Colonne droite - Statistiques (5 colonnes) */}
-            <div className={`lg:col-span-5 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: '400ms' }}>
-              <div className="grid grid-cols-2 gap-4">
-                {STATS.map((stat, index) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="group bg-black/40 border border-gray-700 rounded-xl p-5 text-center hover:border-[#6e1615]/50 hover:bg-black/60 transition-all duration-300 cursor-default"
-                    >
-                      <div className="flex flex-col items-center space-y-3">
-                        <div className="p-3 rounded-full bg-[#6e1615]/20 group-hover:bg-[#6e1615]/30 transition-colors">
-                          <Icon className="w-5 h-5 text-yellow-500" />
-                        </div>
-                        <div>
-                          <div className="text-3xl md:text-4xl font-black text-white">
-                            {stat.number}
-                            <span className="text-yellow-500">{stat.suffix}</span>
-                          </div>
-                          <div className="text-xs font-medium text-gray-400 uppercase tracking-wider mt-1">
-                            {stat.label}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+            {/* Contenu grid */}
+            <div className="grid lg:grid-cols-12 gap-6 lg:gap-10">
+
+              {/* Colonne gauche - Contenu */}
+              <div className="lg:col-span-7">
+                {/* Direction de scène */}
+                <p className="text-xs text-gray-500 italic mb-4">
+                  (L'étudiant potentiel découvre son avenir professionnel)
+                </p>
+
+                {/* Personnage + Dialogue */}
+                <p className="text-center font-bold text-sm text-gray-700 uppercase tracking-wider mb-3">
+                  VOTRE CARRIÈRE
+                </p>
+
+                <p className="text-lg md:text-xl text-gray-800 text-center mb-6 leading-relaxed">
+                  "Votre carrière commence <span className="font-bold text-[#6e1615]">ici</span>. Faites le test pour découvrir la formation idéale."
+                </p>
+
+                {/* Liste style répliques */}
+                <div className="bg-white/50 border border-gray-300/60 rounded p-4 mb-6">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-3 text-center">— AVANTAGES DU QUIZ —</p>
+                  <ul className="space-y-2">
+                    {BENEFITS.map((benefit, index) => (
+                      <li key={index} className="flex items-center gap-3 text-sm text-gray-700">
+                        <span className="text-[#6e1615] font-bold">{String(index + 1).padStart(2, '0')}.</span>
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* CTA */}
+                <div className="text-center lg:text-left">
+                  <Link
+                    href="/formations#quiz"
+                    className="group inline-flex items-center gap-3 px-6 py-3 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded hover:bg-[#8b1c1b] transition-all duration-300 shadow-lg"
+                  >
+                    <span className="font-mono text-sm">▶ DÉCOUVRIR MON PROFIL</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+
+                {/* Métadonnées style script */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-[10px] md:text-xs text-gray-500 mt-6 pt-4 border-t border-gray-300/60">
+                  <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> 2 MIN</span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1"><Shield className="w-3 h-3" /> GRATUIT</span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1"><Award className="w-3 h-3" /> CERTIFIÉ</span>
+                </div>
               </div>
 
-              {/* Mention académique */}
-              <div className="mt-6 text-center">
-                <p className="text-xs text-gray-500 uppercase tracking-widest">
-                  Excellence académique depuis 2014
+              {/* Colonne droite - Stats style script */}
+              <div className={`lg:col-span-5 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '400ms' }}>
+                <p className="text-[10px] text-gray-500 uppercase tracking-wider text-center mb-4">— NOS CHIFFRES —</p>
+
+                <div className="grid grid-cols-2 gap-3">
+                  {STATS.map((stat, index) => {
+                    const Icon = stat.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="relative bg-white/60 border border-gray-300/60 rounded p-4 text-center hover:bg-white/80 transition-all"
+                      >
+                        {/* Mini trou perforation */}
+                        <div className="absolute left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-gray-400/40"></div>
+
+                        <Icon className="w-5 h-5 text-[#6e1615] mx-auto mb-2" />
+                        <div className="text-2xl md:text-3xl font-black text-gray-800 font-mono">
+                          {stat.number}<span className="text-[#6e1615]">{stat.suffix}</span>
+                        </div>
+                        <div className="text-[10px] font-medium text-gray-500 uppercase tracking-wider">
+                          {stat.label}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Mention */}
+                <p className="text-[10px] text-gray-500 text-center mt-4 italic">
+                  "Excellence académique depuis 2014" - FIN DE SCÈNE
                 </p>
               </div>
             </div>
           </div>
+
+          {/* Effet coins */}
+          <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-bl from-gray-400/20 to-transparent"></div>
+          <div className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-tl from-gray-400/10 to-transparent"></div>
         </div>
       </div>
     </section>
