@@ -13,20 +13,22 @@ export const metadata: Metadata = {
     default: 'Cineworld Académie | Formation Audiovisuelle à Djibouti',
     template: '%s | Cineworld Académie',
   },
-  description: 'La première académie audiovisuelle à Djibouti. Formation professionnelle en vidéo, montage, design graphique et marketing digital.',
+  description: 'Première académie audiovisuelle de Djibouti. Formations pratiques en réalisation vidéo, Editing, Design Graphique et Marketing digital depuis 2025.',
 
   // === KEYWORDS ===
   keywords: [
+    'formation professionnelle',
+    'école audiovisuelle',
+    'réalisation vidéo',
+    'Cineworld',
     'Formation vidéo Djibouti',
     'École Cinéma Djibouti',
     'Montage vidéo professionnel',
-    'Réalisation vidéo Djibouti',
     'Editing vidéo',
     'Graphic Design Djibouti',
     'Design graphique formation',
     'Photoshop Djibouti',
     'Canva formation',
-    'Cinéworld',
     'Marketing Digital Djibouti',
     'Community Manager formation',
     'Facebook Ads Djibouti',
@@ -57,11 +59,11 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://cineworldacademie.com',
     siteName: 'Cineworld Académie',
-    title: 'Cineworld Académie | Formation Audiovisuelle à Djibouti',
-    description: 'La première académie audiovisuelle à Djibouti. Formation professionnelle en vidéo, montage, design graphique et marketing digital.',
+    title: 'Cineworld Académie',
+    description: 'Formez-vous aux métiers du digital à Djibouti',
     images: [
       {
-        url: '/logo_cineworld.png',
+        url: '/opengraph.png',
         width: 1200,
         height: 630,
         alt: 'Cineworld Académie - Formation Audiovisuelle',
@@ -73,8 +75,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Cineworld Académie | Formation Audiovisuelle à Djibouti',
-    description: 'La première académie audiovisuelle à Djibouti.',
-    images: ['/logo_cineworld.png'],
+    description: 'Formez-vous aux métiers du digital à Djibouti',
+    images: ['/opengraph.png'],
   },
 
   // === FAVICONS ===
