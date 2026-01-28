@@ -40,6 +40,192 @@ const BENEFITS = [
   "Résultat instantané",
 ];
 
+// Données pour les témoignages avec couleurs de cartes
+const TESTIMONIALS = [
+  {
+    id: 1,
+    quote: "C'est une grande plaisir pour moi de travailler avec vous, je vous remercie amplement pour la confiance que vous m'accordez",
+    name: "Assia",
+    role: "Étudiante",
+    avatar: null,
+    initial: "A",
+    cardColor: "from-[#6e1615] to-[#8b1c1b]", // Rouge bordeaux
+    textColor: "text-white",
+    accentColor: "text-yellow-400"
+  },
+  {
+    id: 2,
+    quote: "Insha'Allah je vais arriver à faire un festival moi aussi grâce à ton soutien, plusieurs festivals même !",
+    name: "Houmed",
+    role: "Étudiant",
+    avatar: "/avatar-houmed.png",
+    initial: "H",
+    cardColor: "from-yellow-500 to-yellow-600", // Doré
+    textColor: "text-gray-900",
+    accentColor: "text-[#6e1615]"
+  },
+  {
+    id: 3,
+    quote: "Je suis une actrice de théâtre, je peux jouer toutes les émotions.",
+    name: "Aicha",
+    role: "Actrice",
+    avatar: null,
+    initial: "A",
+    cardColor: "from-gray-800 to-gray-900", // Noir élégant
+    textColor: "text-white",
+    accentColor: "text-yellow-400"
+  }
+];
+
+// Composant Pile de Cartes Interactive pour Témoignages - Style Script Cinéma
+function TestimonialStack() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <section className="py-16 md:py-24 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
+        {/* Titre */}
+        <div className="text-center mb-10 md:mb-16">
+          <span className="text-gray-500 text-sm font-medium tracking-widest uppercase">
+            Ils ont suivi nos formations
+          </span>
+          <h2 className="text-2xl md:text-4xl font-black text-white mt-2 tracking-tight">
+            TÉMOIGNAGES
+          </h2>
+          <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
+        </div>
+
+        {/* Instruction */}
+        <p className="text-center text-gray-400 mb-8 md:mb-12 font-medium text-base md:text-lg font-mono px-4">
+          {isOpen ? "📜 Cliquez pour rassembler les scripts" : "🎬 Cliquez sur la pile pour lire les témoignages"}
+        </p>
+
+        {/* Container de la pile de scripts */}
+        <div
+          className={`cursor-pointer transition-all duration-500 ${isOpen
+            ? 'flex flex-col md:flex-row md:justify-center items-center gap-6 md:gap-0'
+            : 'relative flex justify-center items-center min-h-[420px] md:min-h-[500px]'
+            }`}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {/* Les cartes format script */}
+          {TESTIMONIALS.map((testimonial, index) => {
+            const sceneNumber = String(index + 1).padStart(2, '0');
+
+            // Sur mobile ouvert : pas de transformation (empilé verticalement)
+            // Sur desktop ouvert : éventail
+            // Fermé : pile empilée
+            const getTransform = () => {
+              if (isOpen) {
+                // Desktop: éventail, Mobile: aucune transformation (géré par flexbox)
+                return `translateX(0) translateY(0) rotate(0deg)`;
+              }
+              // Fermé: pile
+              return `translateX(${(index - 1) * 5}px) translateY(${index * 8}px) rotate(${(index - 1) * 3}deg)`;
+            };
+
+            return (
+              <div
+                key={testimonial.id}
+                className={`w-[280px] h-[360px] md:w-[300px] md:h-[400px] rounded-sm shadow-2xl transition-all duration-700 ease-out flex-shrink-0 ${isOpen ? 'relative' : 'absolute'
+                  }`}
+                style={{
+                  background: 'linear-gradient(135deg, #f5f5dc 0%, #e8e4c9 50%, #d4c89e 100%)',
+                  transform: getTransform(),
+                  zIndex: isOpen ? 10 : TESTIMONIALS.length - index,
+                  boxShadow: isOpen
+                    ? '0 20px 50px -12px rgba(0, 0, 0, 0.5)'
+                    : '0 10px 40px -5px rgba(0, 0, 0, 0.4)',
+                }}
+              >
+
+                {/* Trous de perforation gauche */}
+                <div className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 flex flex-col gap-8 md:gap-12">
+                  <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-400/40 shadow-inner"></div>
+                  <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-400/40 shadow-inner"></div>
+                  <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-gray-400/40 shadow-inner"></div>
+                </div>
+
+                {/* Marge rouge gauche */}
+                <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-red-400/60"></div>
+
+                {/* Contenu du script */}
+                <div className="h-full pl-8 md:pl-12 pr-4 md:pr-5 py-4 md:py-5 flex flex-col font-mono text-gray-800 overflow-hidden">
+
+                  {/* En-tête du script - Compact */}
+                  <div className="flex justify-between items-center border-b border-gray-400/40 pb-2 mb-3">
+                    <div>
+                      <p className="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-wider">Cineworld Académie</p>
+                      <p className="text-[10px] md:text-xs text-gray-600 font-bold">TÉMOIGNAGE #{sceneNumber}</p>
+                    </div>
+                    <p className="text-[8px] md:text-[10px] text-gray-400">🎬</p>
+                  </div>
+
+                  {/* Scène - Plus compact */}
+                  <p className="text-[9px] md:text-[10px] font-bold text-gray-600 tracking-wide text-center mb-2">
+                    SCÈNE {sceneNumber} - INT. ACADÉMIE
+                  </p>
+
+                  {/* Direction de scène */}
+                  <p className="text-[9px] md:text-[10px] text-gray-500 italic mb-2 text-center">
+                    ({testimonial.name} face caméra)
+                  </p>
+
+                  {/* Nom du personnage - centré */}
+                  <p className="text-center font-bold text-xs md:text-sm text-gray-800 uppercase tracking-wider mb-2">
+                    {testimonial.name}
+                  </p>
+
+                  {/* Dialogue/Citation - Zone principale */}
+                  <div className="flex-1 flex items-center justify-center overflow-hidden mb-3">
+                    <p className="text-[11px] md:text-xs leading-relaxed text-gray-700 text-center px-1 line-clamp-5">
+                      "{testimonial.quote}"
+                    </p>
+                  </div>
+
+                  {/* Pied de page - Compact */}
+                  <div className="border-t border-gray-300/50 pt-2 mt-auto">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        {testimonial.avatar ? (
+                          <Image
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            width={24}
+                            height={24}
+                            className="rounded-full border border-gray-400"
+                          />
+                        ) : (
+                          <div className="w-6 h-6 rounded-full bg-[#6e1615] flex items-center justify-center text-white text-[10px] font-bold">
+                            {testimonial.initial}
+                          </div>
+                        )}
+                        <div>
+                          <p className="text-[10px] md:text-xs font-bold text-gray-700">{testimonial.name}</p>
+                          <p className="text-[8px] md:text-[10px] text-gray-500">{testimonial.role}</p>
+                        </div>
+                      </div>
+                      <p className="text-[8px] text-gray-400">TAKE 1</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Effet de papier usé */}
+                <div className="absolute top-0 right-0 w-4 h-4 bg-gradient-to-bl from-gray-400/20 to-transparent"></div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Indication visuelle */}
+        <p className="text-center text-gray-500 text-sm mt-8 font-mono">
+          {isOpen ? "📄 3 scripts de témoignages" : "📚 3 témoignages à découvrir"}
+        </p>
+      </div>
+    </section>
+  );
+}
+
 // Composant Section Orientation Carrière avec animations
 function OrientationCarriereSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -387,66 +573,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SECTION TÉMOIGNAGES */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 bg-gray-100">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="text-gray-400 text-sm font-medium tracking-widest uppercase">
-              Ils ont suivi nos formations
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-2 tracking-tight">
-              TÉMOIGNAGES
-            </h2>
-            <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Témoignage 1 */}
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <div className="text-4xl text-[#6e1615] mb-4">"</div>
-              <p className="text-gray-700 italic mb-6">
-                C'est une grande plaisir pour moi de travailler avec vous, je vous remercie amplement pour la confiance que vous m'accordez
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#6e1615] rounded-full flex items-center justify-center text-white font-bold">A</div>
-                <div>
-                  <p className="font-bold text-gray-900">Assia</p>
-                  <p className="text-sm text-gray-500">Étudiante</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Témoignage 2 */}
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <div className="text-4xl text-[#6e1615] mb-4">"</div>
-              <p className="text-gray-700 italic mb-6">
-                Insha'Allah je vais arriver à faire un festival moi aussi grâce à ton soutien, plusieurs festivals même !
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#6e1615] rounded-full flex items-center justify-center text-white font-bold">H</div>
-                <div>
-                  <p className="font-bold text-gray-900">Houmed</p>
-                  <p className="text-sm text-gray-500">Étudiant</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Témoignage 3 */}
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <div className="text-4xl text-[#6e1615] mb-4">"</div>
-              <p className="text-gray-700 italic mb-6">
-                Je suis une actrice de théâtre, je peux jouer toutes les émotions.
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#6e1615] rounded-full flex items-center justify-center text-white font-bold">A</div>
-                <div>
-                  <p className="font-bold text-gray-900">Aicha</p>
-                  <p className="text-sm text-gray-500">Actrice</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialStack />
 
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* FOOTER */}
