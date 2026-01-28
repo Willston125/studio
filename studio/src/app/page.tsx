@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BookOpen, Award, GraduationCap, Shield, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const CITATIONS = [
   { auteur: "Stanley Kubrick", texte: "Si cela peut être écrit ou pensé, cela peut être filmé." },
@@ -25,14 +26,196 @@ const PARTNERS = [
   { src: "/unicef.png", alt: "UNICEF" },
 ];
 
+// Données pour la section Orientation
+const STATS = [
+  { number: "4", label: "Formations", suffix: "", icon: BookOpen },
+  { number: "80", label: "Pratique", suffix: "%", icon: Award },
+  { number: "150", label: "Diplômés", suffix: "+", icon: GraduationCap },
+  { number: "100", label: "Certifié", suffix: "%", icon: Shield },
+];
+
+const BENEFITS = [
+  "5 questions pour identifier votre profil",
+  "Recommandation personnalisée",
+  "Résultat instantané",
+];
+
+// Composant Section Orientation Carrière avec animations
+function OrientationCarriereSection() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <section className="py-20 bg-black relative overflow-hidden">
+      {/* Pattern SVG subtil en arrière-plan */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+
+      {/* Barre latérale couleur institutionnelle */}
+      <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#6e1615] via-yellow-500 to-[#6e1615] hidden lg:block" />
+
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        {/* Titre */}
+        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <span className="text-gray-400 text-sm font-medium tracking-widest uppercase">
+            Trouvez votre voie
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black text-white mt-2 tracking-tight">
+            ORIENTATION CARRIÈRE
+          </h2>
+          <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
+        </div>
+
+        {/* Card CTA - Design enrichi */}
+        <div className={`bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8 md:p-12 hover:border-[#6e1615]/50 transition-all duration-700 overflow-hidden relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: '200ms' }}>
+          {/* Décoration visuelle */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#6e1615]/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div className="relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Colonne gauche - Contenu (7 colonnes) */}
+            <div className="lg:col-span-7 text-center lg:text-left">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-[#6e1615]/20 border border-[#6e1615]/30 px-4 py-2 rounded-lg mb-6">
+                <div className="w-2 h-2 rounded-full bg-[#6e1615] animate-pulse" />
+                <GraduationCap className="w-4 h-4 text-yellow-500" />
+                <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Quiz Gratuit</span>
+              </div>
+
+              {/* Hook principal */}
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                Votre carrière commence{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10 text-yellow-500">ici</span>
+                  <span className="absolute bottom-1 left-0 w-full h-2 bg-[#6e1615]/60 -z-0" />
+                </span>
+                <span className="text-gray-500">.</span>
+              </h3>
+              <p className="text-lg text-gray-300 mb-6 max-w-xl">
+                Faites le test d'orientation pour découvrir la formation qui correspond à vos aspirations professionnelles.
+              </p>
+
+              {/* Liste d'avantages avec fond */}
+              <ul className="space-y-3 mb-8 bg-black/30 p-5 rounded-xl border border-gray-700/50">
+                {BENEFITS.map((benefit, index) => (
+                  <li key={index} className="flex items-center gap-3 text-gray-300">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#6e1615] flex items-center justify-center">
+                      <CheckCircle2 className="w-4 h-4 text-white" />
+                    </div>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Bouton CTA avec animation */}
+              <Link
+                href="/formations#quiz"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-lg hover:bg-[#8b1c1b] transition-all duration-300 shadow-lg shadow-[#6e1615]/30 hover:shadow-xl hover:shadow-[#6e1615]/40 hover:scale-105"
+              >
+                <span>Découvrir mon profil</span>
+                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+
+              {/* Métadonnées en bas */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 lg:gap-6 text-sm text-gray-500 mt-6 pt-6 border-t border-gray-700/50">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>2 minutes</span>
+                </div>
+                <div className="w-px h-4 bg-gray-700 hidden sm:block" />
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4" />
+                  <span>Sans engagement</span>
+                </div>
+                <div className="w-px h-4 bg-gray-700 hidden sm:block" />
+                <div className="flex items-center gap-2">
+                  <Award className="w-4 h-4" />
+                  <span>Certifié</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Colonne droite - Statistiques (5 colonnes) */}
+            <div className={`lg:col-span-5 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: '400ms' }}>
+              <div className="grid grid-cols-2 gap-4">
+                {STATS.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="group bg-black/40 border border-gray-700 rounded-xl p-5 text-center hover:border-[#6e1615]/50 hover:bg-black/60 transition-all duration-300 cursor-default"
+                    >
+                      <div className="flex flex-col items-center space-y-3">
+                        <div className="p-3 rounded-full bg-[#6e1615]/20 group-hover:bg-[#6e1615]/30 transition-colors">
+                          <Icon className="w-5 h-5 text-yellow-500" />
+                        </div>
+                        <div>
+                          <div className="text-3xl md:text-4xl font-black text-white">
+                            {stat.number}
+                            <span className="text-yellow-500">{stat.suffix}</span>
+                          </div>
+                          <div className="text-xs font-medium text-gray-400 uppercase tracking-wider mt-1">
+                            {stat.label}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Mention académique */}
+              <div className="mt-6 text-center">
+                <p className="text-xs text-gray-500 uppercase tracking-widest">
+                  Excellence académique depuis 2014
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
   const [citation, setCitation] = useState<{ auteur: string; texte: string } | null>(null);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  };
+  // Optimisation: Throttle mousemove avec requestAnimationFrame
+  useEffect(() => {
+    let rafId: number = 0;
+    let lastX = 0;
+    let lastY = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (rafId) return; // Throttle à 1 update par frame
+
+      rafId = requestAnimationFrame(() => {
+        // Seuil de 5px pour ignorer les micro-mouvements
+        if (Math.abs(e.clientX - lastX) > 5 || Math.abs(e.clientY - lastY) > 5) {
+          setMousePos({ x: e.clientX, y: e.clientY });
+          lastX = e.clientX;
+          lastY = e.clientY;
+        }
+        rafId = 0;
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   const handleClick = () => {
     const randomIndex = Math.floor(Math.random() * CITATIONS.length);
@@ -52,10 +235,16 @@ export default function Home() {
       {/* SECTION HERO */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative w-full h-screen overflow-hidden cursor-none select-none"
-        onMouseMove={handleMouseMove}
+        className="relative w-full h-screen overflow-hidden select-none"
         onClick={handleClick}
       >
+        {/* Curseur personnalisé visible (desktop uniquement) */}
+        {mousePos && (
+          <div
+            className="fixed z-[100] pointer-events-none w-4 h-4 bg-yellow-500 rounded-full mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 hidden md:block transition-transform duration-75"
+            style={{ left: mousePos.x, top: mousePos.y }}
+          />
+        )}
         {/* 1. COUCHE INFÉRIEURE : Image en Noir et Blanc */}
         <div className="absolute inset-0 z-0 filter grayscale contrast-125 brightness-75 pointer-events-none">
           <Image
@@ -158,100 +347,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SECTION ORIENTATION CARRIÈRE - CTA QUIZ */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-20 bg-black">
-        <div className="max-w-5xl mx-auto px-6">
-          {/* Titre */}
-          <div className="text-center mb-12">
-            <span className="text-gray-400 text-sm font-medium tracking-widest uppercase">
-              Trouvez votre voie
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-white mt-2 tracking-tight">
-              ORIENTATION CARRIÈRE
-            </h2>
-            <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
-          </div>
-
-          {/* Card CTA - Design enrichi */}
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8 md:p-12 hover:border-[#6e1615]/50 transition-all duration-500 overflow-hidden relative">
-            {/* Décoration visuelle */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#6e1615]/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
-              {/* Colonne gauche - Contenu */}
-              <div className="text-center md:text-left">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#6e1615]/20 px-4 py-2 rounded-full mb-6">
-                  <span className="text-2xl">🎯</span>
-                  <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Quiz Gratuit</span>
-                </div>
-
-                {/* Hook principal */}
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
-                  Votre carrière commence ici.
-                </h3>
-                <p className="text-lg text-gray-300 mb-6">
-                  Faites le test pour trouver la compétence qui changera votre avenir.
-                </p>
-
-                {/* Liste d'avantages */}
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <span className="w-6 h-6 bg-[#6e1615] rounded-full flex items-center justify-center text-xs">✓</span>
-                    <span>5 questions pour identifier votre profil</span>
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <span className="w-6 h-6 bg-[#6e1615] rounded-full flex items-center justify-center text-xs">✓</span>
-                    <span>Recommandation personnalisée</span>
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <span className="w-6 h-6 bg-[#6e1615] rounded-full flex items-center justify-center text-xs">✓</span>
-                    <span>Résultat instantané</span>
-                  </li>
-                </ul>
-
-                {/* Bouton CTA */}
-                <Link
-                  href="/formations#quiz"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-sm hover:bg-[#8b1c1b] transition-all transform hover:scale-105 border border-white/10 shadow-xl"
-                >
-                  <span>Découvrir mon profil</span>
-                  <span className="text-xl">→</span>
-                </Link>
-
-                {/* Sous-texte */}
-                <p className="text-gray-500 text-sm mt-4 flex items-center justify-center md:justify-start gap-4">
-                  <span className="flex items-center gap-1">
-                    <span>⏱️</span> 2 minutes
-                  </span>
-                  <span>•</span>
-                  <span>Sans engagement</span>
-                </p>
-              </div>
-
-              {/* Colonne droite - Statistiques visuelles */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-black/40 border border-gray-700 rounded-xl p-6 text-center">
-                  <div className="text-3xl md:text-4xl font-black text-yellow-500 mb-2">4</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider">Formations</div>
-                </div>
-                <div className="bg-black/40 border border-gray-700 rounded-xl p-6 text-center">
-                  <div className="text-3xl md:text-4xl font-black text-yellow-500 mb-2">80%</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider">Pratique</div>
-                </div>
-                <div className="bg-black/40 border border-gray-700 rounded-xl p-6 text-center">
-                  <div className="text-3xl md:text-4xl font-black text-yellow-500 mb-2">150+</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider">Diplômés</div>
-                </div>
-                <div className="bg-black/40 border border-gray-700 rounded-xl p-6 text-center">
-                  <div className="text-3xl md:text-4xl font-black text-yellow-500 mb-2">100%</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider">Certifié</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <OrientationCarriereSection />
 
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SECTION PARTENAIRES */}
