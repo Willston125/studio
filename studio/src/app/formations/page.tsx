@@ -13,29 +13,51 @@ const FORMATIONS = [
         icon: Monitor,
         module: "Module 1",
         titre: "Création de site internet avec l'IA",
+        description: "Apprenez à concevoir et déployer un site web professionnel en utilisant les dernières technologies d'intelligence artificielle. Une approche révolutionnaire du développement web accessible à tous.",
         duree: "5 Jours",
         tarif: "15.000 FDJ",
         niveau: "Débutant",
         livrable: "1 site web en ligne",
-        outils: ["Gemini", "Canva"],
+        outils: ["Gemini", "Canva", "Vercel"],
         pratique: 70,
         placesRestantes: 6,
         dateDebut: "15 Février 2026",
         horaires: "9h - 17h",
         lieu: "Aviation, institut DHIM, Djibouti",
+        publicCible: ["Entrepreneurs", "Créateurs de contenu", "Freelances"],
+        prerequis: ["Aucun prérequis technique", "Ordinateur portable recommandé"],
+        objectifsPedagogiques: [
+            "Maîtriser l'art du prompting avec les IA génératives",
+            "Concevoir une interface UI/UX moderne",
+            "Déployer un site web fonctionnel en ligne"
+        ],
+        competencesAcquises: [
+            { nom: "Prompting IA", niveau: 85 },
+            { nom: "UI/UX Design", niveau: 70 },
+            { nom: "Déploiement Web", niveau: 75 }
+        ],
+        syllabus: [
+            { jour: 1, titre: "Introduction à l'IA Générative", heures: 6, contenu: ["Prise en main de Gemini", "L'art du prompting", "Génération de contenu"] },
+            { jour: 2, titre: "Design UI/UX par IA", heures: 6, contenu: ["Création de maquettes", "Palette de couleurs", "Typographie"] },
+            { jour: 3, titre: "Génération de Code", heures: 6, contenu: ["HTML/CSS assisté", "Composants interactifs", "Responsive design"] },
+            { jour: 4, titre: "Intégration No-Code", heures: 6, contenu: ["Plateformes no-code", "CMS et formulaires", "Optimisation"] },
+            { jour: 5, titre: "Mise en Ligne", heures: 6, contenu: ["Déploiement Vercel", "Domaine personnalisé", "SEO basique"] }
+        ],
         programme: [
             "L'art du prompting & structure",
             "Design UI/UX par IA",
             "Génération de contenu",
             "Intégration No-Code",
             "Mise en ligne & SEO"
-        ]
+        ],
+        certification: "Certificat Développeur Web IA"
     },
     {
         id: 2,
         icon: Palette,
         module: "Module 2",
         titre: "Design graphique professionnel",
+        description: "Développez votre créativité et maîtrisez les outils de design graphique utilisés par les professionnels. Créez des visuels impactants pour tous types de supports.",
         duree: "12 Jours",
         tarif: "10.000 FDJ",
         niveau: "Débutant",
@@ -46,55 +68,117 @@ const FORMATIONS = [
         dateDebut: "1er Mars 2026",
         horaires: "9h - 17h",
         lieu: "Aviation, institut DHIM, Djibouti",
+        publicCible: ["Graphistes en devenir", "Community managers", "Entrepreneurs"],
+        prerequis: ["Sensibilité visuelle", "Motivation créative"],
+        objectifsPedagogiques: [
+            "Maîtriser les principes fondamentaux du design",
+            "Créer des visuels professionnels pour le digital",
+            "Développer une identité visuelle cohérente"
+        ],
+        competencesAcquises: [
+            { nom: "Canva Expert", niveau: 90 },
+            { nom: "Photoshop", niveau: 75 },
+            { nom: "Figma", niveau: 70 }
+        ],
+        syllabus: [
+            { jour: 1, titre: "Fondamentaux du Design", heures: 6, contenu: ["Théorie des couleurs", "Typographie", "Composition"] },
+            { jour: 2, titre: "Canva - Niveau Débutant", heures: 6, contenu: ["Interface", "Templates", "Éléments"] },
+            { jour: 3, titre: "Canva - Niveau Avancé", heures: 6, contenu: ["Brand Kit", "Animations", "Présentations"] },
+            { jour: 4, titre: "Photoshop - Bases", heures: 6, contenu: ["Interface", "Calques", "Outils de sélection"] },
+            { jour: 5, titre: "Photoshop - Retouche", heures: 6, contenu: ["Retouche photo", "Filtres", "Masques"] }
+        ],
         programme: [
             "Canva Expert",
             "Photoshop CC avancé",
             "Figma & UI Design"
-        ]
+        ],
+        certification: "Certificat Designer Graphique"
     },
     {
         id: 3,
         icon: Video,
         module: "Module 3",
         titre: "Réalisation & montage vidéo",
+        description: "De l'écriture du scénario à l'export final, maîtrisez toute la chaîne de production audiovisuelle. Créez des contenus vidéo professionnels qui captent l'attention.",
         duree: "15 Jours",
         tarif: "13.000 FDJ",
         niveau: "Débutant à Intermédiaire",
         livrable: "1 court-métrage complet",
-        outils: ["Premiere Pro", "DaVinci Resolve"],
+        outils: ["Premiere Pro", "DaVinci Resolve", "After Effects"],
         pratique: 80,
         placesRestantes: 2,
         isPopular: true,
         dateDebut: "10 Mars 2026",
         horaires: "9h - 18h",
         lieu: "Aviation, institut DHIM, Djibouti",
+        publicCible: ["Futurs vidéastes", "YouTubers", "Créateurs de contenu"],
+        prerequis: ["Passion pour l'image", "Ordinateur portable puissant recommandé"],
+        objectifsPedagogiques: [
+            "Maîtriser le cadrage et la prise de vue",
+            "Monter des vidéos dynamiques et rythmées",
+            "Appliquer une colorimétrie professionnelle"
+        ],
+        competencesAcquises: [
+            { nom: "Prise de vue", niveau: 80 },
+            { nom: "Montage", niveau: 85 },
+            { nom: "Colorimétrie", niveau: 70 },
+            { nom: "Sound Design", niveau: 60 }
+        ],
+        syllabus: [
+            { jour: 1, titre: "Pré-production", heures: 7, contenu: ["Écriture scénario", "Storyboard", "Découpage technique"] },
+            { jour: 2, titre: "Techniques de Tournage", heures: 7, contenu: ["Cadrage", "Mouvements caméra", "Éclairage"] },
+            { jour: 3, titre: "Prise de Son", heures: 7, contenu: ["Micro-cravate", "Perche", "Ambiance sonore"] },
+            { jour: 4, titre: "Premiere Pro - Bases", heures: 7, contenu: ["Interface", "Import", "Timeline"] },
+            { jour: 5, titre: "Montage Avancé", heures: 7, contenu: ["Transitions", "Effets", "Rythme"] }
+        ],
         programme: [
             "Pré-production — Script, Storyboard",
             "Tournage — Cadrage, Son, Éclairage",
             "Post-Production — Montage, Colorimétrie",
             "Export multi-plateformes"
-        ]
+        ],
+        certification: "Certificat Réalisateur Vidéo"
     },
     {
         id: 4,
         icon: TrendingUp,
         module: "Module 4",
         titre: "Marketing digital & gestion de projet",
+        description: "Apprenez à promouvoir efficacement vos services et gérer vos projets comme un professionnel. Maîtrisez les stratégies qui font la différence sur les réseaux sociaux.",
         duree: "8 Jours",
         tarif: "7.000 FDJ",
         niveau: "Débutant",
         livrable: "1 stratégie marketing complète",
-        outils: ["Meta Business", "Google Ads", "Notion"],
+        outils: ["Meta Business", "Google Ads", "Notion", "Canva"],
         pratique: 60,
         placesRestantes: 8,
         dateDebut: "20 Mars 2026",
         horaires: "14h - 19h",
         lieu: "Aviation, institut DHIM, Djibouti",
+        publicCible: ["Entrepreneurs", "Community managers", "Freelances"],
+        prerequis: ["Compte professionnel sur les réseaux", "Notions basiques du digital"],
+        objectifsPedagogiques: [
+            "Élaborer une stratégie marketing cohérente",
+            "Créer et gérer des campagnes publicitaires",
+            "Organiser et piloter des projets efficacement"
+        ],
+        competencesAcquises: [
+            { nom: "Stratégie Marketing", niveau: 80 },
+            { nom: "Meta Ads", niveau: 75 },
+            { nom: "Gestion de Projet", niveau: 70 }
+        ],
+        syllabus: [
+            { jour: 1, titre: "Fondamentaux du Marketing", heures: 5, contenu: ["Persona client", "Positionnement", "Proposition de valeur"] },
+            { jour: 2, titre: "Stratégie Réseaux Sociaux", heures: 5, contenu: ["Calendrier éditorial", "Types de contenu", "Engagement"] },
+            { jour: 3, titre: "Meta Business Suite", heures: 5, contenu: ["Création de pages", "Insights", "Planification"] },
+            { jour: 4, titre: "Publicité Facebook/Instagram", heures: 5, contenu: ["Objectifs campagnes", "Audiences", "Créatifs"] }
+        ],
         programme: [
             "Gestion de Projet",
             "Stratégie Marketing",
             "Publicité Facebook/Instagram"
-        ]
+        ],
+        certification: "Certificat Marketing Digital"
     }
 ];
 
@@ -113,6 +197,300 @@ const AnimatedSection = ({ children, delay = 0, className = '' }: { children: Re
         >
             {children}
         </motion.div>
+    );
+};
+
+// Type for Formation
+type Formation = typeof FORMATIONS[0];
+
+// Composant Barre de Compétence
+const SkillBar = ({ nom, niveau }: { nom: string; niveau: number }) => (
+    <div className="mb-3">
+        <div className="flex justify-between text-sm mb-1">
+            <span className="text-gray-700 font-medium">{nom}</span>
+            <span className="text-gray-500">{niveau}%</span>
+        </div>
+        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: `${niveau}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="h-full bg-gradient-to-r from-[#8B2635] to-[#C5A572] rounded-full"
+            />
+        </div>
+    </div>
+);
+
+// Composant Carte de Formation Professionnelle avec Onglets
+const FormationCard = ({ formation, index }: { formation: Formation; index: number }) => {
+    const [activeTab, setActiveTab] = useState<'apercu' | 'programme' | 'competences' | 'infos'>('apercu');
+    const IconComponent = formation.icon;
+
+    const tabs = [
+        { id: 'apercu', label: 'Aperçu', icon: BookOpen },
+        { id: 'programme', label: 'Programme', icon: Calendar },
+        { id: 'competences', label: 'Compétences', icon: Award },
+        { id: 'infos', label: 'Infos', icon: MapPin },
+    ];
+
+    return (
+        <AnimatedSection delay={index * 0.1}>
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                {/* Header avec gradient */}
+                <div className="relative p-6 bg-gradient-to-br from-gray-50 to-white border-b border-gray-100">
+                    {/* Badge Populaire */}
+                    {formation.isPopular && (
+                        <div className="absolute top-4 right-4">
+                            <span className="bg-gradient-to-r from-[#8B2635] to-[#6e1615] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                                🔥 POPULAIRE
+                            </span>
+                        </div>
+                    )}
+
+                    {/* Places restantes */}
+                    {formation.placesRestantes <= 5 && (
+                        <div className="absolute top-4 right-4">
+                            <span className={`text-xs px-3 py-1.5 rounded-full font-bold ${formation.placesRestantes <= 2
+                                ? 'bg-gradient-to-r from-red-500 to-red-600 text-white animate-pulse'
+                                : 'bg-gradient-to-r from-orange-400 to-orange-500 text-white'
+                                }`}>
+                                ⚡ {formation.placesRestantes} places
+                            </span>
+                        </div>
+                    )}
+
+                    <div className="flex items-start gap-4">
+                        <div className="w-14 h-14 bg-gradient-to-br from-[#8B2635] to-[#6e1615] rounded-xl flex items-center justify-center shadow-lg">
+                            <IconComponent size={28} className="text-white" />
+                        </div>
+                        <div className="flex-1">
+                            <div className="text-xs font-semibold text-[#8B2635] uppercase tracking-wider mb-1">
+                                {formation.module}
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 leading-tight">
+                                {formation.titre}
+                            </h3>
+                        </div>
+                    </div>
+
+                    {/* Quick Stats */}
+                    <div className="flex flex-wrap gap-4 mt-4 text-sm">
+                        <div className="flex items-center gap-1.5 text-gray-600">
+                            <Clock size={14} className="text-[#8B2635]" />
+                            <span className="font-medium">{formation.duree}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                            <span className="font-bold text-[#8B2635] text-lg">{formation.tarif}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-gray-600">
+                            <GraduationCap size={14} className="text-[#8B2635]" />
+                            <span>{formation.niveau}</span>
+                        </div>
+                    </div>
+
+                    {/* Barre de pratique */}
+                    <div className="mt-4">
+                        <div className="flex justify-between text-xs text-gray-500 mb-1">
+                            <span>Pratique</span>
+                            <span className="font-bold text-[#8B2635]">{formation.pratique}%</span>
+                        </div>
+                        <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                            <div
+                                className="h-full bg-gradient-to-r from-[#8B2635] to-[#C5A572] rounded-full transition-all duration-500"
+                                style={{ width: `${formation.pratique}%` }}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Onglets Navigation */}
+                <div className="flex border-b border-gray-100">
+                    {tabs.map((tab) => {
+                        const TabIcon = tab.icon;
+                        return (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id as any)}
+                                className={`flex-1 py-3 px-2 text-xs font-medium transition-all flex items-center justify-center gap-1.5 ${activeTab === tab.id
+                                    ? 'text-[#8B2635] border-b-2 border-[#8B2635] bg-red-50/50'
+                                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                                    }`}
+                            >
+                                <TabIcon size={14} />
+                                <span className="hidden sm:inline">{tab.label}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+
+                {/* Contenu des Onglets */}
+                <div className="p-6 flex-1">
+                    {/* Onglet Aperçu */}
+                    {activeTab === 'apercu' && (
+                        <div className="space-y-4">
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                {formation.description}
+                            </p>
+
+                            {/* Public Cible */}
+                            <div>
+                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Pour qui ?</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {formation.publicCible.map((cible, i) => (
+                                        <span key={i} className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full">
+                                            {cible}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Prérequis */}
+                            <div>
+                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Prérequis</h4>
+                                <ul className="space-y-1">
+                                    {formation.prerequis.map((prereq, i) => (
+                                        <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                                            <Check size={12} className="text-green-500" />
+                                            {prereq}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* Livrable */}
+                            <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 rounded-lg p-3">
+                                <div className="flex items-center gap-2">
+                                    <Award className="text-green-600" size={18} />
+                                    <span className="text-sm font-semibold text-gray-900">
+                                        Livrable : {formation.livrable}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Onglet Programme */}
+                    {activeTab === 'programme' && (
+                        <div className="space-y-3">
+                            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Syllabus Détaillé</h4>
+                            {formation.syllabus.slice(0, 5).map((jour, i) => (
+                                <div key={i} className="border border-gray-100 rounded-lg p-3 hover:border-[#8B2635]/30 transition-colors">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <span className="text-xs font-bold text-[#8B2635] bg-red-50 px-2 py-0.5 rounded">
+                                            JOUR {jour.jour}
+                                        </span>
+                                        <span className="text-xs text-gray-500">{jour.heures}h</span>
+                                    </div>
+                                    <h5 className="font-semibold text-gray-900 text-sm mb-1">{jour.titre}</h5>
+                                    <div className="flex flex-wrap gap-1">
+                                        {jour.contenu.map((item, j) => (
+                                            <span key={j} className="text-xs text-gray-500 bg-gray-50 px-2 py-0.5 rounded">
+                                                {item}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Onglet Compétences */}
+                    {activeTab === 'competences' && (
+                        <div className="space-y-4">
+                            {/* Objectifs Pédagogiques */}
+                            <div>
+                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Objectifs Pédagogiques</h4>
+                                <ul className="space-y-2">
+                                    {formation.objectifsPedagogiques.map((obj, i) => (
+                                        <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                                            <div className="w-5 h-5 bg-[#8B2635] text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                                                {i + 1}
+                                            </div>
+                                            {obj}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* Barres de Compétences */}
+                            <div>
+                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Compétences Acquises</h4>
+                                {formation.competencesAcquises.map((comp, i) => (
+                                    <SkillBar key={i} nom={comp.nom} niveau={comp.niveau} />
+                                ))}
+                            </div>
+
+                            {/* Outils */}
+                            <div>
+                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Outils Maîtrisés</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {formation.outils.map((outil, i) => (
+                                        <span key={i} className="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full font-medium">
+                                            {outil}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Onglet Infos Pratiques */}
+                    {activeTab === 'infos' && (
+                        <div className="space-y-4">
+                            {/* Détails Session */}
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                    <Calendar size={18} className="text-[#8B2635]" />
+                                    <div>
+                                        <div className="text-xs text-gray-500">Prochaine session</div>
+                                        <div className="font-semibold text-gray-900">{formation.dateDebut}</div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                    <Clock size={18} className="text-[#8B2635]" />
+                                    <div>
+                                        <div className="text-xs text-gray-500">Horaires</div>
+                                        <div className="font-semibold text-gray-900">{formation.horaires}</div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                    <MapPin size={18} className="text-[#8B2635]" />
+                                    <div>
+                                        <div className="text-xs text-gray-500">Lieu</div>
+                                        <div className="font-semibold text-gray-900">{formation.lieu}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Certification */}
+                            <div className="bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-lg p-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full flex items-center justify-center">
+                                        <GraduationCap size={24} className="text-white" />
+                                    </div>
+                                    <div>
+                                        <div className="text-xs text-amber-700 font-medium uppercase">Certification</div>
+                                        <div className="font-bold text-gray-900">{formation.certification}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* CTA Footer */}
+                <div className="p-6 pt-0 mt-auto">
+                    <Link
+                        href={`/inscription?module=${formation.id}`}
+                        className="block w-full text-center py-4 px-6 rounded-xl font-bold bg-gradient-to-r from-[#8B2635] to-[#6e1615] text-white hover:from-[#6e1615] hover:to-[#8B2635] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    >
+                        S'inscrire à {formation.tarif}
+                        <ArrowRight className="inline-block ml-2" size={18} />
+                    </Link>
+                </div>
+            </div>
+        </AnimatedSection>
     );
 };
 
@@ -450,213 +828,18 @@ export default function FormationsPage() {
                     </div>
 
                     {/* Formation Cards - Grid on desktop, single on mobile */}
-                    <div className="hidden md:grid md:grid-cols-2 gap-6 mb-12">
-                        {FORMATIONS.map((formation, index) => {
-                            const IconComponent = formation.icon;
-                            return (
-                                <AnimatedSection key={formation.id} delay={index * 0.1}>
-                                    <div
-                                        className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all h-full"
-                                    >
-                                        {/* Header */}
-                                        <div className="p-6 border-b border-gray-100">
-                                            <div className="flex items-start justify-between mb-4">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-12 h-12 bg-[#8B2635]/10 rounded-xl flex items-center justify-center">
-                                                        <IconComponent size={24} className="text-[#8B2635]" />
-                                                    </div>
-                                                    <div>
-                                                        <div className="text-sm text-gray-500 font-medium">{formation.module}</div>
-                                                        <h3 className="text-lg font-bold text-gray-900">{formation.titre}</h3>
-                                                    </div>
-                                                </div>
-                                                {formation.placesRestantes <= 5 && (
-                                                    <span className={`text-xs px-3 py-1.5 rounded-full font-bold transition-all ${formation.placesRestantes <= 2
-                                                        ? 'bg-gradient-to-r from-red-500 to-red-600 text-white animate-breathe shadow-lg shadow-red-500/50'
-                                                        : formation.placesRestantes <= 3
-                                                            ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white animate-pulse'
-                                                            : 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900'
-                                                        }`}>
-                                                        ⚡ {formation.placesRestantes} {formation.placesRestantes === 1 ? 'place' : 'places'}
-                                                    </span>
-                                                )}
-                                            </div>
-
-                                            {/* Quick Info */}
-                                            <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                                                <div className="flex items-center gap-1">
-                                                    <Clock size={14} />
-                                                    <span>{formation.duree}</span>
-                                                </div>
-                                                <div className="flex items-center gap-1">
-                                                    <span className="font-semibold text-[#8B2635]">{formation.tarif}</span>
-                                                </div>
-                                                <div>
-                                                    <span className="text-gray-400">Niveau:</span> {formation.niveau}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Content */}
-                                        <div className="p-6">
-                                            {/* Programme */}
-                                            <div className="mb-4">
-                                                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Programme</div>
-                                                <ul className="space-y-1">
-                                                    {formation.programme.slice(0, 3).map((item, idx) => (
-                                                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                                                            <Check size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
-                                                            <span>{item}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-
-                                            {/* Tools */}
-                                            <div className="flex flex-wrap gap-2 mb-4">
-                                                {formation.outils.map((outil, i) => (
-                                                    <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                                                        {outil}
-                                                    </span>
-                                                ))}
-                                            </div>
-
-                                            {/* Livrable */}
-                                            <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg mb-4">
-                                                <Award className="text-green-600" size={18} />
-                                                <span className="text-sm font-medium text-gray-900">Livrable: {formation.livrable}</span>
-                                            </div>
-
-                                            {/* Infos Pratiques */}
-                                            <div className="mb-4 p-3 bg-gray-50 rounded-lg space-y-2">
-                                                <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                    <Calendar size={14} className="text-[#8B2635]" />
-                                                    <span><strong>Début:</strong> {formation.dateDebut}</span>
-                                                </div>
-                                                <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                    <Clock size={14} className="text-[#8B2635]" />
-                                                    <span><strong>Horaires:</strong> {formation.horaires}</span>
-                                                </div>
-                                                <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                    <MapPin size={14} className="text-[#8B2635]" />
-                                                    <span><strong>Lieu:</strong> {formation.lieu}</span>
-                                                </div>
-                                            </div>
-
-                                            {/* CTA - Enlarged for mobile touch targets */}
-                                            <Link
-                                                href={`/inscription?module=${formation.id}`}
-                                                className="block w-full text-center py-4 px-6 rounded-lg font-semibold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors"
-                                            >
-                                                Réserver ma place
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </AnimatedSection>
-                            );
-                        })}
+                    <div className="hidden md:grid md:grid-cols-2 gap-8 mb-12">
+                        {FORMATIONS.map((formation, index) => (
+                            <FormationCard key={formation.id} formation={formation} index={index} />
+                        ))}
                     </div>
 
                     {/* Mobile - Single Card View */}
                     <div className="md:hidden mb-12">
-                        {(() => {
-                            const formation = FORMATIONS[activeMobileTab];
-                            const IconComponent = formation.icon;
-                            return (
-                                <div
-                                    key={formation.id}
-                                    className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg"
-                                >
-                                    {/* Header */}
-                                    <div className="p-6 border-b border-gray-100">
-                                        <div className="flex items-start justify-between mb-4">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-12 h-12 bg-[#8B2635]/10 rounded-xl flex items-center justify-center">
-                                                    <IconComponent size={24} className="text-[#8B2635]" />
-                                                </div>
-                                                <div>
-                                                    <div className="text-xs text-gray-500 font-medium">{formation.module}</div>
-                                                    <h3 className="text-lg font-bold text-gray-900">{formation.titre}</h3>
-                                                </div>
-                                            </div>
-                                            {formation.placesRestantes <= 5 && (
-                                                <span className={`text-xs px-3 py-1.5 rounded-full font-bold transition-all ${formation.placesRestantes <= 2
-                                                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white animate-breathe shadow-lg shadow-red-500/50'
-                                                    : formation.placesRestantes <= 3
-                                                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white animate-pulse'
-                                                        : 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900'
-                                                    }`}>
-                                                    ⚡ {formation.placesRestantes} {formation.placesRestantes === 1 ? 'place' : 'places'}
-                                                </span>
-                                            )}
-                                        </div>
-
-                                        <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                                            <div className="flex items-center gap-1">
-                                                <Clock size={14} />
-                                                <span>{formation.duree}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <span className="font-semibold text-[#8B2635]">{formation.tarif}</span>
-                                            </div>
-                                            <div>
-                                                <span className="text-gray-400">Niveau:</span> {formation.niveau}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className="p-6">
-                                        <div className="mb-4">
-                                            <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Programme</div>
-                                            <ul className="space-y-1">
-                                                {formation.programme.slice(0, 3).map((item, idx) => (
-                                                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                                                        <Check size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
-                                                        <span>{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="flex flex-wrap gap-2 mb-4">
-                                            {formation.outils.map((outil, i) => (
-                                                <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                                                    {outil}
-                                                </span>
-                                            ))}
-                                        </div>
-
-                                        <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg mb-4">
-                                            <Award className="text-green-600" size={18} />
-                                            <span className="text-sm font-medium text-gray-900">Livrable: {formation.livrable}</span>
-                                        </div>
-
-                                        <div className="mb-4 p-3 bg-gray-50 rounded-lg space-y-2">
-                                            <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                <Calendar size={14} className="text-[#8B2635]" />
-                                                <span><strong>Début:</strong> {formation.dateDebut}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                <Clock size={14} className="text-[#8B2635]" />
-                                                <span><strong>Horaires:</strong> {formation.horaires}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2 text-sm text-gray-700">
-                                                <MapPin size={14} className="text-[#8B2635]" />
-                                                <span><strong>Lieu:</strong> {formation.lieu}</span>
-                                            </div>
-                                        </div>
-
-                                        <Link
-                                            href={`/inscription?module=${formation.id}`}
-                                            className="block w-full text-center py-4 px-6 rounded-lg font-semibold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors"
-                                        >
-                                            Réserver ma place
-                                        </Link>
-                                    </div>
-                                </div>
-                            );
-                        })()}
+                        <FormationCard
+                            formation={FORMATIONS[activeMobileTab]}
+                            index={0}
+                        />
                     </div>
 
                     {/* Pack Complet */}
