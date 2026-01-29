@@ -123,15 +123,10 @@ export default function FormationsPage() {
     const [showLightbox, setShowLightbox] = useState(false);
     const [activeMobileTab, setActiveMobileTab] = useState(0);
     const [showScrollTop, setShowScrollTop] = useState(false);
-    const [activeViewers, setActiveViewers] = useState(7); // Real-time visitor counter
-    const [showVisitorToast, setShowVisitorToast] = useState(false); // Toast visibility
+    // Removed fake visitor counter - replaced with authentic social proof
     const [scrollProgress, setScrollProgress] = useState(0); // Scroll progress percentage
 
-    // Function to trigger toast for 3 seconds
-    const triggerVisitorToast = () => {
-        setShowVisitorToast(true);
-        setTimeout(() => setShowVisitorToast(false), 3000);
-    };
+
 
     // Scroll listener for sticky CTA, scroll-to-top button, and progress bar
     useEffect(() => {
@@ -152,25 +147,7 @@ export default function FormationsPage() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Real-time visitor counter (simulated realistic fluctuations)
-    useEffect(() => {
-        // Trigger toast on load
-        triggerVisitorToast();
 
-        const updateViewers = () => {
-            setActiveViewers(prev => {
-                // Random fluctuation between 3 and 12 viewers
-                const change = Math.random() > 0.5 ? 1 : -1;
-                const newCount = prev + change;
-                // Keep within realistic bounds
-                return Math.max(3, Math.min(12, newCount));
-            });
-        };
-
-        // Update every 8-15 seconds for realistic feel
-        const interval = setInterval(updateViewers, 8000 + Math.random() * 7000);
-        return () => clearInterval(interval);
-    }, []);
 
     // Conversion Tracking Helpers
     const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
@@ -295,28 +272,13 @@ export default function FormationsPage() {
                     </div>
                 </div>
 
-                {/* Visitor Counter Notification (Android Style) */}
-                {showVisitorToast && (
-                    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-sm pointer-events-none animate-slide-in-down">
-                        <div className="bg-white/90 backdrop-blur-md dark:bg-gray-900/90 rounded-2xl p-4 shadow-2xl border border-white/20 flex gap-3 items-start">
-                            {/* App Icon */}
-                            <div className="w-10 h-10 rounded-xl bg-[#8B2635] flex items-center justify-center flex-shrink-0 shadow-sm">
-                                <Eye size={20} className="text-white" />
-                            </div>
-
-                            {/* Content */}
-                            <div className="flex-1 min-w-0">
-                                <div className="flex justify-between items-baseline mb-0.5">
-                                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Cineworld Académie</h4>
-                                    <span className="text-[10px] text-gray-500 font-medium">Maintenant</span>
-                                </div>
-                                <p className="text-sm text-gray-700 dark:text-gray-200 leading-tight">
-                                    <span className="font-bold text-[#8B2635]">{activeViewers} personnes</span> consultent cette formation en ce moment.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                )}
+                {/* Authentic Social Proof Badge */}
+                <div className="absolute top-24 right-6 z-20 hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-gray-100">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span className="text-sm text-gray-700">
+                        <strong className="text-[#8B2635]">+150</strong> étudiants formés depuis 2014
+                    </span>
+                </div>
 
 
                 <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-20">

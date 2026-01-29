@@ -229,14 +229,51 @@ function TestimonialStack() {
 // Composant Section Orientation Carrière avec animations - Style Script Cinéma
 function OrientationCarriereSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
+  const sectionRef = React.useRef<HTMLElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
+  // Effet Spotlight - track mouse position relative to section
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos(null);
+  };
+
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="py-16 md:py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden"
+    >
+      {/* Effet Spotlight qui suit la souris (desktop only) */}
+      {mousePos && (
+        <div
+          className="absolute pointer-events-none z-0 hidden md:block transition-opacity duration-300"
+          style={{
+            left: mousePos.x - 200,
+            top: mousePos.y - 200,
+            width: 400,
+            height: 400,
+            background: 'radial-gradient(circle, rgba(110, 22, 21, 0.25) 0%, rgba(197, 165, 114, 0.15) 30%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(40px)',
+          }}
+        />
+      )}
+
       {/* Pattern de bobine de film subtil */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
