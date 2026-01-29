@@ -735,6 +735,28 @@ export default function FormationsPage() {
             </section>
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* QUIZ D'ORIENTATION */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <section id="quiz" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 scroll-mt-20">
+                <div className="max-w-4xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 px-4 py-2 rounded-full mb-4">
+                            <Sparkles className="w-5 h-5 text-red-400" />
+                            <span className="text-red-400 font-semibold text-sm">Besoin d'aide pour choisir ?</span>
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Quelle formation est faite pour vous ?
+                        </h2>
+                        <p className="text-gray-400 max-w-2xl mx-auto">
+                            Répondez à 5 questions rapides et découvrez le parcours qui correspond
+                            le mieux à vos aspirations professionnelles.
+                        </p>
+                    </div>
+                    <FormationQuiz />
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* TÉMOIGNAGES */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
             <section className="py-20 bg-[#1a1a2e]">
@@ -924,28 +946,6 @@ export default function FormationsPage() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════════════════════════════════ */}
-            {/* QUIZ D'ORIENTATION */}
-            {/* ═══════════════════════════════════════════════════════════════════ */}
-            <section id="quiz" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 scroll-mt-20">
-                <div className="max-w-4xl mx-auto px-6">
-                    <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 to-orange-500/20 px-4 py-2 rounded-full mb-4">
-                            <Sparkles className="w-5 h-5 text-red-400" />
-                            <span className="text-red-400 font-semibold text-sm">Découvrez votre voie</span>
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Quelle formation est faite pour vous ?
-                        </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
-                            Répondez à 5 questions rapides et découvrez le parcours qui correspond
-                            le mieux à vos aspirations professionnelles.
-                        </p>
-                    </div>
-                    <FormationQuiz />
                 </div>
             </section>
 
