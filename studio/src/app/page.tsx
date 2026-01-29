@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BookOpen, Award, GraduationCap, Shield, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
+import { BookOpen, Award, GraduationCap, Shield, Clock, CheckCircle2, ArrowRight, MapPin, Mail, Phone, Facebook, Instagram, Youtube, Sparkles } from 'lucide-react';
 
 const CITATIONS = [
   { auteur: "Stanley Kubrick", texte: "Si cela peut être écrit ou pensé, cela peut être filmé." },
@@ -308,7 +308,7 @@ function OrientationCarriereSection() {
                 </p>
 
                 <p className="text-lg md:text-xl text-gray-800 text-center mb-6 leading-relaxed">
-                  "Votre carrière commence <span className="font-bold text-[#6e1615]">ici</span>. Faites le test pour découvrir la formation idéale."
+                  "Chaque création commence par un <span className="font-bold text-[#6e1615]">choix</span>. Quel sera le vôtre ?"
                 </p>
 
                 {/* Liste style répliques */}
@@ -330,7 +330,7 @@ function OrientationCarriereSection() {
                     href="/formations#quiz"
                     className="group inline-flex items-center gap-3 px-6 py-3 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded hover:bg-[#8b1c1b] transition-all duration-300 shadow-lg"
                   >
-                    <span className="font-mono text-sm">▶ DÉCOUVRIR MON PROFIL</span>
+                    <span className="font-mono text-sm">🎬 JOUEZ VOTRE SCÈNE</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -429,7 +429,7 @@ export default function Home() {
 
     const id = setTimeout(() => {
       setCitation(null);
-    }, 2000);
+    }, 1500);
     setTimeoutId(id);
   };
 
@@ -457,7 +457,8 @@ export default function Home() {
             fill
             className="object-cover"
             priority
-            quality={100}
+            quality={85}
+            sizes="100vw"
           />
         </div>
 
@@ -478,7 +479,8 @@ export default function Home() {
             fill
             className="object-cover"
             priority
-            quality={100}
+            quality={85}
+            sizes="100vw"
           />
         </div>
 
@@ -616,15 +618,15 @@ export default function Home() {
               <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Contact</h3>
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-start gap-3">
-                  <span>📍</span>
+                  <MapPin className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
                   <span>Djibouti, Aviation<br />Institut "DIHM"</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span>📧</span>
+                  <Mail className="w-5 h-5 text-yellow-500 flex-shrink-0" />
                   <a href="mailto:cineworld@cineworldacademie.com" className="hover:text-white transition-colors">cineworld@cineworldacademie.com</a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span>📱</span>
+                  <Phone className="w-5 h-5 text-yellow-500 flex-shrink-0" />
                   <a href="https://wa.me/25377145306" className="hover:text-white transition-colors">+253 77 14 53 06</a>
                 </li>
               </ul>
@@ -634,14 +636,14 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Réseaux Sociaux</h3>
               <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
-                  <span>📘</span>
+                <a href="https://facebook.com/cineworldacademie" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors group">
+                  <Facebook className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
-                  <span>📷</span>
+                <a href="https://instagram.com/cineworldacademie" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors group">
+                  <Instagram className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
-                  <span>📺</span>
+                <a href="https://youtube.com/@cineworldacademie" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors group">
+                  <Youtube className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
                 </a>
               </div>
             </div>
