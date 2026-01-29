@@ -634,18 +634,18 @@ export default function FormationsPage() {
                 <div className="absolute top-0 left-0 w-full bg-[#C5A572] overflow-hidden py-2 z-20">
                     <div className="animate-marquee whitespace-nowrap">
                         <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ INSCRIPTIONS OUVERTES</span>
-                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ #C'EST QUE DU BON</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ CERTIFICATION OFFICIELLE RECONNUE</span>
                         <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ VIDÉO</span>
-                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ PRODUCTION</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ 85% D'INSCRIPTIONS PROFESIONNELLES</span>
                         <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ MONTAGE</span>
-                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ DESIGN GRAPHIQUE</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ +2000 PERSONNES FORMÉES</span>
                         <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ MARKETING DIGITAL</span>
                         <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ INSCRIPTIONS OUVERTES</span>
-                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ #C'EST QUE DU BON</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ 85% D'INSCRIPTIONS PROFESIONNELLES</span>
                         <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ VIDÉO</span>
-                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ PRODUCTION</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ CERTIFICATION OFFICIELLE RECONNUE</span>
                         <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ MONTAGE</span>
-                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ DESIGN GRAPHIQUE</span>
+                        <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ INSCRIPTIONS OUVERTES</span>
                         <span className="mx-8 text-sm font-bold text-[#1a1a2e]">✦ MARKETING DIGITAL</span>
                     </div>
                 </div>
@@ -654,7 +654,7 @@ export default function FormationsPage() {
                 <div className="absolute top-24 right-6 z-20 hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-gray-100">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                     <span className="text-sm text-gray-700">
-                        <strong className="text-[#8B2635]">+150</strong> étudiants formés depuis 2014
+                        <strong className="text-[#8B2635]">+150</strong> étudiants formés depuis 2025
                     </span>
                 </div>
 
