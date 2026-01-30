@@ -82,15 +82,23 @@ const FORMATIONS = [
         ],
         syllabus: [
             { jour: 1, titre: "Fondamentaux du Design", heures: 6, contenu: ["Théorie des couleurs", "Typographie", "Composition"] },
-            { jour: 2, titre: "Canva - Niveau Débutant", heures: 6, contenu: ["Interface", "Templates", "Éléments"] },
+            { jour: 2, titre: "Canva - Niveau Débutant", heures: 6, contenu: ["Interface", "Templates", "Éléments graphiques"] },
             { jour: 3, titre: "Canva - Niveau Avancé", heures: 6, contenu: ["Brand Kit", "Animations", "Présentations"] },
-            { jour: 4, titre: "Photoshop - Bases", heures: 6, contenu: ["Interface", "Calques", "Outils de sélection"] },
-            { jour: 5, titre: "Photoshop - Retouche", heures: 6, contenu: ["Retouche photo", "Filtres", "Masques"] }
+            { jour: 4, titre: "Canva - Réseaux Sociaux", heures: 6, contenu: ["Posts Instagram", "Stories", "Bannières"] },
+            { jour: 5, titre: "Photoshop - Bases", heures: 6, contenu: ["Interface", "Calques", "Outils de sélection"] },
+            { jour: 6, titre: "Photoshop - Retouche", heures: 6, contenu: ["Retouche photo", "Filtres", "Masques"] },
+            { jour: 7, titre: "Photoshop - Montage", heures: 6, contenu: ["Photomontage", "Détourage", "Effets spéciaux"] },
+            { jour: 8, titre: "Figma - Introduction", heures: 6, contenu: ["Interface", "Frames", "Composants"] },
+            { jour: 9, titre: "Figma - UI Design", heures: 6, contenu: ["Design système", "Auto-layout", "Prototypage"] },
+            { jour: 10, titre: "Identité Visuelle", heures: 6, contenu: ["Logo design", "Charte graphique", "Brand guidelines"] },
+            { jour: 11, titre: "Print Design", heures: 6, contenu: ["Cartes de visite", "Flyers", "Brochures"] },
+            { jour: 12, titre: "Portfolio Final", heures: 6, contenu: ["Compilation portfolio", "Présentation", "Export pro"] }
         ],
         programme: [
-            "Canva Expert",
-            "Photoshop CC avancé",
-            "Figma & UI Design"
+            "Jours 1-4 — Canva Expert",
+            "Jours 5-7 — Photoshop CC avancé",
+            "Jours 8-9 — Figma & UI Design",
+            "Jours 10-12 — Identité visuelle & Portfolio"
         ],
         certification: "Certificat Designer Graphique"
     },
@@ -126,16 +134,28 @@ const FORMATIONS = [
         ],
         syllabus: [
             { jour: 1, titre: "Pré-production", heures: 7, contenu: ["Écriture scénario", "Storyboard", "Découpage technique"] },
-            { jour: 2, titre: "Techniques de Tournage", heures: 7, contenu: ["Cadrage", "Mouvements caméra", "Éclairage"] },
-            { jour: 3, titre: "Prise de Son", heures: 7, contenu: ["Micro-cravate", "Perche", "Ambiance sonore"] },
-            { jour: 4, titre: "Premiere Pro - Bases", heures: 7, contenu: ["Interface", "Import", "Timeline"] },
-            { jour: 5, titre: "Montage Avancé", heures: 7, contenu: ["Transitions", "Effets", "Rythme"] }
+            { jour: 2, titre: "Techniques de Cadrage", heures: 7, contenu: ["Règles de composition", "Mouvements caméra", "Plans et angles"] },
+            { jour: 3, titre: "Éclairage Cinéma", heures: 7, contenu: ["3-points lighting", "Éclairage naturel", "Ambiances lumière"] },
+            { jour: 4, titre: "Prise de Son", heures: 7, contenu: ["Micro-cravate", "Perche", "Ambiance sonore"] },
+            { jour: 5, titre: "Tournage Pratique I", heures: 7, contenu: ["Exercices terrain", "Interview", "Plan séquence"] },
+            { jour: 6, titre: "Tournage Pratique II", heures: 7, contenu: ["Tournage court-métrage", "Direction acteurs", "Gestion plateau"] },
+            { jour: 7, titre: "Premiere Pro - Bases", heures: 7, contenu: ["Interface", "Import médias", "Timeline"] },
+            { jour: 8, titre: "Premiere Pro - Montage", heures: 7, contenu: ["Transitions", "Effets vidéo", "Rythme narratif"] },
+            { jour: 9, titre: "Montage Avancé", heures: 7, contenu: ["Multicam", "J-cuts & L-cuts", "Montage parallèle"] },
+            { jour: 10, titre: "DaVinci - Colorimétrie", heures: 7, contenu: ["Correction primaire", "Correction secondaire", "LUTs"] },
+            { jour: 11, titre: "Sound Design", heures: 7, contenu: ["Mixage audio", "Musique", "Bruitages Foley"] },
+            { jour: 12, titre: "After Effects - Motion", heures: 7, contenu: ["Titres animés", "Lower thirds", "Transitions motion"] },
+            { jour: 13, titre: "After Effects - VFX", heures: 7, contenu: ["Effets visuels", "Compositing", "Green screen"] },
+            { jour: 14, titre: "Export & Diffusion", heures: 7, contenu: ["Formats export", "YouTube/Réseaux", "Compression web"] },
+            { jour: 15, titre: "Projet Final", heures: 7, contenu: ["Finalisation court-métrage", "Projection", "Feedback jury"] }
         ],
         programme: [
-            "Pré-production — Script, Storyboard",
-            "Tournage — Cadrage, Son, Éclairage",
-            "Post-Production — Montage, Colorimétrie",
-            "Export multi-plateformes"
+            "Jours 1-4 — Pré-production & Théorie",
+            "Jours 5-6 — Tournage Pratique",
+            "Jours 7-9 — Montage Premiere Pro",
+            "Jours 10-11 — Colorimétrie & Sound Design",
+            "Jours 12-13 — After Effects & VFX",
+            "Jours 14-15 — Export & Projet Final"
         ],
         certification: "Certificat Réalisateur Vidéo"
     },
@@ -169,14 +189,19 @@ const FORMATIONS = [
         ],
         syllabus: [
             { jour: 1, titre: "Fondamentaux du Marketing", heures: 5, contenu: ["Persona client", "Positionnement", "Proposition de valeur"] },
-            { jour: 2, titre: "Stratégie Réseaux Sociaux", heures: 5, contenu: ["Calendrier éditorial", "Types de contenu", "Engagement"] },
-            { jour: 3, titre: "Meta Business Suite", heures: 5, contenu: ["Création de pages", "Insights", "Planification"] },
-            { jour: 4, titre: "Publicité Facebook/Instagram", heures: 5, contenu: ["Objectifs campagnes", "Audiences", "Créatifs"] }
+            { jour: 2, titre: "Stratégie Réseaux Sociaux", heures: 5, contenu: ["Calendrier éditorial", "Types de contenu", "Hashtags & Engagement"] },
+            { jour: 3, titre: "Meta Business Suite", heures: 5, contenu: ["Création de pages", "Insights analytics", "Planification posts"] },
+            { jour: 4, titre: "Publicité Facebook", heures: 5, contenu: ["Objectifs campagnes", "Audiences cibles", "Créatifs pub"] },
+            { jour: 5, titre: "Publicité Instagram", heures: 5, contenu: ["Stories Ads", "Reels sponsorisés", "Shopping Instagram"] },
+            { jour: 6, titre: "Google Ads - Bases", heures: 5, contenu: ["Compte Ads", "Mots-clés", "Annonces texte"] },
+            { jour: 7, titre: "Gestion de Projet", heures: 5, contenu: ["Notion workspace", "Planification agile", "Collaboration équipe"] },
+            { jour: 8, titre: "Stratégie Complète", heures: 5, contenu: ["Étude de cas", "Plan marketing complet", "Présentation finale"] }
         ],
         programme: [
-            "Gestion de Projet",
-            "Stratégie Marketing",
-            "Publicité Facebook/Instagram"
+            "Jours 1-2 — Fondamentaux & Stratégie",
+            "Jours 3-5 — Meta Ads (Facebook/Instagram)",
+            "Jour 6 — Google Ads",
+            "Jours 7-8 — Gestion de projet & Plan final"
         ],
         certification: "Certificat Marketing Digital"
     }
