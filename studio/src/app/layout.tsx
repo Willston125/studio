@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import StatusBanner from '@/components/StatusBanner';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
   // === BASE URL (pour les images OG) ===
@@ -98,17 +99,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
-      <body>
-        {process.env.NEXT_PUBLIC_SITE_STATUS && (
-          <StatusBanner
-            message={process.env.NEXT_PUBLIC_SITE_STATUS}
-            type="warning"
-          />
-        )}
-        <Navbar />
-        {children}
-        <WhatsAppButton />
+    <html lang="fr" suppressHydrationWarning>
+      <body className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <ThemeProvider>
+          {process.env.NEXT_PUBLIC_SITE_STATUS && (
+            <StatusBanner
+              message={process.env.NEXT_PUBLIC_SITE_STATUS}
+              type="warning"
+            />
+          )}
+          <Navbar />
+          {children}
+          <WhatsAppButton />
+        </ThemeProvider>
       </body>
     </html>
   );
