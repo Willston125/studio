@@ -95,10 +95,10 @@ const FORMATIONS = [
             { jour: 12, titre: "Portfolio Final", heures: 6, contenu: ["Compilation portfolio", "Présentation", "Export pro"] }
         ],
         programme: [
-            "Jours 1-4 — Canva Expert",
-            "Jours 5-7 — Photoshop CC avancé",
-            "Jours 8-9 — Figma & UI Design",
-            "Jours 10-12 — Identité visuelle & Portfolio"
+            "Canva Expert",
+            "Photoshop CC avancé",
+            "Figma & UI Design",
+            "Identité visuelle & Portfolio"
         ],
         certification: "Certificat Designer Graphique"
     },
@@ -150,12 +150,12 @@ const FORMATIONS = [
             { jour: 15, titre: "Projet Final", heures: 7, contenu: ["Finalisation court-métrage", "Projection", "Feedback jury"] }
         ],
         programme: [
-            "Jours 1-4 — Pré-production & Théorie",
-            "Jours 5-6 — Tournage Pratique",
-            "Jours 7-9 — Montage Premiere Pro",
-            "Jours 10-11 — Colorimétrie & Sound Design",
-            "Jours 12-13 — After Effects & VFX",
-            "Jours 14-15 — Export & Projet Final"
+            "Pré-production & Théorie",
+            "Tournage Pratique",
+            "Montage Premiere Pro",
+            "Colorimétrie & Sound Design",
+            "After Effects & VFX",
+            "Export & Projet Final"
         ],
         certification: "Certificat Réalisateur Vidéo"
     },
@@ -198,10 +198,10 @@ const FORMATIONS = [
             { jour: 8, titre: "Stratégie Complète", heures: 5, contenu: ["Étude de cas", "Plan marketing complet", "Présentation finale"] }
         ],
         programme: [
-            "Jours 1-2 — Fondamentaux & Stratégie",
-            "Jours 3-5 — Meta Ads (Facebook/Instagram)",
-            "Jour 6 — Google Ads",
-            "Jours 7-8 — Gestion de projet & Plan final"
+            "Fondamentaux & Stratégie",
+            "Meta Ads (Facebook/Instagram)",
+            "Google Ads",
+            "Gestion de projet & Plan final"
         ],
         certification: "Certificat Marketing Digital"
     }
