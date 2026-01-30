@@ -1042,42 +1042,111 @@ export default function FormationsPage() {
             {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* SECTION CERTIFICAT */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 bg-gray-50">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                                Certificat de formation professionnelle
-                            </h2>
-                            <p className="text-gray-600 mb-6 leading-relaxed">
-                                À l'issue de votre formation, vous recevez un certificat officiel
-                                Cineworld Académie attestant de vos compétences. Ce document est
-                                reconnu par les professionnels du secteur à Djibouti et dans la région.
-                            </p>
-                            <ul className="space-y-3 mb-8">
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <Check size={18} className="text-green-500" />
-                                    <span>Certificat nominatif officiel</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <Check size={18} className="text-green-500" />
-                                    <span>Détail des compétences acquises</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <Check size={18} className="text-green-500" />
-                                    <span>Reconnu par les entreprises locales</span>
-                                </li>
-                            </ul>
+            <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6">
+                    {/* Section Header */}
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center gap-2 bg-[#C5A572]/10 px-4 py-2 rounded-full mb-4">
+                            <Award size={18} className="text-[#C5A572]" />
+                            <span className="text-[#8B2635] font-semibold text-sm">Certification Officielle</span>
                         </div>
-                        <div className="relative">
-                            <Image
-                                src="/certificate-sample.jpg"
-                                alt="Certificat Cineworld Académie"
-                                width={600}
-                                height={400}
-                                className="rounded-xl shadow-lg"
-                                loading="lazy"
-                            />
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                            Obtenez votre certificat professionnel
+                        </h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto">
+                            Rejoignez nos diplômés et boostez votre carrière avec une certification reconnue
+                        </p>
+                    </div>
+
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Image avec effet de cadre académique */}
+                        <div className="relative order-2 lg:order-1">
+                            {/* Effet de fond décoratif */}
+                            <div className="absolute -inset-4 bg-gradient-to-br from-[#C5A572]/20 to-[#8B2635]/10 rounded-3xl transform rotate-2"></div>
+                            <div className="absolute -inset-4 bg-gradient-to-br from-[#8B2635]/10 to-[#C5A572]/20 rounded-3xl transform -rotate-1"></div>
+
+                            {/* Container principal de l'image */}
+                            <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-white">
+                                <Image
+                                    src="/certificate-sample.jpg"
+                                    alt="Nos étudiants diplômés avec leurs certificats Cineworld Académie"
+                                    width={700}
+                                    height={500}
+                                    className="w-full h-auto object-cover"
+                                    loading="lazy"
+                                />
+
+                                {/* Badge superposé */}
+                                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-12 h-12 bg-[#8B2635] rounded-full flex items-center justify-center flex-shrink-0">
+                                            <GraduationCap size={24} className="text-white" />
+                                        </div>
+                                        <div>
+                                            <div className="font-bold text-gray-900">+150 diplômés</div>
+                                            <div className="text-sm text-gray-600">depuis 2025</div>
+                                        </div>
+                                        <div className="ml-auto flex items-center gap-1 text-[#C5A572]">
+                                            {"★★★★★".split("").map((star, idx) => (
+                                                <span key={idx} className="text-lg">{star}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Badges flottants */}
+                            <div className="absolute -top-6 -right-6 bg-[#8B2635] text-white px-4 py-2 rounded-full shadow-lg transform rotate-12 hidden lg:block">
+                                <span className="font-bold text-sm">Reconnu ✓</span>
+                            </div>
+                        </div>
+
+                        {/* Contenu texte */}
+                        <div className="order-1 lg:order-2">
+                            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                                Un certificat qui ouvre des portes
+                            </h3>
+                            <p className="text-gray-600 mb-8 leading-relaxed text-lg">
+                                À l'issue de votre formation, recevez votre certificat officiel
+                                Cineworld Académie. Ce document atteste de vos compétences et est
+                                reconnu par les entreprises de Djibouti et de la région.
+                            </p>
+
+                            {/* Points clés avec icônes */}
+                            <div className="space-y-4 mb-10">
+                                {[
+                                    { icon: Check, text: "Certificat nominatif personnalisé", highlight: "Votre nom" },
+                                    { icon: Check, text: "Détail des compétences maîtrisées", highlight: "Portfolio" },
+                                    { icon: Check, text: "Reconnu par les entreprises locales", highlight: "Emploi" },
+                                    { icon: Check, text: "Accès au réseau Cineworld Alumni", highlight: "Réseau" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <item.icon size={20} className="text-green-600" />
+                                        </div>
+                                        <span className="text-gray-800 font-medium">{item.text}</span>
+                                        <span className="ml-auto text-xs font-bold text-[#8B2635] bg-[#8B2635]/10 px-2 py-1 rounded hidden sm:block">{item.highlight}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* CTA */}
+                            <div className="flex flex-wrap gap-4">
+                                <Link
+                                    href="/inscription"
+                                    className="inline-flex items-center gap-2 bg-[#8B2635] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#6e1615] transition-all hover:scale-105 shadow-lg"
+                                >
+                                    <GraduationCap size={20} />
+                                    Obtenir mon certificat
+                                </Link>
+                                <Link
+                                    href="#formations"
+                                    className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-6 py-4 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
+                                >
+                                    Voir les formations
+                                    <ArrowRight size={18} />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
