@@ -1,0 +1,40 @@
+{
+  "placeholderImages": [
+    {
+      "id": "filmmaking-1",
+      "description": "A close-up shot of a vintage film camera.",
+      "imageUrl": "https://images.unsplash.com/photo-1512390225428-a9d51c817f94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx2aW50YWdlJTIwY2FtZXJhfGVufDB8fHx8MTc2MjgzODc0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vintage camera"
+    },
+    {
+      "id": "filmmaking-2",
+      "description": "A bustling film set with crew and equipment.",
+      "imageUrl": "https://images.unsplash.com/photo-1580746353679-aa5dee1ac3e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmaWxtJTIwc2V0fGVufDB8fHx8MTc2Mjg1Njc5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "film set"
+    },
+    {
+      "id": "filmmaking-3",
+      "description": "An empty director's chair on a film set.",
+      "imageUrl": "https://images.unsplash.com/photo-1528191070801-d45063d66e17?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkaXJlY3RvciUyMGNoYWlyfGVufDB8fHx8MTc2Mjg0NzI3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "director chair"
+    },
+    {
+      "id": "filmmaking-4",
+      "description": "A person writing a screenplay in a notebook.",
+      "imageUrl": "https://images.unsplash.com/photo-1598620616655-7fce1a6fdf87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY3JlZW53cml0aW5nJTIwbm90ZWJvb2t8ZW58MHx8fHwxNzYyODY0MTI2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "screenwriting notebook"
+    },
+    {
+      "id": "filmmaking-5",
+      "description": "A video editor working in a dark editing suite.",
+      "imageUrl": "https://images.unsplash.com/photo-1636293875439-b3125c0f1fc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxlZGl0aW5nJTIwc3VpdGV8ZW58MHx8fHwxNzYyODIxMTcyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "editing suite"
+    },
+    {
+      "id": "filmmaking-6",
+      "description": "A classic film reel on a white background.",
+      "imageUrl": "https://images.unsplash.com/photo-1542204165-65bf26472b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmlsbSUyMHJlZWx8ZW58MHx8fHwxNzYyODM4ODM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "film reel"
+    }
+  ]
+}
