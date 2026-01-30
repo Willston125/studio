@@ -603,7 +603,7 @@ export default function Home() {
               Nos Collaborations
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-2 tracking-tight">
-              ILS NOUS FONT CONFIANCE
+              ON A TRAVAILLER AVEC EUX
             </h2>
             <div className="w-16 h-1 bg-[#6e1615] mx-auto mt-4"></div>
           </div>
