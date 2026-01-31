@@ -29,8 +29,8 @@ const PROJETS = [
         ],
         equipe: [
             { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
-            { role: 'Scénariste', nom: 'Abdoulwahab Mohamed Ali' },
-            { role: 'Production', nom: 'cineworld academie' },
+            { role: 'Scénariste', nom: 'Abdoulwahab Mohamed-Ali William' },
+            { role: 'Production', nom: 'Cineworld academie' },
         ],
     },
     {

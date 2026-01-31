@@ -512,10 +512,10 @@ const FormationCard = ({ formation, index }: { formation: Formation; index: numb
                 <div className="p-6 pt-0 mt-auto">
                     <Link
                         href={`/inscription?module=${formation.id}`}
-                        className="block w-full text-center py-4 px-6 rounded-xl font-bold bg-gradient-to-r from-[#8B2635] to-[#6e1615] text-white hover:from-[#6e1615] hover:to-[#8B2635] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        className="btn-animated btn-animated-bordeaux w-full justify-center shadow-lg"
                     >
-                        S'inscrire à {formation.tarif}
-                        <ArrowRight className="inline-block ml-2" size={18} />
+                        <span className="btn-circle"></span>
+                        <span className="btn-text">S'inscrire à {formation.tarif}</span>
                     </Link>
                 </div>
             </div>
@@ -1344,9 +1344,10 @@ export default function FormationsPage() {
                         <Link
                             href="/inscription"
                             onClick={() => handleCTAClick('sticky_mobile')}
-                            className="block w-full text-center py-4 px-6 rounded-lg font-bold bg-[#8B2635] text-white hover:bg-[#6e1615] transition-colors shadow-md focus:outline-none focus:ring-4 focus:ring-[#8B2635]/50 touch-action-manipulation"
+                            className="btn-animated btn-animated-bordeaux w-full justify-center shadow-md"
                         >
-                            S'inscrire maintenant
+                            <span className="btn-circle"></span>
+                            <span className="btn-text">S'inscrire maintenant</span>
                         </Link>
                     </div>
                 )
