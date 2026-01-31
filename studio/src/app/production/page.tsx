@@ -13,7 +13,7 @@ const PROJETS = [
         badge: 'Nouvelle Sortie',
         saison: 'Saison 1',
         episodes: '1 Épisodes',
-        client: 'Abdoulwabe Mohamed Ali',
+        Auteur: 'Abdoulwabe Mohamed Ali',
         synopsis: "Hassan et Hela partagent une complicité profonde à Djibouti-ville, mais Hassan est fiancé, lié par une promesse traditionnelle. Pris entre deux amours, un mensonge et une suite de tensions font éclater la vérité. Humiliée, la fiancée rompt, tandis que Hela, blessée, décide de se battre.",
         image: '/affiche-film-doute.png',
         featured: true,
@@ -106,7 +106,7 @@ export default function ProductionPage() {
                                     <span className="hidden md:inline">•</span>
                                     <span>{featuredProject.episodes}</span>
                                     <span className="hidden md:inline">•</span>
-                                    <span>Client : {featuredProject.client}</span>
+                                    <span>Auteur : {featuredProject.Auteur}</span>
                                 </div>
                                 <p className="text-gray-400 text-lg mb-8 line-clamp-2">
                                     {featuredProject.synopsis}
