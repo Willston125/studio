@@ -14,16 +14,16 @@ const PROJETS = [
         badge: 'Nouvelle Sortie',
         saison: 'Saison 1',
         episodes: '4 Épisodes',
-        client: 'Cinéworld Production',
+        client: 'Abdoulwahab Mohamed Ali',
         annee: '2026',
         duree: '4 x 25 min',
         synopsis: "Hassan et Hela partagent une complicité profonde à Djibouti-ville, mais Hassan est fiancé, lié par une promesse traditionnelle. Pris entre deux amours, un mensonge et une suite de tensions font éclater la vérité. Humiliée, la fiancée rompt, tandis que Hela, blessée, décide de se battre.",
         image: '/affiche-film-doute.png',
         teaser: '#',
         equipe: [
-            { role: 'Réalisateur', nom: 'Équipe Cinéworld' },
-            { role: 'Scénariste', nom: 'Équipe Cinéworld' },
-            { role: 'Production', nom: 'Cinéworld Studio' },
+            { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
+            { role: 'Scénariste', nom: 'Abdoulwahab Mohamed Ali' },
+            { role: 'Production', nom: 'Abdoulwahab Mohamed Ali' },
         ],
     },
     {
@@ -67,8 +67,8 @@ const PROJETS = [
         image: '/galerie3.png',
         teaser: '#',
         equipe: [
-            { role: 'Réalisateur', nom: 'Équipe Cinéworld' },
-            { role: 'Montage', nom: 'Équipe Cinéworld' },
+            { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
+            { role: 'Montage', nom: 'Abdoulwahab Mohamed Ali' },
         ],
     },
 ];
