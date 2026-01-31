@@ -14,7 +14,7 @@ const PROJETS = [
         badge: 'Nouvelle Sortie',
         saison: 'Saison 1',
         episodes: '2 Épisodes',
-        client: 'Abdoulwahab Mohamed Ali',
+        Auteur: 'Abdoulwahab Mohamed Ali',
         annee: '2026',
         duree: '2 x 20 min',
         synopsis: "Hassan et Hela partagent une complicité profonde à Djibouti-ville, mais Hassan est fiancé, lié par une promesse traditionnelle. Pris entre deux amours, un mensonge et une suite de tensions font éclater la vérité. Humiliée, la fiancée rompt, tandis que Hela, blessée, décide de se battre.",
