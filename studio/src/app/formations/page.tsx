@@ -10,6 +10,7 @@ import FormationQuiz from '@/components/FormationQuiz';
 const FORMATIONS = [
     {
         id: 1,
+        anchorId: "module-web",
         icon: Monitor,
         module: "Module 1",
         titre: "Création de site internet avec l'IA",
@@ -54,6 +55,7 @@ const FORMATIONS = [
     },
     {
         id: 2,
+        anchorId: "module-design",
         icon: Palette,
         module: "Module 2",
         titre: "Design graphique professionnel",
@@ -104,6 +106,7 @@ const FORMATIONS = [
     },
     {
         id: 3,
+        anchorId: "module-video",
         icon: Video,
         module: "Module 3",
         titre: "Réalisation & montage vidéo",
@@ -161,6 +164,7 @@ const FORMATIONS = [
     },
     {
         id: 4,
+        anchorId: "module-marketing",
         icon: TrendingUp,
         module: "Module 4",
         titre: "Marketing digital & gestion de projet",
@@ -261,7 +265,7 @@ const FormationCard = ({ formation, index }: { formation: Formation; index: numb
 
     return (
         <AnimatedSection delay={index * 0.1}>
-            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+            <div id={formation.anchorId} className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col scroll-mt-28">
                 {/* Header avec gradient */}
                 <div className="relative p-6 bg-gradient-to-br from-gray-50 to-white border-b border-gray-100">
                     {/* Badge Populaire */}
@@ -868,7 +872,7 @@ export default function FormationsPage() {
                     </div>
 
                     {/* Pack Complet */}
-                    <div className="bg-[#8B2635] rounded-2xl p-8 md:p-12 text-white">
+                    <div id="pack-complet" className="bg-[#8B2635] rounded-2xl p-8 md:p-12 text-white scroll-mt-28">
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div>
                                 <div className="inline-block bg-[#C5A572] text-[#8B2635] px-3 py-1 rounded-lg text-sm font-semibold mb-4">

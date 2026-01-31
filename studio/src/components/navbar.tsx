@@ -12,11 +12,11 @@ const MENU_ITEMS = {
         label: 'NOS FORMATIONS',
         href: '/formations',
         items: [
-            { icon: Monitor, label: 'Site Web avec l\'IA', href: '/formations', description: 'Créez des sites modernes' },
-            { icon: Palette, label: 'Design Graphique', href: '/formations', description: 'Maîtrisez Canva & Photoshop' },
-            { icon: Video, label: 'Réalisation Vidéo', href: '/formations', description: 'Tournage & montage pro' },
-            { icon: TrendingUp, label: 'Marketing Digital', href: '/formations', description: 'Boostez votre visibilité' },
-            { icon: Sparkles, label: 'Pack Creator 360°', href: '/formations', description: 'Les 4 modules • -10.000 FDJ', highlight: true },
+            { icon: Monitor, label: 'Site Web avec l\'IA', href: '/formations#module-web', description: 'Créez des sites modernes' },
+            { icon: Palette, label: 'Design Graphique', href: '/formations#module-design', description: 'Maîtrisez Canva & Photoshop' },
+            { icon: Video, label: 'Réalisation Vidéo', href: '/formations#module-video', description: 'Tournage & montage pro' },
+            { icon: TrendingUp, label: 'Marketing Digital', href: '/formations#module-marketing', description: 'Boostez votre visibilité' },
+            { icon: Sparkles, label: 'Pack Creator 360°', href: '/formations#pack-complet', description: 'Les 4 modules • -10.000 FDJ', highlight: true },
         ]
     },
     production: {
@@ -24,8 +24,8 @@ const MENU_ITEMS = {
         href: '/production',
         items: [
             { icon: Play, label: 'Nos Réalisations', href: '/production', description: 'Découvrez nos projets' },
-            { icon: Film, label: 'Doute Forcé', href: '/production', description: 'Fiction dramatique' },
-            { icon: Video, label: 'La Boussole Digitale', href: '/production', description: 'Série documentaire' },
+            { icon: Film, label: 'Doute Forcé', href: '/production#featured', description: 'Fiction dramatique' },
+            { icon: Video, label: 'La Boussole Digitale', href: '/production#all-projects', description: 'Série documentaire' },
         ]
     },
     association: {
@@ -60,20 +60,20 @@ function NavDropdown({ menu }: { menu: typeof MENU_ITEMS.formations }) {
                             key={index}
                             href={item.href}
                             className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${item.highlight
-                                    ? 'bg-[#6e1615]/10 dark:bg-[#C5A572]/10 hover:bg-[#6e1615]/20 dark:hover:bg-[#C5A572]/20'
-                                    : 'hover:bg-gray-100 dark:hover:bg-slate-700'
+                                ? 'bg-[#6e1615]/10 dark:bg-[#C5A572]/10 hover:bg-[#6e1615]/20 dark:hover:bg-[#C5A572]/20'
+                                : 'hover:bg-gray-100 dark:hover:bg-slate-700'
                                 }`}
                         >
                             <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${item.highlight
-                                    ? 'bg-[#6e1615] dark:bg-[#C5A572] text-white dark:text-slate-900'
-                                    : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300'
+                                ? 'bg-[#6e1615] dark:bg-[#C5A572] text-white dark:text-slate-900'
+                                : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300'
                                 }`}>
                                 <item.icon size={20} />
                             </div>
                             <div>
                                 <div className={`font-semibold text-sm ${item.highlight
-                                        ? 'text-[#6e1615] dark:text-[#C5A572]'
-                                        : 'text-gray-900 dark:text-white'
+                                    ? 'text-[#6e1615] dark:text-[#C5A572]'
+                                    : 'text-gray-900 dark:text-white'
                                     }`}>
                                     {item.label}
                                 </div>
@@ -114,8 +114,8 @@ function MobileAccordion({ menu, isOpen, onToggle, onClose }: {
                             href={item.href}
                             onClick={onClose}
                             className={`flex items-center gap-3 px-3 py-2 rounded-lg ${item.highlight
-                                    ? 'bg-[#6e1615]/10 dark:bg-[#C5A572]/10'
-                                    : 'hover:bg-gray-100 dark:hover:bg-slate-800'
+                                ? 'bg-[#6e1615]/10 dark:bg-[#C5A572]/10'
+                                : 'hover:bg-gray-100 dark:hover:bg-slate-800'
                                 }`}
                         >
                             <item.icon size={18} className={item.highlight ? 'text-[#6e1615] dark:text-[#C5A572]' : 'text-gray-500'} />
