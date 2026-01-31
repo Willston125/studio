@@ -374,15 +374,18 @@ export default function ContactPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/formations"
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#6e1615] px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors"
+              className="btn-animated btn-animated-white"
             >
-              Voir les formations
+              <span className="btn-circle"></span>
+              <span className="btn-text">Voir les formations</span>
             </Link>
             <Link
               href="/inscription"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-xl font-bold border border-white/30 hover:bg-white/20 transition-colors"
+              className="btn-animated btn-animated-bordeaux"
+              style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', boxShadow: '0 0 0 2px rgba(255,255,255,0.3)' }}
             >
-              S'inscrire maintenant
+              <span className="btn-circle"></span>
+              <span className="btn-text">S'inscrire maintenant</span>
             </Link>
           </div>
         </div>

@@ -211,3 +211,147 @@
   transform-origin: 0%;
   z-index: 9999;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ANIMATED BUTTON - Circle Expand Effect                                      */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Base Button Style - White Variant */
+.btn-animated {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* White Button */
+.btn-animated-white {
+  background-color: white;
+  color: #000;
+  box-shadow: 0 0 0 2px white;
+}
+
+.btn-animated-white .btn-circle {
+  background-color: #facc15;
+}
+
+.btn-animated-white:hover {
+  color: #000;
+  box-shadow: 0 0 0 12px transparent;
+}
+
+/* Bordeaux Button */
+.btn-animated-bordeaux {
+  background-color: #6e1615;
+  color: white;
+  box-shadow: 0 0 0 2px #6e1615;
+}
+
+.btn-animated-bordeaux .btn-circle {
+  background-color: #facc15;
+}
+
+.btn-animated-bordeaux:hover {
+  color: #000;
+  box-shadow: 0 0 0 12px transparent;
+}
+
+/* Yellow/Accent Button */
+.btn-animated-yellow {
+  background-color: transparent;
+  color: #facc15;
+  box-shadow: 0 0 0 2px #facc15;
+}
+
+.btn-animated-yellow .btn-circle {
+  background-color: #facc15;
+}
+
+.btn-animated-yellow:hover {
+  color: #000;
+  box-shadow: 0 0 0 12px transparent;
+}
+
+/* Circle Animation Element */
+.btn-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 0;
+}
+
+.btn-animated:hover .btn-circle {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+}
+
+/* Button Text */
+.btn-text {
+  position: relative;
+  z-index: 1;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Button Icon */
+.btn-icon {
+  position: relative;
+  z-index: 1;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-animated:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+/* Active State */
+.btn-animated:active {
+  transform: scale(0.95);
+}
+
+/* Arrow Animation */
+.btn-arrow {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-arrow-right {
+  right: 16px;
+}
+
+.btn-arrow-left {
+  left: -30px;
+}
+
+.btn-animated:hover .btn-arrow-right {
+  right: -30px;
+  opacity: 0;
+}
+
+.btn-animated:hover .btn-arrow-left {
+  left: 16px;
+  opacity: 1;
+}
+
+/* Scroll margin for anchor links */
+[id] {
+  scroll-margin-top: 100px;
+}

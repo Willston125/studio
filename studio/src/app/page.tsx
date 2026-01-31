@@ -365,10 +365,11 @@ function OrientationCarriereSection() {
                 <div className="text-center lg:text-left">
                   <Link
                     href="/formations#quiz"
-                    className="group inline-flex items-center gap-3 px-6 py-3 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded hover:bg-[#8b1c1b] transition-all duration-300 shadow-lg"
+                    className="btn-animated btn-animated-bordeaux shadow-lg"
                   >
-                    <span className="font-mono text-sm">🎬 JOUEZ VOTRE SCÈNE</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <span className="btn-circle"></span>
+                    <Sparkles className="w-5 h-5 btn-icon" />
+                    <span className="btn-text font-mono text-sm">JOUEZ VOTRE SCÈNE</span>
                   </Link>
                 </div>
 
@@ -556,10 +557,10 @@ export default function Home() {
             </p>
             <Link
               href="/formations"
-              className="inline-block px-8 py-4 bg-[#6e1615] text-white font-bold uppercase tracking-wider rounded-sm hover:bg-[#8b1c1b] transition-all transform hover:scale-105 pointer-events-auto border border-white/10 shadow-xl"
+              className="btn-animated btn-animated-bordeaux pointer-events-auto shadow-xl"
             >
-              {/* CTA visible */}
-              Découvrir nos formations
+              <span className="btn-circle"></span>
+              <span className="btn-text">Découvrir nos formations</span>
             </Link>
           </div>
         </div>

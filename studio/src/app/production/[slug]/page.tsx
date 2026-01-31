@@ -165,16 +165,19 @@ export default function ProjetDetailPage() {
                 <div className="flex flex-wrap gap-4 mb-12">
                     <Link
                         href={projet.teaser || '#'}
-                        className="bg-white text-black px-8 py-4 rounded font-bold flex items-center gap-2 hover:bg-gray-200 transition"
+                        className="btn-animated btn-animated-white"
                     >
-                        <Play className="w-5 h-5" /> Voir le Teaser
+                        <span className="btn-circle"></span>
+                        <Play className="w-5 h-5 btn-icon" />
+                        <span className="btn-text">Voir le Teaser</span>
                     </Link>
                     <Link
                         href="https://wa.me/25377145306"
                         target="_blank"
-                        className="bg-[#6e1615] text-white px-8 py-4 rounded font-bold hover:bg-[#8b1c1b] transition"
+                        className="btn-animated btn-animated-bordeaux"
                     >
-                        Nous Contacter
+                        <span className="btn-circle"></span>
+                        <span className="btn-text">Nous Contacter</span>
                     </Link>
                 </div>
 

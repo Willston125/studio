@@ -115,15 +115,19 @@ export default function ProductionPage() {
                                 <div className="flex flex-wrap gap-4">
                                     <Link
                                         href={featuredProject.teaser || '#'}
-                                        className="bg-white text-black px-8 py-3 rounded font-bold flex items-center hover:bg-gray-200 transition gap-2"
+                                        className="btn-animated btn-animated-white"
                                     >
-                                        <Play className="w-5 h-5" /> Voir le Teaser
+                                        <span className="btn-circle"></span>
+                                        <Play className="w-5 h-5 btn-icon" />
+                                        <span className="btn-text">Voir le Teaser</span>
                                     </Link>
                                     <Link
                                         href={`/production/${featuredProject.slug}`}
-                                        className="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded font-bold hover:bg-white/30 transition flex items-center gap-2"
+                                        className="btn-animated btn-animated-yellow"
                                     >
-                                        <Info className="w-5 h-5" /> Plus d'infos
+                                        <span className="btn-circle"></span>
+                                        <Info className="w-5 h-5 btn-icon" />
+                                        <span className="btn-text">Plus d'infos</span>
                                     </Link>
                                 </div>
                             </div>

@@ -77,8 +77,9 @@ export default function AProposPage() {
                             </p>
 
                             <div className="flex flex-wrap gap-4">
-                                <Link href="/inscription" className="bg-black text-white px-8 py-4 rounded font-bold text-sm uppercase hover:bg-gray-800 transition-all shadow-lg">
-                                    Découvrir nos cursus
+                                <Link href="/inscription" className="btn-animated btn-animated-bordeaux shadow-lg" style={{ backgroundColor: 'black' }}>
+                                    <span className="btn-circle"></span>
+                                    <span className="btn-text">Découvrir nos cursus</span>
                                 </Link>
                             </div>
                         </motion.div>
@@ -196,10 +197,10 @@ export default function AProposPage() {
                         </p>
                         <Link
                             href="/inscription"
-                            className="inline-flex items-center gap-3 bg-[#D4AF37] text-black px-10 py-4 rounded font-black text-sm uppercase hover:scale-105 transition-all shadow-xl"
+                            className="btn-animated btn-animated-yellow"
                         >
-                            S'inscrire Maintenant
-                            <ArrowRight className="w-5 h-5" />
+                            <span className="btn-circle"></span>
+                            <span className="btn-text">S'inscrire Maintenant</span>
                         </Link>
                     </motion.div>
                 </div>

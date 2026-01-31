@@ -739,16 +739,19 @@ export default function FormationsPage() {
                             <Link
                                 href="/inscription"
                                 onClick={() => handleCTAClick('hero_primary')}
-                                className="inline-flex items-center gap-2 bg-[#C5A572] text-[#1a1a2e] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#d4b882] transition-all hover:scale-105 shadow-lg focus:outline-none focus:ring-4 focus:ring-[#C5A572]/50"
+                                className="btn-animated btn-animated-yellow"
                             >
-                                🎓 Commencer ma formation
-                                <ArrowRight size={20} />
+                                <span className="btn-circle"></span>
+                                <GraduationCap size={20} className="btn-icon" />
+                                <span className="btn-text">Commencer ma formation</span>
                             </Link>
                             <Link
                                 href="#formations"
-                                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold border border-white/30 hover:bg-white/20 transition-colors"
+                                className="btn-animated btn-animated-white"
+                                style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', boxShadow: '0 0 0 2px rgba(255,255,255,0.3)' }}
                             >
-                                Voir les programmes
+                                <span className="btn-circle"></span>
+                                <span className="btn-text">Voir les programmes</span>
                             </Link>
                         </div>
                     </div>
@@ -889,10 +892,10 @@ export default function FormationsPage() {
                                 </div>
                                 <Link
                                     href="/inscription?module=5"
-                                    className="inline-flex items-center gap-2 bg-[#C5A572] text-[#8B2635] px-8 py-4 rounded-lg font-bold hover:bg-[#d4b882] transition-colors"
+                                    className="btn-animated btn-animated-yellow"
                                 >
-                                    Économiser 10.000 FDJ
-                                    <ArrowRight size={18} />
+                                    <span className="btn-circle"></span>
+                                    <span className="btn-text">Économiser 10.000 FDJ</span>
                                 </Link>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
@@ -1138,16 +1141,19 @@ export default function FormationsPage() {
                             <div className="flex flex-wrap gap-4">
                                 <Link
                                     href="/inscription"
-                                    className="inline-flex items-center gap-2 bg-[#8B2635] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#6e1615] transition-all hover:scale-105 shadow-lg"
+                                    className="btn-animated btn-animated-bordeaux shadow-lg"
                                 >
-                                    <GraduationCap size={20} />
-                                    Obtenir mon certificat
+                                    <span className="btn-circle"></span>
+                                    <GraduationCap size={20} className="btn-icon" />
+                                    <span className="btn-text">Obtenir mon certificat</span>
                                 </Link>
                                 <Link
                                     href="#formations"
-                                    className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-6 py-4 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
+                                    className="btn-animated btn-animated-white"
+                                    style={{ backgroundColor: '#f3f4f6', color: '#374151' }}
                                 >
-                                    Voir les formations
+                                    <span className="btn-circle"></span>
+                                    <span className="btn-text">Voir les formations</span>
                                     <ArrowRight size={18} />
                                 </Link>
                             </div>
@@ -1258,16 +1264,18 @@ export default function FormationsPage() {
                     <div className="flex flex-wrap justify-center gap-4">
                         <Link
                             href="/inscription"
-                            className="inline-flex items-center gap-2 bg-[#C5A572] text-[#8B2635] px-8 py-4 rounded-lg font-bold hover:bg-[#d4b882] transition-colors"
+                            className="btn-animated btn-animated-yellow"
                         >
-                            <GraduationCap size={20} />
-                            S'inscrire maintenant
+                            <span className="btn-circle"></span>
+                            <GraduationCap size={20} className="btn-icon" />
+                            <span className="btn-text">S'inscrire maintenant</span>
                         </Link>
                         <a
                             href="https://wa.me/25377145306"
-                            className="inline-flex items-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-semibold border border-white/30 hover:bg-white/20 transition-colors"
+                            className="btn-animated btn-animated-bordeaux"
                         >
-                            Nous contacter
+                            <span className="btn-circle"></span>
+                            <span className="btn-text">Nous contacter</span>
                         </a>
                     </div>
                 </div>
