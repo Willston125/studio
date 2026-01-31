@@ -76,7 +76,7 @@ export default function ProductionPage() {
                     {/* FEATURED PROJECT (HERO) */}
                     {/* ═══════════════════════════════════════════════════════════════════ */}
                     {featuredProject && (
-                        <div className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden group mb-12 shadow-2xl border border-gray-800">
+                        <div id="featured" className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden group mb-12 shadow-2xl border border-gray-800 scroll-mt-28">
 
                             {/* Background Image */}
                             <div className="absolute inset-0">
