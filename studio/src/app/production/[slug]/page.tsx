@@ -20,6 +20,13 @@ const PROJETS = [
         synopsis: "Hassan et Hela partagent une complicité profonde à Djibouti-ville, mais Hassan est fiancé, lié par une promesse traditionnelle. Pris entre deux amours, un mensonge et une suite de tensions font éclater la vérité. Humiliée, la fiancée rompt, tandis que Hela, blessée, décide de se battre.",
         image: '/affiche-film-doute.png',
         teaser: '#',
+        teaserVideo: '', // Ajouter l'ID YouTube ici plus tard
+        galerie: ['/galerie1.png', '/galerie2.png', '/galerie3.png', '/affiche-film-doute.png'],
+        casting: [
+            { nom: 'Acteur 1', role: 'Hassan', photo: '/galerie1.png' },
+            { nom: 'Actrice 1', role: 'Hela', photo: '/galerie2.png' },
+            { nom: 'Actrice 2', role: 'La Fiancée', photo: '/galerie3.png' },
+        ],
         equipe: [
             { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
             { role: 'Scénariste', nom: 'Abdoulwahab Mohamed Ali' },
@@ -181,6 +188,93 @@ export default function ProjetDetailPage() {
                         {projet.synopsis}
                     </p>
                 </div>
+
+                {/* ═══════════════════════════════════════════════════════════════════ */}
+                {/* TEASER VIDEO */}
+                {/* ═══════════════════════════════════════════════════════════════════ */}
+                {projet.teaserVideo && (
+                    <div className="mb-12">
+                        <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                            <Play className="w-6 h-6 text-yellow-500" />
+                            Teaser Officiel
+                        </h2>
+                        <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
+                            <iframe
+                                src={projet.teaserVideo}
+                                title={`Teaser ${projet.titre}`}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                className="absolute inset-0 w-full h-full"
+                            />
+                        </div>
+                    </div>
+                )}
+
+                {/* ═══════════════════════════════════════════════════════════════════ */}
+                {/* CASTING */}
+                {/* ═══════════════════════════════════════════════════════════════════ */}
+                {projet.casting && projet.casting.length > 0 && (
+                    <div className="mb-12">
+                        <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                            <Users className="w-6 h-6 text-yellow-500" />
+                            Casting
+                        </h2>
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            {projet.casting.map((acteur, index) => (
+                                <div
+                                    key={index}
+                                    className="group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-500/50 transition-all duration-300"
+                                >
+                                    <div className="aspect-[3/4] relative overflow-hidden">
+                                        <Image
+                                            src={acteur.photo}
+                                            alt={acteur.nom}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                                        <span className="text-yellow-500 text-xs font-bold uppercase tracking-wider">{acteur.role}</span>
+                                        <p className="text-white font-bold text-lg">{acteur.nom}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* ═══════════════════════════════════════════════════════════════════ */}
+                {/* GALERIE */}
+                {/* ═══════════════════════════════════════════════════════════════════ */}
+                {projet.galerie && projet.galerie.length > 0 && (
+                    <div className="mb-12">
+                        <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                            <Film className="w-6 h-6 text-yellow-500" />
+                            Galerie
+                        </h2>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {projet.galerie.map((img, index) => (
+                                <div
+                                    key={index}
+                                    className="group relative aspect-video rounded-lg overflow-hidden border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 cursor-pointer"
+                                >
+                                    <Image
+                                        src={img}
+                                        alt={`${projet.titre} - Image ${index + 1}`}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                                            <Play className="w-4 h-4 text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
 
                 {/* Équipe */}
                 {projet.equipe && projet.equipe.length > 0 && (

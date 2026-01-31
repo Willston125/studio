@@ -7,7 +7,7 @@ import { Play, Info, ArrowRight } from 'lucide-react';
 // Données des projets
 const PROJETS = [
     {
-        slug: 'doute-forcé',
+        slug: 'doute-force',
         titre: 'Doute forcé',
         type: 'Fiction-dramatique',
         badge: 'Nouvelle Sortie',
