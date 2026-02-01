@@ -23,9 +23,9 @@ const PROJETS = [
         teaserVideo: '', // Ajouter l'ID YouTube ici plus tard
         galerie: ['/galerie1.png', '/galerie2.png', '/galerie3.png', '/affiche-film-doute.png'],
         casting: [
-            { nom: 'Actrice 2', role: 'La Fiancée', photo: '/la fiancé.jpeg' },
-            { nom: 'Acteur 1', role: 'Hassan', photo: '/Hassane.jpeg' },
-            { nom: 'Actrice 1', role: 'Hela', photo: '/Hela.jpeg' },
+            { nom: 'Feminin 1er rôle', role: 'La Fiancée', photo: '/la fiancé.jpeg' },
+            { nom: 'Masculin 1er rôle', role: 'Hassan', photo: '/Hassane.jpeg' },
+            { nom: 'Feminin 2eme rôle', role: 'Hela', photo: '/Hela.jpeg' },
         ],
         equipe: [
             { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
