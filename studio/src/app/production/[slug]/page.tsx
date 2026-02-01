@@ -1,9 +1,11 @@
 'use client';
 
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { ArrowLeft, Play, Calendar, Users, Film, Clock } from 'lucide-react';
+import { ArrowLeft, Play, Calendar, Users, Film, Clock, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Données des projets (même structure que page principale)
 const PROJETS = [
@@ -83,6 +85,7 @@ const PROJETS = [
 export default function ProjetDetailPage() {
     const params = useParams();
     const slug = params.slug as string;
+    const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
     const projet = PROJETS.find(p => p.slug === slug);
 
@@ -261,6 +264,7 @@ export default function ProjetDetailPage() {
                                 <div
                                     key={index}
                                     className="group relative aspect-video rounded-lg overflow-hidden border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 cursor-pointer"
+                                    onClick={() => setSelectedImage(index)}
                                 >
                                     <Image
                                         src={img}
@@ -370,6 +374,70 @@ export default function ProjetDetailPage() {
                     </div>
                 </div>
             </footer>
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* LIGHTBOX */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <AnimatePresence>
+                {selectedImage !== null && projet.galerie && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setSelectedImage(null)}
+                            className="absolute top-4 right-4 text-white/50 hover:text-white transition p-2 z-50"
+                        >
+                            <X size={32} />
+                        </button>
+
+                        {/* Image Container */}
+                        <div
+                            className="relative w-full max-w-6xl aspect-video rounded-lg overflow-hidden shadow-2xl border border-white/10"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <Image
+                                src={projet.galerie[selectedImage]}
+                                alt={`Galerie ${selectedImage + 1}`}
+                                fill
+                                className="object-contain"
+                            />
+
+                            {/* Navigation */}
+                            {selectedImage > 0 && (
+                                <button
+                                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur transition border border-white/10"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedImage(selectedImage - 1);
+                                    }}
+                                >
+                                    <ChevronLeft size={24} />
+                                </button>
+                            )}
+                            {selectedImage < (projet.galerie.length - 1) && (
+                                <button
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur transition border border-white/10"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedImage(selectedImage + 1);
+                                    }}
+                                >
+                                    <ChevronRight size={24} />
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Counter */}
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 font-mono text-sm bg-black/50 px-4 py-1 rounded-full backdrop-blur">
+                            {selectedImage + 1} / {projet.galerie.length}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </main>
     );
 }
