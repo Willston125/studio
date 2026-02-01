@@ -317,17 +317,17 @@ export default function ProjetDetailPage() {
                     <h3 className="text-center text-yellow-500 font-bold uppercase tracking-widest mb-8 text-sm">
                         Produit avec le soutien de
                     </h3>
-                    <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70 hover:opacity-100 transition-opacity">
-                        <div className="w-24 h-12 relative grayscale hover:grayscale-0 transition duration-300">
+                    <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-100 hover:opacity-100 transition-opacity">
+                        <div className="w-32 h-16 md:w-40 md:h-20 relative grayscale-0 hover:grayscale-0 transition duration-300">
                             <Image src="/unicef.png" alt="Unicef" fill className="object-contain" />
                         </div>
-                        <div className="w-24 h-12 relative grayscale hover:grayscale-0 transition duration-300">
+                        <div className="w-32 h-16 md:w-40 md:h-20 relative grayscale-0 hover:grayscale-0 transition duration-300">
                             <Image src="/ambassa-de-france.png" alt="Ambassade de France" fill className="object-contain" />
                         </div>
-                        <div className="w-24 h-12 relative grayscale hover:grayscale-0 transition duration-300">
+                        <div className="w-32 h-16 md:w-40 md:h-20 relative grayscale-0 hover:grayscale-0 transition duration-300">
                             <Image src="/logo_bdc.png" alt="BDC" fill className="object-contain" />
                         </div>
-                        <div className="w-24 h-12 relative grayscale hover:grayscale-0 transition duration-300">
+                        <div className="w-32 h-16 md:w-40 md:h-20 relative grayscale-0 hover:grayscale-0 transition duration-300">
                             <Image src="/american-corner.png" alt="American Corner" fill className="object-contain" />
                         </div>
                     </div>

@@ -131,17 +131,17 @@ export default function ProductionPage() {
                                     </Link>
                                 </div>
 
-                                {/* Partenaires Intégrés */}
-                                <div className="mt-8 pt-6 border-t border-white/20 flex flex-wrap items-center gap-4">
-                                    <span className="text-xs text-gray-300 uppercase tracking-widest font-bold">Avec le soutien de :</span>
-                                    <div className="flex items-center gap-5 opacity-90">
-                                        <div className="relative w-14 h-8 grayscale hover:grayscale-0 transition duration-300">
+                                {/* Partenaires Intégrés - Version Large Mobile */}
+                                <div className="mt-8 pt-6 border-t border-white/20 flex flex-col md:flex-row md:items-center gap-4">
+                                    <span className="text-sm text-gray-300 uppercase tracking-widest font-bold">Avec le soutien de :</span>
+                                    <div className="flex flex-wrap items-center gap-6 opacity-100">
+                                        <div className="relative w-24 h-12 md:w-20 md:h-10 grayscale-0 hover:grayscale-0 transition duration-300">
                                             <Image src="/unicef.png" alt="Unicef" fill className="object-contain" />
                                         </div>
-                                        <div className="relative w-14 h-8 grayscale hover:grayscale-0 transition duration-300">
+                                        <div className="relative w-24 h-12 md:w-20 md:h-10 grayscale-0 hover:grayscale-0 transition duration-300">
                                             <Image src="/ambassa-de-france.png" alt="France" fill className="object-contain" />
                                         </div>
-                                        <div className="relative w-14 h-6 grayscale hover:grayscale-0 transition duration-300">
+                                        <div className="relative w-24 h-10 md:w-20 md:h-8 grayscale-0 hover:grayscale-0 transition duration-300">
                                             <Image src="/logo_bdc.png" alt="BDC" fill className="object-contain" />
                                         </div>
                                     </div>
