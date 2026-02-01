@@ -23,9 +23,9 @@ const PROJETS = [
         teaserVideo: '', // Ajouter l'ID YouTube ici plus tard
         galerie: ['/galerie1.png', '/galerie2.png', '/galerie3.png', '/affiche-film-doute.png'],
         casting: [
-            { nom: 'Acteur 1', role: 'Hassan', photo: '/galerie1.png' },
-            { nom: 'Actrice 1', role: 'Hela', photo: '/galerie2.png' },
-            { nom: 'Actrice 2', role: 'La Fiancée', photo: '/galerie3.png' },
+            { nom: 'Actrice 2', role: 'La Fiancée', photo: '/la fiancé.jpeg' },
+            { nom: 'Acteur 1', role: 'Hassan', photo: '/Hassane.jpeg' },
+            { nom: 'Actrice 1', role: 'Hela', photo: '/Hela.jpeg' },
         ],
         equipe: [
             { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
@@ -306,6 +306,31 @@ export default function ProjetDetailPage() {
                         <ArrowLeft className="w-5 h-5" />
                         Voir toutes les réalisations
                     </Link>
+                </div>
+            </div>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* PARTENAIRES & SPONSORS */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <div className="max-w-5xl mx-auto px-6 mb-20">
+                <div className="border-t border-gray-800 pt-12">
+                    <h3 className="text-center text-yellow-500 font-bold uppercase tracking-widest mb-8 text-sm">
+                        Produit avec le soutien de
+                    </h3>
+                    <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70 hover:opacity-100 transition-opacity">
+                        <div className="w-24 h-12 relative grayscale hover:grayscale-0 transition duration-300">
+                            <Image src="/unicef.png" alt="Unicef" fill className="object-contain" />
+                        </div>
+                        <div className="w-24 h-12 relative grayscale hover:grayscale-0 transition duration-300">
+                            <Image src="/ambassa-de-france.png" alt="Ambassade de France" fill className="object-contain" />
+                        </div>
+                        <div className="w-24 h-12 relative grayscale hover:grayscale-0 transition duration-300">
+                            <Image src="/logo_bdc.png" alt="BDC" fill className="object-contain" />
+                        </div>
+                        <div className="w-24 h-12 relative grayscale hover:grayscale-0 transition duration-300">
+                            <Image src="/american-corner.png" alt="American Corner" fill className="object-contain" />
+                        </div>
+                    </div>
                 </div>
             </div>
 

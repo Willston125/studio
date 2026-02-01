@@ -130,6 +130,22 @@ export default function ProductionPage() {
                                         <span className="btn-text">Plus d'infos</span>
                                     </Link>
                                 </div>
+
+                                {/* Partenaires Intégrés */}
+                                <div className="mt-8 pt-6 border-t border-white/20 flex flex-wrap items-center gap-4">
+                                    <span className="text-xs text-gray-300 uppercase tracking-widest font-bold">Avec le soutien de :</span>
+                                    <div className="flex items-center gap-5 opacity-90">
+                                        <div className="relative w-14 h-8 grayscale hover:grayscale-0 transition duration-300">
+                                            <Image src="/unicef.png" alt="Unicef" fill className="object-contain" />
+                                        </div>
+                                        <div className="relative w-14 h-8 grayscale hover:grayscale-0 transition duration-300">
+                                            <Image src="/ambassa-de-france.png" alt="France" fill className="object-contain" />
+                                        </div>
+                                        <div className="relative w-14 h-6 grayscale hover:grayscale-0 transition duration-300">
+                                            <Image src="/logo_bdc.png" alt="BDC" fill className="object-contain" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -235,6 +251,6 @@ export default function ProductionPage() {
                     </div>
                 </div>
             </footer>
-        </main>
+        </main >
     );
 }
