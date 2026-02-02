@@ -22,6 +22,7 @@ const PROJETS = [
         synopsis: "Hassan et Hela partagent une complicité profonde à Djibouti-ville, mais Hassan est fiancé, lié par une promesse traditionnelle. Pris entre deux amours, un mensonge et une suite de tensions font éclater la vérité. Humiliée, la fiancée rompt, tandis que Hela, blessée, décide de se battre.",
         image: '/affiche-film-doute.png',
         teaser: '#',
+        directorPhoto: '/auteur.jpeg',
         teaserVideo: '', // Ajouter l'ID YouTube ici plus tard
         galerie: ['/galerie1.png', '/galerie2.png', '/galerie3.png', '/affiche-film-doute.png'],
         casting: [
@@ -217,16 +218,37 @@ export default function ProjetDetailPage() {
                 )}
 
                 {/* ═══════════════════════════════════════════════════════════════════ */}
-                {/* CASTING */}
+                {/* CASTING & REALISATEUR */}
                 {/* ═══════════════════════════════════════════════════════════════════ */}
-                {projet.casting && projet.casting.length > 0 && (
+                {(projet.casting && projet.casting.length > 0 || (projet as any).directorPhoto) && (
                     <div className="mb-12">
                         <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
                             <Users className="w-6 h-6 text-yellow-500" />
-                            Casting
+                            Casting & Réalisation
                         </h2>
+
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {projet.casting.map((acteur, index) => (
+                            {/* Carte Réalisateur (Premier élément) */}
+                            {(projet as any).directorPhoto && (
+                                <div className="group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-red-600/50 transition-all duration-300">
+                                    <div className="aspect-[3/4] relative overflow-hidden">
+                                        <Image
+                                            src={(projet as any).directorPhoto}
+                                            alt={projet.equipe?.find(e => e.role.includes('Réalisateur'))?.nom || 'Réalisateur'}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                                        <span className="text-red-600 text-xs font-bold uppercase tracking-wider block mb-1">RÉALISATEUR</span>
+                                        <p className="text-white font-bold leading-tight">{projet.equipe?.find(e => e.role.includes('Réalisateur'))?.nom}</p>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Cartes Acteurs */}
+                            {projet.casting?.map((acteur, index) => (
                                 <div
                                     key={index}
                                     className="group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-500/50 transition-all duration-300"
@@ -241,8 +263,8 @@ export default function ProjetDetailPage() {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
                                     </div>
                                     <div className="absolute bottom-0 left-0 right-0 p-4">
-                                        <span className="text-yellow-500 text-xs font-bold uppercase tracking-wider">{acteur.role}</span>
-                                        <p className="text-white font-bold text-lg">{acteur.nom}</p>
+                                        <span className="text-yellow-500 text-xs font-bold uppercase tracking-wider block mb-1">{acteur.role}</span>
+                                        <p className="text-white font-bold leading-tight">{acteur.nom}</p>
                                     </div>
                                 </div>
                             ))}
