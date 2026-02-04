@@ -355,3 +355,439 @@
 [id] {
   scroll-margin-top: 100px;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* MAGICAL BOOK - Harry Potter Style 3D Book Animation                         */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Book Container with 3D Perspective */
+.book-container {
+  perspective: 1500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The Book Wrapper */
+.magical-book {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.magical-book:hover {
+  transform: rotateY(-5deg) rotateX(5deg);
+}
+
+.magical-book.book-open {
+  transform: rotateY(0deg);
+}
+
+/* Book Cover (Front) */
+.book-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 30%, #5c3a22 50%, #3d2415 100%);
+  border-radius: 0 12px 12px 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.5),
+    5px 5px 20px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+/* Book Spine Effect */
+.book-cover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 25px;
+  background: linear-gradient(90deg, #1a0f08 0%, #3d2415 50%, #5c3a22 100%);
+  border-radius: 3px 0 0 3px;
+}
+
+/* Gold Border Decoration */
+.book-cover::after {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border: 3px solid #c5a572;
+  border-radius: 0 8px 8px 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 20px rgba(197, 165, 114, 0.1),
+    0 0 10px rgba(197, 165, 114, 0.2);
+}
+
+/* Cover Opened State */
+.magical-book.book-open .book-cover {
+  transform: rotateY(-160deg);
+}
+
+/* Cover Content */
+.book-cover-content {
+  position: absolute;
+  inset: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Decorative Corners */
+.book-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #c5a572;
+}
+
+.book-corner-tl {
+  top: 25px;
+  left: 25px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.book-corner-tr {
+  top: 25px;
+  right: 25px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 8px 0 0;
+}
+
+.book-corner-bl {
+  bottom: 25px;
+  left: 25px;
+  border-right: none;
+  border-top: none;
+}
+
+.book-corner-br {
+  bottom: 25px;
+  right: 25px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 8px 0;
+}
+
+/* Book Pages (Right Side when open) */
+.book-pages {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f5f0e6 0%, #fff9ed 20%, #fffef8 100%);
+  border-radius: 0 10px 10px 0;
+  padding: 40px 30px 40px 50px;
+  box-shadow:
+    inset 5px 0 15px rgba(0, 0, 0, 0.1),
+    inset 0 0 20px rgba(139, 90, 43, 0.05);
+  opacity: 0;
+  transition: opacity 0.5s ease 0.3s;
+  overflow-y: auto;
+}
+
+/* Lines on the page */
+.book-pages::before {
+  content: '';
+  position: absolute;
+  left: 35px;
+  top: 30px;
+  bottom: 30px;
+  width: 2px;
+  background: linear-gradient(180deg, #d4a574 0%, #c5a572 100%);
+  opacity: 0.4;
+}
+
+.magical-book.book-open .book-pages {
+  opacity: 1;
+}
+
+/* Book Binding Edge */
+.book-binding {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(90deg, #1a0f08 0%, #2c1810 100%);
+  border-radius: 5px 0 0 5px;
+  z-index: 5;
+  box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Page Content Styling */
+.book-title {
+  font-family: 'Cinzel', 'Times New Roman', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #c5a572;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.book-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: #8b6914;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.book-emblem {
+  width: 80px;
+  height: 80px;
+  border: 3px solid #c5a572;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+  background: radial-gradient(circle, rgba(197, 165, 114, 0.1) 0%, transparent 70%);
+  box-shadow: 0 0 30px rgba(197, 165, 114, 0.3);
+}
+
+/* Page Interior Content */
+.page-header {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4a2c1a;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #d4a574;
+}
+
+.page-mission-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: linear-gradient(90deg, rgba(197, 165, 114, 0.1) 0%, transparent 100%);
+  border-left: 3px solid #c5a572;
+  border-radius: 0 8px 8px 0;
+}
+
+.page-mission-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #6e1615 0%, #8b2635 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(110, 22, 21, 0.3);
+}
+
+.page-mission-text {
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: #3d2415;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Shimmer Effect on Cover */
+@keyframes book-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.book-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(197, 165, 114, 0.1) 25%,
+      rgba(197, 165, 114, 0.2) 50%,
+      rgba(197, 165, 114, 0.1) 75%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: book-shimmer 3s infinite;
+  pointer-events: none;
+  border-radius: 0 12px 12px 0;
+}
+
+/* Floating Particles Around Book */
+@keyframes float-particle {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.book-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #c5a572;
+  border-radius: 50%;
+  animation: float-particle 4s infinite;
+  opacity: 0;
+}
+
+/* Click Hint Animation */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(197, 165, 114, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(197, 165, 114, 0.6);
+  }
+}
+
+.book-hint {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Close Button */
+.book-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #6e1615;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.book-close-btn:hover {
+  background: #8b2635;
+  transform: scale(1.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* BALLET MAGIQUE - Floating Particles Animation                               */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes ballet-float {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.3;
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  25% {
+    transform: translate(30px, -50px) rotate(90deg);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translate(-20px, -100px) rotate(180deg);
+    opacity: 0.5;
+  }
+
+  75% {
+    transform: translate(40px, -60px) rotate(270deg);
+    opacity: 0.7;
+  }
+
+  90% {
+    opacity: 0.4;
+  }
+}
+
+/* Sparkle burst animation for wand interaction */
+@keyframes sparkle-burst {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Twinkle animation for stars */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Magic trail glow */
+@keyframes trail-glow {
+  0% {
+    box-shadow: 0 0 5px currentColor;
+    opacity: 1;
+  }
+
+  100% {
+    box-shadow: 0 0 20px currentColor;
+    opacity: 0;
+  }
+}

@@ -77,6 +77,303 @@ const TESTIMONIALS = [
   }
 ];
 
+// Données pour la section Mission
+const MISSIONS = [
+  { icon: "🎬", text: "Former les jeunes dans l'audiovisuel à devenir des professionnels" },
+  { icon: "🎥", text: "Aider à la production de contenus créatifs" },
+  { icon: "📡", text: "Aider à la diffusion des œuvres djiboutiennes" },
+  { icon: "🤝", text: "Créer une synergie entre jeunes créateurs" },
+  { icon: "🏆", text: "Créer des grands événements pour mettre en valeur Djibouti et les talents des Djiboutiens" },
+];
+
+// Interface pour les particules magiques
+interface MagicParticle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  color: string;
+}
+
+// Composant Livre Magique - Section Notre Mission (Style Harry Potter)
+function MagicalBookSection() {
+  const [isBookOpen, setIsBookOpen] = useState(false);
+  const [isInSection, setIsInSection] = useState(false);
+  const [wandPos, setWandPos] = useState<{ x: number; y: number } | null>(null);
+  const [particles, setParticles] = useState<MagicParticle[]>([]);
+  const sectionRef = React.useRef<HTMLElement>(null);
+  const particleIdRef = React.useRef(0);
+
+  // Gestion du curseur baguette et des particules
+  useEffect(() => {
+    if (!isInSection) return;
+
+    let lastX = 0;
+    let lastY = 0;
+    let rafId: number = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Update wand position
+      setWandPos({ x: e.clientX, y: e.clientY });
+
+      // Create particle trail if mouse moved enough
+      const distance = Math.sqrt(Math.pow(e.clientX - lastX, 2) + Math.pow(e.clientY - lastY, 2));
+
+      if (distance > 5) {
+        lastX = e.clientX;
+        lastY = e.clientY;
+
+        // Create new particle
+        const colors = ['#c5a572', '#ffd700', '#f0e68c', '#daa520', '#ffdf00'];
+        const newParticle: MagicParticle = {
+          id: particleIdRef.current++,
+          x: x + (Math.random() - 0.5) * 20,
+          y: y + (Math.random() - 0.5) * 20,
+          size: Math.random() * 6 + 3,
+          opacity: 1,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        };
+
+        setParticles(prev => [...prev.slice(-30), newParticle]); // Keep max 30 particles
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    // Fade out particles over time
+    const fadeInterval = setInterval(() => {
+      setParticles(prev =>
+        prev
+          .map(p => ({ ...p, opacity: p.opacity - 0.05, y: p.y - 1 }))
+          .filter(p => p.opacity > 0)
+      );
+    }, 50);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      clearInterval(fadeInterval);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [isInSection]);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="py-20 md:py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
+      onMouseEnter={() => setIsInSection(true)}
+      onMouseLeave={() => { setIsInSection(false); setWandPos(null); setParticles([]); }}
+      style={{ cursor: isInSection ? 'none' : 'auto' }}
+    >
+      {/* Custom Magic Wand Cursor */}
+      {isInSection && wandPos && (
+        <div
+          className="fixed pointer-events-none z-[100] hidden md:block"
+          style={{
+            left: wandPos.x,
+            top: wandPos.y,
+            transform: 'translate(-5px, -5px) rotate(-45deg)'
+          }}
+        >
+          {/* Wand */}
+          <div className="relative">
+            {/* Wand handle */}
+            <div
+              className="w-2 h-16 rounded-full"
+              style={{
+                background: 'linear-gradient(180deg, #3d2415 0%, #5c3a22 50%, #2c1810 100%)',
+                boxShadow: '0 0 10px rgba(197, 165, 114, 0.5)'
+              }}
+            />
+            {/* Wand tip glow */}
+            <div
+              className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full animate-pulse"
+              style={{
+                background: 'radial-gradient(circle, #ffd700 0%, #c5a572 50%, transparent 70%)',
+                boxShadow: '0 0 20px #ffd700, 0 0 40px #c5a572'
+              }}
+            />
+            {/* Sparkle effect at tip */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs animate-ping">✨</div>
+          </div>
+        </div>
+      )}
+
+      {/* Magic Particle Trail */}
+      {particles.map(particle => (
+        <div
+          key={particle.id}
+          className="absolute pointer-events-none rounded-full"
+          style={{
+            left: particle.x,
+            top: particle.y,
+            width: particle.size,
+            height: particle.size,
+            backgroundColor: particle.color,
+            opacity: particle.opacity,
+            boxShadow: `0 0 ${particle.size * 2}px ${particle.color}`,
+            transition: 'opacity 0.1s, transform 0.1s',
+            transform: `scale(${particle.opacity})`,
+          }}
+        />
+      ))}
+
+      {/* Ambient Floating Particles - Ballet Magique */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              background: i % 3 === 0 ? '#ffd700' : i % 3 === 1 ? '#c5a572' : '#f0e68c',
+              boxShadow: `0 0 ${Math.random() * 10 + 5}px currentColor`,
+              animation: `ballet-float ${Math.random() * 10 + 15}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 10}s`,
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Background Pattern - Stars/Particles */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5a572' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3Ccircle cx='50' cy='50' r='1'/%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Section Title */}
+        <div className="text-center mb-12 md:mb-20">
+          <span className="text-[#c5a572] text-sm font-medium tracking-widest uppercase">
+            ✦ Le Grimoire de l'Académie ✦
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-white mt-4 tracking-tight">
+            NOTRE MISSION
+          </h2>
+          <p className="text-gray-400 mt-4 max-w-xl mx-auto">
+            {isInSection ? '🪄 Bougez votre baguette et cliquez sur le livre !' : 'Cliquez sur le livre pour découvrir ce qui nous anime'}
+          </p>
+        </div>
+
+        {/* Book Container */}
+        <div className="book-container min-h-[500px]">
+          <div
+            className={`magical-book ${isBookOpen ? 'book-open' : 'book-hint'}`}
+            onClick={() => setIsBookOpen(!isBookOpen)}
+          >
+            {/* Book Binding (Left Edge) */}
+            <div className="book-binding"></div>
+
+            {/* Book Pages (Visible when open) */}
+            <div className="book-pages">
+              {isBookOpen && (
+                <button
+                  className="book-close-btn"
+                  onClick={(e) => { e.stopPropagation(); setIsBookOpen(false); }}
+                >
+                  ✕
+                </button>
+              )}
+
+              <div className="page-header">
+                📜 Notre Mission Sacrée
+              </div>
+
+              {MISSIONS.map((mission, index) => (
+                <div key={index} className="page-mission-item">
+                  <div className="page-mission-icon">
+                    {mission.icon}
+                  </div>
+                  <p className="page-mission-text">
+                    {mission.text}
+                  </p>
+                </div>
+              ))}
+
+              <div className="mt-6 pt-4 border-t-2 border-dashed border-[#d4a574]/30 text-center">
+                <p className="text-xs text-[#8b6914] italic font-serif">
+                  "Le cinéma djiboutien de demain se construit aujourd'hui"
+                </p>
+                <p className="text-[10px] text-gray-500 mt-2">
+                  — Cineworld Académie, depuis 2014
+                </p>
+              </div>
+            </div>
+
+            {/* Book Cover */}
+            <div className="book-cover">
+              {/* Shimmer Effect */}
+              <div className="book-shimmer"></div>
+
+              {/* Decorative Corners */}
+              <div className="book-corner book-corner-tl"></div>
+              <div className="book-corner book-corner-tr"></div>
+              <div className="book-corner book-corner-bl"></div>
+              <div className="book-corner book-corner-br"></div>
+
+              {/* Cover Content */}
+              <div className="book-cover-content">
+                {/* Emblem */}
+                <div className="book-emblem">
+                  🎬
+                </div>
+
+                {/* Title */}
+                <h3 className="book-title">
+                  Cineworld
+                </h3>
+                <p className="book-subtitle">
+                  Académie
+                </p>
+
+                {/* Separator */}
+                <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-[#c5a572] to-transparent mb-6"></div>
+
+                {/* Subtitle */}
+                <p className="text-[#a08060] text-xs tracking-widest uppercase">
+                  Notre Mission
+                </p>
+
+                {/* Click hint */}
+                <div className="mt-8 text-[#c5a572]/60 text-xs animate-pulse">
+                  ✦ Cliquez pour ouvrir ✦
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Particles around book */}
+            <div className="book-particle" style={{ left: '10%', bottom: '20%', animationDelay: '0s' }}></div>
+            <div className="book-particle" style={{ right: '15%', bottom: '30%', animationDelay: '1s' }}></div>
+            <div className="book-particle" style={{ left: '25%', bottom: '10%', animationDelay: '2s' }}></div>
+            <div className="book-particle" style={{ right: '30%', bottom: '25%', animationDelay: '0.5s' }}></div>
+          </div>
+        </div>
+
+        {/* Bottom Decoration */}
+        <div className="text-center mt-12">
+          <div className="inline-flex items-center gap-4 text-gray-500 text-sm">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#c5a572]/50"></div>
+            <span className="text-[#c5a572]">✦</span>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#c5a572]/50"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 // Composant Pile de Cartes Interactive pour Témoignages - Style Script Cinéma
 function TestimonialStack() {
   const [isOpen, setIsOpen] = useState(false);
@@ -565,6 +862,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* SECTION NOTRE MISSION - LIVRE MAGIQUE */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <MagicalBookSection />
 
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* SECTION ORIENTATION CARRIÈRE - CTA QUIZ */}

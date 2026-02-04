@@ -826,6 +826,209 @@ export default function FormationsPage() {
 
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* TABLEAU COMPARATIF DES MODULES */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+                <div className="max-w-6xl mx-auto px-6">
+                    <AnimatedSection>
+                        <div className="text-center mb-12">
+                            <span className="text-[#C5A572] text-sm font-medium tracking-widest uppercase">
+                                ✦ Comparez nos modules ✦
+                            </span>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-4">
+                                Quel module choisir ?
+                            </h2>
+                            <p className="text-gray-600 max-w-2xl mx-auto">
+                                Trouvez la formation qui correspond à vos objectifs en un coup d'œil
+                            </p>
+                        </div>
+                    </AnimatedSection>
+
+                    {/* Desktop Table */}
+                    <AnimatedSection delay={0.2} className="hidden md:block">
+                        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+                            <table className="w-full">
+                                <thead>
+                                    <tr className="bg-gradient-to-r from-[#8B2635] to-[#6e1615]">
+                                        <th className="py-4 px-6 text-left text-white font-semibold text-sm uppercase tracking-wider">
+                                            Module
+                                        </th>
+                                        <th className="py-4 px-6 text-center text-white font-semibold text-sm uppercase tracking-wider">
+                                            Durée
+                                        </th>
+                                        <th className="py-4 px-6 text-center text-white font-semibold text-sm uppercase tracking-wider">
+                                            Prix
+                                        </th>
+                                        <th className="py-4 px-6 text-center text-white font-semibold text-sm uppercase tracking-wider">
+                                            Niveau
+                                        </th>
+                                        <th className="py-4 px-6 text-left text-white font-semibold text-sm uppercase tracking-wider">
+                                            Livrable
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-200">
+                                    {FORMATIONS.map((formation, index) => (
+                                        <motion.tr
+                                            key={formation.id}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: index * 0.1 }}
+                                            className="hover:bg-gray-50 transition-colors group"
+                                        >
+                                            {/* Module Name */}
+                                            <td className="py-5 px-6">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-10 h-10 bg-gradient-to-br from-[#8B2635] to-[#C5A572] rounded-lg flex items-center justify-center flex-shrink-0">
+                                                        <formation.icon size={20} className="text-white" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-bold text-gray-900 group-hover:text-[#8B2635] transition-colors">
+                                                            {formation.titre}
+                                                        </div>
+                                                        <div className="text-xs text-gray-500">
+                                                            {formation.module}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            {/* Duration */}
+                                            <td className="py-5 px-6 text-center">
+                                                <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-sm font-medium">
+                                                    <Clock size={14} />
+                                                    {formation.duree}
+                                                </div>
+                                            </td>
+
+                                            {/* Price */}
+                                            <td className="py-5 px-6 text-center">
+                                                <div className="font-bold text-lg text-[#8B2635]">
+                                                    {formation.tarif}
+                                                </div>
+                                            </td>
+
+                                            {/* Level */}
+                                            <td className="py-5 px-6 text-center">
+                                                <span className={`inline-block px-3 py-1.5 rounded-full text-xs font-semibold ${formation.niveau === "Débutant"
+                                                        ? "bg-green-100 text-green-700"
+                                                        : "bg-orange-100 text-orange-700"
+                                                    }`}>
+                                                    {formation.niveau}
+                                                </span>
+                                            </td>
+
+                                            {/* Deliverable */}
+                                            <td className="py-5 px-6">
+                                                <div className="flex items-center gap-2 text-sm text-gray-700">
+                                                    <Check size={16} className="text-[#C5A572] flex-shrink-0" />
+                                                    <span className="font-medium">{formation.livrable}</span>
+                                                </div>
+                                            </td>
+                                        </motion.tr>
+                                    ))}
+                                </tbody>
+                            </table>
+
+                            {/* Footer CTA */}
+                            <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
+                                <div className="flex items-center justify-between">
+                                    <p className="text-sm text-gray-600">
+                                        <strong className="text-gray-900">Conseil :</strong> Combinez plusieurs modules pour un parcours complet
+                                    </p>
+                                    <Link
+                                        href="#formations"
+                                        className="inline-flex items-center gap-2 text-sm font-semibold text-[#8B2635] hover:text-[#C5A572] transition-colors"
+                                    >
+                                        Voir les détails
+                                        <ArrowRight size={16} />
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </AnimatedSection>
+
+                    {/* Mobile Cards */}
+                    <div className="md:hidden space-y-4">
+                        {FORMATIONS.map((formation, index) => (
+                            <AnimatedSection key={formation.id} delay={index * 0.1}>
+                                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow">
+                                    {/* Header */}
+                                    <div className="bg-gradient-to-r from-[#8B2635] to-[#6e1615] p-4">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                                                <formation.icon size={24} className="text-white" />
+                                            </div>
+                                            <div>
+                                                <div className="text-white/70 text-xs font-medium">
+                                                    {formation.module}
+                                                </div>
+                                                <div className="text-white font-bold text-sm">
+                                                    {formation.titre}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="p-4 space-y-3">
+                                        {/* Duration */}
+                                        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                                            <span className="text-sm text-gray-600 flex items-center gap-2">
+                                                <Clock size={16} className="text-gray-400" />
+                                                Durée
+                                            </span>
+                                            <span className="font-semibold text-gray-900">{formation.duree}</span>
+                                        </div>
+
+                                        {/* Price */}
+                                        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                                            <span className="text-sm text-gray-600">Prix</span>
+                                            <span className="font-bold text-lg text-[#8B2635]">{formation.tarif}</span>
+                                        </div>
+
+                                        {/* Level */}
+                                        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                                            <span className="text-sm text-gray-600">Niveau</span>
+                                            <span className={`px-3 py-1 rounded-full text-xs font-semibold ${formation.niveau === "Débutant"
+                                                    ? "bg-green-100 text-green-700"
+                                                    : "bg-orange-100 text-orange-700"
+                                                }`}>
+                                                {formation.niveau}
+                                            </span>
+                                        </div>
+
+                                        {/* Deliverable */}
+                                        <div className="flex items-start gap-2 pt-2">
+                                            <Check size={18} className="text-[#C5A572] flex-shrink-0 mt-0.5" />
+                                            <div>
+                                                <div className="text-xs text-gray-500 mb-1">Livrable</div>
+                                                <div className="font-medium text-sm text-gray-900">{formation.livrable}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </AnimatedSection>
+                        ))}
+                    </div>
+
+                    {/* Bottom Note */}
+                    <AnimatedSection delay={0.4} className="mt-8">
+                        <div className="bg-[#C5A572]/10 border border-[#C5A572]/30 rounded-xl p-6 text-center">
+                            <p className="text-sm text-gray-700">
+                                💡 <strong>Besoin d'aide pour choisir ?</strong> Contactez-nous au
+                                <a href="tel:+25377382287" className="text-[#8B2635] font-semibold hover:underline ml-1">
+                                    77 38 22 87
+                                </a>
+                            </p>
+                        </div>
+                    </AnimatedSection>
+                </div>
+            </section>
+
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* CATALOGUE DES FORMATIONS */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
             <section id="formations" className="py-20">
