@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 import { GraduationCap, Camera, Users, Heart, ArrowRight } from 'lucide-react';
+import MembershipModal from '@/components/MembershipModal';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // DATA
@@ -65,6 +66,13 @@ const IMPACT_STATS = [
     { value: "100%", label: "Réinvestissement" },
 ];
 
+const EXECUTIVE_BOARD = [
+    { name: "À définir", position: "Président", photo: "/placeholder-avatar.jpg" },
+    { name: "À définir", position: "Secrétaire Générale", photo: "/placeholder-avatar.jpg" },
+    { name: "À définir", position: "Trésorier", photo: "/placeholder-avatar.jpg" },
+    { name: "À définir", position: "Contrôleur", photo: "/placeholder-avatar.jpg" },
+];
+
 // ═══════════════════════════════════════════════════════════════════════════
 // COMPONENTS
 // ═══════════════════════════════════════════════════════════════════════════
@@ -84,8 +92,13 @@ const AnimatedSection = ({ children, className = '' }: { children: React.ReactNo
 // ═══════════════════════════════════════════════════════════════════════════
 
 export default function AssociationPage() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <main className="bg-gray-50 text-gray-900 min-h-screen">
+
+            {/* Membership Modal */}
+            <MembershipModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* HERO - Split Layout (Text Left, Image Right with Stats) */}
@@ -131,13 +144,13 @@ export default function AssociationPage() {
                                 transition={{ duration: 0.8, delay: 0.6 }}
                                 className="flex flex-col sm:flex-row gap-4"
                             >
-                                <Link
-                                    href="/inscription"
+                                <button
+                                    onClick={() => setIsModalOpen(true)}
                                     className="inline-flex items-center justify-center gap-2 bg-[#D4AF37] hover:bg-[#B8860B] text-black px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105"
                                 >
-                                    Nous Rejoindre
+                                    Devenir membre adhérent
                                     <ArrowRight size={20} />
-                                </Link>
+                                </button>
                                 <Link
                                     href="/formations"
                                     className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-full font-semibold transition-all"
@@ -280,6 +293,50 @@ export default function AssociationPage() {
             </section>
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* EXECUTIVE BOARD - Dark Banner + Avatar Grid */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <section>
+                {/* Banner */}
+                <div className="section-banner section-banner-dark">
+                    <div className="max-w-7xl mx-auto">
+                        Notre Bureau Exécutif
+                    </div>
+                </div>
+
+                {/* Team Grid */}
+                <div className="max-w-6xl mx-auto px-6 py-16 bg-white">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                        {EXECUTIVE_BOARD.map((member, index) => (
+                            <AnimatedSection key={index}>
+                                <div className="text-center group">
+                                    {/* Avatar Circle */}
+                                    <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#D4AF37] transition-all duration-300">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                                            <div className="text-4xl md:text-5xl font-black text-gray-400">
+                                                {member.position.charAt(0)}
+                                            </div>
+                                        </div>
+                                        {/* When photo is added, replace with: */}
+                                        {/* <Image src={member.photo} alt={member.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300" /> */}
+                                    </div>
+
+                                    {/* Name */}
+                                    <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">
+                                        {member.name}
+                                    </h3>
+
+                                    {/* Position */}
+                                    <p className="text-sm md:text-base text-[#D4AF37] font-semibold uppercase tracking-wide">
+                                        {member.position}
+                                    </p>
+                                </div>
+                            </AnimatedSection>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* PARTNERS - White Background */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
             <section className="py-16 bg-white">
@@ -329,15 +386,15 @@ export default function AssociationPage() {
             {/* ═══════════════════════════════════════════════════════════════════ */}
             <section className="grid md:grid-cols-2">
                 {/* Left - Rejoindre */}
-                <Link href="/inscription" className="group relative h-[40vh] flex items-center justify-center overflow-hidden bg-[#D4AF37]">
+                <button onClick={() => setIsModalOpen(true)} className="group relative h-[40vh] flex items-center justify-center overflow-hidden bg-[#D4AF37] cursor-pointer">
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                     <div className="relative z-10 text-center">
                         <h3 className="text-3xl md:text-4xl font-black text-black mb-2 group-hover:scale-105 transition-transform">
-                            REJOINDRE LE MOUVEMENT
+                            DEVENIR MEMBRE
                         </h3>
-                        <p className="text-black/70 text-lg">Inscription aux formations →</p>
+                        <p className="text-black/70 text-lg">Adhérents →</p>
                     </div>
-                </Link>
+                </button>
 
                 {/* Right - Soutenir */}
                 <Link href="/contact" className="group relative h-[40vh] flex items-center justify-center overflow-hidden bg-[#8B2635]">
