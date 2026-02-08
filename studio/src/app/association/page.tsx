@@ -88,49 +88,101 @@ export default function AssociationPage() {
         <main className="bg-gray-50 text-gray-900 min-h-screen">
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            {/* HERO - Full Width Image with Title */}
+            {/* HERO - Split Layout (Text Left, Image Right with Stats) */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0">
-                    <Image src="/ultime.jpg" alt="Cinéworld Académie" fill className="object-cover" priority />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
-                </div>
+            <section className="p-4 md:p-8 bg-gray-50">
+                <div className="min-h-[85vh] grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl">
+                    {/* Left Side - Dark Background with Text */}
+                    <div className="bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] flex items-center px-8 md:px-16 py-20 md:py-0">
+                        <div className="max-w-xl">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="mb-6"
+                            >
+                                <span className="text-[#D4AF37] text-sm tracking-[0.2em] uppercase font-medium">
+                                    Association Cinéworld Académie
+                                </span>
+                            </motion.div>
 
-                {/* Content */}
-                <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-6"
-                    >
-                        L'IMAGE AU SERVICE<br />
-                        <span className="text-[#D4AF37]">DE LA JEUNESSE</span>
-                    </motion.h1>
+                            <motion.h1
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6 leading-tight"
+                            >
+                                L'Image au Service<br />
+                                <span className="text-[#D4AF37]">de la Jeunesse</span>
+                            </motion.h1>
 
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
-                        className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10"
-                    >
-                        Association Cinéworld Académie — Djibouti
-                    </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                                className="text-lg text-white/60 mb-10 leading-relaxed"
+                            >
+                                Former, accompagner et inspirer les jeunes Djiboutiens aux métiers du cinéma et de l'audiovisuel.
+                            </motion.p>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.8 }}
-                    >
-                        <Link
-                            href="/inscription"
-                            className="inline-flex items-center gap-2 bg-[#8B2635] hover:bg-[#6e1e2a] text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105"
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.6 }}
+                                className="flex flex-col sm:flex-row gap-4"
+                            >
+                                <Link
+                                    href="/inscription"
+                                    className="inline-flex items-center justify-center gap-2 bg-[#D4AF37] hover:bg-[#B8860B] text-black px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105"
+                                >
+                                    Nous Rejoindre
+                                    <ArrowRight size={20} />
+                                </Link>
+                                <Link
+                                    href="/formations"
+                                    className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-full font-semibold transition-all"
+                                >
+                                    Voir les Formations
+                                </Link>
+                            </motion.div>
+                        </div>
+                    </div>
+
+                    {/* Right Side - Image with Stats Overlay */}
+                    <div className="relative min-h-[50vh] md:min-h-full">
+                        <Image
+                            src="/ultime.jpg"
+                            alt="Cinéworld Académie"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        {/* Gradient overlay for stats visibility */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+
+                        {/* Stats at bottom */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.8 }}
+                            className="absolute bottom-0 left-0 right-0 p-6 md:p-8"
                         >
-                            Nous Rejoindre
-                            <ArrowRight size={20} />
-                        </Link>
-                    </motion.div>
+                            <div className="grid grid-cols-3 gap-4 md:gap-8">
+                                <div className="text-center">
+                                    <div className="text-3xl md:text-4xl font-black text-[#D4AF37]">150+</div>
+                                    <div className="text-xs md:text-sm text-white/70 uppercase tracking-wider">Formés</div>
+                                </div>
+                                <div className="text-center border-x border-white/20">
+                                    <div className="text-3xl md:text-4xl font-black text-[#D4AF37]">50+</div>
+                                    <div className="text-xs md:text-sm text-white/70 uppercase tracking-wider">Productions</div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-3xl md:text-4xl font-black text-[#D4AF37]">10</div>
+                                    <div className="text-xs md:text-sm text-white/70 uppercase tracking-wider">CDC Partenaires</div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
