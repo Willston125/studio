@@ -124,10 +124,10 @@ const SOLIDAIRE_FEATURES = [
 
 // NEW: Vision 2030 goals
 const VISION_2030 = [
-    { current: "150+", target: "500", label: "Jeunes formés", unit: "diplômés" },
-    { current: "50+", target: "200", label: "Productions", unit: "films" },
-    { current: "10", target: "25", label: "Partenaires", unit: "CDC" },
-    { current: "1", target: "3", label: "Centres", unit: "régions" },
+    { current: "150+", target: "500", label: "Jeunes formés", unit: "diplômés", progress: 30, icon: GraduationCap },
+    { current: "50+", target: "200", label: "Productions", unit: "films", progress: 25, icon: Camera },
+    { current: "10", target: "25", label: "Partenaires CDC", unit: "centres", progress: 40, icon: Users },
+    { current: "1", target: "3", label: "Centres Régionaux", unit: "régions", progress: 33, icon: Building2 },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -174,9 +174,7 @@ export default function AssociationPage() {
                         className="object-cover"
                         priority
                     />
-                    {/* Gradient Overlays */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
+
                 </div>
 
                 {/* Content Grid */}
@@ -242,43 +240,6 @@ export default function AssociationPage() {
                                     </div>
                                 </motion.div>
 
-                                {/* Right - Floating Mini Cards */}
-                                <motion.div
-                                    initial={{ opacity: 0, x: 50 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.3 }}
-                                    className="hidden lg:block relative h-[500px]"
-                                >
-                                    {/* Card 1 - Top Right */}
-                                    <div className="absolute top-0 right-0 w-48 h-64 rounded-2xl overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform">
-                                        <Image src="/formationgroupecom.jpg" alt="Formation" fill className="object-cover" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                                        <div className="absolute bottom-3 left-3 right-3">
-                                            <p className="text-white text-sm font-bold">FORMATION</p>
-                                            <p className="text-[#D4AF37] text-xs">150+ diplômés</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Card 2 - Middle */}
-                                    <div className="absolute top-1/4 left-0 w-56 h-72 rounded-2xl overflow-hidden shadow-2xl -rotate-6 hover:rotate-0 transition-transform">
-                                        <Image src="/equipe-formation.jpg" alt="Production" fill className="object-cover" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                                        <div className="absolute bottom-3 left-3 right-3">
-                                            <p className="text-white text-sm font-bold">PRODUCTION</p>
-                                            <p className="text-[#D4AF37] text-xs">50+ productions</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Card 3 - Bottom Right */}
-                                    <div className="absolute bottom-0 right-8 w-44 h-56 rounded-2xl overflow-hidden shadow-2xl rotate-6 hover:rotate-0 transition-transform">
-                                        <Image src="/festivaldecinemacom.jpg" alt="Festival" fill className="object-cover" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                                        <div className="absolute bottom-3 left-3 right-3">
-                                            <p className="text-white text-sm font-bold">FESTIVAL</p>
-                                            <p className="text-[#D4AF37] text-xs">10 CDC partenaires</p>
-                                        </div>
-                                    </div>
-                                </motion.div>
                             </div>
                         </div>
                     </div>
@@ -329,9 +290,7 @@ export default function AssociationPage() {
                                 fill
                                 className="object-cover grayscale"
                             />
-                            {/* Overlays */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0a0a0a] hidden lg:block" />
+
 
                             {/* Text on Image */}
                             <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
@@ -512,8 +471,7 @@ export default function AssociationPage() {
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                {/* Dark Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+
 
                                 {/* Content Overlay */}
                                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
@@ -561,8 +519,7 @@ export default function AssociationPage() {
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+
 
                                 {/* Content */}
                                 <div className="absolute inset-0 p-6 flex flex-col justify-between">
@@ -592,8 +549,7 @@ export default function AssociationPage() {
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+
 
                                 {/* Content */}
                                 <div className="absolute inset-0 p-6 flex flex-col justify-between">
@@ -674,8 +630,7 @@ export default function AssociationPage() {
                                                 fill
                                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
-                                            {/* Gradient Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
 
                                             {/* Content */}
                                             <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -706,9 +661,9 @@ export default function AssociationPage() {
             </section>
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            {/* VISION 2030 - Bordeaux Banner + Goals */}
+            {/* VISION 2030 - Premium Split Layout with Progress */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            <section>
+            <section className="overflow-hidden">
                 {/* Banner */}
                 <div className="section-banner section-banner-bordeaux">
                     <div className="max-w-7xl mx-auto flex items-center gap-3">
@@ -717,38 +672,108 @@ export default function AssociationPage() {
                     </div>
                 </div>
 
-                {/* Vision Grid */}
-                <div className="max-w-6xl mx-auto px-6 py-16 bg-gray-50">
-                    <AnimatedSection className="text-center mb-12">
-                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                            Aujourd'hui et demain : nos objectifs ambitieux pour transformer le paysage audiovisuel djiboutien.
-                        </p>
-                    </AnimatedSection>
+                <div className="grid lg:grid-cols-5 min-h-[600px]">
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        {VISION_2030.map((goal, index) => (
-                            <AnimatedSection key={index}>
-                                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-center">
-                                    {/* Current */}
-                                    <div className="text-4xl md:text-5xl font-black text-[#8B2635] mb-1">{goal.current}</div>
-                                    <div className="text-xs text-gray-400 uppercase tracking-wider mb-4">Aujourd'hui</div>
+                    {/* LEFT - Dark Panel with Ring */}
+                    <div className="lg:col-span-2 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] px-8 md:px-12 py-16 flex flex-col justify-center items-center text-center">
+                        <AnimatedSection>
+                            <div className="inline-flex items-center gap-2 bg-[#D4AF37]/20 text-[#D4AF37] px-4 py-2 rounded-full text-sm font-medium mb-6">
+                                <TrendingUp size={14} />
+                                Roadmap
+                            </div>
+                            <h2 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+                                Cap sur
+                                <br />
+                                <span className="text-[#D4AF37]">2030</span>
+                            </h2>
+                            <p className="text-white/50 text-sm mb-10 max-w-sm mx-auto">
+                                Nos objectifs ambitieux pour transformer le paysage audiovisuel djiboutien.
+                            </p>
 
-                                    {/* Arrow */}
-                                    <div className="flex items-center justify-center gap-2 text-[#D4AF37] mb-4">
-                                        <div className="h-px w-8 bg-[#D4AF37]/50" />
-                                        <ArrowRight size={16} />
-                                        <div className="h-px w-8 bg-[#D4AF37]/50" />
-                                    </div>
-
-                                    {/* Target */}
-                                    <div className="text-4xl md:text-5xl font-black text-[#D4AF37] mb-1">{goal.target}</div>
-                                    <div className="text-xs text-gray-400 uppercase tracking-wider mb-2">Objectif 2030</div>
-
-                                    {/* Label */}
-                                    <div className="text-sm font-semibold text-gray-700">{goal.label}</div>
+                            {/* Circular Progress Ring */}
+                            <div className="relative w-48 h-48 mx-auto">
+                                <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
+                                    {/* Background Ring */}
+                                    <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="8" />
+                                    {/* Progress Ring */}
+                                    <circle
+                                        cx="60" cy="60" r="52" fill="none"
+                                        stroke="#D4AF37" strokeWidth="8"
+                                        strokeLinecap="round"
+                                        strokeDasharray="327"
+                                        strokeDashoffset="229"
+                                        className="transition-all duration-1000"
+                                    />
+                                </svg>
+                                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                    <div className="text-4xl font-black text-white">30%</div>
+                                    <div className="text-white/40 text-xs uppercase tracking-wider">Accompli</div>
                                 </div>
-                            </AnimatedSection>
-                        ))}
+                            </div>
+
+                            <p className="text-white/30 text-xs mt-8 uppercase tracking-widest">2014 — 2030</p>
+                        </AnimatedSection>
+                    </div>
+
+                    {/* RIGHT - Light Panel with Goal Progress Bars */}
+                    <div className="lg:col-span-3 bg-[#f5f0eb] px-8 md:px-12 lg:px-16 py-16 flex flex-col justify-center">
+                        <div className="space-y-8">
+                            {VISION_2030.map((goal, index) => (
+                                <AnimatedSection key={index}>
+                                    <div className="group">
+                                        {/* Header Row */}
+                                        <div className="flex items-center justify-between mb-3">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-10 h-10 bg-[#8B2635]/10 rounded-xl flex items-center justify-center group-hover:bg-[#8B2635]/20 transition-colors">
+                                                    <goal.icon className="w-5 h-5 text-[#8B2635]" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-[#0a0a0a]">{goal.label}</h4>
+                                                    <p className="text-xs text-gray-400">{goal.unit}</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-2xl font-black text-[#8B2635]">{goal.current}</span>
+                                                <ArrowRight size={14} className="text-[#D4AF37]" />
+                                                <span className="text-2xl font-black text-[#D4AF37]">{goal.target}</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Progress Bar */}
+                                        <div className="relative h-3 bg-[#0a0a0a]/10 rounded-full overflow-hidden">
+                                            <div
+                                                className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#8B2635] to-[#D4AF37] rounded-full transition-all duration-1000"
+                                                style={{ width: `${goal.progress}%` }}
+                                            />
+                                            {/* Progress Dot */}
+                                            <div
+                                                className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-[#D4AF37] rounded-full border-2 border-white shadow-lg transition-all duration-1000"
+                                                style={{ left: `calc(${goal.progress}% - 10px)` }}
+                                            />
+                                        </div>
+
+                                        {/* Percentage */}
+                                        <div className="text-right mt-1">
+                                            <span className="text-xs font-bold text-[#8B2635]">{goal.progress}% atteint</span>
+                                        </div>
+                                    </div>
+                                </AnimatedSection>
+                            ))}
+                        </div>
+
+                        {/* Bottom CTA */}
+                        <AnimatedSection className="mt-10 pt-8 border-t border-[#0a0a0a]/10">
+                            <div className="flex items-center justify-between">
+                                <p className="text-gray-500 text-sm">Aidez-nous à atteindre nos objectifs</p>
+                                <button
+                                    onClick={() => setIsSponsorshipModalOpen(true)}
+                                    className="inline-flex items-center gap-2 bg-[#8B2635] hover:bg-[#6e1e2a] text-white px-6 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105"
+                                >
+                                    Soutenir la Vision
+                                    <ArrowRight size={16} />
+                                </button>
+                            </div>
+                        </AnimatedSection>
                     </div>
                 </div>
             </section>
