@@ -315,42 +315,97 @@ export default function AssociationPage() {
             </section>
 
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            {/* LE DÉFI - Youth Challenges (Dark Section) */}
+            {/* LE DÉFI - Split Screen Dramatique */}
             {/* ═══════════════════════════════════════════════════════════════════ */}
-            <section className="bg-[#0a0a0a] py-16 md:py-24">
-                <div className="max-w-6xl mx-auto px-6">
-                    <AnimatedSection className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 bg-[#8B2635]/20 text-[#ff6b6b] px-4 py-2 rounded-full text-sm font-medium mb-4">
-                            <AlertTriangle size={16} />
-                            Le Défi
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-                            Une Jeunesse en <span className="text-[#ff6b6b]">Attente d'Opportunités</span>
-                        </h2>
-                        <p className="text-white/60 max-w-2xl mx-auto">
-                            À Djibouti, les jeunes talent n'ont pas accès aux métiers créatifs. Aucune structure ne leur offre de formation audiovisuelle professionnelle.
-                        </p>
-                    </AnimatedSection>
+            <section className="bg-[#0a0a0a] overflow-hidden">
+                <div className="grid lg:grid-cols-2 min-h-[600px] md:min-h-[700px]">
 
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {CHALLENGE_STATS.map((stat, index) => (
-                            <AnimatedSection key={index}>
-                                <div className="bg-white/5 border border-white/10 rounded-xl p-8 text-center hover:border-[#ff6b6b]/50 transition-all">
-                                    <stat.icon className="w-10 h-10 text-[#ff6b6b] mx-auto mb-4" />
-                                    <div className="text-4xl md:text-5xl font-black text-white mb-2">{stat.value}</div>
-                                    <div className="text-white/60 text-sm">{stat.label}</div>
+                    {/* LEFT - Grayscale Image + Emotional Overlay */}
+                    <AnimatedSection className="relative">
+                        <div className="relative h-full min-h-[400px] lg:min-h-full">
+                            <Image
+                                src="/hero-classroom.jpg"
+                                alt="Jeunesse djiboutienne"
+                                fill
+                                className="object-cover grayscale"
+                            />
+                            {/* Overlays */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0a0a0a] hidden lg:block" />
+
+                            {/* Text on Image */}
+                            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
+                                <div className="inline-flex items-center gap-2 bg-[#8B2635] text-white px-4 py-2 rounded-full text-sm font-bold w-fit mb-4">
+                                    <AlertTriangle size={14} />
+                                    LE DÉFI
                                 </div>
-                            </AnimatedSection>
-                        ))}
-                    </div>
-
-                    <AnimatedSection className="text-center mt-12">
-                        <div className="inline-flex items-center gap-2 text-[#D4AF37] font-medium">
-                            <Target size={20} />
-                            <span>Cinéworld apporte la solution</span>
-                            <ArrowRight size={20} />
+                                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[0.95] mb-4">
+                                    Une Jeunesse
+                                    <br />
+                                    en <span className="text-[#ff6b6b]">Attente</span>
+                                </h2>
+                                <p className="text-white/70 text-lg max-w-md leading-relaxed">
+                                    À Djibouti, les jeunes talents n'ont pas accès aux métiers créatifs. Aucune structure ne leur offre de formation audiovisuelle professionnelle.
+                                </p>
+                            </div>
                         </div>
                     </AnimatedSection>
+
+                    {/* RIGHT - Dramatic Red Stats */}
+                    <div className="relative flex flex-col justify-center py-12 md:py-16 px-8 md:px-12 lg:px-16">
+
+                        {/* Vertical Red Accent Stripe */}
+                        <div className="absolute left-0 top-10 bottom-10 w-1 bg-gradient-to-b from-transparent via-[#8B2635] to-transparent hidden lg:block" />
+
+                        {/* Section Tag */}
+                        <AnimatedSection>
+                            <div className="flex items-center gap-3 mb-8">
+                                <div className="h-px flex-1 bg-[#8B2635]/40" />
+                                <span className="text-[#ff6b6b] text-xs font-bold uppercase tracking-[0.3em]">
+                                    Les Chiffres Alarmants
+                                </span>
+                                <div className="h-px flex-1 bg-[#8B2635]/40" />
+                            </div>
+                        </AnimatedSection>
+
+                        {/* Stats Stack */}
+                        <div className="space-y-6">
+                            {CHALLENGE_STATS.map((stat, index) => (
+                                <AnimatedSection key={index}>
+                                    <div className="group relative bg-white/[0.03] hover:bg-[#8B2635]/20 border border-white/10 hover:border-[#8B2635]/50 rounded-2xl p-6 transition-all duration-300 cursor-default">
+                                        {/* Red flash bar on left */}
+                                        <div className="absolute left-0 top-4 bottom-4 w-1 bg-[#8B2635] rounded-full group-hover:h-full group-hover:top-0 group-hover:bottom-0 transition-all" />
+
+                                        <div className="flex items-center gap-6 pl-4">
+                                            <div className="w-14 h-14 bg-[#8B2635]/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#8B2635]/30 transition-colors">
+                                                <stat.icon className="w-7 h-7 text-[#ff6b6b]" />
+                                            </div>
+                                            <div>
+                                                <div className="text-4xl md:text-5xl font-black text-white group-hover:text-[#ff6b6b] transition-colors">
+                                                    {stat.value}
+                                                </div>
+                                                <div className="text-white/50 text-sm mt-1">{stat.label}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </AnimatedSection>
+                            ))}
+                        </div>
+
+                        {/* Transition CTA */}
+                        <AnimatedSection className="mt-10">
+                            <div className="flex items-center gap-4 bg-gradient-to-r from-[#D4AF37]/10 to-transparent border border-[#D4AF37]/30 rounded-full px-6 py-4">
+                                <div className="w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center flex-shrink-0">
+                                    <Target size={20} className="text-black" />
+                                </div>
+                                <div>
+                                    <p className="text-[#D4AF37] font-bold text-sm">Cinéworld apporte la solution</p>
+                                    <p className="text-white/40 text-xs">Former • Produire • Sensibiliser</p>
+                                </div>
+                                <ArrowRight size={20} className="text-[#D4AF37] ml-auto" />
+                            </div>
+                        </AnimatedSection>
+                    </div>
                 </div>
             </section>
 
