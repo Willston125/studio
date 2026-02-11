@@ -634,6 +634,7 @@ export default function AssociationPage() {
 
                                             {/* Content */}
                                             <div className="absolute bottom-0 left-0 right-0 p-5">
+
                                                 <h4 className="text-xl font-black text-white mb-2 group-hover:text-[#D4AF37] transition-colors">
                                                     {event.title}
                                                 </h4>

@@ -29,6 +29,7 @@ const PROJETS = [
             { nom: 'Feminin 1er rôle', role: 'La Fiancée', photo: '/la fiancé.jpeg' },
             { nom: 'Masculin 1er rôle', role: 'Hassan', photo: '/Hassane.jpeg' },
             { nom: 'Feminin 2eme rôle', role: 'Hela', photo: '/Hela.jpeg' },
+            { nom: 'Mohamed', role: 'Acteur', photo: '/acteur-mohamed.jpeg' },
         ],
         equipe: [
             { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
