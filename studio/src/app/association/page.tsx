@@ -90,7 +90,7 @@ const THREE_AXES = [
         subtitle: "Formation Professionnelle",
         desc: "Ateliers pratiques en écriture, cadrage, montage et réalisation. 4 modules certifiants adaptés aux réalités locales.",
         stats: "150+ diplômés",
-        image: "/equipe-formation.jpg",
+        image: "/ultime.jpg",
         quote: "L'éducation est l'arme la plus puissante pour changer le monde."
     },
     {
@@ -100,7 +100,7 @@ const THREE_AXES = [
         subtitle: "Accompagnement Production",
         desc: "Mise à disposition de matériel professionnel et encadrement des projets de courts-métrages et documentaires.",
         stats: "50+ productions",
-        image: "/formationgroupecom.jpg",
+        image: "/studio-production.png",
         quote: "Créer, c'est résister. Résister, c'est créer."
     },
     {
@@ -110,7 +110,7 @@ const THREE_AXES = [
         subtitle: "Cohésion Sociale",
         desc: "Projections communautaires, festivals et événements culturels dans les quartiers de Djibouti.",
         stats: "10 CDC partenaires",
-        image: "/festivaldecinemacom.jpg",
+        image: "/eleve-classe.png",
         quote: "Le cinéma rassemble les cœurs."
     }
 ];
@@ -455,114 +455,171 @@ export default function AssociationPage() {
                     </div>
                 </div>
 
-                {/* Magazine-Style Bento Grid */}
+                {/* Modern Colorful Cards Grid */}
                 <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
 
-                    {/* First Row: Hero Card + 2 Smaller Cards */}
-                    <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    {/* Cards Grid - 3 equal columns */}
+                    <div className="grid md:grid-cols-3 gap-6 mb-12">
 
-                        {/* AXE 01 - Hero Card (Large) */}
-                        <AnimatedSection className="md:row-span-2">
-                            <div className="relative h-full min-h-[500px] md:min-h-[600px] rounded-3xl overflow-hidden group cursor-pointer">
-                                {/* Background Image */}
+                        {/* AXE 01 - Pink/Rose Card */}
+                        <AnimatedSection>
+                            <div className="group relative bg-[#1a1a1a] rounded-[32px] overflow-hidden h-[450px] cursor-pointer hover:shadow-2xl transition-all duration-500">
+                                {/* Background Image - Full Visibility */}
                                 <Image
                                     src={THREE_AXES[0].image}
                                     alt={THREE_AXES[0].title}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
 
+                                {/* Gradient Overlay for Text Readability - Themed */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-rose-900/90 via-rose-900/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-                                {/* Content Overlay */}
-                                <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                                    {/* Top: Badge + Number */}
-                                    <div className="flex items-start justify-between">
-                                        <div className="bg-[#D4AF37] text-black px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">
-                                            Axe Principal
-                                        </div>
-                                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl font-black text-white border border-white/30">
-                                            {THREE_AXES[0].number}
-                                        </div>
+                                {/* Content */}
+                                <div className="relative h-full p-8 flex flex-col justify-end">
+                                    {/* Icon Floating at Top */}
+                                    <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center shadow-lg group-hover:bg-white transition-colors duration-500">
+                                        <GraduationCap className="w-8 h-8 text-white group-hover:text-rose-600 transition-colors duration-500" />
                                     </div>
 
-                                    {/* Bottom: Title, Description, Stats */}
-                                    <div>
-                                        <h3 className="text-5xl md:text-6xl font-black text-white mb-2">{THREE_AXES[0].title}</h3>
-                                        <p className="text-[#D4AF37] text-lg font-semibold uppercase tracking-wider mb-4">{THREE_AXES[0].subtitle}</p>
-                                        <p className="text-white/80 text-lg leading-relaxed mb-6 max-w-md">{THREE_AXES[0].desc}</p>
+                                    {/* Number Badge */}
+                                    <div className="absolute top-8 right-8 text-6xl font-black text-white/10 font-outline-2 select-none">
+                                        01
+                                    </div>
 
-                                        <div className="flex items-center gap-4">
-                                            <div className="inline-flex items-center gap-2 bg-[#D4AF37] text-black px-5 py-3 rounded-full font-bold">
+                                    {/* Text Content */}
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                        <div className="inline-flex items-center gap-2 bg-rose-500/20 backdrop-blur-sm border border-rose-500/30 text-rose-100 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                                            {THREE_AXES[0].subtitle}
+                                        </div>
+
+                                        <h3 className="text-3xl md:text-4xl font-black text-white mb-3 leading-none">
+                                            {THREE_AXES[0].title}
+                                        </h3>
+
+                                        <p className="text-white/80 text-sm leading-relaxed mb-6 line-clamp-3 group-hover:line-clamp-none transition-all">
+                                            {THREE_AXES[0].desc}
+                                        </p>
+
+                                        {/* Stats Row */}
+                                        <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-2">
+                                            <div className="flex items-center gap-2 text-rose-200 font-bold">
                                                 <TrendingUp size={18} />
                                                 {THREE_AXES[0].stats}
                                             </div>
-                                            <button
-                                                onClick={() => setIsMembershipModalOpen(true)}
-                                                className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-5 py-3 rounded-full font-semibold transition-all border border-white/30"
-                                            >
-                                                Rejoindre
-                                                <ArrowRight size={18} />
-                                            </button>
+                                            <div className="w-8 h-8 rounded-full bg-white text-rose-600 flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-300">
+                                                <ArrowRight size={16} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </AnimatedSection>
 
-                        {/* AXE 02 - Medium Card */}
+                        {/* AXE 02 - Purple/Violet Card */}
                         <AnimatedSection>
-                            <div className="relative h-[280px] md:h-[290px] rounded-3xl overflow-hidden group cursor-pointer">
-                                {/* Background Image */}
+                            <div className="group relative bg-[#1a1a1a] rounded-[32px] overflow-hidden h-[450px] cursor-pointer hover:shadow-2xl transition-all duration-500">
+                                {/* Background Image - Full Visibility */}
                                 <Image
                                     src={THREE_AXES[1].image}
                                     alt={THREE_AXES[1].title}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
 
+                                {/* Gradient Overlay for Text Readability - Themed */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
                                 {/* Content */}
-                                <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                                    <div className="w-12 h-12 bg-[#8B2635] rounded-xl flex items-center justify-center text-xl font-black text-white">
-                                        {THREE_AXES[1].number}
+                                <div className="relative h-full p-8 flex flex-col justify-end">
+                                    {/* Icon Floating at Top */}
+                                    <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center shadow-lg group-hover:bg-white transition-colors duration-500">
+                                        <Camera className="w-8 h-8 text-white group-hover:text-purple-600 transition-colors duration-500" />
                                     </div>
-                                    <div>
-                                        <h3 className="text-3xl font-black text-white mb-1">{THREE_AXES[1].title}</h3>
-                                        <p className="text-[#D4AF37] text-sm font-semibold uppercase tracking-wider mb-2">{THREE_AXES[1].subtitle}</p>
-                                        <p className="text-white/70 text-sm leading-relaxed line-clamp-2 mb-3">{THREE_AXES[1].desc}</p>
-                                        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
-                                            <TrendingUp size={14} />
-                                            {THREE_AXES[1].stats}
+
+                                    {/* Number Badge */}
+                                    <div className="absolute top-8 right-8 text-6xl font-black text-white/10 font-outline-2 select-none">
+                                        02
+                                    </div>
+
+                                    {/* Text Content */}
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                        <div className="inline-flex items-center gap-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 text-purple-100 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                                            {THREE_AXES[1].subtitle}
+                                        </div>
+
+                                        <h3 className="text-3xl md:text-4xl font-black text-white mb-3 leading-none">
+                                            {THREE_AXES[1].title}
+                                        </h3>
+
+                                        <p className="text-white/80 text-sm leading-relaxed mb-6 line-clamp-3 group-hover:line-clamp-none transition-all">
+                                            {THREE_AXES[1].desc}
+                                        </p>
+
+                                        {/* Stats Row */}
+                                        <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-2">
+                                            <div className="flex items-center gap-2 text-purple-200 font-bold">
+                                                <TrendingUp size={18} />
+                                                {THREE_AXES[1].stats}
+                                            </div>
+                                            <div className="w-8 h-8 rounded-full bg-white text-purple-600 flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-300">
+                                                <ArrowRight size={16} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </AnimatedSection>
 
-                        {/* AXE 03 - Medium Card */}
+                        {/* AXE 03 - Cyan/Blue Card */}
                         <AnimatedSection>
-                            <div className="relative h-[280px] md:h-[290px] rounded-3xl overflow-hidden group cursor-pointer">
-                                {/* Background Image */}
+                            <div className="group relative bg-[#1a1a1a] rounded-[32px] overflow-hidden h-[450px] cursor-pointer hover:shadow-2xl transition-all duration-500">
+                                {/* Background Image - Full Visibility */}
                                 <Image
                                     src={THREE_AXES[2].image}
                                     alt={THREE_AXES[2].title}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
 
+                                {/* Gradient Overlay for Text Readability - Themed */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
                                 {/* Content */}
-                                <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                                    <div className="w-12 h-12 bg-[#8B2635] rounded-xl flex items-center justify-center text-xl font-black text-white">
-                                        {THREE_AXES[2].number}
+                                <div className="relative h-full p-8 flex flex-col justify-end">
+                                    {/* Icon Floating at Top */}
+                                    <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center shadow-lg group-hover:bg-white transition-colors duration-500">
+                                        <Users className="w-8 h-8 text-white group-hover:text-cyan-600 transition-colors duration-500" />
                                     </div>
-                                    <div>
-                                        <h3 className="text-3xl font-black text-white mb-1">{THREE_AXES[2].title}</h3>
-                                        <p className="text-[#D4AF37] text-sm font-semibold uppercase tracking-wider mb-2">{THREE_AXES[2].subtitle}</p>
-                                        <p className="text-white/70 text-sm leading-relaxed line-clamp-2 mb-3">{THREE_AXES[2].desc}</p>
-                                        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
-                                            <TrendingUp size={14} />
-                                            {THREE_AXES[2].stats}
+
+                                    {/* Number Badge */}
+                                    <div className="absolute top-8 right-8 text-6xl font-black text-white/10 font-outline-2 select-none">
+                                        03
+                                    </div>
+
+                                    {/* Text Content */}
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                        <div className="inline-flex items-center gap-2 bg-cyan-500/20 backdrop-blur-sm border border-cyan-500/30 text-cyan-100 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                                            {THREE_AXES[2].subtitle}
+                                        </div>
+
+                                        <h3 className="text-3xl md:text-4xl font-black text-white mb-3 leading-none">
+                                            {THREE_AXES[2].title}
+                                        </h3>
+
+                                        <p className="text-white/80 text-sm leading-relaxed mb-6 line-clamp-3 group-hover:line-clamp-none transition-all">
+                                            {THREE_AXES[2].desc}
+                                        </p>
+
+                                        {/* Stats Row */}
+                                        <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-2">
+                                            <div className="flex items-center gap-2 text-cyan-200 font-bold">
+                                                <TrendingUp size={18} />
+                                                {THREE_AXES[2].stats}
+                                            </div>
+                                            <div className="w-8 h-8 rounded-full bg-white text-cyan-600 flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-300">
+                                                <ArrowRight size={16} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -575,7 +632,7 @@ export default function AssociationPage() {
                         <div className="bg-[#0a0a0a] rounded-3xl p-8 md:p-12 text-center">
                             <p className="text-2xl md:text-4xl font-black text-white leading-tight mb-4">
                                 "L'éducation est l'arme la plus puissante
-                                <span className="text-[#D4AF37]"> pour changer le monde.</span>"
+                                <span className="text-[#D4AF37]"> pour changer le monde."</span>
                             </p>
                             <p className="text-white/50 text-sm uppercase tracking-widest">— Nelson Mandela</p>
                         </div>
