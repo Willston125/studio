@@ -627,14 +627,33 @@ export default function AssociationPage() {
                         </AnimatedSection>
                     </div>
 
-                    {/* Quote Section */}
+                    {/* Authentic Quote Section */}
                     <AnimatedSection>
-                        <div className="bg-[#0a0a0a] rounded-3xl p-8 md:p-12 text-center">
-                            <p className="text-2xl md:text-4xl font-black text-white leading-tight mb-4">
-                                "L'éducation est l'arme la plus puissante
-                                <span className="text-[#D4AF37]"> pour changer le monde."</span>
-                            </p>
-                            <p className="text-white/50 text-sm uppercase tracking-widest">— Nelson Mandela</p>
+                        <div className="relative py-24 px-4 md:px-0 overflow-hidden text-center rounded-[32px]">
+                            {/* Spotlight Background Effect */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/10 blur-[120px] rounded-full pointer-events-none" />
+
+                            {/* Large Watermark Quote Mark */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 text-[15rem] md:text-[25rem] font-serif text-[#D4AF37]/5 leading-none select-none pointer-events-none font-black">
+                                "
+                            </div>
+
+                            {/* Main Quote Content */}
+                            <div className="relative z-10 max-w-5xl mx-auto">
+                                <h2 className="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-10 tracking-tight drop-shadow-2xl">
+                                    <span className="opacity-80">"</span>L'éducation est l'arme la plus <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#FDB931] relative inline-block">
+                                        puissante
+                                        <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#D4AF37]/50 rounded-full blur-sm"></span>
+                                    </span> pour changer le monde.<span className="opacity-80">"</span>
+                                </h2>
+
+                                <div className="flex flex-col items-center justify-center gap-6">
+                                    <div className="w-16 md:w-24 h-1.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent rounded-full opacity-60" />
+                                    <p className="text-white/60 text-sm md:text-xl font-medium tracking-[0.3em] uppercase">
+                                        — Nelson Mandela —
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </AnimatedSection>
                 </div>
