@@ -3,15 +3,23 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone()
+    const path = url.pathname
 
-    // Si on essaie d'accéder à autre chose que la page "coming-soon" ou les images
-    if (url.pathname !== '/coming-soon' && !url.pathname.startsWith('/_next') && !url.pathname.startsWith('/api')) {
-        url.pathname = '/coming-soon'
-        return NextResponse.rewrite(url)
+    // Laisser passer : coming-soon, fichiers statiques (_next), API, et images/fichiers du dossier public
+    if (
+        path === '/coming-soon' ||
+        path.startsWith('/_next') ||
+        path.startsWith('/api') ||
+        path.match(/\.(png|jpg|jpeg|gif|svg|ico|webp|mp4|pdf|css|js|woff|woff2|ttf)$/)
+    ) {
+        return NextResponse.next()
     }
+
+    // Tout le reste → rediriger vers coming-soon
+    url.pathname = '/coming-soon'
+    return NextResponse.rewrite(url)
 }
 
 export const config = {
-    // On applique ça à absolument toutes les routes du site
-    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+    matcher: ['/((?!_next/static|_next/image).*)'],
 }
