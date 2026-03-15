@@ -59,7 +59,7 @@ export default function PremiumFooter() {
                         <ul className="space-y-4 text-sm">
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-yellow-500 flex-shrink-0" />
-                                <span>Djibouti, République de Djibouti</span>
+                                <span>Djibouti, Saalam Tower</span>
                             </li>
                             <li className="flex items-start gap-3">
                                 <Phone className="w-5 h-5 text-yellow-500 flex-shrink-0" />

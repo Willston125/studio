@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   MapPin,
   Phone,
@@ -15,9 +16,7 @@ import {
   CheckCircle2,
   AlertCircle,
   MessageCircle,
-  Navigation
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -35,25 +34,18 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      // Appel à l'API pour envoyer l'email via Resend
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formState),
       });
 
       const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de l\'envoi');
-      }
+      if (!response.ok) throw new Error(data.error || 'Erreur');
 
       setIsSubmitting(false);
       setShowSuccess(true);
 
-      // Si sujet = urgence, ouvrir aussi WhatsApp pour une réponse immédiate
       if (formState.sujet === 'urgence') {
         setTimeout(() => {
           const msg = `*DEMANDE URGENTE - ${formState.nom}*\n\nTel: ${formState.telephone}\nEmail: ${formState.email}\n\n${formState.message}`;
@@ -61,331 +53,364 @@ export default function ContactPage() {
         }, 500);
       }
 
-      // Réinitialiser le formulaire après 3 secondes
       setTimeout(() => {
-        setFormState({
-          nom: '',
-          email: '',
-          telephone: '',
-          sujet: '',
-          message: ''
-        });
+        setFormState({ nom: '', email: '', telephone: '', sujet: '', message: '' });
       }, 3000);
-
     } catch (error) {
       console.error('Erreur:', error);
       setIsSubmitting(false);
-      alert('Erreur lors de l\'envoi du message. Veuillez réessayer ou nous contacter sur WhatsApp.');
+      alert('Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter sur WhatsApp.');
     }
   };
 
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Adresse",
-      content: "Campus Aviation",
-      subContent: "Institut DHIM, Djibouti",
-      color: "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400",
-      action: "Voir sur la carte",
-      href: "#map",
-      isWhatsApp: false
-    },
-    {
-      icon: Phone,
-      title: "Téléphone & WhatsApp",
-      content: "+253 77 14 53 06",
-      subContent: "Disponible 6j/7",
-      color: "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400",
-      action: "Appeler maintenant",
-      href: "tel:+25377145306",
-      isWhatsApp: true
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      content: "cineworld@cineworldacademie.com",
-      subContent: "Réponse sous 24h",
-      color: "bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400",
-      action: "Envoyer un email",
-      href: "mailto:cineworld@cineworldacademie.com",
-      isWhatsApp: false
-    }
-  ];
-
-  const horaires = [
-    { jour: "Dimanche - Jeudi", heures: "8h00 - 18h00" },
-    { jour: "Vendredi", heures: "8h00 - 12h00" },
-    { jour: "Samedi", heures: "Fermé (Ateliers sur RDV)" }
-  ];
-
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      {/* Hero */}
-      <section className="bg-slate-900 dark:bg-slate-950 text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#6e1615]/20 to-transparent" />
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-black mb-4"
-          >
-            Contactez-nous
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-slate-300 dark:text-slate-400 text-lg"
-          >
-            Une question sur nos formations ? Nous sommes là pour vous guider.
-          </motion.p>
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+
+      {/* ══════════════════════════════════════════════════════════ */}
+      {/* HERO — Plein écran cinématique                           */}
+      {/* ══════════════════════════════════════════════════════════ */}
+      <section className="relative h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
+        {/* Image de fond */}
+        <Image
+          src="/willformateur.png"
+          alt="Ali William - Cineworld Académie"
+          fill
+          className="object-cover object-top"
+          style={{ objectPosition: 'center 20%' }}
+          priority
+        />
+        {/* Overlay sombre */}
+        <div className="absolute inset-0 bg-black/60" />
+        {/* Bande dorée bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent" />
+
+        {/* Contenu Hero */}
+        <div className="relative z-10 text-center px-4">
+          <p className="text-[#C5A572] text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-4">
+            Cineworld Académie
+          </p>
+          <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight">
+            CONTACT
+          </h1>
+          <div className="w-20 h-1 bg-[#C5A572] mx-auto mt-6" />
         </div>
       </section>
 
-      {/* Cartes Contact */}
-      <section className="py-12 -mt-10 relative z-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6">
-            {contactInfo.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-shadow"
-              >
-                <div className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center mb-4`}>
-                  <item.icon size={24} />
-                </div>
-                <h3 className="font-bold text-slate-900 dark:text-white mb-2">{item.title}</h3>
-                <p className="text-slate-900 dark:text-white font-medium mb-1">{item.content}</p>
-                <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">{item.subContent}</p>
-                <Link
-                  href={item.href}
-                  className={`inline-flex items-center gap-2 text-sm font-bold ${item.isWhatsApp ? 'text-green-600 dark:text-green-400 hover:text-green-700' : 'text-[#6e1615] dark:text-[#C5A572] hover:text-[#8b1c1b]'
-                    } transition-colors`}
-                >
-                  {item.isWhatsApp && <MessageCircle size={16} />}
-                  {item.action}
-                  <ChevronRight size={16} />
-                </Link>
-              </motion.div>
-            ))}
+      {/* ══════════════════════════════════════════════════════════ */}
+      {/* SECTION PRINCIPALE — Infos + Photo fondateur             */}
+      {/* ══════════════════════════════════════════════════════════ */}
+      <section className="py-16 md:py-24 bg-white text-black">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          {/* Titre section */}
+          <div className="mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight">
+              Nous Contacter
+            </h2>
+            <p className="text-[#8B2635] font-bold uppercase tracking-[0.2em] text-sm mt-2">
+              CINEWORLD ACADÉMIE
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Section Principale : Formulaire + Infos */}
-      <section className="py-12 pb-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-5 gap-8">
-            {/* Formulaire */}
-            <div className="lg:col-span-3">
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-8">
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Envoyez-nous un message</h2>
-                <p className="text-slate-500 dark:text-slate-400 mb-8">Remplissez le formulaire ci-dessous. Nous vous répondrons dans les plus brefs délais.</p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            {/* Colonne gauche — Coordonnées */}
+            <div>
+              <div className="space-y-8">
+                {/* Adresse */}
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8B2635] mb-2">
+                    CAMPUS
+                  </p>
+                  <p className="font-bold text-lg">Saalam Tower</p>
+                  <p className="text-gray-600">Djibouti-ville</p>
+                </div>
 
-                {showSuccess ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-8 text-center"
+                {/* Contact */}
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8B2635] mb-2">
+                    CONTACT DIRECT
+                  </p>
+                  <Link
+                    href="mailto:cineworld@cineworldacademie.com"
+                    className="flex items-center gap-2 text-gray-700 hover:text-[#8B2635] transition-colors font-medium"
                   >
-                    <CheckCircle2 size={48} className="text-green-600 dark:text-green-400 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-green-900 dark:text-green-300 mb-2">Message envoyé !</h3>
-                    <p className="text-green-700 dark:text-green-400 mb-4">Nous avons bien reçu votre demande et vous répondrons sous 24h.</p>
-                    <button
-                      onClick={() => setShowSuccess(false)}
-                      className="text-green-700 dark:text-green-300 font-bold hover:underline"
-                    >
-                      Envoyer un autre message
-                    </button>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Nom complet *</label>
-                        <input
-                          required
-                          type="text"
-                          value={formState.nom}
-                          onChange={(e) => setFormState({ ...formState, nom: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-[#6e1615] focus:ring-2 focus:ring-[#6e1615]/20 outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder="Votre nom"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Email *</label>
-                        <input
-                          required
-                          type="email"
-                          value={formState.email}
-                          onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-[#6e1615] focus:ring-2 focus:ring-[#6e1615]/20 outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder="votre@email.com"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Téléphone</label>
-                        <input
-                          type="tel"
-                          value={formState.telephone}
-                          onChange={(e) => setFormState({ ...formState, telephone: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-[#6e1615] focus:ring-2 focus:ring-[#6e1615]/20 outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder="+253 77 XX XX XX"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Sujet *</label>
-                        <select
-                          required
-                          value={formState.sujet}
-                          onChange={(e) => setFormState({ ...formState, sujet: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-[#6e1615] focus:ring-2 focus:ring-[#6e1615]/20 outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                        >
-                          <option value="">Sélectionnez un sujet</option>
-                          <option value="inscription">Question sur l'inscription</option>
-                          <option value="formation">Renseignement formation</option>
-                          <option value="entreprise">Partenariat entreprise</option>
-                          <option value="urgence">Demande urgente (WhatsApp)</option>
-                          <option value="autre">Autre demande</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Message *</label>
-                      <textarea
-                        required
-                        rows={5}
-                        value={formState.message}
-                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 focus:border-[#6e1615] focus:ring-2 focus:ring-[#6e1615]/20 outline-none transition-all resize-none bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                        placeholder="Décrivez votre demande en détail..."
-                      />
-                    </div>
-
-                    <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 flex items-start gap-3">
-                      <AlertCircle size={20} className="text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                      <p className="text-sm text-amber-800 dark:text-amber-300">
-                        Pour une réponse immédiate concernant les inscriptions, utilisez directement
-                        <Link href="https://wa.me/25377145306" className="font-bold underline ml-1">notre WhatsApp</Link>.
-                      </p>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-[#6e1615] text-white py-4 rounded-xl font-bold hover:bg-[#8b1c1b] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          Envoi en cours...
-                        </>
-                      ) : (
-                        <>
-                          Envoyer le message
-                          <Send size={18} />
-                        </>
-                      )}
-                    </button>
-                  </form>
-                )}
-              </div>
-            </div>
-
-            {/* Sidebar Infos */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Horaires */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
-                <h3 className="font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                  <Clock size={20} className="text-[#6e1615] dark:text-[#C5A572]" />
-                  Horaires d'ouverture
-                </h3>
-                <div className="space-y-4">
-                  {horaires.map((item, index) => (
-                    <div key={index} className="flex justify-between items-center pb-3 border-b border-slate-100 dark:border-slate-700 last:border-0 last:pb-0">
-                      <span className="text-slate-600 dark:text-slate-400">{item.jour}</span>
-                      <span className="font-medium text-slate-900 dark:text-white">{item.heures}</span>
-                    </div>
-                  ))}
+                    <Mail size={16} />
+                    cineworld@cineworldacademie.com
+                  </Link>
+                  <Link
+                    href="tel:+25377145306"
+                    className="flex items-center gap-2 text-gray-700 hover:text-[#8B2635] transition-colors font-medium mt-2"
+                  >
+                    <Phone size={16} />
+                    +253 77 14 53 06
+                  </Link>
                 </div>
-              </div>
 
-              {/* Réseaux Sociaux */}
-              <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 text-white">
-                <h3 className="font-bold mb-4">Suivez-nous</h3>
-                <p className="text-slate-300 text-sm mb-6">
-                  Restez informé des actualités, événements et nouvelles formations.
-                </p>
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    { icon: Facebook, label: "Facebook", href: "https://facebook.com/cineworldacademie" },
-                    { icon: Instagram, label: "Instagram", href: "https://instagram.com/cineworldacademie" },
-                    { icon: Youtube, label: "YouTube", href: "https://youtube.com/@cineworldacademie" }
-                  ].map((social, index) => (
-                    <Link
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      className="flex flex-col items-center gap-2 p-3 bg-white/10 rounded-xl hover:bg-white/20 transition-colors group"
-                    >
-                      <social.icon size={24} className="group-hover:scale-110 transition-transform" />
-                      <span className="text-xs opacity-70">{social.label}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Carte stylisée */}
-              <div id="map" className="bg-slate-200 dark:bg-slate-800 rounded-2xl overflow-hidden h-64 relative group cursor-pointer">
-                <div className="absolute inset-0 flex items-center justify-center bg-slate-300 dark:bg-slate-700">
-                  <div className="text-center">
-                    <Navigation size={48} className="text-[#6e1615] dark:text-[#C5A572] mx-auto mb-2" />
-                    <p className="font-bold text-slate-700 dark:text-white">Campus Aviation</p>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Institut DHIM</p>
-                    <Link
-                      href="https://maps.google.com/?q=Institut+DHIM+Aviation+Djibouti"
-                      target="_blank"
-                      className="mt-4 inline-block px-4 py-2 bg-white dark:bg-slate-800 rounded-lg text-sm font-bold text-[#6e1615] dark:text-[#C5A572] shadow-lg hover:shadow-xl transition-all"
-                    >
-                      Ouvrir Google Maps
-                    </Link>
+                {/* Horaires */}
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8B2635] mb-2">
+                    HORAIRES
+                  </p>
+                  <div className="space-y-1 text-gray-600">
+                    <p className="flex justify-between max-w-xs">
+                      <span>Dimanche – Jeudi</span>
+                      <span className="font-medium text-black">8h – 18h</span>
+                    </p>
+                    <p className="flex justify-between max-w-xs">
+                      <span>Vendredi</span>
+                      <span className="font-medium text-black">8h – 12h</span>
+                    </p>
+                    <p className="flex justify-between max-w-xs">
+                      <span>Samedi</span>
+                      <span className="font-medium text-black">Sur RDV</span>
+                    </p>
                   </div>
                 </div>
+
+                {/* Réseaux sociaux */}
+                <div className="flex items-center gap-4 pt-2">
+                  <Link href="https://facebook.com/cineworldacademie" target="_blank" className="w-10 h-10 bg-gray-100 hover:bg-[#8B2635] hover:text-white rounded-full flex items-center justify-center transition-all">
+                    <Facebook size={18} />
+                  </Link>
+                  <Link href="https://instagram.com/cineworldacademie" target="_blank" className="w-10 h-10 bg-gray-100 hover:bg-[#8B2635] hover:text-white rounded-full flex items-center justify-center transition-all">
+                    <Instagram size={18} />
+                  </Link>
+                  <Link href="https://youtube.com/@cineworldacademie" target="_blank" className="w-10 h-10 bg-gray-100 hover:bg-[#8B2635] hover:text-white rounded-full flex items-center justify-center transition-all">
+                    <Youtube size={18} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Colonne droite — Photo fondateur */}
+            <div>
+              <div className="relative group overflow-hidden rounded-sm" style={{ height: '520px' }}>
+                <Image
+                  src="/willformateur.png"
+                  alt="Ali William, Fondateur de Cineworld Académie"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: 'center 10%' }}
+                />
+                {/* Overlay dégradé bas */}
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/70 to-transparent" />
+                {/* Nom superposé */}
+                <div className="absolute bottom-4 left-6 text-white z-10">
+                  <p className="font-black text-xl leading-tight">Ali William</p>
+                  <p className="text-[#C5A572] text-xs font-bold uppercase tracking-[0.2em]">Fondateur & Directeur</p>
+                  <Link
+                    href="https://wa.me/25377145306"
+                    target="_blank"
+                    className="inline-flex items-center gap-2 text-xs text-white/70 hover:text-green-400 transition-colors mt-1"
+                  >
+                    <MessageCircle size={12} />
+                    Contacter sur WhatsApp
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="bg-[#6e1615] py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Prêt à commencer ?</h2>
-          <p className="text-white/80 mb-8">
-            Ne perdez pas de temps. Inscrivez-vous dès maintenant à l'une de nos formations.
+      {/* ══════════════════════════════════════════════════════════ */}
+      {/* FORMULAIRE DE CONTACT                                    */}
+      {/* ══════════════════════════════════════════════════════════ */}
+      <section className="py-16 md:py-24 bg-[#0a0a0a] border-t border-white/10">
+        <div className="max-w-3xl mx-auto px-4 md:px-8">
+          {/* Titre */}
+          <div className="text-center mb-12">
+            <p className="text-[#C5A572] text-xs font-bold uppercase tracking-[0.3em] mb-3">
+              Écrivez-nous
+            </p>
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
+              Envoyez un Message
+            </h2>
+            <div className="w-16 h-1 bg-[#8B2635] mx-auto mt-4" />
+          </div>
+
+          {showSuccess ? (
+            <div className="bg-green-900/30 border border-green-700 rounded-sm p-10 text-center">
+              <CheckCircle2 size={48} className="text-green-400 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-green-300 mb-2">Message envoyé !</h3>
+              <p className="text-green-400/80 mb-6">Nous vous répondrons sous 24h.</p>
+              <button
+                onClick={() => setShowSuccess(false)}
+                className="text-[#C5A572] font-bold hover:underline text-sm uppercase tracking-wider"
+              >
+                Envoyer un autre message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A572] mb-2">
+                    Nom complet *
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    value={formState.nom}
+                    onChange={(e) => setFormState({ ...formState, nom: e.target.value })}
+                    className="w-full bg-transparent border-b-2 border-white/20 text-white py-3 focus:border-[#C5A572] outline-none transition-colors placeholder:text-gray-600"
+                    placeholder="Votre nom"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A572] mb-2">
+                    Email *
+                  </label>
+                  <input
+                    required
+                    type="email"
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    className="w-full bg-transparent border-b-2 border-white/20 text-white py-3 focus:border-[#C5A572] outline-none transition-colors placeholder:text-gray-600"
+                    placeholder="votre@email.com"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A572] mb-2">
+                    Téléphone
+                  </label>
+                  <input
+                    type="tel"
+                    value={formState.telephone}
+                    onChange={(e) => setFormState({ ...formState, telephone: e.target.value })}
+                    className="w-full bg-transparent border-b-2 border-white/20 text-white py-3 focus:border-[#C5A572] outline-none transition-colors placeholder:text-gray-600"
+                    placeholder="+253 77 XX XX XX"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A572] mb-2">
+                    Sujet *
+                  </label>
+                  <select
+                    required
+                    value={formState.sujet}
+                    onChange={(e) => setFormState({ ...formState, sujet: e.target.value })}
+                    className="w-full bg-transparent border-b-2 border-white/20 text-white py-3 focus:border-[#C5A572] outline-none transition-colors appearance-none"
+                  >
+                    <option value="" className="bg-[#0a0a0a]">Sélectionnez un sujet</option>
+                    <option value="inscription" className="bg-[#0a0a0a]">Question sur l&apos;inscription</option>
+                    <option value="formation" className="bg-[#0a0a0a]">Renseignement formation</option>
+                    <option value="entreprise" className="bg-[#0a0a0a]">Partenariat entreprise</option>
+                    <option value="urgence" className="bg-[#0a0a0a]">Demande urgente (WhatsApp)</option>
+                    <option value="autre" className="bg-[#0a0a0a]">Autre demande</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A572] mb-2">
+                  Message *
+                </label>
+                <textarea
+                  required
+                  rows={5}
+                  value={formState.message}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  className="w-full bg-transparent border-b-2 border-white/20 text-white py-3 focus:border-[#C5A572] outline-none transition-colors resize-none placeholder:text-gray-600"
+                  placeholder="Votre message..."
+                />
+              </div>
+
+              {/* Notice WhatsApp */}
+              <div className="flex items-start gap-3 bg-white/5 border border-white/10 p-4 rounded-sm">
+                <AlertCircle size={18} className="text-[#C5A572] shrink-0 mt-0.5" />
+                <p className="text-sm text-gray-400">
+                  Pour une réponse immédiate,{' '}
+                  <Link href="https://wa.me/25377145306" target="_blank" className="text-green-400 font-bold hover:underline">
+                    contactez-nous sur WhatsApp
+                  </Link>.
+                </p>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-[#8B2635] text-white py-4 font-black uppercase tracking-widest text-sm hover:bg-[#6e1c29] transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Envoi en cours...
+                  </>
+                ) : (
+                  <>
+                    Envoyer le message
+                    <Send size={16} />
+                  </>
+                )}
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════ */}
+      {/* CARTE — Pleine largeur                                   */}
+      {/* ══════════════════════════════════════════════════════════ */}
+      <section className="relative">
+        {/* Banner au-dessus de la carte */}
+        <div className="bg-[#8B2635] py-3 px-4 text-center">
+          <p className="text-white/80 text-xs font-medium">
+            📍 Retrouvez-nous à Saalam Tower, Djibouti-ville
+          </p>
+        </div>
+
+        {/* Carte Google Maps embed */}
+        <div className="w-full h-[400px] md:h-[450px] relative">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3883.676!2d43.145!3d11.594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSaalam+Tower+Djibouti!5e0!3m2!1sfr!2sdj!4v1"
+            width="100%"
+            height="100%"
+            style={{ border: 0, filter: 'grayscale(0.3) contrast(1.1)' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Localisation Cineworld Académie"
+          />
+          {/* Overlay bouton */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+            <Link
+              href="https://maps.google.com/?q=Saalam+Tower+Djibouti"
+              target="_blank"
+              className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 font-bold text-sm uppercase tracking-wider shadow-xl hover:bg-[#C5A572] hover:text-white transition-all"
+            >
+              <MapPin size={16} />
+              Ouvrir dans Google Maps
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════ */}
+      {/* CTA FINAL                                                */}
+      {/* ══════════════════════════════════════════════════════════ */}
+      <section className="bg-[#0a0a0a] py-16 border-t border-white/10">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-black uppercase tracking-tight mb-4">
+            Prêt à commencer ?
+          </h2>
+          <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+            Inscrivez-vous dès maintenant et lancez votre carrière dans l&apos;audiovisuel.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/formations"
-              className="btn-animated btn-animated-white"
+              className="px-8 py-4 bg-white text-black font-black uppercase text-sm tracking-widest hover:bg-[#C5A572] hover:text-white transition-all"
             >
-              <span className="btn-circle"></span>
-              <span className="btn-text">Voir les formations</span>
+              Voir les formations
             </Link>
             <Link
               href="/inscription"
-              className="btn-animated btn-animated-bordeaux"
-              style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', boxShadow: '0 0 0 2px rgba(255,255,255,0.3)' }}
+              className="px-8 py-4 bg-[#8B2635] text-white font-black uppercase text-sm tracking-widest hover:bg-[#6e1c29] transition-all"
             >
-              <span className="btn-circle"></span>
-              <span className="btn-text">S'inscrire maintenant</span>
+              S&apos;inscrire maintenant
             </Link>
           </div>
         </div>

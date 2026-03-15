@@ -43,15 +43,7 @@ export default function AProposPage() {
     return (
         <div className="min-h-screen bg-white text-gray-900">
 
-            {/* Navigation Header */}
-            <nav className="sticky top-0 z-50 bg-[#F9FAFB] border-b border-gray-200 h-20 flex items-center justify-between px-6 md:px-12">
-                <div className="font-black text-xl uppercase tracking-tighter">
-                    CINEWORDL<span className="text-[#D4AF37]">ACADÉMIE</span>
-                </div>
-                <Link href="/" className="text-sm font-bold text-gray-500 hover:text-black transition-colors flex items-center gap-2">
-                    <ArrowLeft className="w-4 h-4" /> RETOUR ACCUEIL
-                </Link>
-            </nav>
+
 
             {/* Hero Section */}
             <section className="relative py-24 px-6 overflow-hidden bg-gray-50">
@@ -63,9 +55,9 @@ export default function AProposPage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className="inline-block bg-yellow-100 text-[#B8860B] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                            <span className="text-[#C5A572] text-xs font-bold uppercase tracking-[0.3em] mb-6 block">
                                 Qui Sommes-Nous ?
-                            </div>
+                            </span>
                             <h1 className="text-4xl md:text-6xl font-black mb-8 leading-tight text-black">
                                 Façonner le Futur de <br />
                                 <span className="text-[#D4AF37]">l'Audiovisuel à Djibouti</span>
@@ -119,7 +111,7 @@ export default function AProposPage() {
                             className="bg-[#F9FAFB] p-10 rounded-2xl border border-gray-100"
                         >
                             <Target className="w-12 h-12 text-[#D4AF37] mb-6" />
-                            <h2 className="text-2xl font-black mb-4 uppercase">Notre Mission</h2>
+                            <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tight">Notre Mission</h2>
                             <p className="text-gray-600 leading-relaxed">
                                 Professionnaliser le secteur en offrant aux talents djiboutiens
                                 les outils techniques pour raconter leurs propres histoires avec une qualité irréprochable.
@@ -134,7 +126,7 @@ export default function AProposPage() {
                             className="bg-[#F9FAFB] p-10 rounded-2xl border border-gray-100"
                         >
                             <Sparkles className="w-12 h-12 text-[#D4AF37] mb-6" />
-                            <h2 className="text-2xl font-black mb-4 uppercase">Notre Vision</h2>
+                            <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tight">Notre Vision</h2>
                             <p className="text-gray-600 leading-relaxed">
                                 Faire de Djibouti un hub créatif reconnu en Afrique de l'Est,
                                 porté par une industrie locale dynamique, innovante et respectée.
@@ -149,7 +141,7 @@ export default function AProposPage() {
             <section className="py-24 px-6 bg-gray-50">
                 <div className="container mx-auto max-w-7xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase">Nos <span className="text-[#D4AF37]">3 Pillars</span> Stratégiques</h2>
+                        <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tight">Nos <span className="text-[#D4AF37]">3 Pilliers</span> Stratégiques</h2>
                         <div className="w-20 h-1 bg-[#D4AF37] mx-auto"></div>
                     </div>
 
@@ -191,7 +183,7 @@ export default function AProposPage() {
                         viewport={{ once: true }}
                         className="bg-black rounded-3xl p-12 text-center text-white"
                     >
-                        <h2 className="text-3xl md:text-4xl font-black mb-6 uppercase">Prêt à Transformer Votre <span className="text-yellow-500">Passion</span> ?</h2>
+                        <h2 className="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight">Prêt à Transformer Votre <span className="text-[#D4AF37]">Passion</span> ?</h2>
                         <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
                             Rejoignez la prochaine promotion et commencez votre carrière dans l'audiovisuel avec les meilleurs outils.
                         </p>
@@ -206,11 +198,7 @@ export default function AProposPage() {
                 </div>
             </section>
 
-            {/* Signature Footer */}
-            <footer className="py-12 bg-white text-center border-t border-gray-100">
-                <div className="font-black text-xs uppercase tracking-[0.2em] text-gray-300 mb-2">Cineworld Djibouti</div>
-                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">© 2026 Tous Droits Réservés</p>
-            </footer>
+
 
         </div>
     );

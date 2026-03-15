@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -1705,9 +1707,9 @@
 
 /* Page Interior Content */
 .page-header {
-  font-family: 'Cinzel', 'Georgia', serif;
-  font-size: 18px;
-  font-weight: 600;
+  font-family: 'Dancing Script', 'Georgia', cursive;
+  font-size: 24px;
+  font-weight: 700;
   color: #4a2c1a;
   text-align: center;
   margin-bottom: 20px;
@@ -1740,10 +1742,11 @@
 }
 
 .page-mission-text {
-  font-family: 'Georgia', serif;
-  font-size: 14px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 17px;
+  font-weight: 500;
   color: #3d2415;
-  line-height: 1.6;
+  line-height: 1.7;
   flex: 1;
 }
 
@@ -1932,4 +1935,12 @@
     box-shadow: 0 0 20px currentColor;
     opacity: 0;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* UTILITY — Text Shadow for image overlays                                    */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }

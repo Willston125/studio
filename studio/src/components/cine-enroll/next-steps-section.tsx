@@ -85,7 +85,7 @@ export default function NextStepsSection() {
 
                 {/* Bottom Note */}
                 <p className="text-center text-black/60 text-sm mt-8">
-                    📍 CineWorld Academy - Djibouti Centre Ville
+                    📍 CineWorld Academy - Saalam Tower, Djibouti
                 </p>
             </div>
         </section>

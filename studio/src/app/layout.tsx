@@ -4,6 +4,7 @@ import Navbar from '@/components/navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import StatusBanner from '@/components/StatusBanner';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   // === BASE URL (pour les images OG) ===
@@ -110,6 +111,7 @@ export default function RootLayout({
           )}
           <Navbar />
           {children}
+          <Footer />
           <WhatsAppButton />
         </ThemeProvider>
       </body>

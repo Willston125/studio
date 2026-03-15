@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown, Monitor, Palette, Video, TrendingUp, Sparkles, Play, Film, Users, Heart, Handshake } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { Menu, X, ChevronDown, Monitor, Palette, Video, TrendingUp, Sparkles, Play, Film, Users, Heart, Handshake, Target, BarChart3, Eye, MapPin } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 // Données des menus déroulants
@@ -12,11 +13,11 @@ const MENU_ITEMS = {
         label: 'NOS FORMATIONS',
         href: '/formations',
         items: [
-            { icon: Monitor, label: 'Site Web avec l\'IA', href: '/formations#module-web', description: 'Créez des sites modernes' },
-            { icon: Palette, label: 'Design Graphique', href: '/formations#module-design', description: 'Maîtrisez Canva & Photoshop' },
-            { icon: Video, label: 'Réalisation Vidéo', href: '/formations#module-video', description: 'Tournage & montage pro' },
-            { icon: TrendingUp, label: 'Marketing Digital', href: '/formations#module-marketing', description: 'Boostez votre visibilité' },
-            { icon: Sparkles, label: 'Pack Creator 360°', href: '/formations#pack-complet', description: 'Les 4 modules • -10.000 FDJ', highlight: true },
+            { icon: Monitor, label: 'Site Web avec l\'IA', href: '/formations/1', description: 'Module 1 • 5 jours • 15.000 FDJ' },
+            { icon: Palette, label: 'Design Graphique Pro', href: '/formations/2', description: 'Module 2 • 12 jours • 10.000 FDJ' },
+            { icon: Video, label: 'Réalisation & Montage Vidéo', href: '/formations/3', description: 'Module 3 • 15 jours • 13.000 FDJ' },
+            { icon: TrendingUp, label: 'Marketing Digital', href: '/formations/4', description: 'Module 4 • 8 jours • 7.000 FDJ' },
+            { icon: Sparkles, label: 'Pack Creator 360°', href: '/inscription?module=5', description: 'Les 4 modules • 45.000 FDJ (−10.000)', highlight: true },
         ]
     },
     production: {
@@ -24,23 +25,59 @@ const MENU_ITEMS = {
         href: '/production',
         items: [
             { icon: Play, label: 'Nos Réalisations', href: '/production', description: 'Découvrez nos projets' },
-            { icon: Film, label: 'Doute Forcé', href: '/production#featured', description: 'Fiction dramatique' },
-            { icon: Video, label: 'La Boussole Digitale', href: '/production#all-projects', description: 'Série documentaire' },
+            { icon: Film, label: 'Doute Forcé', href: '/production#featured', description: 'Fiction dramatique • Saison 1' },
+            { icon: Video, label: 'Tous les Projets', href: '/production#all-projects', description: 'Série, film, documentaire' },
         ]
     },
     association: {
         label: 'L\'ASSOCIATION',
         href: '/association',
         items: [
-            { icon: Heart, label: 'Notre Mission', href: '/association', description: 'Ce qui nous anime' },
-            { icon: Users, label: 'L\'Équipe', href: '/association', description: 'Les visages de Cineworld' },
-            { icon: Handshake, label: 'Devenir Partenaire', href: '/association', description: 'Collaborons ensemble' },
+            { icon: Target, label: 'Le Défi', href: '/association#defi', description: 'Une jeunesse en attente' },
+            { icon: Heart, label: 'Notre Différence', href: '/association#difference', description: 'Un modèle 100% solidaire' },
+            { icon: Eye, label: 'Nos 3 Axes d\'Action', href: '/association#axes', description: 'Former, Produire, Sensibiliser' },
+            { icon: MapPin, label: 'Notre Parcours', href: '/association#parcours', description: 'La genèse et l\'expansion' },
+            { icon: BarChart3, label: 'Vision 2030', href: '/association#vision', description: 'Nos objectifs ambitieux' },
+            { icon: Handshake, label: 'Nos Partenaires', href: '/association#partenaires', description: 'Ils nous font confiance' },
         ]
     }
 };
 
+// ─── Helper: scroll vers l'ancre, avec retry pour navigation cross-page ──
+function scrollToHash(hash: string, retries = 15) {
+    const el = document.getElementById(hash);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+    }
+    // Si l'élément n'existe pas encore (page en cours de chargement), retry
+    if (retries > 0) {
+        setTimeout(() => scrollToHash(hash, retries - 1), 200);
+    }
+}
+
 // Composant Dropdown pour Desktop
-function NavDropdown({ menu }: { menu: typeof MENU_ITEMS.formations }) {
+function NavDropdown({ menu, pathname, router }: {
+    menu: typeof MENU_ITEMS.formations;
+    pathname: string;
+    router: ReturnType<typeof useRouter>;
+}) {
+    const handleClick = useCallback((e: React.MouseEvent, href: string) => {
+        const [path, hash] = href.split('#');
+        if (!hash) return; // pas d'ancre → navigation normale via Link
+
+        e.preventDefault();
+
+        if (pathname === path) {
+            // Déjà sur la page → scroll direct
+            scrollToHash(hash);
+        } else {
+            // Autre page → naviguer puis scroll après chargement
+            router.push(href);
+            setTimeout(() => scrollToHash(hash), 600);
+        }
+    }, [pathname, router]);
+
     return (
         <div className="relative group">
             {/* Bouton parent */}
@@ -59,6 +96,7 @@ function NavDropdown({ menu }: { menu: typeof MENU_ITEMS.formations }) {
                         <Link
                             key={index}
                             href={item.href}
+                            onClick={(e) => handleClick(e, item.href)}
                             className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${item.highlight
                                 ? 'bg-[#6e1615]/10 dark:bg-[#C5A572]/10 hover:bg-[#6e1615]/20 dark:hover:bg-[#C5A572]/20'
                                 : 'hover:bg-gray-100 dark:hover:bg-slate-700'
@@ -90,12 +128,29 @@ function NavDropdown({ menu }: { menu: typeof MENU_ITEMS.formations }) {
 }
 
 // Composant Accordéon pour Mobile
-function MobileAccordion({ menu, isOpen, onToggle, onClose }: {
+function MobileAccordion({ menu, isOpen, onToggle, onClose, pathname, router }: {
     menu: typeof MENU_ITEMS.formations;
     isOpen: boolean;
     onToggle: () => void;
     onClose: () => void;
+    pathname: string;
+    router: ReturnType<typeof useRouter>;
 }) {
+    const handleClick = useCallback((e: React.MouseEvent, href: string) => {
+        const [path, hash] = href.split('#');
+        onClose();
+        if (!hash) return;
+
+        e.preventDefault();
+
+        if (pathname === path) {
+            scrollToHash(hash);
+        } else {
+            router.push(href);
+            setTimeout(() => scrollToHash(hash), 600);
+        }
+    }, [pathname, router, onClose]);
+
     return (
         <div className="border-b border-gray-100 dark:border-slate-800 last:border-0">
             <button
@@ -112,7 +167,7 @@ function MobileAccordion({ menu, isOpen, onToggle, onClose }: {
                         <Link
                             key={index}
                             href={item.href}
-                            onClick={onClose}
+                            onClick={(e) => handleClick(e, item.href)}
                             className={`flex items-center gap-3 px-3 py-2 rounded-lg ${item.highlight
                                 ? 'bg-[#6e1615]/10 dark:bg-[#C5A572]/10'
                                 : 'hover:bg-gray-100 dark:hover:bg-slate-800'
@@ -133,6 +188,8 @@ function MobileAccordion({ menu, isOpen, onToggle, onClose }: {
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+    const pathname = usePathname();
+    const router = useRouter();
 
     const toggleAccordion = (key: string) => {
         setOpenAccordion(openAccordion === key ? null : key);
@@ -148,9 +205,9 @@ export default function Navbar() {
 
             {/* PARTIE GAUCHE - Navigation Principale avec Dropdowns */}
             <div className="hidden md:flex items-center gap-8 flex-1">
-                <NavDropdown menu={MENU_ITEMS.formations} />
-                <NavDropdown menu={MENU_ITEMS.association} />
-                <NavDropdown menu={MENU_ITEMS.production} />
+                <NavDropdown menu={MENU_ITEMS.formations} pathname={pathname} router={router} />
+                <NavDropdown menu={MENU_ITEMS.association} pathname={pathname} router={router} />
+                <NavDropdown menu={MENU_ITEMS.production} pathname={pathname} router={router} />
             </div>
 
             {/* PARTIE CENTRE - Logo */}
@@ -209,18 +266,24 @@ export default function Navbar() {
                             isOpen={openAccordion === 'formations'}
                             onToggle={() => toggleAccordion('formations')}
                             onClose={closeMobileMenu}
+                            pathname={pathname}
+                            router={router}
                         />
                         <MobileAccordion
                             menu={MENU_ITEMS.association}
                             isOpen={openAccordion === 'association'}
                             onToggle={() => toggleAccordion('association')}
                             onClose={closeMobileMenu}
+                            pathname={pathname}
+                            router={router}
                         />
                         <MobileAccordion
                             menu={MENU_ITEMS.production}
                             isOpen={openAccordion === 'production'}
                             onToggle={() => toggleAccordion('production')}
                             onClose={closeMobileMenu}
+                            pathname={pathname}
+                            router={router}
                         />
 
                         <hr className="border-gray-200 dark:border-slate-700 my-4" />

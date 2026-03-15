@@ -3,23 +3,19 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone()
-    const path = url.pathname
 
-    // Laisser passer : coming-soon, fichiers statiques (_next), API, et images/fichiers du dossier public
-    if (
-        path === '/coming-soon' ||
-        path.startsWith('/_next') ||
-        path.startsWith('/api') ||
-        path.match(/\.(png|jpg|jpeg|gif|svg|ico|webp|mp4|pdf|css|js|woff|woff2|ttf)$/)
-    ) {
+    // 1. CONDITION MAGIQUE : Si on est en local (développement), on laisse passer
+    if (process.env.NODE_ENV === 'development') {
         return NextResponse.next()
     }
 
-    // Tout le reste → rediriger vers coming-soon
-    url.pathname = '/coming-soon'
-    return NextResponse.rewrite(url)
+    // 2. Sinon, sur Vercel (production), on applique le rideau
+    if (url.pathname !== '/maintenance' && !url.pathname.startsWith('/_next') && !url.pathname.startsWith('/api')) {
+        url.pathname = '/maintenance'
+        return NextResponse.rewrite(url)
+    }
 }
 
 export const config = {
-    matcher: ['/((?!_next/static|_next/image).*)'],
+    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 }

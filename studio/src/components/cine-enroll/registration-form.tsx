@@ -49,7 +49,7 @@ export default function RegistrationForm() {
         {/* BACKGROUND IMAGE & OVERLAY */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/mentor.jpg"
+            src="/willformateur.png"
             alt="Background"
             className="w-full h-full object-cover object-top"
           />

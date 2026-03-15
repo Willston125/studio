@@ -29,7 +29,7 @@ const PROJETS = [
             { nom: 'Feminin 1er rôle', role: 'La Fiancée', photo: '/la fiancé.jpeg' },
             { nom: 'Masculin 1er rôle', role: 'Hassan', photo: '/Hassane.jpeg' },
             { nom: 'Feminin 2eme rôle', role: 'Hela', photo: '/Hela.jpeg' },
-            { nom: 'Mohamed', role: 'Acteur', photo: '/acteur-mohamed.jpeg' },
+            { nom: 'Actrice', role: 'Actrice', photo: '/actricejeune.jpeg' },
         ],
         equipe: [
             { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
@@ -231,19 +231,30 @@ export default function ProjetDetailPage() {
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {/* Carte Réalisateur (Premier élément) */}
                             {(projet as any).directorPhoto && (
-                                <div className="group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-red-600/50 transition-all duration-300">
-                                    <div className="aspect-[3/4] relative overflow-hidden">
-                                        <Image
-                                            src={(projet as any).directorPhoto}
-                                            alt={projet.equipe?.find(e => e.role.includes('Réalisateur'))?.nom || 'Réalisateur'}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                                <div className="relative group aspect-[3/4] overflow-hidden bg-black cursor-pointer block">
+                                    <Image
+                                        src={(projet as any).directorPhoto}
+                                        alt={projet.equipe?.find(e => e.role.includes('Réalisateur'))?.nom || 'Réalisateur'}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                    {/* Filtre sombre par défaut */}
+                                    <div className="absolute inset-0 bg-black/40 transition-opacity duration-500 group-hover:opacity-0" />
+                                    {/* Dégradé Gold au survol */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/90 via-[#D4AF37]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                    {/* Rôle en haut — glisse au survol */}
+                                    <div className="absolute top-5 left-5 right-5 flex justify-between items-start z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-2 group-hover:translate-y-0">
+                                        <span className="text-white text-[10px] font-black tracking-widest uppercase drop-shadow-md">
+                                            RÉALISATEUR
+                                        </span>
                                     </div>
-                                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                                        <span className="text-red-600 text-xs font-bold uppercase tracking-wider block mb-1">RÉALISATEUR</span>
-                                        <p className="text-white font-bold leading-tight">{projet.equipe?.find(e => e.role.includes('Réalisateur'))?.nom}</p>
+
+                                    {/* Nom centré */}
+                                    <div className="absolute inset-0 flex items-center justify-center p-6 z-10">
+                                        <h3 className="text-xl md:text-2xl font-black text-white text-center leading-tight drop-shadow-lg uppercase">
+                                            {projet.equipe?.find(e => e.role.includes('Réalisateur'))?.nom}
+                                        </h3>
                                     </div>
                                 </div>
                             )}
@@ -252,20 +263,31 @@ export default function ProjetDetailPage() {
                             {projet.casting?.map((acteur, index) => (
                                 <div
                                     key={index}
-                                    className="group relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-500/50 transition-all duration-300"
+                                    className="relative group aspect-[3/4] overflow-hidden bg-black cursor-pointer block"
                                 >
-                                    <div className="aspect-[3/4] relative overflow-hidden">
-                                        <Image
-                                            src={acteur.photo}
-                                            alt={acteur.nom}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                                    <Image
+                                        src={acteur.photo}
+                                        alt={acteur.nom}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                    {/* Filtre sombre par défaut */}
+                                    <div className="absolute inset-0 bg-black/40 transition-opacity duration-500 group-hover:opacity-0" />
+                                    {/* Dégradé Gold au survol */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/90 via-[#D4AF37]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                    {/* Rôle en haut — glisse au survol */}
+                                    <div className="absolute top-5 left-5 right-5 flex justify-between items-start z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-2 group-hover:translate-y-0">
+                                        <span className="text-white text-[10px] font-black tracking-widest uppercase drop-shadow-md">
+                                            {acteur.role}
+                                        </span>
                                     </div>
-                                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                                        <span className="text-yellow-500 text-xs font-bold uppercase tracking-wider block mb-1">{acteur.role}</span>
-                                        <p className="text-white font-bold leading-tight">{acteur.nom}</p>
+
+                                    {/* Nom centré */}
+                                    <div className="absolute inset-0 flex items-center justify-center p-6 z-10">
+                                        <h3 className="text-xl md:text-2xl font-black text-white text-center leading-tight drop-shadow-lg uppercase">
+                                            {acteur.nom}
+                                        </h3>
                                     </div>
                                 </div>
                             ))}
@@ -361,42 +383,7 @@ export default function ProjetDetailPage() {
                 </div>
             </div>
 
-            {/* ═══════════════════════════════════════════════════════════════════ */}
-            {/* FOOTER */}
-            {/* ═══════════════════════════════════════════════════════════════════ */}
-            <footer className="bg-black text-white py-16 border-t-4 border-[#6e1615]">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div>
-                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Formations</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li><Link href="/formations" className="hover:text-white transition-colors">Site Web avec l'IA</Link></li>
-                                <li><Link href="/formations" className="hover:text-white transition-colors">Design Graphique</Link></li>
-                                <li><Link href="/formations" className="hover:text-white transition-colors">Réalisation Vidéo</Link></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Contact</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>📍 Djibouti, Aviation, Institut "DIHM"</li>
-                                <li>📧 cineworld@cineworldacademie.com</li>
-                                <li>📱 +253 77 14 53 06</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Réseaux Sociaux</h3>
-                            <div className="flex gap-4">
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">📘</a>
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">📷</a>
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">📺</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
-                        © 2026 Cineworld Académie - Tous droits réservés - #quedubon
-                    </div>
-                </div>
-            </footer>
+
             {/* ═══════════════════════════════════════════════════════════════════ */}
             {/* LIGHTBOX */}
             {/* ═══════════════════════════════════════════════════════════════════ */}

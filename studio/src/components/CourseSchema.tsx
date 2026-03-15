@@ -50,7 +50,7 @@ export default function CourseSchema({ formations }: { formations: Formation[] }
             "logo": "https://cineworldacademie.com/logo_cineworld.png",
             "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Aviation, Institut DHIM",
+                "streetAddress": "Saalam Tower",
                 "addressLocality": "Djibouti",
                 "addressCountry": "DJ"
             },
@@ -105,7 +105,7 @@ export default function CourseSchema({ formations }: { formations: Formation[] }
                 "foundingDate": "2025",
                 "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "Aviation, Institut DHIM",
+                    "streetAddress": "Saalam Tower",
                     "addressLocality": "Djibouti",
                     "addressCountry": "DJ"
                 },

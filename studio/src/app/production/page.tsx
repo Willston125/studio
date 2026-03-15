@@ -59,10 +59,11 @@ export default function ProductionPage() {
 
                     <div className="flex justify-between items-end mb-12">
                         <div>
-                            <span className="text-yellow-500 font-bold tracking-widest uppercase text-sm">Cinéworld Studio</span>
-                            <h1 className="text-3xl md:text-5xl font-bold text-white mt-2">
-                                Nos Dernières <br />Réalisations ( En cours de production)
+                            <span className="text-[#C5A572] text-xs font-bold uppercase tracking-[0.3em]">Cinéworld Studio</span>
+                            <h1 className="text-3xl md:text-5xl font-black text-white mt-3 uppercase tracking-tight">
+                                Nos Dernières <br />Réalisations
                             </h1>
+                            <div className="w-16 h-1 bg-[#C5A572] mt-4" />
                         </div>
                         <Link
                             href="#all-projects"
@@ -153,37 +154,46 @@ export default function ProductionPage() {
                     {/* ═══════════════════════════════════════════════════════════════════ */}
                     {/* OTHER PROJECTS GRID */}
                     {/* ═══════════════════════════════════════════════════════════════════ */}
-                    <div id="all-projects" className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div id="all-projects" className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {otherProjects.map((projet) => (
                             <Link
                                 key={projet.slug}
                                 href={`/production/${projet.slug}`}
-                                className="group relative aspect-video bg-gray-900 rounded-xl overflow-hidden cursor-pointer border border-gray-800"
+                                className="relative group aspect-[3/4] overflow-hidden bg-black cursor-pointer block"
                             >
-                                {/* Image */}
-                                <div className="absolute inset-0">
-                                    <Image
-                                        src={projet.image}
-                                        alt={projet.titre}
-                                        fill
-                                        className="object-cover"
-                                    />
+                                {/* Image de fond */}
+                                <Image
+                                    src={projet.image}
+                                    alt={projet.titre}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+
+                                {/* Filtre sombre par défaut */}
+                                <div className="absolute inset-0 bg-black/40 transition-opacity duration-500 group-hover:opacity-0" />
+
+                                {/* Dégradé Gold au survol */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/90 via-[#D4AF37]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                {/* Type en haut — glisse au survol */}
+                                <div className="absolute top-5 left-5 right-5 flex justify-between items-start z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-2 group-hover:translate-y-0">
+                                    <span className="text-white text-xs font-black tracking-widest uppercase drop-shadow-md">
+                                        {projet.type}
+                                    </span>
                                 </div>
 
-                                {/* Overlay */}
-                                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
-
-                                {/* Info */}
-                                <div className="absolute bottom-4 left-4">
-                                    <span className="text-yellow-500 text-xs font-bold uppercase">{projet.type}</span>
-                                    <h3 className="text-white font-bold text-xl">{projet.titre}</h3>
+                                {/* Titre centré */}
+                                <div className="absolute inset-0 flex items-center justify-center p-6 z-10">
+                                    <h3 className="text-2xl md:text-3xl font-black text-white text-center leading-tight drop-shadow-lg uppercase">
+                                        {projet.titre}
+                                    </h3>
                                 </div>
 
-                                {/* Play Button on Hover */}
-                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                                    <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-black">
-                                        <Play className="w-5 h-5 ml-1" />
-                                    </div>
+                                {/* Bouton Détails en bas */}
+                                <div className="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+                                    <span className="border border-white text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 group-hover:bg-white group-hover:text-black transition-colors duration-300 drop-shadow-md">
+                                        Détails →
+                                    </span>
                                 </div>
                             </Link>
                         ))}
@@ -192,65 +202,7 @@ export default function ProductionPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════════════════════════════════ */}
-            {/* FOOTER */}
-            {/* ═══════════════════════════════════════════════════════════════════ */}
-            <footer className="bg-black text-white py-16 border-t-4 border-[#6e1615]">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid md:grid-cols-3 gap-12">
-                        {/* Formations */}
-                        <div>
-                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Formations</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li><Link href="/formations" className="hover:text-white transition-colors">Site Web avec l'IA</Link></li>
-                                <li><Link href="/formations" className="hover:text-white transition-colors">Design Graphique</Link></li>
-                                <li><Link href="/formations" className="hover:text-white transition-colors">Réalisation Vidéo</Link></li>
-                                <li><Link href="/formations" className="hover:text-white transition-colors">Marketing Digital</Link></li>
-                                <li><Link href="/formations" className="hover:text-white transition-colors">Pack Creator 360°</Link></li>
-                            </ul>
-                        </div>
 
-                        {/* Contact */}
-                        <div>
-                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Contact</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li className="flex items-start gap-3">
-                                    <span>📍</span>
-                                    <span>Djibouti, Aviation<br />Institut "DIHM"</span>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span>📧</span>
-                                    <a href="mailto:cineworld@cineworldacademie.com" className="hover:text-white transition-colors">cineworld@cineworldacademie.com</a>
-                                </li>
-                                <li className="flex items-center gap-3">
-                                    <span>📱</span>
-                                    <a href="https://wa.me/25377145306" className="hover:text-white transition-colors">+253 77 14 53 06</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Réseaux */}
-                        <div>
-                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6 text-yellow-500">Réseaux Sociaux</h3>
-                            <div className="flex gap-4">
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
-                                    <span>📘</span>
-                                </a>
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
-                                    <span>📷</span>
-                                </a>
-                                <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#6e1615] transition-colors">
-                                    <span>📺</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
-                        © 2026 Cineworld Académie - Tous droits réservés - #quedubon
-                    </div>
-                </div>
-            </footer>
         </main >
     );
 }
