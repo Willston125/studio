@@ -30,6 +30,7 @@ const PROJETS = [
             { nom: 'Masculin 1er rôle', role: 'Hassan', photo: '/Hassane.jpeg' },
             { nom: 'Feminin 2eme rôle', role: 'Hela', photo: '/Hela.jpeg' },
             { nom: 'Actrice', role: 'Actrice', photo: '/actricejeune.jpeg' },
+            { nom: 'Fatouma', role: 'Actrice', photo: '/fatouma-actrice.jpeg' },
         ],
         equipe: [
             { role: 'Réalisateur', nom: 'Abdoulwahab Mohamed Ali' },
@@ -396,10 +397,11 @@ export default function ProjetDetailPage() {
                         className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4"
                         onClick={() => setSelectedImage(null)}
                     >
-                        {/* Close Button */}
                         <button
                             onClick={() => setSelectedImage(null)}
                             className="absolute top-4 right-4 text-white/50 hover:text-white transition p-2 z-50"
+                            aria-label="Fermer la galerie"
+                            title="Fermer"
                         >
                             <X size={32} />
                         </button>
@@ -424,17 +426,21 @@ export default function ProjetDetailPage() {
                                         e.stopPropagation();
                                         setSelectedImage(selectedImage - 1);
                                     }}
+                                    aria-label="Image précédente"
+                                    title="Précédent"
                                 >
                                     <ChevronLeft size={24} />
                                 </button>
                             )}
-                            {selectedImage < (projet.galerie.length - 1) && (
+                             {selectedImage < (projet.galerie.length - 1) && (
                                 <button
                                     className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur transition border border-white/10"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         setSelectedImage(selectedImage + 1);
                                     }}
+                                    aria-label="Image suivante"
+                                    title="Suivant"
                                 >
                                     <ChevronRight size={24} />
                                 </button>
