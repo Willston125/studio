@@ -22,6 +22,7 @@ import {
     MessageCircle,
     MapPin
 } from 'lucide-react';
+import { saveInscriptionToSheets } from '@/lib/googleSheets';
 
 // ─── Données des modules ────────────────────────────────────────────────────
 const MODULES_DATA = [
@@ -152,14 +153,27 @@ function InscriptionContent() {
     };
 
     // Envoi final via WhatsApp
-    const onSubmit = (data: FormData) => {
+    const onSubmit = async (data: FormData) => {
         setIsSubmitting(true);
         setTimeout(() => {
             setIsSubmitting(false);
             setShowSuccessModal(true);
             localStorage.removeItem('cineworld_inscription_draft');
 
-            setTimeout(() => {
+            setTimeout(async () => {
+                // Sauvegarde dans Google Sheets (non bloquant)
+                await saveInscriptionToSheets({
+                    prenom: data.prenom,
+                    nom: data.nom,
+                    email: data.email,
+                    telephone: data.telephone,
+                    module: selectedModule ? selectedModule.titre : 'Non sélectionné',
+                    duree: selectedModule ? selectedModule.duree : '-',
+                    tarif: selectedModule ? selectedModule.tarif : '-',
+                    niveau: data.niveau,
+                    attentes: data.attentes,
+                });
+
                 let message = `*🎬 NOUVELLE INSCRIPTION - CINEWORLD ACADÉMIE*\n\n`;
                 message += `━━━━━━━━━━━━━━━━━━━━\n`;
                 message += `*👤 IDENTITÉ*\n`;
