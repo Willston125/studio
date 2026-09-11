@@ -43,3 +43,7 @@ next-env.d.ts
 # firebase
 firebase-debug.log
 firestore-debug.log
+# Grosses videos sources — jamais referencees par le code.
+# GitHub refuse tout fichier > 100 Mo, celles-ci font 643 Mo.
+/public/20260314_124920.mp4
+/public/20260314_124920 (2).mp4
